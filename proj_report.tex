@@ -116,17 +116,19 @@ We begin by listing some definitions.
 \end{definition}
 
 \begin{definition}
-    Independent set, max independent set.
+    Independent set, max independent set, indepence number $\alpha(G)$
 \end{definition}
 
 \section{min size dominating set}
 
 \begin{lemma}
     Let $G$ be a graph and $X$ be a subset of the vertices of $G$. 
-    
+        
     The minimum size of a dominating set is greater than or equal to the size of the maximum independent set.
      
 \end{lemma}
+
+Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
 \begin{proof}
     
@@ -135,6 +137,14 @@ We begin by listing some definitions.
     
     
 \end{proof}
+
+\begin{theorem} [Willis 2011 Theorem 3.1] 
+For any graph $G = (V,E)$ \cite{Willis2011BoundsFT}
+
+    \[\alpha \leq \frac{|V|}{\chi(G)}\]
+
+
+\end{theorem}
 
 \begin{theorem} \label{minDomSize}
     Let $G$ be a graph, such that the number of vertices in G, $n$, is $\geq 4$. Then for any G,
