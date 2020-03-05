@@ -18,9 +18,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\newtheorem{claim}{Claim}
-\newtheorem{lemma}{Lemma}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
 
@@ -49,7 +49,7 @@
 % [font|image]            Use a font or an image for the VUW logo
 %                          The font option will only work on ECS systems
 %
-\usepackage[image,msor]{vuwproject}
+\usepackage[image,sms]{vuwproject}
 \otherdegree{Bachelor of Science with Honours in Mathematics}
 
 % You should specifiy your supervisor here with
@@ -115,10 +115,32 @@ We begin by listing some definitions.
     The Dominating number, $\gamma(G)$, of a graph $G=(E,V)$ is the size of the smallest dominating set of $G$.
 \end{definition}
 
+\begin{definition}
+    Independent set, max independent set.
+\end{definition}
+
 \section{min size dominating set}
 
+\begin{lemma}
+    Let $G$ be a graph and $X$ be a subset of the vertices of $G$. 
+    
+    The minimum size of a dominating set is greater than or equal to the size of the maximum independent set.
+     
+\end{lemma}
+
+\begin{proof}
+    
+    Let $X$ be a minimum dominating set in the graph $G$.
+    
+    
+    
+\end{proof}
+
 \begin{theorem} \label{minDomSize}
-    Any graph, $G=(E,V)$, with $|V| \geq 7$ has $\gamma_g(G) \geq \left \lceil{\frac{n}{2}}\right \rceil $
+    Let $G$ be a graph, such that the number of vertices in G, $n$, is $\geq 4$. Then for any G,
+    
+    \[ \gamma_g(G) \geq \left \lceil{\frac{n}{2}}\right \rceil \]
+    
 \end{theorem}
 
 \begin{proof}
