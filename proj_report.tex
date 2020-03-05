@@ -116,32 +116,30 @@ We begin by listing some definitions.
 \end{definition}
 
 \begin{definition}
-    Independent set, max independent set, indepence number $\alpha(G)$
+    Independent set, maximum independent set, independence number $\alpha(G)$
 \end{definition}
 
 \section{min size dominating set}
 
 \begin{lemma}
-    Let $G$ be a graph and $X$ be a subset of the vertices of $G$. 
+    Let $G$ be a graph. 
         
-    The minimum size of a dominating set is greater than or equal to the size of the maximum independent set.
+    \[\gamma(G) \geq \alpha(G)\]
      
 \end{lemma}
 
-Recall that $\chi(G)$ is the chromatic number of the graph $G$.
-
 \begin{proof}
     
-    Let $X$ be a minimum dominating set in the graph $G$.
-    
-    
-    
+    Let $X$ be a minimum dominating set in some graph $G=(V,E)$. By definition of dominating set vertex in $V$ is adjacent to at least one vertex in      
+   
 \end{proof}
+    
+Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
 \begin{theorem} [Willis 2011 Theorem 3.1] 
 For any graph $G = (V,E)$ \cite{Willis2011BoundsFT}
 
-    \[\alpha \leq \frac{|V|}{\chi(G)}\]
+    \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
 
 
 \end{theorem}
