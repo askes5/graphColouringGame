@@ -31,21 +31,36 @@ We begin by listing some definitions.
     
 Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
-\begin{theorem} [Willis 2011 Theorem 3.1] 
+\begin{theorem} [Willis 2011 3.1] 
 For any graph $G = (V,E)$ \cite{Willis2011BoundsFT}
 
     \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
 
+\end{theorem}
 
+Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
+
+\begin{theorem} [Balakrishnan 2012 10.3.2] \label{balakrishnan201210.3.2}
+    For any graph $G$ with $n$ vertices, 
+    
+    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    \cite{balakrishnan2012}
+    
 \end{theorem}
 
 \begin{theorem} \label{minDomSize}
-    Let $G$ be a graph, such that the number of vertices in G, $n$, is $\geq 4$. Then for any G,
+    Let $G$ be a graph with $n$ vertices, such that $n \geq 4$. Then,
     
     \[ \gamma_g(G) \geq \left \lceil{\frac{n}{2}}\right \rceil \]
     
 \end{theorem}
 
 \begin{proof}
-asd    
+Worst case is $G$ is minimally connected, i.e. $G$ is a tree. Thus by \ref{balakrishnan201210.3.2} 
+\[\gamma(G) \geq \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil\]       
 \end{proof}
+
+\begin{theorem}
+    Let $G$ be a graph with $n$ vertices. Then,
+    
+    \[ \gamma_g(G) \leq n\]
+\end{theorem}
