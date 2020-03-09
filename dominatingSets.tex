@@ -36,22 +36,28 @@ Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
 Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 
-\begin{theorem} [Balakrishnan 2012 10.3.2] \label{balakrishnan201210.3.2}
+\begin{theorem} [Balakrishnan 2012 10.3.2] \label{balakrishnan201210.3.2}\cite{balakrishnan2012}
     For any graph $G$ with $n$ vertices, 
     
-    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    \cite{balakrishnan2012}
+    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 \end{theorem}
     
     It is obvious that in the case when $\gamma(G)$ is known that $\gamma(G) > \gamma_g(G)$.
     
-\begin{theorem}
-    Let G be a graph if $x$ is a tight upper bound for the domination number ($\gamma(G)$) then  
+\begin{theorem}(Ore 1962) \label{oreDomUpper} \cite{oysteinore1962}
+    For any graph $G$ with $n$ vertices, 
+    
+    \[\gamma(G) \leq \frac{n}{2}\]
+\end{theorem}
+
+\begin{theorem}\label{gameupper}
+    Let $G$ be a graph. If $x$ is a tight upper bound for the domination number, $\gamma(G)$, then  
     
     \[ \gamma_g(G) \geq x\]
 \end{theorem}
 
 \begin{proof}
-    Let $G$ be a graph where $\gamma(G) = x$
+    Let $G$ be a graph where $\gamma(G) = x$.
     Thus for $G$ we are unable to find a dominating set with $ < x$ vertices.
     Therefore there cannot be a winning strategy for Alice with $< x$ vertices.
     Therefore $\gamma_g(G) \geq x$
@@ -59,17 +65,20 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 
 %add table of classes of graphs
 
-\begin{theorem} \label{minDomSize}
+\begin{theorem} \label{gameDomNumLowerBound}
     Let $G$ be a graph with $n$ vertices, such that $n \geq 4$. Then,
     
-    \[ \gamma_g(G) > \left \lfloor{\frac{n}{2}}\right \rfloor \]
+    \[ \gamma_g(G) \geq \left \lfloor{\frac{n}{2}}\right \rfloor \]
     
 \end{theorem}
 
 \begin{proof}
-    Worst case is $G$ is minimally connected, i.e. $G$ is a tree. Thus by \ref{balakrishnan201210.3.2} 
-    \[\gamma(G) \geq \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil\]       
+    By combination of theorems \ref{oreDomUpper} and \ref{gameupper} we get  $ \gamma_g(G) \geq \left \lfloor{\frac{n}{2}}\right \rfloor $
 \end{proof}
+
+Thereom \ref{gameDomNumLowerBound} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
+
+The trivial upper bound is $n$.
 
 \begin{theorem}
     Let $G$ be a graph with $n$ vertices. Then,

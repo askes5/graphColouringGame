@@ -1,9 +1,20 @@
 \begin{thebibliography}{1}
 
+\bibitem{AlBABoSz2002}
+{\sc Alon, N., Balogh, J., Bollobás, B., and Szabó, T.}
+\newblock Game domination number.
+\newblock {\em Discrete Mathematics 256}, 1 (2002), 23 -- 33.
+
 \bibitem{balakrishnan2012}
 {\sc Balakrishnan, R.}
 \newblock {\em A Textbook of Graph Theory (Universitext)}.
 \newblock Springer, sep 2012.
+
+\bibitem{oysteinore1962}
+{\sc Ore, O.}
+\newblock {\em Theory of Graphs (COLLOQUIUM PUBLICATIONS (AMER MATHEMATICAL
+  SOC))}.
+\newblock American Mathematical Society, dec 1962.
 
 \bibitem{Willis2011BoundsFT}
 {\sc Willis, W.}
