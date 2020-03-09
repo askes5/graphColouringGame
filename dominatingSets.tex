@@ -62,5 +62,37 @@ Worst case is $G$ is minimally connected, i.e. $G$ is a tree. Thus by \ref{balak
 \begin{theorem}
     Let $G$ be a graph with $n$ vertices. Then,
     
-    \[ \gamma_g(G) \leq n\]
+    \[ \gamma_g(G) \leq \frac{2n}{3}\]
 \end{theorem}
+
+    It is obvious that in the case when $\gamma(G)$ is known that $\gamma(G) > \gamma_g(G)$.
+\begin{theorem}
+    Let G be a graph if $x$ is a tight upper bound for the domination number ($\gamma(G)$) then  
+    
+    \[ \gamma_g(G) > x\]
+    
+\end{theorem}
+
+\begin{proof}
+    Let $G$ be a graph where $\gamma(G) = x$
+ 
+    Thus for $G$ we are unable to find a dominating set with $ < x$ vertices.
+    
+    Thus there cannot be a winning strategy for Alice with $<= x$ vertices.
+    
+    Therefore $\gamma_g(G) > x$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
