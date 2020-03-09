@@ -85,8 +85,18 @@ The trivial upper bound is $n$.
     
     \[ \gamma_g(G) \leq \frac{2n}{3}\]
 \end{theorem}
+ 
+\begin{proof}
+    For any graph, $G$, it suffices to show we have a winning strategy for a spanning tree of $G$. This is because a dominating set on a spanning tree in a dominating set in the graph.
+    Thus, let $T$ be a spanning tree of $G$.
+    The winning strategy for Alice is the greedy strategy as follows. $D$ is the current dominating set i.e. neighbours of all selected vertices.
+    \begin{enumerate}
+        \item Pick any vertex, $v$, not in $D$ with a maximal number of neighbours not in $D$. That is maximise the set $\{x: x \in N(v) \bigwedge v \notin D\}$.
+        \item repeat until you have a dominating set.
+    \end{enumerate}
 
-
+    At worst Alice will add two vertices to 
+\end{proof}
 
 
 
