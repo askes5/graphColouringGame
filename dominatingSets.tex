@@ -20,22 +20,18 @@ We begin by listing some definitions.
     Let $G$ be a graph. 
         
     \[\gamma(G) \geq \alpha(G)\]
-     
 \end{lemma}
 
 \begin{proof}
-    
     Let $X$ be a minimum dominating set in some graph $G=(V,E)$. By definition of dominating set vertex in $V$ is adjacent to at least one vertex in      
-   
 \end{proof}
     
 Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
 \begin{theorem} [Willis 2011 3.1] 
-For any graph $G = (V,E)$ \cite{Willis2011BoundsFT}
+    For any graph $G = (V,E)$ \cite{Willis2011BoundsFT}
 
     \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
-
 \end{theorem}
 
 Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
@@ -44,24 +40,20 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
     For any graph $G$ with $n$ vertices, 
     
     \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    \cite{balakrishnan2012}
-    
 \end{theorem}
-
+    
     It is obvious that in the case when $\gamma(G)$ is known that $\gamma(G) > \gamma_g(G)$.
+    
 \begin{theorem}
     Let G be a graph if $x$ is a tight upper bound for the domination number ($\gamma(G)$) then  
     
     \[ \gamma_g(G) \geq x\]
-    
 \end{theorem}
 
 \begin{proof}
     Let $G$ be a graph where $\gamma(G) = x$
- 
     Thus for $G$ we are unable to find a dominating set with $ < x$ vertices.
-    
     Therefore there cannot be a winning strategy for Alice with $< x$ vertices.
-    
     Therefore $\gamma_g(G) \geq x$
 \end{proof}
 
@@ -75,8 +67,8 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 \end{theorem}
 
 \begin{proof}
-Worst case is $G$ is minimally connected, i.e. $G$ is a tree. Thus by \ref{balakrishnan201210.3.2} 
-\[\gamma(G) \geq \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil\]       
+    Worst case is $G$ is minimally connected, i.e. $G$ is a tree. Thus by \ref{balakrishnan201210.3.2} 
+    \[\gamma(G) \geq \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil\]       
 \end{proof}
 
 \begin{theorem}
