@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6730 64-bit) (preloaded format=xelatex 2018.8.17)  12 MAR 2020 11:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.7.23)  12 MAR 2020 12:06
 entering extended mode
 **./proj_report.tex
 (proj_report.tex
@@ -148,11 +148,11 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\xetex
-.def"
-File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
+x.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
@@ -193,10 +193,9 @@ Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
 )
@@ -232,6 +231,8 @@ Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.de
 f"
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count106
 
@@ -265,26 +266,13 @@ LaTeX Info: Redefining \pageref on input line 6443.
 \c@Item=\count110
 \c@Hfootnote=\count111
 )
-Package hyperref Info: Driver (autodetected): hxetex.
+Package hyperref Info: Driver (autodetected): hpdftex.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hxetex.de
-f"
-File: hxetex.def 2018/02/06 v6.86b Hyperref driver for XeTeX
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\puenc.def
-"
-File: puenc.def 2018/02/06 v6.86b Hyperref: PDF Unicode definition (HO)
-)
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\stringe
-nc.sty"
-Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
-)
-)
-\pdfm@box=\box31
-\c@Hy@AnnotLevel=\count112
-\HyField@AnnotCount=\count113
-\Fld@listcount=\count114
-\c@bookmark@seq@number=\count115
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.d
+ef"
+File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
+\Fld@listcount=\count112
+\c@bookmark@seq@number=\count113
 
 ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfile
 check.sty"
@@ -306,24 +294,49 @@ LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for TU+ppl on input line 76.
-LaTeX Font Info:    No file TUppl.fd. on input line 76.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 76.
 
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
+ii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count114
+\scratchdimen=\dimen118
+\scratchbox=\box31
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen119
+\MPnumerator=\count118
+\makeMPintoPDFobject=\count119
+\everyMPtoPDFconversion=\toks30
+)
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
+base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-LaTeX Font Warning: Font shape `TU/ppl/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 76.
-
+("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
+y"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
 \AtBeginShipoutBox=\box32
+
 ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty
 "
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
@@ -332,7 +345,7 @@ Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 .cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: xetex.def on input line 147.
+Package color Info: Driver file: pdftex.def on input line 147.
 )
 Package hyperref Info: Link coloring ON on input line 76.
 
@@ -344,7 +357,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 estring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count116
+\c@section@level=\count120
 )
 LaTeX Info: Redefining \ref on input line 76.
 LaTeX Info: Redefining \pageref on input line 76.
@@ -353,18 +366,13 @@ LaTeX Info: Redefining \nameref on input line 76.
 \@outlinefile=\write3
 \openout3 = `proj_report.out'.
 
-Missing character: There is no ̄ in font pplri!
-Missing character: There is no ̄ in font pplri!
-Missing character: There is no ̄ in font pplri!
-File: VUWlogo.png Graphic file (type bmp)
-<VUWlogo.png>
-Missing character: There is no ̄ in font pplri!
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 94.
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-)
+<VUWlogo.png, id=15, 1284.8pt x 435.6275pt>
+File: VUWlogo.png Graphic file (type png)
+<use VUWlogo.png>
+Package pdftex.def Info: VUWlogo.png  used on input line 94.
+(pdftex.def)             Requested size: 158.76663pt x 53.82846pt.
 LaTeX Font Info:    Try loading font information for OML+zplm on input line 94.
+
 
 ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlzplm.fd"
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
@@ -407,23 +415,25 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 11.40997pt on input line 94.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 8.33606pt on input line 94.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 94.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 94.
+ [-1
 
-
-LaTeX Font Warning: Font shape `TU/ppl/bx/n' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 94.
-
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\se-asci
-i-print.def"
-File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
-
-) [-1
-
-] [0]
+{C:/Users/Askes/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./VUWlogo.p
+ng (PNG copy)>]pdfTeX warning (ext4): destination with the same identifier (nam
+e{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.94 
+      [0]
 \openout2 = `acknowledge.aux'.
 
 
 No file acknowledge.tex.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 97.
 (proj_report.toc)
 \tf@toc=\write4
 \openout4 = `proj_report.toc'.
@@ -443,6 +453,8 @@ No file acknowledge.tex.
 
 ]
 Chapter 1.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 113.
 [1
 
 ]
@@ -453,16 +465,9 @@ Chapter 1.
 
 ]
 Chapter 2.
-
-LaTeX Font Warning: Font shape `TU/ppl/m/it' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 19.
-
-[3]) [4] (proj_report.bbl
-
-LaTeX Font Warning: Font shape `TU/ppl/m/sc' undefined
-(Font)              using `TU/ppl/m/n' instead on input line 4.
-
-)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 17.
+[3]) [4] (proj_report.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
  [5
 
@@ -470,24 +475,37 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
- (proj_report.aux (acknowledge.aux) (dominatingSets.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 128.
+ (proj_report.aux (acknowledge.aux)
+(dominatingSets.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 128.
 Package rerunfilecheck Info: File `proj_report.out' has not changed.
-(rerunfilecheck)             Checksum: 0671239F8D724E864DF313685EE34CB1.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+(rerunfilecheck)             Checksum: 22A7C8877D28028E84583428819130FA;169.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
  ) 
 Here is how much of TeX's memory you used:
- 9284 strings out of 427798
- 125712 string characters out of 3147828
- 207785 words of memory out of 3000000
- 13196 multiletter control sequences out of 15000+200000
- 16966 words of font info for 60 fonts, out of 3000000 for 9000
- 1328 hyphenation exceptions out of 8191
- 32i,8n,47p,257b,381s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 6325 strings out of 492973
+ 92478 string characters out of 3126692
+ 182378 words of memory out of 3000000
+ 10052 multiletter control sequences out of 15000+200000
+ 33783 words of font info for 90 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 32i,8n,30p,257b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
+}<C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Askes/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Askes/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Askes/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmri.pfb><C:/User
+s/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><
+C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8
+a.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatin
+o/uplri8a.pfb>
+Output written on proj_report.pdf (11 pages, 208627 bytes).
+PDF statistics:
+ 136 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on proj_report.pdf (11 pages).

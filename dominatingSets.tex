@@ -78,6 +78,7 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
     By combination of theorems \ref{oreDomUpper} and \ref{gameupper} we get  $ \gamma_g(G) \geq \left \lfloor{\frac{n}{2}}\right \rfloor $
 \end{proof}
 
+%TODO insert disucssion
 Thereom \ref{gameDomNumLowerBound} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
 
 The trivial upper bound is $n$.
@@ -89,9 +90,12 @@ The trivial upper bound is $n$.
 \end{theorem}
  
 \begin{proof}
-    For any graph, $G$, it suffices to show we have a winning strategy for a spanning tree of $G$. This is because a dominating set on a spanning tree in a dominating set in the graph.
-    Thus, let $T$ be a spanning tree of $G$.
-    The winning strategy for Alice is the greedy strategy as follows. $D$ is the current dominating set in $T$ i.e. neighbours of all selected vertices.
+    A dominating set on a spanning tree in a dominating set in the parent graph.
+    Thus for any graph, $G$, it suffices to show we have a winning strategy for a spanning tree of $G$. 
+    let $T$ be a spanning tree of $G$.
+    The winning strategy for Alice is the greedy strategy as follows. 
+    
+    Let $D$ be the current dominating set in $T$ i.e. neighbours of all selected vertices.
     \begin{enumerate}
         \item Pick any vertex, $v$, not in $D$ with a maximal number of neighbours not in $D$. That is maximise the set $\{x: x \in N(v) \bigwedge v \notin D\}$.
         \item repeat until you have a dominating set.
@@ -102,6 +106,7 @@ The trivial upper bound is $n$.
        with no opponent this will give n/3 thus at worst with the opponent it will take 2n/3 
        
     At worst Alice will add two vertices to 
+    %TODO finish this proof
 \end{proof}
 
 \begin{theorem}
