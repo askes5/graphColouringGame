@@ -1,2 +1,65 @@
 \chapter{Colouring}
 
+\begin{theorem}
+    Let $T$ be a tree, if we have $p$ players then,
+    \[\chi_g(T) \leq 4 + (p-2)\]
+\end{theorem}
+
+\begin{proof}
+    Consider the graph in figure
+    
+   \begin{figure}[h]
+       \centering
+        \tikzstyle{normal}=[scale=.5,fill=black, draw=black]
+        \begin{tikzpicture}[scale=1.5,transform shape]
+            \tikzstyle{every node}=[circle]; 
+            \node [label=below:7, normal] (v7) at (-3,0.5) {};
+            \node [label=above:6, normal] (v6) at (-4.5,0.5) {};
+            \node [label=above:5, normal] (v5) at (-7,0.5) {};
+            \node [label=above:2, normal] (v2) at (-9.5,0.5) {};
+            \node [label=below:1, normal] (v1) at (-11,0.5) {};
+            \node [label=below:3, normal] (v3) at (-10,-0.5) {};
+            \node [label=below:x, normal] (v4) at (-9,-0.5) {};
+            \node [label=below:11, normal] (v11) at (-7.5,-0.5) {};
+            \node [label=below:y, normal] (v10) at (-6.5,-0.5) {};
+            \node [label=below:9, normal] (v9) at (-5,-0.5) {};
+            \node [label=below:z, normal] (v8) at (-4,-0.5) {};
+            \draw  (v1) edge (v2);
+            \draw  (v2) edge (v3);
+            \draw  (v2) edge (v4);
+            \draw  (v2) edge (v5);
+            \draw  (v5) edge (v6);
+            \draw  (v6) edge (v7);
+            \draw  (v6) edge (v8);
+            \draw  (v6) edge (v9);
+            \draw  (v5) edge (v11);
+            \draw  (v5) edge (v10);
+            \node (e1) at ($(v3)!.5!(v4)$) {\ldots};
+            \node [normal] (v12) at (-10.5,-0.5) {};
+            \node [normal] (v13) at (-8,-0.5) {};
+            \node [normal] (v14) at (-5.5,-0.5) {};
+            \draw  (v2) edge (v12);
+            \draw  (v13) edge (v5);
+            \draw  (v14) edge (v6);
+            
+            
+            \node (e1) at ($(v3)!.5!(v4)$) {\ldots};
+            \node (e1) at ($(v11)!.5!(v10)$) {\ldots};
+            \node (e1) at ($(v9)!.5!(v8)$) {\ldots};
+        \end{tikzpicture}
+        \caption{}
+\end{figure}    
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+

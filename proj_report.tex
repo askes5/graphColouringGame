@@ -18,11 +18,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage{tikz} %tikz libray for graphs
+\usepackage{tikz,fullpage}
+\usetikzlibrary{calc}
+
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{lemma}[theorem]{Lemma}
 \theoremstyle{definition}
 \newtheorem*{definition}{Definition}
+
+\usepackage{caption} %removes ':' from empty captions 
 
 %
 %  We don't want figures to float so we define
@@ -92,7 +98,7 @@ A short description of the project goes here.
 
 \maketitle
 
-\include{acknowledge}
+%\include{acknowledge}
 
 \tableofcontents
 

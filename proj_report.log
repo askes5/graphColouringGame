@@ -1,37 +1,43 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.7.23)  12 MAR 2020 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.5)  12 MAR 2020 21:13
 entering extended mode
 **./proj_report.tex
 (proj_report.tex
-LaTeX2e <2018-04-01> patch level 5
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls"
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls
+"
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size11.clo
+"
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@chapter=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
-\c@figure=\count87
-\c@table=\count88
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty"
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float.sty
+"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count89
+\c@float@type=\count88
 \float@exts=\toks14
 \float@box=\box26
 \@float@everytoks=\toks15
 \@floatcapt=\box27
-) ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+) ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.s
+ty"
 Package: amsthm 2017/10/31 v2.20.4
 \thm@style=\toks16
 \thm@bodyfont=\toks17
@@ -43,39 +49,39 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip45
 \dth@everypar=\toks21
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
-y"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath
+.sty"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
-y"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext
+.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
-"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.
+sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks22
 \ex@=\dimen103
 ))
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
-"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.
+sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
-"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.
+sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count90
+\inf@bad=\count89
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count91
-\leftroot@=\count92
+\uproot@=\count90
+\leftroot@=\count91
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count93
-\DOTSCASE@=\count94
+\classnum@=\count92
+\DOTSCASE@=\count93
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
@@ -84,15 +90,15 @@ LaTeX Info: Redefining \cdots on input line 596.
 \big@size=\dimen105
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count95
-\c@MaxMatrixCols=\count96
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
 \dotsspace@=\muskip11
-\c@parentequation=\count97
-\dspbrk@lvl=\count98
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
 \tag@help=\toks23
-\row@=\count99
-\column@=\count100
-\maxfields@=\count101
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
 \andhelp@=\toks24
 \eqnshift@=\dimen106
 \alignsep@=\dimen107
@@ -107,72 +113,421 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
-ty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssym
+b.sty"
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
-sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfon
+ts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-\c@theorem=\count102
-\@float@every@fig=\toks27
-\c@fig=\count103
- (vuwproject.sty
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\mathpazo.st
-y"
-Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
-\symupright=\mathgroup6
-)
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlay
+er\tikz.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\
+pgf.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\p
+gfrcs.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfutil-common.tex"
+\pgfutil@everybye=\toks27
+\pgfutil@tempdima=\dimen112
+\pgfutil@tempdimb=\dimen113
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfutil-common-lists.tex"))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfutil-latex.def"
+\pgfutil@abb=\box30
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty
+"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfrcs.code.tex"
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\
+pgfcore.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphi
+cx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval
+.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks28
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphi
+cs.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.s
+ty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
-ics.cfg"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\gr
+aphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
-x.def"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pd
+ftex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen112
-\Gin@req@width=\dimen113
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer
+\pgfsys.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgfsys.code.tex"
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfkeys.code.tex"
+\pgfkeys@pathtoks=\toks29
+\pgfkeys@temptoks=\toks30
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfkeysfiltered.code.tex"
+\pgfkeys@tmptoks=\toks31
+))
+\pgf@x=\dimen116
+\pgf@y=\dimen117
+\pgf@xa=\dimen118
+\pgf@ya=\dimen119
+\pgf@xb=\dimen120
+\pgf@yb=\dimen121
+\pgf@xc=\dimen122
+\pgf@yc=\dimen123
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count101
+\c@pgf@countb=\count102
+\c@pgf@countc=\count103
+\c@pgf@countd=\count104
+\t@pgf@toka=\toks32
+\t@pgf@tokb=\toks33
+\t@pgf@tokc=\toks34
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgf.cfg"
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgfsys-common-pdf.def"
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgfsyssoftpath.code.tex"
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count105
+\pgfsyssoftpath@bigbuffer@items=\count106
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlay
+er\pgfsysprotocol.code.tex"
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.s
+ty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\co
+lor.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcore.code.tex"
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+ath.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athcalc.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athutil.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athparser.code.tex"
+\pgfmath@dimen=\dimen124
+\pgfmath@count=\count107
+\pgfmath@box=\box31
+\pgfmath@toks=\toks35
+\pgfmath@stack@operand=\toks36
+\pgfmath@stack@operation=\toks37
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.basic.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.trigonometric.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.random.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.comparison.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.base.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.round.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.misc.code.tex")
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfunctions.integerarithmetics.code.tex")))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+athfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count108
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorepoints.code.tex"
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen125
+\pgf@picmaxx=\dimen126
+\pgf@picminy=\dimen127
+\pgf@picmaxy=\dimen128
+\pgf@pathminx=\dimen129
+\pgf@pathmaxx=\dimen130
+\pgf@pathminy=\dimen131
+\pgf@pathmaxy=\dimen132
+\pgf@xx=\dimen133
+\pgf@xy=\dimen134
+\pgf@yx=\dimen135
+\pgf@yy=\dimen136
+\pgf@zx=\dimen137
+\pgf@zy=\dimen138
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorepathconstruct.code.tex"
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen139
+\pgf@path@lasty=\dimen140
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorepathusage.code.tex"
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen141
+\pgf@shorten@start@additional=\dimen142
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorescopes.code.tex"
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box32
+\pgf@hbox=\box33
+\pgf@layerbox@main=\box34
+\pgf@picture@serial@count=\count109
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoregraphicstate.code.tex"
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen143
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoretransformations.code.tex"
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen144
+\pgf@pt@y=\dimen145
+\pgf@pt@temp=\dimen146
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorequick.code.tex"
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoreobjects.code.tex"
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorepathprocessing.code.tex"
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorearrows.code.tex"
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen147
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen148
+\pgf@sys@shading@range@num=\count110
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoreimage.code.tex"
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoreexternal.code.tex"
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box35
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorelayers.code.tex"
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcoretransparency.code.tex"
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclaye
+r\pgfcorepatterns.code.tex"
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\p
+gfmoduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box36
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\p
+gfmoduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibili
+ty\pgfcomp-version-0-65.sty"
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen149
+\pgf@nodesepend=\dimen150
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibili
+ty\pgfcomp-version-1-18.sty"
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\p
+gffor.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\p
+gfkeys.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgfkeys.code.tex"))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmat
+h.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+ath.code.tex"))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities
+\pgffor.code.tex"
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfm
+ath.code.tex")
+\pgffor@iter=\dimen151
+\pgffor@skip=\dimen152
+\pgffor@stack=\toks38
+\pgffor@toks=\toks39
+))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendl
+ayer\tikz\tikz.code.tex"
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries
+\pgflibraryplothandlers.code.tex"
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count111
+\pgfplotmarksize=\dimen153
+)
+\tikz@lastx=\dimen154
+\tikz@lasty=\dimen155
+\tikz@lastxsaved=\dimen156
+\tikz@lastysaved=\dimen157
+\tikzleveldistance=\dimen158
+\tikzsiblingdistance=\dimen159
+\tikz@figbox=\box37
+\tikz@figbox@bg=\box38
+\tikz@tempbox=\box39
+\tikz@tempbox@bg=\box40
+\tikztreelevel=\count112
+\tikznumberofchildren=\count113
+\tikznumberofcurrentchild=\count114
+\tikz@fig@count=\count115
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\p
+gfmodulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count116
+\pgfmatrixcurrentcolumn=\count117
+\pgf@matrix@numberofcolumns=\count118
+)
+\tikz@expandcount=\count119
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendl
+ayer\tikz\libraries\tikzlibrarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\preprint\fullpa
+ge.sty"
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip49
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendl
+ayer\tikz\libraries\tikzlibrarycalc.code.tex"
+File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
+)
+\c@theorem=\count120
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption
+.sty"
+Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption
+3.sty"
+Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen160
+\captionmargin@=\dimen161
+\captionwidth=\dimen162
+\caption@tempdima=\dimen163
+\caption@indent=\dimen164
+\caption@parindent=\dimen165
+\caption@hangindent=\dimen166
+)
+\c@ContinuedFloat=\count121
+Package caption Info: float package is loaded.
+)
+\@float@every@fig=\toks40
+\c@fig=\count122
+ (vuwproject.sty
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\mathpazo
+.sty"
+Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+\symupright=\mathgroup6
 )
 VUW Honours reports modifications -- Mar 1995
 Modified to handle different degrees 2003
 Modified to handle duplex printing properly 2006
-\@abstract=\box30
+\@abstract=\box41
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.
-sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperr
+ef.sty"
 Package: hyperref 2018/02/06 v6.86b Hypertext links for LaTeX
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-hyperref.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobs
+ub-hyperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-generic.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobs
+ub-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -190,7 +545,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -212,32 +567,30 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxet
+ex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.s
-ty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhoo
+k.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
-.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvopti
+ons.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen114
-\Hy@linkcounter=\count104
-\Hy@pagecounter=\count105
+\@linkdim=\dimen167
+\Hy@linkcounter=\count123
+\Hy@pagecounter=\count124
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.de
-f"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc
+.def"
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count106
+\Hy@SavedSpaceFactor=\count125
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref.
-cfg"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperr
+ef.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4509.
@@ -247,12 +600,12 @@ Package hyperref Info: Plain pages OFF on input line 4524.
 Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count107
+\c@Hy@tempcnt=\count126
 LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen115
-\Fld@menulength=\count108
-\Field@Width=\dimen116
-\Fld@charsize=\dimen117
+\XeTeXLinkMargin=\dimen168
+\Fld@menulength=\count127
+\Field@Width=\dimen169
+\Fld@charsize=\dimen170
 Package hyperref Info: Hyper figures OFF on input line 6369.
 Package hyperref Info: Link nesting OFF on input line 6374.
 Package hyperref Info: Hyper index ON on input line 6377.
@@ -262,70 +615,71 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count109
-\c@Item=\count110
-\c@Hfootnote=\count111
+\Hy@abspage=\count128
+\c@Item=\count129
+\c@Hfootnote=\count130
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.d
-ef"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdfte
+x.def"
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count112
-\c@bookmark@seq@number=\count113
+\Fld@listcount=\count131
+\c@bookmark@seq@number=\count132
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfile
-check.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunf
+ilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip49
+\Hy@SectionHShift=\skip50
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 62.
- (proj_report.aux (acknowledge.aux) (dominatingSets.aux))
+Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+ (proj_report.aux (dominatingSets.aux) (colourung.aux))
 \openout1 = `proj_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 82.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.fd"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.f
+d"
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-)
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
+) ABD: EveryShipout initializing macros
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf
+.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
-\scratchdimen=\dimen118
-\scratchbox=\box31
-\nofMPsegments=\count115
-\nofMParguments=\count116
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count117
-\MPscratchDim=\dimen119
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count133
+\scratchdimen=\dimen171
+\scratchbox=\box42
+\nofMPsegments=\count134
+\nofMParguments=\count135
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count136
+\MPscratchDim=\dimen172
+\MPnumerator=\count137
+\makeMPintoPDFobject=\count138
+\everyMPtoPDFconversion=\toks42
 )
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstop
+df-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
-y"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext
+.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -335,126 +689,116 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\AtBeginShipoutBox=\box32
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box43
+Package hyperref Info: Link coloring ON on input line 82.
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty
-"
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color
-.cfg"
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-)
-Package hyperref Info: Link coloring ON on input line 76.
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
-ty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\namere
+f.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitl
-estring.sty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gett
+itlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count120
+\c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 82.
+LaTeX Info: Redefining \pageref on input line 82.
+LaTeX Info: Redefining \nameref on input line 82.
  (proj_report.out) (proj_report.out)
-\@outlinefile=\write3
-\openout3 = `proj_report.out'.
+\@outlinefile=\write4
+\openout4 = `proj_report.out'.
 
-<VUWlogo.png, id=15, 1284.8pt x 435.6275pt>
+<VUWlogo.png, id=22, 1284.8pt x 435.6275pt>
 File: VUWlogo.png Graphic file (type png)
 <use VUWlogo.png>
-Package pdftex.def Info: VUWlogo.png  used on input line 94.
+Package pdftex.def Info: VUWlogo.png  used on input line 100.
 (pdftex.def)             Requested size: 158.76663pt x 53.82846pt.
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 94.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 100
+.
 
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlzplm.fd"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlzplm.
+fd"
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 94.
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 100
+.
 
- ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omszplm.fd
-"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omszplm.
+fd"
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 94.
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 100
+.
 
-
-("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omxzplm.fd"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omxzplm.
+fd"
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 94.
+(Font)              scaled to size 10.42007pt on input line 100.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 94.
+(Font)              scaled to size 7.91925pt on input line 100.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 94.
+(Font)              scaled to size 6.25204pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 94.
+(Font)              scaled to size 10.42007pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 94.
+(Font)              scaled to size 7.91925pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 94.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 94.
+(Font)              scaled to size 6.25204pt on input line 100.
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 100
+.
 
- ("C:\Users\Askes\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.fd
-"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.
+fd"
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 94.
+(Font)              scaled to size 11.40997pt on input line 100.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 94.
+(Font)              scaled to size 8.33606pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 94.
+(Font)              scaled to size 11.40997pt on input line 100.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 94.
+(Font)              scaled to size 8.33606pt on input line 100.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 94.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 100.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 94.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 100.
  [-1
 
-{C:/Users/Askes/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./VUWlogo.p
-ng (PNG copy)>]pdfTeX warning (ext4): destination with the same identifier (nam
-e{page.}) has been already used, duplicate ignored
+{C:/Users/Playtech/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./VUWlog
+o.png (PNG copy)>]pdfTeX warning (ext4): destination with the same identifier (
+name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.94 
-      [0]
-\openout2 = `acknowledge.aux'.
-
-
-No file acknowledge.tex.
+l.100 
+       [0]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 97.
-(proj_report.toc)
-\tf@toc=\write4
-\openout4 = `proj_report.toc'.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 103.
+ (proj_report.toc)
+\tf@toc=\write5
+\openout5 = `proj_report.toc'.
 
  [1
-
-
 
 
 ] [2
 
 ] (proj_report.lof)
-\tf@lof=\write5
-\openout5 = `proj_report.lof'.
+\tf@lof=\write6
+\openout6 = `proj_report.lof'.
 
  [3] [4
 
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 113.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 119.
 [1
 
 ]
@@ -472,6 +816,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 
  (colourung.tex
 Chapter 3.
+Missing character: There is no ; in font nullfont!
 ) [5
 
 
@@ -479,50 +824,47 @@ Chapter 3.
 ] [6
 
 
-] (proj_report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
- [7
+] (proj_report.bbl
+Missing character: There is no Ã in font pplrc7t!
+Missing character: There is no ¡ in font pplrc7t!
+Missing character: There is no Ã in font pplrc7t!
+Missing character: There is no ³ in font pplrc7t!
+) [7
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
- (proj_report.aux (acknowledge.aux)
-(dominatingSets.aux) (colourung.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
-
-
-Package rerunfilecheck Warning: File `proj_report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `proj_report.out':
-(rerunfilecheck)             Before: 22A7C8877D28028E84583428819130FA;169
-(rerunfilecheck)             After:  23FDE04A259590FB98E5672208AE4678;266.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
+ (proj_report.aux (dominatingSets.aux)
+(colourung.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
+Package rerunfilecheck Info: File `proj_report.out' has not changed.
+(rerunfilecheck)             Checksum: 06823B241A24CA5613A4E2C27A9B75C6;214.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
  ) 
 Here is how much of TeX's memory you used:
- 6334 strings out of 492973
- 92679 string characters out of 3126692
- 182378 words of memory out of 3000000
- 10052 multiletter control sequences out of 15000+200000
+ 17445 strings out of 493305
+ 330021 string characters out of 3128498
+ 383291 words of memory out of 3000000
+ 20628 multiletter control sequences out of 15000+200000
  33783 words of font info for 90 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,8n,30p,257b,376s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
-}<C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmex10.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Askes/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Askes/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Askes/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmri.pfb><C:/User
-s/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><
-C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8
-a.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatin
-o/uplri8a.pfb>
-Output written on proj_report.pdf (13 pages, 210283 bytes).
+ 55i,8n,63p,421b,806s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.
+enc}<C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmex10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Playtech/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Playtech/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Pl
+aytech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmr.pfb>
+<C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpaz
+o/fplmri.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
+rw/palatino/uplb8a.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/urw/palatino/uplr8a.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on proj_report.pdf (13 pages, 214166 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 30 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 50 words of extra memory for PDF output out of 10000 (max. 10000000)
 
