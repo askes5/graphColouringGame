@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.5)  12 MAR 2020 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.5)  12 MAR 2020 22:59
 entering extended mode
 **./proj_report.tex
 (proj_report.tex
@@ -483,7 +483,314 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 ayer\tikz\libraries\tikzlibrarycalc.code.tex"
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )
-\c@theorem=\count120
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendl
+ayer\tikz\libraries\tikzlibrarydecorations.pathreplacing.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendl
+ayer\tikz\libraries\tikzlibrarydecorations.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\p
+gfmoduledecorations.code.tex"
+\pgfdecoratedcompleteddistance=\dimen160
+\pgfdecoratedremainingdistance=\dimen161
+\pgfdecoratedinputsegmentcompleteddistance=\dimen162
+\pgfdecoratedinputsegmentremainingdistance=\dimen163
+\pgf@decorate@distancetomove=\dimen164
+\pgf@decorate@repeatstate=\count120
+\pgfdecorationsegmentamplitude=\dimen165
+\pgfdecorationsegmentlength=\dimen166
+)
+\tikz@lib@dec@box=\box41
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries
+\decorations\pgflibrarydecorations.pathreplacing.code.tex"))
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\spath3\tikzlibr
+arycalligraphy.code.tex"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\spath3\spath3.s
+ty"
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3.
+sty"
+Package: expl3 2018-04-30 L3 programming layer (loader) 
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\expl3-
+code.tex"
+Package: expl3 2018-04-30 L3 programming layer (code)
+\c_max_int=\count121
+\l_tmpa_int=\count122
+\l_tmpb_int=\count123
+\g_tmpa_int=\count124
+\g_tmpb_int=\count125
+\g__kernel_prg_map_int=\count126
+\c_log_iow=\count127
+\l_iow_line_count_int=\count128
+\l__iow_line_target_int=\count129
+\l__iow_one_indent_int=\count130
+\l__iow_indent_int=\count131
+\c_zero_dim=\dimen167
+\c_max_dim=\dimen168
+\l_tmpa_dim=\dimen169
+\l_tmpb_dim=\dimen170
+\g_tmpa_dim=\dimen171
+\g_tmpb_dim=\dimen172
+\c_zero_skip=\skip50
+\c_max_skip=\skip51
+\l_tmpa_skip=\skip52
+\l_tmpb_skip=\skip53
+\g_tmpa_skip=\skip54
+\g_tmpb_skip=\skip55
+\c_zero_muskip=\muskip12
+\c_max_muskip=\muskip13
+\l_tmpa_muskip=\muskip14
+\l_tmpb_muskip=\muskip15
+\g_tmpa_muskip=\muskip16
+\g_tmpb_muskip=\muskip17
+\l_keys_choice_int=\count132
+\c__fp_leading_shift_int=\count133
+\c__fp_middle_shift_int=\count134
+\c__fp_trailing_shift_int=\count135
+\c__fp_big_leading_shift_int=\count136
+\c__fp_big_middle_shift_int=\count137
+\c__fp_big_trailing_shift_int=\count138
+\c__fp_Bigg_leading_shift_int=\count139
+\c__fp_Bigg_middle_shift_int=\count140
+\c__fp_Bigg_trailing_shift_int=\count141
+\c__fp_rand_size_int=\count142
+\c__fp_rand_four_int=\count143
+\c__fp_rand_eight_int=\count144
+\c__intarray_sp_dim=\dimen173
+\g__intarray_font_int=\count145
+\l__sort_length_int=\count146
+\l__sort_min_int=\count147
+\l__sort_top_int=\count148
+\l__sort_max_int=\count149
+\l__sort_true_max_int=\count150
+\l__sort_block_int=\count151
+\l__sort_begin_int=\count152
+\l__sort_end_int=\count153
+\l__sort_A_int=\count154
+\l__sort_B_int=\count155
+\l__sort_C_int=\count156
+\l__tl_analysis_normal_int=\count157
+\l__tl_analysis_index_int=\count158
+\l__tl_analysis_nesting_int=\count159
+\l__tl_analysis_type_int=\count160
+\l__regex_internal_a_int=\count161
+\l__regex_internal_b_int=\count162
+\l__regex_internal_c_int=\count163
+\l__regex_balance_int=\count164
+\l__regex_group_level_int=\count165
+\l__regex_mode_int=\count166
+\c__regex_cs_in_class_mode_int=\count167
+\c__regex_cs_mode_int=\count168
+\l__regex_catcodes_int=\count169
+\l__regex_default_catcodes_int=\count170
+\c__regex_catcode_D_int=\count171
+\c__regex_catcode_S_int=\count172
+\c__regex_catcode_L_int=\count173
+\c__regex_catcode_O_int=\count174
+\c__regex_catcode_A_int=\count175
+\c__regex_all_catcodes_int=\count176
+\l__regex_show_lines_int=\count177
+\l__regex_min_state_int=\count178
+\l__regex_max_state_int=\count179
+\l__regex_left_state_int=\count180
+\l__regex_right_state_int=\count181
+\l__regex_capturing_group_int=\count182
+\l__regex_min_pos_int=\count183
+\l__regex_max_pos_int=\count184
+\l__regex_curr_pos_int=\count185
+\l__regex_start_pos_int=\count186
+\l__regex_success_pos_int=\count187
+\l__regex_curr_char_int=\count188
+\l__regex_curr_catcode_int=\count189
+\l__regex_last_char_int=\count190
+\l__regex_case_changed_char_int=\count191
+\l__regex_curr_state_int=\count192
+\l__regex_step_int=\count193
+\l__regex_min_active_int=\count194
+\l__regex_max_active_int=\count195
+\l__regex_replacement_csnames_int=\count196
+\l__regex_match_count_int=\count197
+\l__regex_min_submatch_int=\count198
+\l__regex_submatch_int=\count199
+\l__regex_zeroth_submatch_int=\count266
+\g__regex_trace_regex_int=\count267
+\c_empty_box=\box42
+\l_tmpa_box=\box43
+\l_tmpb_box=\box44
+\g_tmpa_box=\box45
+\g_tmpb_box=\box46
+\l__box_top_dim=\dimen174
+\l__box_bottom_dim=\dimen175
+\l__box_left_dim=\dimen176
+\l__box_right_dim=\dimen177
+\l__box_top_new_dim=\dimen178
+\l__box_bottom_new_dim=\dimen179
+\l__box_left_new_dim=\dimen180
+\l__box_right_new_dim=\dimen181
+\l__box_internal_box=\box47
+\l__coffin_internal_box=\box48
+\l__coffin_internal_dim=\dimen182
+\l__coffin_offset_x_dim=\dimen183
+\l__coffin_offset_y_dim=\dimen184
+\l__coffin_x_dim=\dimen185
+\l__coffin_y_dim=\dimen186
+\l__coffin_x_prime_dim=\dimen187
+\l__coffin_y_prime_dim=\dimen188
+\c_empty_coffin=\box49
+\l__coffin_aligned_coffin=\box50
+\l__coffin_aligned_internal_coffin=\box51
+\l_tmpa_coffin=\box52
+\l_tmpb_coffin=\box53
+\l__coffin_display_coffin=\box54
+\l__coffin_display_coord_coffin=\box55
+\l__coffin_display_pole_coffin=\box56
+\l__coffin_display_offset_dim=\dimen189
+\l__coffin_display_x_dim=\dimen190
+\l__coffin_display_y_dim=\dimen191
+\g__file_internal_ior=\read2
+\l__coffin_bounding_shift_dim=\dimen192
+\l__coffin_left_corner_dim=\dimen193
+\l__coffin_right_corner_dim=\dimen194
+\l__coffin_bottom_corner_dim=\dimen195
+\l__coffin_top_corner_dim=\dimen196
+\l__coffin_scaled_total_height_dim=\dimen197
+\l__coffin_scaled_width_dim=\dimen198
+\l__seq_internal_a_int=\count268
+\l__seq_internal_b_int=\count269
+)
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3kernel\l3pdfm
+ode.def"
+File: l3pdfmode.def 2018-04-30 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count270
+))
+Package: spath3 2019/02/12 v1.2 Functions for manipulating PGF soft paths
+
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\l3packages\xpar
+se\xparse.sty"
+Package: xparse 2018-04-30 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count271
+\g__xparse_grabber_int=\count272
+\l__xparse_m_args_int=\count273
+\l__xparse_mandatory_args_int=\count274
+\l__xparse_v_nesting_int=\count275
+)
+\l__spath_tmpa_dim=\dimen199
+\l__spath_tmpb_dim=\dimen256
+\l__spath_tmpa_int=\count276
+\g__spath_map_int=\count277
+\l__spath_l_int=\count278
+\l__spath_rl_int=\count279
+\l__spath_nc_int=\count280
+\l__spath_minx_dim=\dimen257
+\l__spath_miny_dim=\dimen258
+\l__spath_maxx_dim=\dimen259
+\l__spath_maxy_dim=\dimen260
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \MakeSPath with sig. 'mm' on line 1314.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \MakeSPathList with sig. 'mm' on line 1325.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \CloneSPath with sig. 'mm' on line 1329.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathInfo with sig. 'mm' on line 1333.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathPrepare with sig. 'm' on line 1337.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathListPrepare with sig. 'm' on line 1344.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathInfoInto with sig. 'mmm' on line 1349.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathShow with sig. 'm' on line 1353.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathTranslate with sig. 'mmm' on line 1357.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathTranslateInto with sig. 'mmmm' on line 1362.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathScale with sig. 'mmm' on line 1366.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathScaleInto with sig. 'mmmm' on line 1371.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathWeld with sig. 'mm' on line 1375.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \SPathWeldInto with sig. 'mmm' on line 1380.
+.................................................
+)
+\l__cal_tmpa_int=\count281
+\l__cal_tmpb_int=\count282
+\l__cal_path_component_int=\count283
+\l__cal_label_int=\count284
+\l__cal_tmpa_dim=\dimen261
+\l__cal_tmpb_dim=\dimen262
+\l__cal_tmpc_dim=\dimen263
+\l__cal_tmpd_dim=\dimen264
+\l__cal_tmpe_dim=\dimen265
+\l__cal_tmpf_dim=\dimen266
+\l__cal_tmpg_dim=\dimen267
+\l__cal_tmph_dim=\dimen268
+\l__cal_taper_width_dim=\dimen269
+\l__cal_line_width_dim=\dimen270
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \pen with sig. 'O{}' on line 187.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \definepen with sig. 'O{}' on line 192.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \calligraphy with sig. 'O{}' on line 197.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \CalligraphyPathCreate with sig. 'mm' on line 287.
+.................................................
+)
+\c@theorem=\count285
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption
 .sty"
@@ -493,29 +800,24 @@ Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
 3.sty"
 Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen160
-\captionmargin@=\dimen161
-\captionwidth=\dimen162
-\caption@tempdima=\dimen163
-\caption@indent=\dimen164
-\caption@parindent=\dimen165
-\caption@hangindent=\dimen166
+\captionmargin=\dimen271
+\captionmargin@=\dimen272
+\captionwidth=\dimen273
+\caption@tempdima=\dimen274
+\caption@indent=\dimen275
+\caption@parindent=\dimen276
+\caption@hangindent=\dimen277
 )
-\c@ContinuedFloat=\count121
+\c@ContinuedFloat=\count286
 Package caption Info: float package is loaded.
 )
 \@float@every@fig=\toks40
-\c@fig=\count122
+\c@fig=\count287
  (vuwproject.sty
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\mathpazo
-.sty"
-Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
-\symupright=\mathgroup6
-)
 VUW Honours reports modifications -- Mar 1995
 Modified to handle different degrees 2003
 Modified to handle duplex printing properly 2006
-\@abstract=\box41
+\@abstract=\box57
 )
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperr
 ef.sty"
@@ -579,15 +881,15 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ons.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen167
-\Hy@linkcounter=\count123
-\Hy@pagecounter=\count124
+\@linkdim=\dimen278
+\Hy@linkcounter=\count288
+\Hy@pagecounter=\count289
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc
 .def"
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count125
+\Hy@SavedSpaceFactor=\count290
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperr
 ef.cfg"
@@ -600,12 +902,12 @@ Package hyperref Info: Plain pages OFF on input line 4524.
 Package hyperref Info: Backreferencing OFF on input line 4529.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
-\c@Hy@tempcnt=\count126
+\c@Hy@tempcnt=\count291
 LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen168
-\Fld@menulength=\count127
-\Field@Width=\dimen169
-\Fld@charsize=\dimen170
+\XeTeXLinkMargin=\dimen279
+\Fld@menulength=\count292
+\Field@Width=\dimen280
+\Fld@charsize=\dimen281
 Package hyperref Info: Hyper figures OFF on input line 6369.
 Package hyperref Info: Link nesting OFF on input line 6374.
 Package hyperref Info: Hyper index ON on input line 6377.
@@ -615,17 +917,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count128
-\c@Item=\count129
-\c@Hfootnote=\count130
+\Hy@abspage=\count293
+\c@Item=\count294
+\c@Hfootnote=\count295
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdfte
 x.def"
 File: hpdftex.def 2018/02/06 v6.86b Hyperref driver for pdfTeX
-\Fld@listcount=\count131
-\c@bookmark@seq@number=\count132
+\Fld@listcount=\count296
+\c@bookmark@seq@number=\count297
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunf
 ilecheck.sty"
@@ -633,45 +935,41 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip50
+\Hy@SectionHShift=\skip56
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
- (proj_report.aux (dominatingSets.aux) (colourung.aux))
+Package hyperref Info: Option `colorlinks' set `true' on input line 71.
+ (proj_report.aux (dominatingSets.aux) (colouring.aux))
 \openout1 = `proj_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 82.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
 
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ppl.f
-d"
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-) ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf
 .mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
-\scratchdimen=\dimen171
-\scratchbox=\box42
-\nofMPsegments=\count134
-\nofMParguments=\count135
+\scratchcounter=\count298
+\scratchdimen=\dimen282
+\scratchbox=\box58
+\nofMPsegments=\count299
+\nofMParguments=\count300
 \everyMPshowfont=\toks41
-\MPscratchCnt=\count136
-\MPscratchDim=\dimen172
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
+\MPscratchCnt=\count301
+\MPscratchDim=\dimen283
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
 \everyMPtoPDFconversion=\toks42
 )
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstop
@@ -692,8 +990,8 @@ G,.JBIG2,.JB2,.eps]
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring ON on input line 82.
+\AtBeginShipoutBox=\box59
+Package hyperref Info: Link coloring ON on input line 85.
 
 ("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\namere
 f.sty"
@@ -703,11 +1001,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 itlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count139
+\c@section@level=\count304
 )
-LaTeX Info: Redefining \ref on input line 82.
-LaTeX Info: Redefining \pageref on input line 82.
-LaTeX Info: Redefining \nameref on input line 82.
+LaTeX Info: Redefining \ref on input line 85.
+LaTeX Info: Redefining \pageref on input line 85.
+LaTeX Info: Redefining \nameref on input line 85.
  (proj_report.out) (proj_report.out)
 \@outlinefile=\write4
 \openout4 = `proj_report.out'.
@@ -715,72 +1013,28 @@ LaTeX Info: Redefining \nameref on input line 82.
 <VUWlogo.png, id=22, 1284.8pt x 435.6275pt>
 File: VUWlogo.png Graphic file (type png)
 <use VUWlogo.png>
-Package pdftex.def Info: VUWlogo.png  used on input line 100.
+Package pdftex.def Info: VUWlogo.png  used on input line 103.
 (pdftex.def)             Requested size: 158.76663pt x 53.82846pt.
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 100
-.
+LaTeX Font Info:    Try loading font information for U+msa on input line 103.
 
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omlzplm.
-fd"
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.f
+d"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 100
-.
+LaTeX Font Info:    Try loading font information for U+msb on input line 103.
 
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omszplm.
-fd"
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 100
-.
-
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omxzplm.
-fd"
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
-)
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 100.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 100.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 100.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 10.42007pt on input line 100.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.91925pt on input line 100.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 100.
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 100
-.
-
-("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1zplm.
-fd"
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 100.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 100.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 100.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 100.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 100.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 100.
- [-1
+("C:\Users\Playtech\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.f
+d"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [-1
 
 {C:/Users/Playtech/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./VUWlog
 o.png (PNG copy)>]pdfTeX warning (ext4): destination with the same identifier (
 name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.100 
-       [0]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 103.
- (proj_report.toc)
+l.103 
+       [0] (proj_report.toc)
 \tf@toc=\write5
 \openout5 = `proj_report.toc'.
 
@@ -797,8 +1051,6 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <24.88> not available
 
 ]
 Chapter 1.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 119.
 [1
 
 ]
@@ -809,62 +1061,69 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 
 ]
 Chapter 2.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 17.
 [3]) [4]
-\openout2 = `colourung.aux'.
+\openout2 = `colouring.aux'.
 
- (colourung.tex
+ (colouring.tex
 Chapter 3.
 Missing character: There is no ; in font nullfont!
-) [5
+Missing character: There is no ; in font nullfont!
+[5
 
 
 
-] [6
-
-
-] (proj_report.bbl
-Missing character: There is no Ã in font pplrc7t!
-Missing character: There is no ¡ in font pplrc7t!
-Missing character: There is no Ã in font pplrc7t!
-Missing character: There is no ³ in font pplrc7t!
+]) [6] (proj_report.bbl
+Missing character: There is no Ã in font cmcsc10!
+Missing character: There is no ¡ in font cmcsc10!
+Missing character: There is no Ã in font cmcsc10!
+Missing character: There is no ³ in font cmcsc10!
 ) [7
 
+
+
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
  (proj_report.aux (dominatingSets.aux)
-(colourung.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
+(colouring.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
 Package rerunfilecheck Info: File `proj_report.out' has not changed.
 (rerunfilecheck)             Checksum: 06823B241A24CA5613A4E2C27A9B75C6;214.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 17445 strings out of 493305
- 330021 string characters out of 3128498
- 383291 words of memory out of 3000000
- 20628 multiletter control sequences out of 15000+200000
- 33783 words of font info for 90 fonts, out of 3000000 for 9000
+ 26504 strings out of 493305
+ 527988 string characters out of 3128498
+ 564984 words of memory out of 3000000
+ 29669 multiletter control sequences out of 15000+200000
+ 544591 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,63p,421b,806s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,9n,108p,10439b,849s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.
 enc}<C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Playtech/AppData/Local/Programs/M
+fonts/cm/cmbx10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Playtech/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Playtech/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/
+Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Playtech/AppData/Local/Programs/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Playtech/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Pl
-aytech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmr.pfb>
-<C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpaz
-o/fplmri.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
-rw/palatino/uplb8a.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/urw/palatino/uplr8a.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on proj_report.pdf (13 pages, 214166 bytes).
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Pla
+ytech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb
+><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Playtech/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Playtec
+h/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Use
+rs/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.
+pfb>
+Output written on proj_report.pdf (13 pages, 311583 bytes).
 PDF statistics:
- 156 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 40 named destinations out of 1000 (max. 500000)
  50 words of extra memory for PDF output out of 10000 (max. 10000000)
 

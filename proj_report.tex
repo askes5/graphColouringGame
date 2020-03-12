@@ -20,7 +20,10 @@
 
 \usepackage{tikz} %tikz libray for graphs
 \usepackage{tikz,fullpage}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc} %for positing nodes halfway between others
+\usetikzlibrary{decorations.pathreplacing,calligraphy}% for drawing braces
+\tikzstyle{normal}=[fill=white, draw=black, thick]
+\tikzstyle{normalBlack}=[fill=black, draw=black, thick]
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{claim}[theorem]{Claim}
@@ -118,7 +121,7 @@ A short description of the project goes here.
 %\include{conclusion}
 \chapter{Introduction}
 \include{dominatingSets}
-\include{colourung}
+\include{colouring}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
