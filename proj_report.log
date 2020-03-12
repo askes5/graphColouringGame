@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.7.23)  12 MAR 2020 12:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2018.7.23)  12 MAR 2020 13:58
 entering extended mode
 **./proj_report.tex
 (proj_report.tex
@@ -467,25 +467,42 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20.74> not available
 Chapter 2.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 17.
-[3]) [4] (proj_report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 128.
- [5
+[3]) [4]
+\openout2 = `colourung.aux'.
+
+ (colourung.tex
+Chapter 3.
+) [5
 
 
+
+] [6
+
+
+] (proj_report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
+ [7
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 128.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
  (proj_report.aux (acknowledge.aux)
-(dominatingSets.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 128.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 128.
-Package rerunfilecheck Info: File `proj_report.out' has not changed.
-(rerunfilecheck)             Checksum: 22A7C8877D28028E84583428819130FA;169.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 128.
+(dominatingSets.aux) (colourung.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 129.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
+
+
+Package rerunfilecheck Warning: File `proj_report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `proj_report.out':
+(rerunfilecheck)             Before: 22A7C8877D28028E84583428819130FA;169
+(rerunfilecheck)             After:  23FDE04A259590FB98E5672208AE4678;266.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 6325 strings out of 492973
- 92478 string characters out of 3126692
+ 6334 strings out of 492973
+ 92679 string characters out of 3126692
  182378 words of memory out of 3000000
  10052 multiletter control sequences out of 15000+200000
  33783 words of font info for 90 fonts, out of 3000000 for 9000
@@ -503,9 +520,9 @@ s/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><
 C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8
 a.pfb><C:/Users/Askes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatin
 o/uplri8a.pfb>
-Output written on proj_report.pdf (11 pages, 208627 bytes).
+Output written on proj_report.pdf (13 pages, 210283 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
+ 147 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
  30 words of extra memory for PDF output out of 10000 (max. 10000000)
 
