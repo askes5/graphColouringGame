@@ -1,7 +1,7 @@
 \chapter{Colouring}
 
 \begin{theorem}
-    Let $T$ be a tree, if we have $p$ players then,
+    Let $T$ be a tree, if we have $p \geq 2$ players then,
     \[\chi_g(T) \geq p + 2 \]
 \end{theorem}
 
@@ -64,23 +64,25 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     \end{figure}    
 
     
-    We give a strategy for Bob with $p+1$ colours. Let the colours be $\{c_1,c_2,\ldots,c_{p+1}\}$
+    We give a strategy for Bob with $p+1$ colours. Let the colours be $\{c_1,c_2,\ldots,c_p,c_{p+1}\}$
     On Alice's first move she picks any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
     Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{subgraphColouring}. We then colour $y_1$ \ldots $y_{p-2}$ with $c_2$ \ldots $c_{p-1}$ respectively.
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[scale=1,transform shape]
     \tikzstyle{every node}=[circle]; 
-    \node [label=above left:4, normalBlack, label=below right:{\footnotesize$c_1$}] (v6) at (-11,1) {};
-    \node [label=above left:3, normal] (v5) at (-14,1) {};
-    \node [label=above left:2, normal] (v2) at (-19,1) {};
+    \node [label=above left:4, normalBlack, label=below right:{\footnotesize$c_1$}] (v6) at (-11.5,1) {};
+    \node [label=above left:3, normal] (v5) at (-14.5,1) {};
+    \node [label=above left:2, normal] (v2) at (-19.5,1) {};
     \node [label=above left:1, normalBlack, label=below right:{\footnotesize$c_1$}] (v1) at (-22,1) {};
-    \node [label=below left:$x_1$, normal] (v12) at (-21,-1) {};
-    \node [label=below left:$x_2$, normal] (v3) at (-20,-1) {};
-    \node [label=below left:$x_p$, normal] (v4) at (-18,-1) {};
-    \node [label=below left:$y_1$, normalBlack] (v13) at (-16,-1) {};
-    \node [label=below left:$y_2$, normalBlack] (v11) at (-15,-1) {};
-    \node [label=below left:$y_p$, normal] (v10) at (-13,-1) {};
+    \node [label=below:$x_1$, normal] (v12) at (-21,-1) {};
+    \node [label=below:$x_2$, normal] (v3) at (-20,-1) {};
+    \node [label=below:$x_p$, normal] (v4) at (-18.5,-1) {};
+    \node [label=below:$y_1$, normalBlack, label=above left:{\footnotesize$c_2$}] (v13) at (-16.5,-1) {};
+    \node [label=below:$y_2$, normalBlack, label=above left:{\footnotesize$c_3$}] (v11) at (-15.5,-1) {};
+    \node [label=below:$y_{p-2}$, normalBlack, label=above left:{\footnotesize$c_{p-1}$}] (v10) at (-14,-1) {};
+    \node [label=below:$y_{p-1}$,normal] (v7) at (-13,-1) {};
+    \node [label=below:$y_{p}$,normal] (v8) at (-12,-1) {};
     \draw  (v1) edge (v2);
     \draw  (v2) edge (v3);
     \draw  (v2) edge (v4);
@@ -90,6 +92,8 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     \draw  (v5) edge (v10);
     \draw  (v2) edge (v12);
     \draw  (v13) edge (v5);   
+    \draw  (v5) edge (v7);
+    \draw  (v5) edge (v8);
     \node (e1) at ($(v3)!.5!(v4)$) {\ldots};
     \node (e1) at ($(v11)!.5!(v10)$) {\ldots};
     \end{tikzpicture}
@@ -97,17 +101,24 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     \label{subgraphColouring}
 \end{figure}
 
-    We consider two cases.
+    We consider three cases.
     
     \begin{enumerate}
-        \item Alice picks $2$, $x_1$, $x_2$, \ldots, or $x_p$.
+        \item Alice colours $2$, $x_1$, $x_2$, \ldots, or $x_p$.
         
-        Bob colours $y_{p-1}$ $c_p$ and $y_{p}$ $c_{p+1}$. 
+        Bob colours $y_{p-1}$ with $c_p$ and $y_{p}$ with $c_{p+1}$. 
         Vertex $3$ now has $p+1$ different coloured neighbours and thus Bob wins. 
         
-        \item Alice picks $3$,$y_{P-1}$, or $y_p$
+        \item Alice colours $3$.
         
+        The colour of $3$ cannot be one of $c_1 \ldots c_{p-1}$. Therefore $3$ is either $c_p$ or $c_{p+1}$. 
+        W.l.o.g let the colour of $3$ be $c_{p+1}$.
         Bob colours $x_1$ \ldots $x_{p-1}$ with $c_2$ \ldots $c_{p}$ respectively.
+        Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins. 
+        
+        \item Alice colours $y_{p-1}$ or $y_{p}$
+        
+        Bob colours $2$ with $c_p$ and $y_{p}$ (or $y_{p-1}$ if Alice coloured $y_p$) with $c_{p+1}$ .
         Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins. 
     \end{enumerate}
 
