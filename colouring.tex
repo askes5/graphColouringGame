@@ -1,8 +1,13 @@
 \chapter{Colouring}
 
+
+\begin{definition}
+    We extend the colouring game to have $p$ players. The game choromatic number for $p$ players and some graph $G$ is $\chi_g(G;p)$. Note: $\chi_g(G) = \chi_g(G;2)$.
+\end{definition}
+
 \begin{theorem}
     Let $T$ be a tree, if we have $p \geq 2$ players then,
-    \[\chi_g(T) \geq p + 2 \]
+    \[\chi_g(T;p) \geq p + 2 \]
 \end{theorem}
 
 The following proof is an extended version of the proof of Theorem 5.4 in \cite[Bodlaender 1990]{bodlander1990}
@@ -124,9 +129,39 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
 \end{proof}
 
+\begin{theorem}    
+    \[\chi_g(G;p) \leq \chi_g(G;2) + p -2 \]
+\end{theorem}
+
+\begin{proof}
+    
+    By induction on the number of vertices, $n$ and the number of players, $p$.
+    
+    We show for any $p$ $\chi_g(G_{n+1};p) \leq (\chi_g(G_{n+1};2) + p -2)$                   
+    \begin{align}
+    	\chi_g(G_n;p)          & \leq (\chi_g(G_n;2) + p -2)     & \text{from induction} \\
+    	\chi_g(G_n;p)          & \leq \chi_g(G_{n+1};p)          &                       \\
+    	(\chi_g(G_n;2) + p -2) & \leq (\chi_g(G_{n+1};2) + p -2) & 
+    \end{align}
+       
+     Assume, for a contradiction, $\chi_g(G_{n+1};p) > \chi_g(G_{n+1};2) + p -2$. Then for $p=2$  $\chi_g(G_{n+1};2) > \chi_g(G_{n+1};2) + 2 -2$. This is a contradiction, therefore $\chi_g(G_{n+1};p) \leq \chi_g(G_{n+1};2) + p -2$.
+       
+    Claim: For some n $\chi_g(G_n;p) \implies \chi_g(G_n;p+1)$
+    
+    By induction hypothesis $\chi_g(G_n;p) \leq \chi_g(G_n;2) + p -2 $
+    
+\end{proof}
 
 
-
+\begin{theorem}
+    
+    For each extra player you need at least one extra colour.
+    
+    \[\chi_g(G;p) \leq \chi_g(G;p) +1 \leq \chi_g(G;p+1)\]
+    
+    \[ \chi_g(G;2) + p -2  \leq \chi_g(G;p+1) \]
+    
+\end{theorem}
 
 
 

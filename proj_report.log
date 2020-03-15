@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.5)  12 MAR 2020 23:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.5.5)  15 MAR 2020 23:00
 entering extended mode
 **./proj_report.tex
 (proj_report.tex
@@ -1072,7 +1072,18 @@ Missing character: There is no ; in font nullfont!
 
 
 
-]) [6] (proj_report.bbl
+]
+Overfull \hbox (9.87155pt too wide) in paragraph at lines 147--148
+\OML/cmm/m/it/10.95 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]\OT1/cmr/m/n/
+10.95 ; 2) \OML/cmm/m/it/10.95 > []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G[]
+\OT1/cmr/m/n/10.95 ; 2) + 2 \OMS/cmsy/m/n/10.95   \OT1/cmr/m/n/10.95 2$. This i
+s a con-tra-dic-tion, there-fore $\OML/cmm/m/it/10.95 []\OT1/cmr/m/n/10.95 (\O
+ML/cmm/m/it/10.95 G[]\OT1/cmr/m/n/10.95 ; \OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.
+95 ) \OMS/cmsy/m/n/10.95  \OML/cmm/m/it/10.95 []\OT1/cmr/m/n/10.95 (\OML/cmm/
+m/it/10.95 G[]\OT1/cmr/m/n/10.95 ; 2) +
+ []
+
+) [6] (proj_report.bbl
 Missing character: There is no Ã in font cmcsc10!
 Missing character: There is no ¡ in font cmcsc10!
 Missing character: There is no Ã in font cmcsc10!
@@ -1093,13 +1104,13 @@ Package rerunfilecheck Info: File `proj_report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
  ) 
 Here is how much of TeX's memory you used:
- 26508 strings out of 493305
- 528048 string characters out of 3128498
- 567137 words of memory out of 3000000
+ 26513 strings out of 493305
+ 528116 string characters out of 3128498
+ 567273 words of memory out of 3000000
  29672 multiletter control sequences out of 15000+200000
  544591 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,9n,108p,10439b,849s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,10n,108p,10439b,849s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.
 enc}<C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/
@@ -1123,9 +1134,9 @@ Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Playtech
 m/cmti10.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
 rw/palatino/uplr8a.pfb><C:/Users/Playtech/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/urw/palatino/uplri8a.pfb>
-Output written on proj_report.pdf (13 pages, 327572 bytes).
+Output written on proj_report.pdf (13 pages, 329825 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  50 words of extra memory for PDF output out of 10000 (max. 10000000)
 
