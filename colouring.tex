@@ -162,21 +162,50 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \end{theorem}
 
 $L$ is a linear order, $G=(V,E)$ is a graph, $u$ is a vertex in $V$, the rank $r(L,G)$ and rank $r(G)$ are defined as:
-
 \begin{align*}
 	r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
 	r(L,G)   & = \max_{u \in V}r(u,L,G)  \\
 	r(G)     & = \min_{L \in \Pi(G)} r(L,G)
 \end{align*}
 
-\begin{theorem}[Theorem 1 in \cite{KIERSTEAD2000}] 
+\begin{theorem}[Theorem 1 in \cite{KIERSTEAD2000}] \label{KIERSTEAD1}
     For any graph $G=(V, E$) and ordering $L \in \Pi(G)$, if Alice
     uses the strategy $S(L, G)$ to play the ordering game on $G$, then the score will
     be at most $1+r(L, G)$. In particular, col\textsubscript{g}$(G) \leq 1+r(G)$.
 \end{theorem}
 
+A proof of $\chi_g(G) \leq 17$ is now a matter of finding an ordering $L$ such that by theorem \ref{KIERSTEAD1} $\chi_g(G) \leq$ col\textsubscript{g}$(G) \leq 1+r(G) = 17$
 
-
-
+\begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
+    Let $G=(V, E)$ be a graph and $L$ a linear ordering $V$. We define the activation strategy $S(L,G)$ as follows:
+    
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$ . We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{activStrat_algo} to update A and choose the
+    next vertex.
+    \begin{algorithm}[h]
+        \caption{Activation strategy}
+        \label{activStrat_algo}
+        \begin{algorithmic}[1]
+            \Statex
+            \State $x \gets b$ 
+            
+            \While {$x \notin U$}
+                \State $A := A \cup \{x\}$
+                \State $s(x) =\min_L\{u \in N(x) : u < x\} \cap (U \cup \{b\} )$
+                \State $x \gets s(x)$
+            \EndWhile      
+            
+            \If{$x \neq b$} 
+                \State choose x
+            \Else
+                \State $y \gets \min_L U$
+                \If{$y \neq A$}
+                    \State $A \gets A \cup \{y\}$                    
+                \EndIf     
+                \State choose y
+            \EndIf   
+        \end{algorithmic}
+    \end{algorithm}
+    
+\end{definition}
 
 
