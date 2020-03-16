@@ -161,7 +161,19 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     
 \end{theorem}
 
+$L$ is a linear order, $G=(V,E)$ is a graph, $u$ is a vertex in $V$, the rank $r(L,G)$ and rank $r(G)$ are defined as:
 
+\begin{align*}
+	r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
+	r(L,G)   & = \max_{u \in V}r(u,L,G)  \\
+	r(G)     & = \min_{L \in \Pi(G)} r(L,G)
+\end{align*}
+
+\begin{theorem}[Theorem 1 in \cite{KIERSTEAD2000}] 
+    For any graph $G=(V, E$) and ordering $L \in \Pi(G)$, if Alice
+    uses the strategy $S(L, G)$ to play the ordering game on $G$, then the score will
+    be at most $1+r(L, G)$. In particular, col\textsubscript{g}$(G) \leq 1+r(G)$.
+\end{theorem}
 
 
 
