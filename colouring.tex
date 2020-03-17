@@ -179,7 +179,7 @@ A proof of $\chi_g(G) \leq 17$ is now a matter of finding an ordering $L$ such t
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G=(V, E)$ be a graph and $L$ a linear ordering $V$. We define the activation strategy $S(L,G)$ as follows:
     
-    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$ . We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{activStrat_algo} to update A and choose the
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{activStrat_algo} to update A and choose the
     next vertex.
     \begin{algorithm}[h]
         \caption{Activation strategy}
@@ -207,5 +207,26 @@ A proof of $\chi_g(G) \leq 17$ is now a matter of finding an ordering $L$ such t
     \end{algorithm}
     
 \end{definition}
+
+\subsection{Upper bound using activation strategy for p players}
+
+The activation strategy finds an upper bound of col\textsubscript{g} (The marking game) and as $\chi_g(G) \leq$ col\textsubscript{g} then we have an upper bound for the $\chi_g$. 
+
+We know from \cite{KIERSTEAD2000} at any stage, for some unmarked $u$ col\textsubscript{g} $\leq 2 + \max{A \cup N(u)}$, where A is the set of active vertices.
+
+Claim: for $p$ players col\textsubscript{g} $\leq p + \max{A \cup N(u)}$. 
+
+\subsection{Summery of activation strategy}
+
+Consider a graph $G(v,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
+
+Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice markes $w$, if not Alice repeats this on $w$ until she finds an active vertex.
+
+The refined activation strategy applies the same basic strategy as above but with two differences. 
+
+First, we use a digraph $L$ on $G$ as our ordering. This is only a rough ordering. We partition $V$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i <$ then the an edge $xy$ is in $L$. The ordering may not be an ordering in each block. However if we ignore what happens in each block we get a linear ordering.
+
+Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions then reverse the direction of the edge $uv$ in $L$.
+
 
 
