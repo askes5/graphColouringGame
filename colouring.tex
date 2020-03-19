@@ -1,18 +1,24 @@
 \chapter{Colouring}
 
+\begin{definition}
+    Let $G$ be a graph. Then, $\chi_g(G)$ is the smallest number of colours need to guarantee that Alice has a winning strategy on $G$. 
+    
+\end{definition}
 
 \begin{definition}
-    We extend the colouring game to have $p$ players. The game choromatic number for $p$ players and some graph $G$ is $\chi_g(G;p)$. Note: $\chi_g(G) = \chi_g(G;2)$.
+    We extend the colouring game to have $p$ players. The game choromatic number for $p$ players on some graph $G$ is $\chi_g(G;p)$. Note: $\chi_g(G) = \chi_g(G;2)$.
 \end{definition}
 
 \begin{theorem}
-    Let $T$ be a tree, if we have $p \geq 2$ players then,
-    \[\chi_g(T;p) \geq p + 2 \]
+    Let $\mathcal{T}$ be the family of trees. If we have $p \geq 2$ players then,
+    \[\chi_g(\mathcal{T};p) \geq p + 2 \]
 \end{theorem}
 
 The following proof is an extended version of the proof of Theorem 5.4 in \cite[Bodlaender 1990]{bodlander1990}
 
 \begin{proof}
+    It suffices to show that there is a tree in where Bob has a winning strategy with $p+1$ colours.
+    
     Consider the graph $G$ as defined in figure \ref{multiPlayerTree1}. 
           
    \begin{figure}[h]
@@ -72,7 +78,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     We give a strategy for Bob with $p+1$ colours. Let the colours be $\{c_1,c_2,\ldots,c_p,c_{p+1}\}$
     On Alice's first move she picks any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
     Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{subgraphColouring}. We then colour $y_1$ \ldots $y_{p-2}$ with $c_2$ \ldots $c_{p-1}$ respectively.
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1,transform shape]
     \tikzstyle{every node}=[circle]; 
@@ -127,39 +133,45 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins. 
     \end{enumerate}
 
+    Therefore we have a winning strategy on $G$ in $\mathcal{T}$ for Bob with $p+1$ colours. 
+
 \end{proof}
 
-\begin{theorem}    
-    \[\chi_g(G;p) \leq \chi_g(G;2) + p -2 \]
-\end{theorem}
+%TODO: check that these theorems are true.
+%  Find counter example to disprove this theorem.
+%\begin{theorem}    
+%    \[\chi_g(G;p) \leq \chi_g(G;2) + p -2 \]
+%\end{theorem}
+%
+%\begin{proof}
+%    
+%    By induction on the number of vertices, $n$ and the number of players, $p$.
+%    
+%    We show for any $p$ $\chi_g(G_{n+1};p) \leq (\chi_g(G_{n+1};2) + p -2)$                   
+%    \begin{align}
+%    	\chi_g(G_n;p)          & \leq (\chi_g(G_n;2) + p -2)     & \text{from induction} \\
+%    	\chi_g(G_n;p)          & \leq \chi_g(G_{n+1};p)          &                       \\
+%    	(\chi_g(G_n;2) + p -2) & \leq (\chi_g(G_{n+1};2) + p -2) & 
+%    \end{align}
+%       
+%     Assume, for a contradiction, $\chi_g(G_{n+1};p) > \chi_g(G_{n+1};2) + p -2$. Then for $p=2$  $\chi_g(G_{n+1};2) > \chi_g(G_{n+1};2) + 2 -2$. This is a contradiction, therefore $\chi_g(G_{n+1};p) \leq \chi_g(G_{n+1};2) + p -2$.
+%       
+%    Claim: For some n $\chi_g(G_n;p) \implies \chi_g(G_n;p+1)$
+%    
+%    By induction hypothesis $\chi_g(G_n;p) \leq \chi_g(G_n;2) + p -2 $
+%    
+%\end{proof}
+%
+%
+%\begin{theorem}
+%       
+%    \[\chi_g(G;p) \leq \chi_g(G;p) +1 \leq \chi_g(G;p+1)\]
+%    
+%    \[ \chi_g(G;2) + p -2  \leq \chi_g(G;p+1) \]
+%    
+%\end{theorem}
 
-\begin{proof}
-    
-    By induction on the number of vertices, $n$ and the number of players, $p$.
-    
-    We show for any $p$ $\chi_g(G_{n+1};p) \leq (\chi_g(G_{n+1};2) + p -2)$                   
-    \begin{align}
-    	\chi_g(G_n;p)          & \leq (\chi_g(G_n;2) + p -2)     & \text{from induction} \\
-    	\chi_g(G_n;p)          & \leq \chi_g(G_{n+1};p)          &                       \\
-    	(\chi_g(G_n;2) + p -2) & \leq (\chi_g(G_{n+1};2) + p -2) & 
-    \end{align}
-       
-     Assume, for a contradiction, $\chi_g(G_{n+1};p) > \chi_g(G_{n+1};2) + p -2$. Then for $p=2$  $\chi_g(G_{n+1};2) > \chi_g(G_{n+1};2) + 2 -2$. This is a contradiction, therefore $\chi_g(G_{n+1};p) \leq \chi_g(G_{n+1};2) + p -2$.
-       
-    Claim: For some n $\chi_g(G_n;p) \implies \chi_g(G_n;p+1)$
-    
-    By induction hypothesis $\chi_g(G_n;p) \leq \chi_g(G_n;2) + p -2 $
-    
-\end{proof}
-
-
-\begin{theorem}
-       
-    \[\chi_g(G;p) \leq \chi_g(G;p) +1 \leq \chi_g(G;p+1)\]
-    
-    \[ \chi_g(G;2) + p -2  \leq \chi_g(G;p+1) \]
-    
-\end{theorem}
+\section{Activation Strategy}
 
 $L$ is a linear order, $G=(V,E)$ is a graph, $u$ is a vertex in $V$, the rank $r(L,G)$ and rank $r(G)$ are defined as:
 \begin{align*}
@@ -168,7 +180,7 @@ $L$ is a linear order, $G=(V,E)$ is a graph, $u$ is a vertex in $V$, the rank $r
 	r(G)     & = \min_{L \in \Pi(G)} r(L,G)
 \end{align*}
 
-\begin{theorem}[Theorem 1 in \cite{KIERSTEAD2000}] \label{KIERSTEAD1}
+\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{KIERSTEAD1}
     For any graph $G=(V, E$) and ordering $L \in \Pi(G)$, if Alice
     uses the strategy $S(L, G)$ to play the ordering game on $G$, then the score will
     be at most $1+r(L, G)$. In particular, col\textsubscript{g}$(G) \leq 1+r(G)$.

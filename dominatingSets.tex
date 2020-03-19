@@ -7,7 +7,7 @@ We begin by listing some definitions.
 \end{definition}
 
 \begin{definition}
-    The Dominating number, $\gamma(G)$, of a graph $G=(E,V)$ is the size of the smallest dominating set of $G$.
+    The Dominating number, $\gamma(G)$, of a graph, $G=(E,V)$, is the size of the smallest dominating set of $G$.
 \end{definition}
 
 \begin{definition}
@@ -28,7 +28,7 @@ We begin by listing some definitions.
     
 Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
-\begin{theorem} [Willis 2011 3.1 \cite{Willis2011BoundsFT}] 
+\begin{theorem} [Willis 3.1 \cite{Willis2011BoundsFT}] \label{willis3.1}
     For any graph $G = (V,E)$ 
 
     \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
@@ -36,13 +36,13 @@ Recall that $\chi(G)$ is the chromatic number of the graph $G$.
 
 Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 
-\begin{theorem} [Balakrishnan 2012 10.3.2 \cite{balakrishnan2012}] \label{balakrishnan201210.3.2}
+\begin{theorem} [Balakrishnan 10.3.2 \cite{balakrishnan2012}] \label{balakrishnan10.3.2}
     For any graph $G$ with $n$ vertices, 
     
     \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 \end{theorem}
     
-    It is obvious that in the case when $\gamma(G)$ is known that $\gamma(G) > \gamma_g(G)$.
+    The trivial lower bound for $\gamma_g(G)$ when $\gamma(G)$ is known is $\gamma(G) > \gamma_g(G)$. This is because there is no dominating set smaller than $\gamma(G)$. 
     
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{oreDomUpper} 
     For any graph $G$ with $n$ vertices, 
@@ -55,7 +55,7 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 \begin{theorem}\label{gameupper}
     Let $G$ be a graph. If $x$ is a tight upper bound for the domination number, $\gamma(G)$, then  
     
-    \[ \gamma_g(G) \geq x\]
+    \[x \leq  \gamma_g(G)\]
 \end{theorem}
 
 \begin{proof}
@@ -81,7 +81,7 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 %TODO insert disucssion
 Thereom \ref{gameDomNumLowerBound} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
 
-The trivial upper bound is $n$.
+The trivial upper bound is $n$. This is because the set of vertices $V(G)$ is a dominating set.
 
 \begin{theorem}
     Let $G$ be a graph with $n$ vertices. Then,
