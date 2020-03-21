@@ -173,13 +173,16 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 %    
 %\end{theorem}
 
+%#####################################################################################################################
 \section{Activation Strategy}
-
+%-------------------------------------------------------------------------------------------------------------------
 \subsection{Summery of activation strategy}
 
 Consider a graph $G(v,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
 
 Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice markes $w$, if not Alice repeats this on $w$ until she finds an active vertex.
+
+%TODO clearly \chi_g <= col_g 
 
 %TODO trim waffle
 \begin{definition}[Kierstead \cite{KIERSTEAD2000}]
@@ -214,7 +217,7 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
             \Statex
             \State $x \gets b$ 
             
-            \While {$x \notin U$}
+            \While {$x \notin a$}
                 \State $A := A \cup \{x\}$
                 \State $s(x) =\min_L\{u \in N(x) : u < x\} \cap (U \cup \{b\} )$
                 \State $x \gets s(x)$
@@ -234,6 +237,31 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
     
 \end{definition}
 
+%TODO add defination reference
+Recall the definition of pathwidth.
+
+Note that $\chi_g(P) \geq w$
+
+\begin{theorem}
+    Let $P$ be a graph of bounded pathwidth $w$. Then, 
+    \[\chi_g \leq 2w-2\]
+    
+\end{theorem}
+
+\begin{proof}
+    
+    Suppose $P=(E,V)$ is a graph of bounded pathwidth $w$. let $\{X_1,X_2,\dots,X_n\}$ be the path decomposition of $P$.
+    
+    By Theorem \ref{KIERSTEAD1} we give a liner order $L$ on $V$.
+    
+    Let $L$ be any linear ordering on $V$ such that for any $a,b \in L$, if $a \in X_i, a\notin X_j, b \in X_j$, and $i < j$.
+    then  $a < b$.
+    
+    Worst case each $X_i$ is a clique.
+    
+\end{proof}
+
+%-------------------------------------------------------------------------------------------------------------------
 \subsection{Upper bound using activation strategy for p players}
 
 The activation strategy finds an upper bound of col\textsubscript{g} (The marking game) and as $\chi_g(G) \leq$ col\textsubscript{g} then we have an upper bound for the $\chi_g$. 
@@ -242,6 +270,7 @@ We know from \cite{Zhu2008} at any stage, for some unmarked $u$ col\textsubscrip
 
 Claim: for $p$ players col\textsubscript{g} $\leq p + \max{ \left| A \cap N(u)\right| }$. 
 
+%-------------------------------------------------------------------------------------------------------------------
 \subsection{Refined Activation Strategy}
 The refined activation strategy applies the same basic strategy as above but with two differences. 
 
