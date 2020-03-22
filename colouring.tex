@@ -185,10 +185,12 @@ Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex b
 %TODO clearly \chi_g <= col_g 
 
 %TODO trim waffle
-\begin{definition}[Kierstead \cite{KIERSTEAD2000}]
-    Let $L$ be a linear order, $G=(V,E)$ be a graph, $u$ a vertex in $V$.
+\begin{definition}[Kierstead \cite{KIERSTEAD2000}] \label{defnRank}
+    Suppose $A,B$ are disjoint subsets of $V$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ saturates $A$ and $B\setminus A$ contains a cover of M. 
     
-    Suppose $A,B$ are disjoint subsets of $V$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ saturates $A$ and $B\setminus A$ contains a cover of M. For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
+    Let $L$ be a linear order, $G=(V,E)$ be a graph, and $u$ a vertex in $V$.
+        
+    For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
     $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
     
     Then the rank $r(L,G)$ and rank $r(G)$ are defined as:
@@ -198,12 +200,6 @@ Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex b
     	r(G)     & = \min_{L \in \Pi(G)} r(L,G)
     \end{align*}
 \end{definition}
-
-\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{KIERSTEAD1}
-    For any graph $G=(V, E$) and linear ordering $L$ on $V$, if Alice uses the strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, col\textsubscript{g}$(G) \leq 1+r(G)$.
-\end{theorem}
-
-A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G=(V, E)$ be a graph and $L$ a linear ordering $V$. We define the activation strategy $S(L,G)$ as follows:
@@ -218,24 +214,31 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
             \State $x \gets b$ 
             
             \While {$x \notin a$}
-                \State $A := A \cup \{x\}$
-                \State $s(x) =\min_L\{u \in N(x) : u < x\} \cap (U \cup \{b\} )$
-                \State $x \gets s(x)$
+            \State $A := A \cup \{x\}$
+            \State $s(x) =\min_L\{u \in N(x) : u < x\} \cap (U \cup \{b\} )$
+            \State $x \gets s(x)$
             \EndWhile      
             
             \If{$x \neq b$} 
-                \State choose x
+            \State choose x
             \Else
-                \State $y \gets \min_L U$
-                \If{$y \neq A$}
-                    \State $A \gets A \cup \{y\}$                    
-                \EndIf     
-                \State choose y
+            \State $y \gets \min_L U$
+            \If{$y \neq A$}
+            \State $A \gets A \cup \{y\}$                    
+            \EndIf     
+            \State choose y
             \EndIf   
         \end{algorithmic}
     \end{algorithm}
     
 \end{definition}
+
+
+\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{KIERSTEAD1}
+    For any graph $G=(V, E$) and linear ordering $L$ on $V$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, col\textsubscript{g}$(G) \leq 1+r(G)$.
+\end{theorem}
+
+A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
 %TODO add defination reference
 Recall the definition of pathwidth.
@@ -244,20 +247,30 @@ Note that $\chi_g(P) \geq w$
 
 \begin{theorem}
     Let $P$ be a graph of bounded pathwidth $w$. Then, 
-    \[\chi_g \leq 2w-2\]
+    \[\chi_g \leq 2w + 2\]
     
 \end{theorem}
 
 \begin{proof}
+    Suppose $P=(E,V)$ is a graph of bounded pathwidth $w$ and let $\{X_1,X_2,\dots,X_n\}$ be the path decomposition of $P$.
     
-    Suppose $P=(E,V)$ is a graph of bounded pathwidth $w$. let $\{X_1,X_2,\dots,X_n\}$ be the path decomposition of $P$.
-    
-    By Theorem \ref{KIERSTEAD1} we give a liner order $L$ on $V$.
-    
-    Let $L$ be any linear ordering on $V$ such that for any $a,b \in L$, if $a \in X_i, a\notin X_j, b \in X_j$, and $i < j$.
+    As $\chi_g(P) \leq$ col\textsubscript{g}$(P)$ it suffices to show col\textsubscript{g}$(P) \leq 2w + 3$. We do this by invoking theorem \ref{KIERSTEAD1}.
+        
+    Let $L$ be any linear ordering on $V$ such that for any $a,b \in L$ and $i,j\in [1,n]$, if $a \in X_i, a\notin X_j, b \in X_j$, and $i < j$.
     then  $a < b$.
     
-    Worst case each $X_i$ is a clique.
+    Let $v$ be any vertex in $V$, then by the definition of path width $d^+(v) \leq w$ and for all $i \in [1,n]$, $ \left| X_i \right| \leq w + 1 $. 
+    
+    %$v$ is in some $X_i$ where $N^+(v) \subset X_i$ and thus $N^+(v)$ is a clique. 
+    
+%    We now find matchings $M$ and $N$ that satisfy definition \ref{defnRank}.
+    
+%    Suppose $M=\{zs(z): z \in A\}$ is a matching from $A\subset N^-[v]$ to
+%    $\{s(z) \in V^+(v) : z \in A\}$. Since $N^+(z)$ is a clique and $v \in N^+(z)$, $s(z)$ is adjacent to $v$, thus $\{s(z) : z \in A)\} \subset N^+(v)$. Therefore we have a matching such that $\left| A \right| = \{s(z) : z \in A)\} \leq w-2$.
+    
+    By definition of path decomposition $v$ is in some $X_i$ such that $N^-(v) \subseteq X_i$. Therefore from definition \ref{defnRank} $\left| Z\right| \leq \left| N^-(v)\right| \leq w+1$. Therefore $m(u,L,P) \leq w+1$. Therefore $r(u,L,P) \leq 2w+2$. 
+    
+    Finally by theorem \ref{KIERSTEAD1} col\textsubscript{g}$(P) \leq 2w + 3$
     
 \end{proof}
 
