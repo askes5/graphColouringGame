@@ -250,15 +250,22 @@ Note that $\chi_g(P) \geq w$
     \[\chi_g \leq 2w + 2\]
     
 \end{theorem}
-%is this proof correct? Seems to easy
+%is this proof correct? Seems too easy
 \begin{proof}
-    Suppose $P=(E,V)$ is a graph of bounded pathwidth $w$ and let $\{X_1,X_2,\dots,X_n\}$ be the path decomposition of $P$.
+    Suppose $P=(E,V)$ is a graph of bounded pathwidth $w$ and let $\{X_1,X_2,\dots,X_n\}$ be the path decomposition of $P$ where for each $i \in [1,n]$, $\left| X_i \right| \leq w + 1$.
     
     As $\chi_g(P) \leq$ col\textsubscript{g}$(P)$ it suffices to show col\textsubscript{g}$(P) \leq 2w + 3$. We do this by invoking theorem \ref{KIERSTEAD1}.
         
-    Let $L$ be any linear ordering on $V$ such that for any $a,b \in L$ and $i,j\in [1,n]$, if $a \in X_i, a\notin X_j, b \in X_j$, and $i < j$.
-    then  $a < b$.
+    Let $L$ be any linear ordering on $V$ such that for any $a,b \in L$ and $a \in X_i$, $b \in X_j$ where $i<j$, then $a<b$ only if one of the following holds
+    \begin{enumerate}
+        \item $b \notin X_i$, and $a \notin X_j$
+        \item $b \notin X_i$, and $a \in X_j$
+    \end{enumerate}
     
+    
+    
+%     if $a \in X_i, a\notin X_j, b \in X_j$, and $i < j$, then  $a < b$.
+     
     Let $v$ be any vertex in $V$, then by the definition of path width $d^+(v) \leq w$ and for all $i \in [1,n]$, $ \left| X_i \right| \leq w + 1 $. 
     
     %$v$ is in some $X_i$ where $N^+(v) \subset X_i$ and thus $N^+(v)$ is a clique. 
@@ -268,7 +275,19 @@ Note that $\chi_g(P) \geq w$
 %    Suppose $M=\{zs(z): z \in A\}$ is a matching from $A\subset N^-[v]$ to
 %    $\{s(z) \in V^+(v) : z \in A\}$. Since $N^+(z)$ is a clique and $v \in N^+(z)$, $s(z)$ is adjacent to $v$, thus $\{s(z) : z \in A)\} \subset N^+(v)$. Therefore we have a matching such that $\left| A \right| = \{s(z) : z \in A)\} \leq w-2$.
     
-    By definition of path decomposition $v$ is in some $X_i$ such that $N^-(v) \subseteq X_i$. Let $Z\subset N^-[v]$, then $\left| Z\right| \leq \left| N^-(v)\right| \leq w+1$. Therefore by definition \ref{defnRank} $m(u,L,P) \leq w+1$ and $r(P) \leq r(L,P) \leq r(u,L,P) \leq 2w+2$. 
+    \begin{claim}
+        Suppose $u$ is a vertex in $P$. Then there is some $X_i$ such that $v\in X_i$ and $N^-(v) \subseteq X_i$.
+    \end{claim}
+    
+    \begin{proof}
+%        Let $u$ be a vertex in $P$ and $\mathcal{X} = \{X_i:v \in X_i\}$, that is $\mathcal{X}$ is the set of partitions that contain $u$. If $\left| \mathcal{X} \right|$ then $N(u) $ is a subset of the only element of $\mathcal{X}$ and we are done. Thus assume $\left| \mathcal{X} \right| \geq 2$ then by the definition of our linear order $L$, for each $X_i$ in $\mathcal{X}$ either $u > X_i\setminus{u}$ or $u < X_i\setminus{u}$.        
+        
+        Let $u$ be a vertex in $P$ and $\mathcal{X} = \{X_i:v \in X_i\}$. Let $a,b \in N^-(u)$ and assume for a contradiction that they are not in the same partition. That is there is some $X_i,X_j$ such that $a \in X_i$, $b \in X_j$, $b \notin X_i$, and $a \notin X_j$. If $i<j$ then by the definition of $L$, $a<b$ and $u<a<b$.  
+        
+        Thus there is there is some $X_i,X_{i+1} \in \mathcal{X}$ such that $N^-(u) \in X_i\cup X_{i+1}$. Thus there is some $a \in X_i$ and $b \in X_{i+1}$ such that . Either $a<b$ or $b<a$. If $b<a$ then $a\in X_{i+1}$, therefore $N^-(u) \in X_{i+1}$ and we are done. Thus assume $a<b$ 
+    \end{proof}
+    
+    Let $Z\subset N^-[v]$, then by above claim $\left| Z\right| \leq \left| N^-(v)\right| \leq |X_i| \leq w+1$. Therefore by definition \ref{defnRank} $m(u,L,P) \leq w+1$ and $r(P) \leq r(L,P) \leq r(u,L,P) \leq 2w+2$. 
     
     Finally by theorem \ref{KIERSTEAD1} col\textsubscript{g}$(P) \leq 2w + 3$
     
@@ -291,7 +310,9 @@ First, we use a digraph $L$ on $G$ as our ordering. This is only a rough orderin
 
 Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions then reverse the direction of the edge $uv$ in $L$.
 
+\subsection{Online colouring}
 
+        
 
 
 
