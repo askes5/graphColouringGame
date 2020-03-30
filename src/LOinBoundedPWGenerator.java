@@ -1,24 +1,21 @@
-import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * An implementation of
+ * finds linear orders in graphs of bounded path width
  *
  * @author Matthew Askes
  */
-public class PathWidthLinearOrder  {
+public class LOinBoundedPWGenerator {
     
     /**
-     * Calculates and returns a linear order in a graph of bounded path width.
-     * Requires:
-     * @param graph a graph of bounded path width w
+     * Calculates and returns a linear order in a graph of bounded path width w.
      * @param pathDecomposition a path decomposition of the graph with width w
-     * @return a linear order on teh vertex set og the graph
+     * @return a linear order on the vertex set of the graph
      */
-    public static List<Node> calculateOrder(Graph graph, List<Set<Node>> pathDecomposition) {
+    public static List<Node> calculateOrder(List<Set<Node>> pathDecomposition) {
         ArrayDeque<Node> qeque = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
     
