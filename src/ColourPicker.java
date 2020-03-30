@@ -58,6 +58,7 @@ public class ColourPicker extends JPanel
         //Create the combo box, select the item at index 0
         JComboBox colourList = new JComboBox(colours);
         colourList.setSelectedIndex(0);
+        game.setSelectedColour((int)colourList.getSelectedItem());
         colourList.addActionListener(this);
         
         JLabel label = new JLabel("Select colour");

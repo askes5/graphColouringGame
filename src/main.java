@@ -52,7 +52,7 @@ public class main {
         Node K = graph.getNode("K");
         graph.addAttribute("ui.stylesheet", styleSheet);
         
-        new ColouringGame(graph.getEdgeSet(),4);
+        new ColouringGame(graph.getEdgeSet(),3);
         
 //        Viewer viewer = graph.display();
 //        viewer.getDefaultView().addMouseListener(new graphMouseListener(graph, viewer.getDefaultView()));

@@ -76,28 +76,12 @@ public class ColouringGame {
             //Alice moves
             
             stragety.nextMove(this);
-            
+            if (gameOver()) break;
             //Bob moves
-            
     
-            //ask player for colour
-//            int colour = -1;
-//            while (!isValidColour(colour)) { //force a valid colour
-//                System.out.println("Please enter a colour from 0 to " + (numOfColours-1));
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//                try {
-//                    String line = reader.readLine();
-//                    colour = Integer.parseInt(line);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                } catch (NumberFormatException e) {
-//                    System.out.println("Not a valid number. ");
-//                    colour = -1;
-//                }
-//            }
-            
+            //wait until a valid node is selected
             selectedNode = null;
-            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) { //wait until a valid colour is picked
+            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) {
                 try {
                     wait(); //wait until a node is selected
                 } catch (InterruptedException e) {
@@ -105,9 +89,53 @@ public class ColouringGame {
                 }
             }
             
+            //colour the node
             setNodeColour(selectedNode.getId(),selectedColour);
+    
+            if (gameOver()) break;
+        }
+    }
+    
+    /**
+     * checks is the game is over. If the game is over then display the winner and end.
+     * @return true iff the game has been won.
+     */
+    private boolean gameOver(){
+        //check Alice has won
+        boolean aliceHasWon = true;
+        for (Node node : graph) {
+            if (!nodeColours.containsKey(node.getId())) { //if all nodes are coloured then Alice has won
+                aliceHasWon = false;
+                break;
+            }
+        }
+        if (aliceHasWon) {
+            System.out.println("Alice has won");
+            return  true;
         }
         
+        //check bob has won
+        for (Node node : graph) {
+            if (!nodeColours.containsKey(node.getId())) { //if any node cannot be coloured then Bob has won
+                
+                //check if node can be coloured
+                
+                Set<Integer> colours = new HashSet<>(); //create a list of all colours
+                for (int i = 0; i < numOfColours; i++) {
+                    colours.add(i);
+                }
+    
+                //remove all neighbour colours
+                node.getNeighborNodeIterator().forEachRemaining(neighbour -> colours.remove(nodeColours.getOrDefault(neighbour.getId(),-1)));
+                
+                if (colours.isEmpty()){
+                    System.out.println("Bob has won");
+                    return true;
+                }
+                
+            }
+        }
+        return false;
     }
     
     private boolean isValidColour(int colour) {
@@ -118,7 +146,6 @@ public class ColouringGame {
      * colours the given node as defined in nodeColours
      */
     private void colourNode(Node node, int i) {
-        //todo add more colours and colour such taht nodes have correct colours
         int r = colorMap.get(i).getRed();
         int g = colorMap.get(i).getGreen();
         int b = colorMap.get(i).getBlue();
