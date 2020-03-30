@@ -5,7 +5,7 @@ import org.graphstream.graph.implementations.SingleGraph;
 /**
  * @author Matthew Askes
  */
-public class test {
+public class main {
     
     protected String styleSheet =
             "node {" +
@@ -19,7 +19,7 @@ public class test {
                     "}";
     
     
-    public test() {
+    public main() {
         Graph graph = new SingleGraph("Tutorial 1");
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
@@ -101,7 +101,7 @@ public class test {
     
     public static void main(String[] args) {
         
-        new test();
+        new main();
         
     }
 }

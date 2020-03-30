@@ -7,8 +7,8 @@ import org.graphstream.ui.view.Viewer;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -21,6 +21,7 @@ public class ColouringGame {
     private Map<String,Integer> nodeColours = new HashMap<>();
     private Viewer viewer;
     private Node selectedNode = null;
+    private int selectedColour = -1;
     private Stragety stragety = new randomStrategy();
     private Map<Integer, Color> colorMap = new HashMap<>();
     
@@ -60,7 +61,10 @@ public class ColouringGame {
         for (Node node : graph) {
             node.addAttribute("ui.label", node.getId());
         }
-        
+    
+        //colour picker
+        javax.swing.SwingUtilities.invokeLater(() -> new ColourPicker(this));
+    
         playAsBob();
         
     }
@@ -75,9 +79,25 @@ public class ColouringGame {
             
             //Bob moves
             
-            selectedNode = null;
+    
+            //ask player for colour
+//            int colour = -1;
+//            while (!isValidColour(colour)) { //force a valid colour
+//                System.out.println("Please enter a colour from 0 to " + (numOfColours-1));
+//                    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//                try {
+//                    String line = reader.readLine();
+//                    colour = Integer.parseInt(line);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                } catch (NumberFormatException e) {
+//                    System.out.println("Not a valid number. ");
+//                    colour = -1;
+//                }
+//            }
             
-            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), 0)) { //wait until a valid colour is picked
+            selectedNode = null;
+            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) { //wait until a valid colour is picked
                 try {
                     wait(); //wait until a node is selected
                 } catch (InterruptedException e) {
@@ -85,9 +105,13 @@ public class ColouringGame {
                 }
             }
             
-            setNodeColour(selectedNode.getId(),0);
+            setNodeColour(selectedNode.getId(),selectedColour);
         }
         
+    }
+    
+    private boolean isValidColour(int colour) {
+        return colour >= 0 && colour < numOfColours;
     }
     
     /**
@@ -100,6 +124,14 @@ public class ColouringGame {
         int b = colorMap.get(i).getBlue();
         String colour = String.format("#%02x%02x%02x", r, g, b);
         node.addAttribute("ui.style", "fill-color: " + colour + ";");
+    }
+    
+    public int getNumOfColours() {
+        return numOfColours;
+    }
+    
+    public void setSelectedColour(int selectedColour) {
+        this.selectedColour = selectedColour;
     }
     
     public List<String> getColouredNodes() {
