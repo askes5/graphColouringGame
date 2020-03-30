@@ -25,7 +25,7 @@ public class gameMouseListener implements MouseListener {
         element = view.findNodeOrSpriteAt(e.getX(), e.getY());
         if(element instanceof Node){
             
-            game.setSelectedNode((Node) element);
+            game.setSelectedNode( element.getId());
             notifyAll();
         }
     }
