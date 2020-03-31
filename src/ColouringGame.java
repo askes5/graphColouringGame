@@ -7,8 +7,8 @@ import org.graphstream.ui.view.Viewer;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -19,11 +19,13 @@ public class ColouringGame {
     
     private Graph graph;
     private Map<String,Integer> nodeColours = new HashMap<>();
+    private List<String> nodesPickedOrder = new ArrayList<>();
     private Viewer viewer;
     private Node selectedNode = null;
     private int selectedColour = -1;
-    private Stragety stragety = new randomStrategy();
+    private Stragety stragety = new randomStrategy(this); //TODO implement activation strategy
     private Map<Integer, Color> colorMap = new HashMap<>();
+    private final Set<String> nodeSet = new HashSet<>();;
     
     private boolean isPlayersTurn = false;
     protected String styleSheet =
@@ -56,10 +58,10 @@ public class ColouringGame {
             colorMap.put(i,new Color((int)(Math.random() * 0x1000000)));
         }
         
-        
         //label each node
         for (Node node : graph) {
             node.addAttribute("ui.label", node.getId());
+            nodeSet.add(node.getId());//populate the node set
         }
     
         //colour picker
@@ -75,10 +77,11 @@ public class ColouringGame {
             
             //Alice moves
             
-            stragety.nextMove(this);
+            stragety.nextMove();
             if (gameOver()) break;
             //Bob moves
-    
+            isPlayersTurn = true;
+            
             //wait until a valid node is selected
             selectedNode = null;
             while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) {
@@ -92,6 +95,8 @@ public class ColouringGame {
             //colour the node
             setNodeColour(selectedNode.getId(),selectedColour);
     
+            isPlayersTurn = false;
+            
             if (gameOver()) break;
         }
     }
@@ -151,18 +156,27 @@ public class ColouringGame {
         int b = colorMap.get(i).getBlue();
         String colour = String.format("#%02x%02x%02x", r, g, b);
         node.addAttribute("ui.style", "fill-color: " + colour + ";");
+        nodesPickedOrder.add(node.getId());
+    }
+    
+    public List<String> getNodesPickedOrder() {
+        return new ArrayList<>(nodesPickedOrder);
     }
     
     public int getNumOfColours() {
         return numOfColours;
     }
     
+    public Set<String> getNodeSet() {
+        return nodeSet;
+    }
+    
     public void setSelectedColour(int selectedColour) {
         this.selectedColour = selectedColour;
     }
     
-    public List<String> getColouredNodes() {
-        return new ArrayList<>(nodeColours.keySet());
+    public Set<String> getColouredNodes() {
+        return new HashSet<>(nodeColours.keySet());
     }
     
     public Viewer getViewer() {
@@ -222,22 +236,4 @@ public class ColouringGame {
     }
 }
 
-class randomStrategy implements Stragety {
-    
-    @Override
-    public Node nextMove(ColouringGame game) {
-        
-        int numNodes =  game.getGraph().getNodeCount();
-        
-        Node next;
-        do {
-            next = game.getGraph().getNode((int) (Math.random() * numNodes));
-        } while (game.getColouredNodes().contains(next.getId()));
-        int colour = 0;
-        while (!game.isAllowedColouring(next.getId(), colour)){
-            colour++;
-        }
-        game.setNodeColour(next.getId(),colour);
-        return next;
-    }
-}
+
