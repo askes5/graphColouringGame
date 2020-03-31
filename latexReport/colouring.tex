@@ -213,9 +213,9 @@ Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex b
             \Statex
             \State $x \gets b$ 
             
-            \While {$x \notin a$}
+            \While {$x \notin A$}
                 \State $A := A \cup \{x\}$
-                \State $s(x) =\min_L\{u \in N(x) : u < x\} \cap (U \cup \{b\} )$
+                \State $s(x) =\min_L(N^+(x) \cap (U \cup \{b\} )$
                 \State $x \gets s(x)$
             \EndWhile      
             
