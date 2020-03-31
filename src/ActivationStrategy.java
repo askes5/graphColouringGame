@@ -10,7 +10,7 @@ public class ActivationStrategy implements Stragety {
     
     private Comparator<String> linearOrder;
     private Set<String> markedNodes;
-    private String[] orderedNodes = null;
+    private List<String> orderedNodes = null;
     
     /**
      * The constructor.
@@ -22,10 +22,6 @@ public class ActivationStrategy implements Stragety {
         
         markedNodes = new HashSet<>();
         
-    
-        
-        Arrays.sort(orderedNodes, linearOrder);
-        
 //        for (String node : game.getNodeSet()) {
 //            if (!linearOrder.(node)) throw new IllegalArgumentException("The linear order doesn't contain all nodes");
 //        }
@@ -35,43 +31,45 @@ public class ActivationStrategy implements Stragety {
     @Override
     public Node nextMove(ColouringGame game) {
     
+        //calcualte the order of the nodes
         if (orderedNodes == null){
-            orderedNodes = (String[]) game.getNodeSet().toArray();
+            orderedNodes = new ArrayList<>(game.getNodeSet());
+            orderedNodes.sort(linearOrder);
         }
         
         //the set of uncolured nodes
         Set<String> unColouredNodes = new HashSet<String>(game.getNodeSet());
-        unColouredNodes.retainAll(game.getColouredNodes());
+        unColouredNodes.removeAll(game.getColouredNodes());
         
         List<String> nodesOrder = game.getNodesPickedOrder();
         String chosenNode;
-        
-//        x <-  b
-        //get the last node coloured by bob
-        String lastNode = nodesOrder.get(nodesOrder.size()-1);
-        String nodeX = lastNode;
-        
-        if (nodeX == null) { //if no nodes are coloured then colour the least node
-            chosenNode = orderedNodes[0];
+    
+        //if no nodes are coloured then colour the least node
+        if (nodesOrder.size() <= 0) {
+            chosenNode = orderedNodes.get(0);
+            markedNodes.add(chosenNode);
         } else {
+        //        x <-  b
+            //get the last node coloured by bob
+            String lastNode = nodesOrder.get(nodesOrder.size()-1);
+            String nodeX = lastNode;
 //         while x !in a do
             while (!markedNodes.contains(nodeX)) {
 //              A := A union {x}
                 markedNodes.add(nodeX);
+                
 //              s(x) = min{ N+(x) intersection (U union {b})}
-                String next = null;
-    
+//              x <- s(x)
                 for (String s : orderedNodes) {
-                    if (linearOrder.compare(s, nodeX) < 0 && //is before prev in linear order
+                    if (linearOrder.compare(s, nodeX) <= 0 && //is before prev in linear order or is nodeX
                                 game.getGraph().getNode(s).hasEdgeBetween(nodeX) && // is a neighbour of prev
                                 (unColouredNodes.contains(s) || s.equals(lastNode))) { // is a uncoloured node or last coloured node
-                        next = s;
+                        nodeX = s;
                         break;
                     }
                 }
-//              x <- s(x)
-                nodeX = next;
             }
+            
 //              if x != b then
                 if (!nodeX.equals(lastNode)) {
 //                  choose x
