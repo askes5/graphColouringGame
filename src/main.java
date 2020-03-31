@@ -2,6 +2,8 @@ import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 
+import java.util.*;
+
 /**
  * @author Matthew Askes
  */
@@ -51,8 +53,17 @@ public class main {
         Node J = graph.getNode("J");
         Node K = graph.getNode("K");
         graph.addAttribute("ui.stylesheet", styleSheet);
+    
+        List<Set<Node>> pathDecomposition = new ArrayList<>();
+        pathDecomposition.add(new HashSet<>(Arrays.asList(A, B, C)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(C, D, E)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(D, E, F)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, G)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, H)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(H, I)));
+        pathDecomposition.add(new HashSet<>(Arrays.asList(I, J, K)));
         
-        new ColouringGame(graph.getEdgeSet(),3);
+        new ColouringGame(graph.getEdgeSet(), new ActivationStrategy(LOinBoundedPWGenerator.calculateComparator(pathDecomposition)), 3);
         
 //        Viewer viewer = graph.display();
 //        viewer.getDefaultView().addMouseListener(new graphMouseListener(graph, viewer.getDefaultView()));
@@ -84,14 +95,7 @@ public class main {
 //            node.addAttribute("ui.label", node.getId());
 //        }
 //
-//        List<Set<Node>> pathDecomposition = new ArrayList<>();
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(A, B, C)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(C, D, E)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, E, F)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, G)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, H)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(H, I)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(I, J, K)));
+
 //
 //        List<Node> linearOrder = LOinBoundedPWGenerator.calculateOrder(pathDecomposition);
 //

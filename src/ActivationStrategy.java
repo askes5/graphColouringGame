@@ -6,70 +6,101 @@ import java.util.*;
  * Uses the activation strategy to find the next vertex to colour.
  * @author Matthew Askes
  */
-public class ActivationStrategy extends Stragety {
+public class ActivationStrategy implements Stragety {
     
-    private List<String> linearOrder;
+    private Comparator<String> linearOrder;
     private Set<String> markedNodes;
-    private Set<String> unMarkedNodes;
-    
+    private String[] orderedNodes = null;
     
     /**
      * The constructor.
-     * @param game The game from which the nodes will be choosen and coloured
-     * @param linearOrder A linear order on the vertex get of the graph in the game for the activation strategy.
+     * @param linearOrder A linear order on the vertex set of the graph in the game for the activation strategy.
      */
-    public ActivationStrategy(ColouringGame game, List<String> linearOrder) {
-        super(game);
+    public ActivationStrategy( Comparator<String> linearOrder) {
         
-        this.linearOrder = new ArrayList<>(linearOrder);
+        this.linearOrder = linearOrder;
         
         markedNodes = new HashSet<>();
-        unMarkedNodes = new HashSet<>(game.getNodeSet());
-    
-        for (String node : game.getNodeSet()) {
-            if (!linearOrder.contains(node)) throw new IllegalArgumentException("The linear order doesn't contain all nodes");
-        }
         
+    
+        
+        Arrays.sort(orderedNodes, linearOrder);
+        
+//        for (String node : game.getNodeSet()) {
+//            if (!linearOrder.(node)) throw new IllegalArgumentException("The linear order doesn't contain all nodes");
+//        }
+    
     }
     
     @Override
-    public Node nextMove() {
+    public Node nextMove(ColouringGame game) {
     
-        List<String> nodesOrder = game.getNodesPickedOrder();
-        String choosenNode;
+        if (orderedNodes == null){
+            orderedNodes = (String[]) game.getNodeSet().toArray();
+        }
         
+        //the set of uncolured nodes
+        Set<String> unColouredNodes = new HashSet<String>(game.getNodeSet());
+        unColouredNodes.retainAll(game.getColouredNodes());
+        
+        List<String> nodesOrder = game.getNodesPickedOrder();
+        String chosenNode;
         
 //        x <-  b
         //get the last node coloured by bob
         String lastNode = nodesOrder.get(nodesOrder.size()-1);
-        String prevNode = lastNode;
+        String nodeX = lastNode;
         
-        if (prevNode == null) { //if no nodes are coloured then colour the least node
-            choosenNode = linearOrder.get(0);
+        if (nodeX == null) { //if no nodes are coloured then colour the least node
+            chosenNode = orderedNodes[0];
         } else {
 //         while x !in a do
-            while (!markedNodes.contains(prevNode)) {
+            while (!markedNodes.contains(nodeX)) {
 //              A := A union {x}
-                markedNodes.add(prevNode);
-//              s(x) = min{ u in N(x) : u < x} union (U union {b})
-                String next;
+                markedNodes.add(nodeX);
+//              s(x) = min{ N+(x) intersection (U union {b})}
+                String next = null;
     
-                for (String s : linearOrder) {
-                    if (game.getGraph().getNode(s).hasEdgeBetween(prevNode) && (unMarkedNodes.contains(s) || s.equals(lastNode))) {
+                for (String s : orderedNodes) {
+                    if (linearOrder.compare(s, nodeX) < 0 && //is before prev in linear order
+                                game.getGraph().getNode(s).hasEdgeBetween(nodeX) && // is a neighbour of prev
+                                (unColouredNodes.contains(s) || s.equals(lastNode))) { // is a uncoloured node or last coloured node
                         next = s;
                         break;
                     }
                 }
 //              x <- s(x)
-//          if x != b then
-//              choose x
-//          else
-//              y <- minL U
-//              if y != A then
-//                  A <-  A [ fyg
-//         choose y
+                nodeX = next;
             }
+//              if x != b then
+                if (!nodeX.equals(lastNode)) {
+//                  choose x
+                    chosenNode = nodeX;
+                } else {
+//              else
+//                  y <- minL U
+                    String nodeY = null;
+                    for (String s : orderedNodes) {
+                        if (unColouredNodes.contains(s)) {//find smallest unmarked node
+                            nodeY = s;
+                            break;
+                        }
+                    }
+//                  if y != A then
+//                      A <-  A [ fyg
+                    markedNodes.add(nodeY);
+//                  choose y
+                    chosenNode = nodeY;
+                }
         }
-        return null;
+        
+        // colour chosen node
+        int colour = 0;
+        while (!game.isAllowedColouring(chosenNode, colour)){
+            colour++;
+        }
+        game.setNodeColour(chosenNode,colour);
+        
+        return game.getGraph().getNode(chosenNode);
     }
 }

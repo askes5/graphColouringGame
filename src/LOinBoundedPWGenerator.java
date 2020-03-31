@@ -15,7 +15,7 @@ public class LOinBoundedPWGenerator {
      * @param pathDecomposition a path decomposition of the graph with width w
      * @return a linear order on the vertex set of the graph
      */
-    public static List<Node> calculateOrder(List<Set<Node>> pathDecomposition) {
+    public static List<Node> calculateListOrder(List<Set<Node>> pathDecomposition) {
         ArrayDeque<Node> qeque = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
     
@@ -58,4 +58,18 @@ public class LOinBoundedPWGenerator {
         return false;
     }
     
+    public static Comparator<String> calculateComparator(List<Set<Node>> pathDecomposition) {
+        
+        List<Node> listOrder = calculateListOrder(pathDecomposition);
+    
+        return (o1, o2) -> {
+            if (o1.equals(o2)) return 0;
+            for (Node node : listOrder) {
+                if (node.getId().equals(o1)) return -1;
+                if (node.getId().equals(o2)) return 1;
+            }
+            return 0;
+        };
+        
+    }
 }

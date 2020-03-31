@@ -23,7 +23,7 @@ public class ColouringGame {
     private Viewer viewer;
     private Node selectedNode = null;
     private int selectedColour = -1;
-    private Stragety stragety = new randomStrategy(this); //TODO implement activation strategy
+    private Stragety stragety; //TODO implement activation strategy
     private Map<Integer, Color> colorMap = new HashMap<>();
     private final Set<String> nodeSet = new HashSet<>();;
     
@@ -40,8 +40,9 @@ public class ColouringGame {
                     "}";
     private int numOfColours;
     
-    public ColouringGame(Collection<Edge> edgeSet, int numOfColours) {
+    public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
         this.numOfColours = numOfColours;
+        this.stragety = stragety;
         graph = new SingleGraph("Colouring Game"); //initlize graph
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
