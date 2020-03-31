@@ -164,6 +164,10 @@ public class ColouringGame {
         return new ArrayList<>(nodesPickedOrder);
     }
     
+    public Map<Integer, Color> getColorMap() {
+        return new HashMap<>(colorMap);
+    }
+    
     public int getNumOfColours() {
         return numOfColours;
     }

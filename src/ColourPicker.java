@@ -44,7 +44,7 @@ import java.awt.event.ActionListener;
 public class ColourPicker extends JPanel
         implements ActionListener {
     private ColouringGame game;
-    
+    private JComboBox<Integer> colourList;
     public ColourPicker(ColouringGame game) {
         super(new BorderLayout());
         this.game = game;
@@ -56,9 +56,10 @@ public class ColourPicker extends JPanel
         }
         
         //Create the combo box, select the item at index 0
-        JComboBox colourList = new JComboBox(colours);
+        colourList = new JComboBox<>(colours);
         colourList.setSelectedIndex(0);
         game.setSelectedColour((int)colourList.getSelectedItem());
+        this.setBackground(game.getColorMap().get(colourList.getSelectedItem()));
         colourList.addActionListener(this);
         
         JLabel label = new JLabel("Select colour");
@@ -74,6 +75,7 @@ public class ColourPicker extends JPanel
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
         game.setSelectedColour((int)cb.getSelectedItem());
+        this.setBackground(game.getColorMap().get((colourList.getSelectedItem())));
     }
     
     /**
