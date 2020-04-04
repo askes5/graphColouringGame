@@ -26,7 +26,8 @@ public class LOinBoundedPWGenerator {
             // tempQueque <- Queue union (partition - queue)
             ArrayDeque<Node> tempQeque = new ArrayDeque<>(qeque);
             tempQeque.addAll(partition.stream()
-                                     .filter(x -> !qeque.contains(x)).collect(Collectors.toSet()) //everything in the partition not in the queue
+                                     .filter(x -> !qeque.contains(x))
+                                     .collect(Collectors.toSet()) //everything in the partition not in the queue
             );
             qeque.clear();
             

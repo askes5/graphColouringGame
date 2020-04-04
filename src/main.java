@@ -62,7 +62,9 @@ public class main {
         pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, H)));
         pathDecomposition.add(new HashSet<>(Arrays.asList(H, I)));
         pathDecomposition.add(new HashSet<>(Arrays.asList(I, J, K)));
-        
+        List<Node> linearOrder = LOinBoundedPWGenerator.calculateListOrder(pathDecomposition);
+    
+        System.out.println(linearOrder.toString());
         new ColouringGame(graph.getEdgeSet(), new ActivationStrategy(LOinBoundedPWGenerator.calculateComparator(pathDecomposition)), 3);
         
 //        Viewer viewer = graph.display();
@@ -89,17 +91,15 @@ public class main {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        
-        //add labels to nodes
+//
+//        //add labels to nodes
 //        for (Node node : graph) {
 //            node.addAttribute("ui.label", node.getId());
 //        }
 //
-
 //
-//        List<Node> linearOrder = LOinBoundedPWGenerator.calculateOrder(pathDecomposition);
 //
-//        System.out.println(linearOrder.toString());
+    
         
     }
     
