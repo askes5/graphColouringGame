@@ -27,7 +27,7 @@ public class ColouringGame extends JPanel {
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
     private final Set<String> nodeSet = new HashSet<>();
-    
+    private JTextArea textOutputArea;
     private boolean isPlayersTurn = false;
     protected String styleSheet =
             "node {" +
@@ -93,12 +93,15 @@ public class ColouringGame extends JPanel {
         c.gridy = 0;
         this.add(panel,c);
         
-//        JLabel label = new JLabel();
-//        label.setText("hello world");
-//        c.fill = GridBagConstraints.HORIZONTAL;
-//        c.gridx = 1;
-//        c.gridy = 1;
-//        this.add(label,c);
+        textOutputArea = new JTextArea();
+        textOutputArea.setText("hello world\n"+ "135468");
+//        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
+        textOutputArea.setLineWrap(true);
+        textOutputArea.setWrapStyleWord(true);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 1;
+        this.add(textOutputArea,c);
         
         //Create and set up the content pane.
         JComponent newContentPane = this;
