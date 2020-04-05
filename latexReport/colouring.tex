@@ -2,6 +2,8 @@
 
 %TODO add deference between colouring and marking game
 
+%todo add basic results e.g. \chi of subgraphs, composition, disconnected graphs, etc.
+
 \begin{definition}
     Let $G$ be a graph. Then, $\chi_g(G)$ is the smallest number of colours need to guarantee that Alice has a winning strategy on $G$. 
     
@@ -10,6 +12,9 @@
 \begin{definition}
     We extend the colouring game to have $p$ players. The game choromatic number for $p$ players on some graph $G$ is $\chi_g(G;p)$. Note: $\chi_g(G) = \chi_g(G;2)$.
 \end{definition}
+
+%todo add better title
+\section{Direct proofs}
 
 \begin{theorem}
     Let $\mathcal{T}$ be the family of trees. If we have $p \geq 2$ players then,
@@ -243,6 +248,8 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
 %TODO add defination reference
 Recall the definition of pathwidth.
 
+\subsection{proofs using the activation strategy}
+
 Note that $\chi_g(P) \geq w$
 
 \begin{algorithm}[h]
@@ -359,6 +366,7 @@ The following lemma is effectively the definition of the linear order given by a
 
 %todo prove the above lemma
 
+%todo add defn of k-tree
 The following result is not new see [insert ref here] but the proof is novel.
 \begin{theorem} \label{ktree}
         Let $G$ be a k-tree. Then, 
@@ -368,9 +376,11 @@ The following result is not new see [insert ref here] but the proof is novel.
 \begin{proof}
     Suppose $G=(E,V)$ is a graph of bounded pathwidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
     
-    As $G$ is a k-tree $G$ is maximal. That is each $X_i$ is a clique.
+    As $G$ is a k-tree $G$ is maximal with treewidth k. That is each $X_i$ is a clique.
     
-    Let $v$ be a vertex in $G$ It suffices to show $r(v,L,G) \leq 3k + 1$. Recall $r(v,L,G) = d^+(v) + m(v,L,G)$.
+    Let $v$ be a vertex in $G$ It suffices to show $r(v,L,G) \leq 3k + 1$.
+    
+    %todo is N^+(v) a clique?
     
     Note that by lemma \ref{TWLinOrdBound} for all $v \in V$ $d^+(v) \leq k$.
     
@@ -383,12 +393,6 @@ The following result is not new see [insert ref here] but the proof is novel.
     Note that $N^+(a)$ is a clique. As $v,b\in N^+(a)$ $b$ is adjacent to $v$. Thus rng$(M)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
         
     $|Z| = |X|+|Y|$. Therefore \[r(v,L,G) = d^+(v) + m(v,L,G) = 3k +1\]        
-%        Consider $T$ as a rooted tree with root $r$.         
-%        Define the depth of $u \in V(G)$, depth$(u)$, as the length of the shortest path from $X_i$ to $r$ in $T$, where $u\in X_i$. Note that for any $u\in V(G)$, each vertex in $V^+(u)$ has depth less than or equal to depth$(u)$ and each vertex in $V^-(u)$ has depth greater than or equal to depth$(u)$.         
-        %M from X to V^+(v)
-%        . BY defination of tree decompositon For any edge $e =(a,b)$ in $M$ there is some $X_i \in T$ such that $a\in X_i$ and $b\in X_i$.         
-%        Let $X_k$ be the closest vertex in $T$ to $r$ that contains $v$. The path from $X_i$ to $X_j$ in $T$ contains $X_k$ as $v\in X_k$ and $v < b$. There are less than or equal to $k$ edges between the vertices in $T$ therefore $|M| \leq k$        
-        %N from Y to ^+[v] 
 \end{proof}
 
 \begin{corollary}
@@ -398,7 +402,7 @@ The following result is not new see [insert ref here] but the proof is novel.
 
 \begin{proof}
     Let $G$ be a graph of bounded treewidth $k$
-    Adding edges to a graph doesn't decease its game chromatic number. Thus add edges to $G$ until $G$ is maximal. By defination $G$ is now a k-tree. Therefore by theorem \ref{ktree} \[\chi_g(G) \leq 3w + 2\]
+    $G$ is a subgraph of a k-tree. Therefore by theorem \ref{ktree} \[\chi_g(G) \leq 3w + 2\]
 \end{proof}
 
 %-------------------------------------------------------------------------------------------------------------------
