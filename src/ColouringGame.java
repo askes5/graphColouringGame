@@ -42,25 +42,16 @@ public class ColouringGame extends JPanel {
     private int numOfColours;
     
     public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
-//        super(new BorderLayout());
-        newGame(edgeSet, stragety, numOfColours);//reset the game
+        super(new GridBagLayout());
+        this.numOfColours = numOfColours;
+        this.stragety = stragety;
+        newGameGraph(edgeSet);//reset the game graph
+        this.viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
     
-        JPanel panel = new JPanel(new GridLayout()){
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(640, 480);
-            }
-        };
-
-        this.add(new ColourPicker(this),BorderLayout.WEST);
-    
-        viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
-        viewer.enableAutoLayout();
-        ViewPanel viewPanel = viewer.addDefaultView(false);
-        panel.add(viewPanel);
-        viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
-
-        this.add(panel,BorderLayout.EAST);
+        //initialize colours
+        for (int i = 0; i < numOfColours; i++) {
+            colorMap.put(i,new Color((int)(Math.random() * 0x1000000)));
+        }
         
         //run game
         SwingUtilities.invokeLater(this::createAndShowGUI); //display gui
@@ -77,8 +68,38 @@ public class ColouringGame extends JPanel {
         JFrame frame = new JFrame("ColouringGame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
+        GridBagConstraints c = new GridBagConstraints();
         
+        //add colour picker
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        this.add(new ColourPicker(this),c);
     
+        JPanel panel = new JPanel(new GridLayout()){
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(640, 480);
+            }
+        };
+    
+        viewer.enableAutoLayout();
+        ViewPanel viewPanel = viewer.addDefaultView(false);
+        panel.add(viewPanel);
+        viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
+    
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 0;
+        this.add(panel,c);
+        
+        JLabel label = new JLabel();
+        label.setText("hello world");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 1;
+        this.add(label,c);
+        
         //Create and set up the content pane.
         JComponent newContentPane = this;
         newContentPane.setOpaque(true); //content panes must be opaque
@@ -90,9 +111,7 @@ public class ColouringGame extends JPanel {
         frame.setVisible(true);
     }
     
-    private void newGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
-        this.numOfColours = numOfColours;
-        this.stragety = stragety;
+    private void newGameGraph(Collection<Edge> edgeSet) {
         graph = new SingleGraph("Colouring Game"); //initlize graph
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
@@ -100,12 +119,6 @@ public class ColouringGame extends JPanel {
         graph.setAutoCreate(true);
         graph.addAttribute("ui.stylesheet", styleSheet);
         edgeSet.forEach(edge -> graph.addEdge(edge.getId(), edge.getNode0().getId(), edge.getNode1().getId())); //add all edges to graph
-        
-        
-        //initialize colours
-        for (int i = 0; i < numOfColours; i++) {
-            colorMap.put(i,new Color((int)(Math.random() * 0x1000000)));
-        }
         
         //label each node
         for (Node node : graph) {
@@ -158,6 +171,8 @@ public class ColouringGame extends JPanel {
         }
         if (aliceHasWon) {
             System.out.println("Alice has won");
+                    JOptionPane.showMessageDialog(this, "You have lost!");
+                
             return  true;
         }
         
@@ -177,6 +192,7 @@ public class ColouringGame extends JPanel {
                 
                 if (colours.isEmpty()){
                     System.out.println("Bob has won");
+                    JOptionPane.showMessageDialog(this, "You have won!");
                     return true;
                 }
                 
