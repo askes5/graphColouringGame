@@ -360,31 +360,45 @@ The following lemma is effectively the definition of the linear order given by a
 %todo prove the above lemma
 
 The following result is not new see [insert ref here] but the proof is novel.
-\begin{theorem}
-        Let $G$ be a graph of bounded treewidth $k$. Then, 
-        \[\chi_g(P) \leq 3w + 2\]
+\begin{theorem} \label{ktree}
+        Let $G$ be a k-tree. Then, 
+        \[\chi_g(G) \leq 3w + 2\]
 \end{theorem}
 
 \begin{proof}
-    Without loss of gern
     Suppose $G=(E,V)$ is a graph of bounded pathwidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
+    
+    As $G$ is a k-tree $G$ is maximal. That is each $X_i$ is a clique.
     
     Let $v$ be a vertex in $G$ It suffices to show $r(v,L,G) \leq 3k + 1$. Recall $r(v,L,G) = d^+(v) + m(v,L,G)$.
     
-    Note that by lemma \ref{TWLinOrdBound} for any $v \in V$ $d^+(v) \leq k$.
+    Note that by lemma \ref{TWLinOrdBound} for all $v \in V$ $d^+(v) \leq k$.
     
     Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
+           
+    Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$.
+    $N^+(a)$ is a clique. As $v,b\in N^+(a)$ $b$ is adjacent to $v$. Thus rng$(M)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
+    
+    Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$.
+    Note that $N^+(a)$ is a clique. As $v,b\in N^+(a)$ $b$ is adjacent to $v$. Thus rng$(M)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
         
-%        Consider $T$ as a rooted tree with root $r$. 
-        
-%        Define the depth of $u \in V(G)$, depth$(u)$, as the length of the shortest path from $X_i$ to $r$ in $T$, where $u\in X_i$. Note that for any $u\in V(G)$, each vertex in $V^+(u)$ has depth less than or equal to depth$(u)$ and each vertex in $V^-(u)$ has depth greater than or equal to depth$(u)$. 
-        
+    $|Z| = |X|+|Y|$. Therefore \[r(v,L,G) = d^+(v) + m(v,L,G) = 3k +1\]        
+%        Consider $T$ as a rooted tree with root $r$.         
+%        Define the depth of $u \in V(G)$, depth$(u)$, as the length of the shortest path from $X_i$ to $r$ in $T$, where $u\in X_i$. Note that for any $u\in V(G)$, each vertex in $V^+(u)$ has depth less than or equal to depth$(u)$ and each vertex in $V^-(u)$ has depth greater than or equal to depth$(u)$.         
         %M from X to V^+(v)
-        Consider a matching $M$ from $X$ to $V^+(v)$. BY defination of tree decompositon For any edge $e =(a,b)$ in $M$ there is some $X_i \in T$ such that $a\in X_i$ and $b\in X_i$. 
-        
-%        Let $X_k$ be the closest vertex in $T$ to $r$ that contains $v$. The path from $X_i$ to $X_j$ in $T$ contains $X_k$ as $v\in X_k$ and $v < b$. There are less than or equal to $k$ edges between the vertices in $T$ therefore $|M| \leq k$
-        
+%        . BY defination of tree decompositon For any edge $e =(a,b)$ in $M$ there is some $X_i \in T$ such that $a\in X_i$ and $b\in X_i$.         
+%        Let $X_k$ be the closest vertex in $T$ to $r$ that contains $v$. The path from $X_i$ to $X_j$ in $T$ contains $X_k$ as $v\in X_k$ and $v < b$. There are less than or equal to $k$ edges between the vertices in $T$ therefore $|M| \leq k$        
         %N from Y to ^+[v] 
+\end{proof}
+
+\begin{corollary}
+    Let $G$ be a graph of bounded treewidth $k$. Then, 
+    \[\chi_g(G) \leq 3w + 2\]
+\end{corollary}
+
+\begin{proof}
+    Let $G$ be a graph of bounded treewidth $k$
+    Adding edges to a graph doesn't decease its game chromatic number. Thus add edges to $G$ until $G$ is maximal. By defination $G$ is now a k-tree. Therefore by theorem \ref{ktree} \[\chi_g(G) \leq 3w + 2\]
 \end{proof}
 
 %-------------------------------------------------------------------------------------------------------------------
