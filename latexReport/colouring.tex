@@ -306,7 +306,7 @@ The following lemma is effectively the definition of the linear order given by a
 
 \begin{theorem}
     Let $P$ be a graph of bounded pathwidth $k$. Then, 
-    \[\chi_g(P) \leq 2w + 2\]
+    \[\chi_g(P) \leq 2k + 2\]
     
 \end{theorem}
 
@@ -347,8 +347,8 @@ The following lemma is effectively the definition of the linear order given by a
             
             \While{$Q$ is not empty}
                 \State $v \gets Q$.dequeue()
-                \State $L \gets L \cup \{V\setminus L\}$ \Comment add all elements in $V$ not already in the $L$
-                \ForAll {$U\in N(V)$ s.t. $U$ is unvisited}
+                \State $L \gets L \cup \{v\setminus L\}$ \Comment add all elements in $V$ not already in the $L$
+                \ForAll {$U\in N(v)$ s.t. $U$ is unvisited}
                     \State $Q$.enqueue($U$)
                     \State mark $U$ as visited
                 \EndFor        
@@ -370,7 +370,7 @@ The following lemma is effectively the definition of the linear order given by a
 The following result is not new see [insert ref here] but the proof is novel.
 \begin{theorem} \label{ktree}
         Let $G$ be a k-tree. Then, 
-        \[\chi_g(G) \leq 3w + 2\]
+        \[\chi_g(G) \leq 3k + 2\]
 \end{theorem}
 
 \begin{proof}
@@ -397,7 +397,7 @@ The following result is not new see [insert ref here] but the proof is novel.
 
 \begin{corollary}
     Let $G$ be a graph of bounded treewidth $k$. Then, 
-    \[\chi_g(G) \leq 3w + 2\]
+    \[\chi_g(G) \leq 3k + 2\]
 \end{corollary}
 
 \begin{proof}

@@ -8,34 +8,34 @@ import java.util.stream.Collectors;
  *
  * @author Matthew Askes
  */
-public class LOinBoundedPWGenerator {
+public class LOinPWGenerator {
     
     /**
-     * Calculates and returns a linear order in a graph of bounded path width w.
-     * @param pathDecomposition a path decomposition of the graph with width w
+     * Calculates and returns a linear order in a graph of bounded path width k.
+     * @param pathDecomposition a path decomposition of the graph with width k
      * @return a linear order on the vertex set of the graph
      */
     public static List<Node> calculateListOrder(List<Set<Node>> pathDecomposition) {
-        ArrayDeque<Node> qeque = new ArrayDeque<>();
+        ArrayDeque<Node> queue = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
     
         //for each partition
         for (int i = 0; i < pathDecomposition.size(); i++) {
             Set<Node> partition = pathDecomposition.get(i);
             
-            // tempQueque <- Queue union (partition - queue)
-            ArrayDeque<Node> tempQeque = new ArrayDeque<>(qeque);
-            tempQeque.addAll(partition.stream()
-                                     .filter(x -> !qeque.contains(x))
+            // tempQueue <- Queue union (partition - queue)
+            ArrayDeque<Node> tempQueue = new ArrayDeque<>(queue);
+            tempQueue.addAll(partition.stream()
+                                     .filter(x -> !queue.contains(x))
                                      .collect(Collectors.toSet()) //everything in the partition not in the queue
             );
-            qeque.clear();
+            queue.clear();
             
-            for (Node node : tempQeque) {
+            for (Node node : tempQueue) {
                 
                 // add if the node does not appear in a latter partition in the decomposition
                 if (nodeInDecomposition(node, pathDecomposition.subList(i + 1, pathDecomposition.size()))) {
-                    qeque.addLast(node);
+                    queue.addLast(node);
                 } else {
                     linearOrder.add(node);
                 }
@@ -63,14 +63,7 @@ public class LOinBoundedPWGenerator {
         
         List<Node> listOrder = calculateListOrder(pathDecomposition);
     
-        return (o1, o2) -> {
-            if (o1.equals(o2)) return 0;
-            for (Node node : listOrder) {
-                if (node.getId().equals(o1)) return -1;
-                if (node.getId().equals(o2)) return 1;
-            }
-            return 0;
-        };
-        
+        return LOinTWGenerator.getStringComparator(listOrder);
+    
     }
 }

@@ -77,7 +77,6 @@ public class ColouringGame {
         while (true) {
             
             //Alice moves
-            
             stragety.nextMove(this);
             if (gameOver()) break;
             //Bob moves
