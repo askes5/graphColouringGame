@@ -26,7 +26,7 @@ public class ColouringGame extends JPanel {
     private int selectedColour = -1;
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
-    private final Set<String> nodeSet = new HashSet<>();;
+    private final Set<String> nodeSet = new HashSet<>();
     
     private boolean isPlayersTurn = false;
     protected String styleSheet =
@@ -93,12 +93,12 @@ public class ColouringGame extends JPanel {
         c.gridy = 0;
         this.add(panel,c);
         
-        JLabel label = new JLabel();
-        label.setText("hello world");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 1;
-        this.add(label,c);
+//        JLabel label = new JLabel();
+//        label.setText("hello world");
+//        c.fill = GridBagConstraints.HORIZONTAL;
+//        c.gridx = 1;
+//        c.gridy = 1;
+//        this.add(label,c);
         
         //Create and set up the content pane.
         JComponent newContentPane = this;
@@ -292,7 +292,7 @@ public class ColouringGame extends JPanel {
     private synchronized void mouseClicked(MouseEvent e) {
         Element element = viewer.getDefaultView().findNodeOrSpriteAt(e.getX(), e.getY());
         if (element instanceof Node) {
-            ColouringGame.this.setSelectedNode(((Node) element).getId());
+            ColouringGame.this.setSelectedNode(element.getId());
             notifyAll(); //wake up
         }
     }
