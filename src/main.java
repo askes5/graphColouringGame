@@ -118,7 +118,7 @@ public class main {
         setMap.put("D", new HashSet<>(Arrays.asList(E, B, G)));
         setMap.put("E", new HashSet<>(Arrays.asList(B, F, G)));
         setMap.put("F", new HashSet<>(Arrays.asList(E, G, H)));
-        
+    
         new ColouringGame(twGraph.getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(setMap,tree)), 4);
         
 //        Viewer viewer = tree.display();

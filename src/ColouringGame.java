@@ -3,19 +3,20 @@ import org.graphstream.graph.Element;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author Matthew Askes
  */
-public class ColouringGame {
-    
+public class ColouringGame extends JPanel {
     
     private Graph graph;
     private Map<String,Integer> nodeColours = new HashMap<>();
@@ -23,7 +24,7 @@ public class ColouringGame {
     private Viewer viewer;
     private Node selectedNode = null;
     private int selectedColour = -1;
-    private Stragety stragety; //TODO implement activation strategy
+    private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
     private final Set<String> nodeSet = new HashSet<>();;
     
@@ -41,6 +42,55 @@ public class ColouringGame {
     private int numOfColours;
     
     public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
+//        super(new BorderLayout());
+        newGame(edgeSet, stragety, numOfColours);//reset the game
+    
+        JPanel panel = new JPanel(new GridLayout()){
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(640, 480);
+            }
+        };
+
+        this.add(new ColourPicker(this),BorderLayout.WEST);
+    
+        viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+        viewer.enableAutoLayout();
+        ViewPanel viewPanel = viewer.addDefaultView(false);
+        panel.add(viewPanel);
+        viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
+
+        this.add(panel,BorderLayout.EAST);
+        
+        //run game
+        SwingUtilities.invokeLater(this::createAndShowGUI); //display gui
+        playAsBob(); //start game
+    }
+    
+    /**
+     * Create the GUI and show it.  For thread safety,
+     * this method should be invoked from the
+     * event-dispatching thread.
+     */
+    private void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("ColouringGame");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+        
+    
+        //Create and set up the content pane.
+        JComponent newContentPane = this;
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+    
+        //Display the window.
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+    
+    private void newGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
         this.numOfColours = numOfColours;
         this.stragety = stragety;
         graph = new SingleGraph("Colouring Game"); //initlize graph
@@ -51,8 +101,6 @@ public class ColouringGame {
         graph.addAttribute("ui.stylesheet", styleSheet);
         edgeSet.forEach(edge -> graph.addEdge(edge.getId(), edge.getNode0().getId(), edge.getNode1().getId())); //add all edges to graph
         
-        viewer = graph.display();
-        viewer.getDefaultView().addMouseListener((ClickedListener) this::mouseClicked);
         
         //initialize colours
         for (int i = 0; i < numOfColours; i++) {
@@ -64,12 +112,6 @@ public class ColouringGame {
             node.addAttribute("ui.label", node.getId());
             nodeSet.add(node.getId());//populate the node set
         }
-    
-        //colour picker
-        javax.swing.SwingUtilities.invokeLater(() -> new ColourPicker(this));
-    
-        playAsBob();
-        
     }
     
     private synchronized void playAsBob() {
@@ -238,6 +280,8 @@ public class ColouringGame {
             notifyAll(); //wake up
         }
     }
+    
+   
 }
 
 

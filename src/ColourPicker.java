@@ -68,7 +68,6 @@ public class ColourPicker extends JPanel
         add(label, BorderLayout.PAGE_START);
         add(colourList, BorderLayout.CENTER);
         setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
-        createAndShowGUI();
     }
     
     /** Listens to the combo box. */
@@ -76,25 +75,5 @@ public class ColourPicker extends JPanel
         JComboBox cb = (JComboBox)e.getSource();
         game.setSelectedColour((int)cb.getSelectedItem());
         this.setBackground(game.getColorMap().get((colourList.getSelectedItem())));
-    }
-    
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event-dispatching thread.
-     */
-    private void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("ColourPicker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        //Create and set up the content pane.
-        JComponent newContentPane = this;
-        newContentPane.setOpaque(true); //content panes must be opaque
-        frame.setContentPane(newContentPane);
-        
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
     }
 }
