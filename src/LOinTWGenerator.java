@@ -17,7 +17,7 @@ public class LOinTWGenerator {
      * @return a linear order on the vertex set of the graph
      */
     public static List<Node> calculateListOrder(TreeDecomposition decomposition) {
-        Node root = decomposition.getTree().getNode(0);
+        Node root = decomposition.getTree().getNode((int) (Math.random()*decomposition.getTree().getNodeCount()));
         ArrayDeque<Node> queue = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
         Set<Node> visited = new HashSet<>();

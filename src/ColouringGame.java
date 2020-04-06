@@ -46,14 +46,12 @@ public class ColouringGame extends JPanel {
         this.numOfColours = numOfColours;
         this.stragety = stragety;
         newGameGraph(edgeSet);//reset the game graph
-        this.viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
     
         //initialize colours
         for (int i = 0; i < numOfColours; i++) {
             colorMap.put(i,new Color((int)(Math.random() * 0x1000000)));
         }
         
-        //run game
         SwingUtilities.invokeLater(this::createAndShowGUI); //display gui
         playAsBob(); //start game
     }
@@ -79,12 +77,14 @@ public class ColouringGame extends JPanel {
         JPanel panel = new JPanel(new GridLayout()){
             @Override
             public Dimension getPreferredSize() {
-                return new Dimension(640, 480);
+                return new Dimension(1240, 720);
             }
         };
     
+        this.viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         viewer.enableAutoLayout();
         ViewPanel viewPanel = viewer.addDefaultView(false);
+//        viewPanel.setPreferredSize(new Dimension(1000, 900));
         panel.add(viewPanel);
         viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
     
@@ -92,21 +92,23 @@ public class ColouringGame extends JPanel {
         c.gridx = 1;
         c.gridy = 0;
         this.add(panel,c);
-        
+    
         textOutputArea = new JTextArea();
 //        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
+        textOutputArea.setText(((ActivationStrategy)stragety).getOrderedNodes().toString());
         textOutputArea.setLineWrap(true);
         textOutputArea.setWrapStyleWord(true);
+        textOutputArea.setPreferredSize(new Dimension(1240,100));
+        textOutputArea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
         this.add(textOutputArea,c);
-        
+    
         //Create and set up the content pane.
         JComponent newContentPane = this;
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
-    
         //Display the window.
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -120,6 +122,7 @@ public class ColouringGame extends JPanel {
         graph.setStrict(false);
         graph.setAutoCreate(true);
         graph.addAttribute("ui.stylesheet", styleSheet);
+    
         edgeSet.forEach(edge -> graph.addEdge(edge.getId(), edge.getNode0().getId(), edge.getNode1().getId())); //add all edges to graph
         
         //label each node

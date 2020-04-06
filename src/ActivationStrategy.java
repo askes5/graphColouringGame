@@ -101,4 +101,8 @@ public class ActivationStrategy implements Stragety {
         
         return game.getGraph().getNode(chosenNode);
     }
+    
+    public List<String> getOrderedNodes() {
+        return new ArrayList<>(orderedNodes);
+    }
 }

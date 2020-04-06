@@ -49,14 +49,16 @@ public class Ktree {
     
             //pick random neighbours in decomNode
             List<Node> list = new LinkedList<>(decomSet);
-            Collections.shuffle(list);
-            Set<Node> randomSet = new HashSet<>(list.subList(0, treeWidth));
+//            Collections.shuffle(list);
+//            Set<Node> randomSet = new HashSet<>(list.subList(0, treeWidth));
+            
+            list.remove((int)(Math.random()*list.size()));
             
             //connect v to A with treewidth edges
             Node newNode = graph.addNode(String.valueOf(getNodeCount()));
             Set<Node> newPartiton = new HashSet<>();
             newPartiton.add(newNode);
-            for (Node s : randomSet) {
+            for (Node s : list) {
                 graph.addEdge(newNode.getId()+s.getId(),newNode,s);
                 newPartiton.add(s);
             }
