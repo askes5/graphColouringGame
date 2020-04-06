@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * @author Matthew Askes
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class ColouringGame extends JPanel {
     
     private Graph graph;
@@ -116,7 +117,7 @@ public class ColouringGame extends JPanel {
     }
     
     private void newGameGraph(Collection<Edge> edgeSet) {
-        graph = new SingleGraph("Colouring Game"); //initlize graph
+        graph = new SingleGraph("Colouring Game"); //initialize graph
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
         graph.setStrict(false);
@@ -278,6 +279,7 @@ public class ColouringGame extends JPanel {
     /**
      * checks if a given node can be coloured a given colour
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAllowedColouring(String id, int i){
         AtomicBoolean toReturn = new AtomicBoolean(true);
         graph.getNode(id).getNeighborNodeIterator().forEachRemaining(node -> {

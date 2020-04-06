@@ -7,20 +7,19 @@ interface Stragety {
     
     /**
      * Finds and colours the next node in the graph
-     * @return the node coloured
      */
-    abstract Node nextMove(ColouringGame game);
+    void nextMove(ColouringGame game);
     
 }
 
 /**
- * Pick random node and colour it with first fit. This is sufficent as if the node cannot be coloured then Bob has won and the game is over.
+ * Pick random node and colour it with first fit. This is sufficient as if the node cannot be coloured then Bob has won and the game is over.
  */
 class randomStrategy implements Stragety {
     
     
     @Override
-    public Node nextMove(ColouringGame game) {
+    public void nextMove(ColouringGame game) {
         
         int numNodes =  game.getGraph().getNodeCount();
         
@@ -33,6 +32,5 @@ class randomStrategy implements Stragety {
             colour++;
         }
         game.setNodeColour(next.getId(),colour);
-        return next;
     }
 }

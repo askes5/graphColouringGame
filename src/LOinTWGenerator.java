@@ -30,14 +30,14 @@ public class LOinTWGenerator {
 //
 //      \While{$Q$ is not empty}
         while (!queue.isEmpty()) {
-//           $v \gets Q$.dequeue()
+//           $v <- Q$.dequeue()
             Node next = queue.remove();
-//           $L \gets L \cup \{V\setminus L\}$
+//           $L <- L cup \{V\ L}$
             linearOrder.addAll(decomposition.getSetMap().get(next.getId())
                                        .stream()
                                        .filter(o -> !linearOrder.contains(o))
                                        .collect(Collectors.toSet())); // add all elements in next not already in L
-//          \ForAll {$U\in N(V)$ s.t. $U$ is unvisited}
+//          \ForAll {$U in N(V)$ s.t. $U$ is unvisited}
             next.getNeighborNodeIterator().forEachRemaining(node -> {
                 if (!visited.contains(node)) {
 //               $Q$.enqueue($U$)
@@ -49,7 +49,7 @@ public class LOinTWGenerator {
 //          \EndFor
 //      \EndWhile
         }
-//      \State \textbf{return}  $L$
+//      return L
         
         return linearOrder;
     }

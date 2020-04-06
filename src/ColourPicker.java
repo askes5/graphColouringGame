@@ -74,6 +74,6 @@ public class ColourPicker extends JPanel
     public void actionPerformed(ActionEvent e) {
         JComboBox cb = (JComboBox)e.getSource();
         game.setSelectedColour((int)cb.getSelectedItem());
-        this.setBackground(game.getColorMap().get((colourList.getSelectedItem())));
+        this.setBackground(game.getColorMap().get( colourList.getSelectedItem()));
     }
 }

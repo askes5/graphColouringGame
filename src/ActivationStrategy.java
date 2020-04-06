@@ -1,5 +1,3 @@
-import org.graphstream.graph.Node;
-
 import java.util.*;
 
 /**
@@ -29,16 +27,16 @@ public class ActivationStrategy implements Stragety {
     }
     
     @Override
-    public Node nextMove(ColouringGame game) {
+    public void nextMove(ColouringGame game) {
     
-        //calcualte the order of the nodes
+        //calculate the order of the nodes
         if (orderedNodes == null){
             orderedNodes = new ArrayList<>(game.getNodeSet());
             orderedNodes.sort(linearOrder);
         }
         
-        //the set of uncolured nodes
-        Set<String> unColouredNodes = new HashSet<String>(game.getNodeSet());
+        //the set of uncoloured nodes
+        Set<String> unColouredNodes = new HashSet<>(game.getNodeSet());
         unColouredNodes.removeAll(game.getColouredNodes());
         
         List<String> nodesOrder = game.getNodesPickedOrder();
@@ -98,8 +96,8 @@ public class ActivationStrategy implements Stragety {
             colour++;
         }
         game.setNodeColour(chosenNode,colour);
-        
-        return game.getGraph().getNode(chosenNode);
+    
+        game.getGraph().getNode(chosenNode);
     }
     
     public List<String> getOrderedNodes() {
