@@ -118,8 +118,8 @@ public class main {
         setMap.put("D", new HashSet<>(Arrays.asList(E, B, G)));
         setMap.put("E", new HashSet<>(Arrays.asList(B, F, G)));
         setMap.put("F", new HashSet<>(Arrays.asList(E, G, H)));
-    
-        new ColouringGame(twGraph.getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(setMap,tree)), 4);
+        
+        new ColouringGame(twGraph.getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(new TreeDecomposition(twGraph,setMap,tree))), 4);
         
 //        Viewer viewer = tree.display();
 //        viewer.getDefaultView().addMouseListener(new graphMouseListener(graph, viewer.getDefaultView()));
@@ -159,7 +159,20 @@ public class main {
     
     public static void main(String[] args) {
         
-        new main();
+//        new main();
         
+        Ktree ktree = new Ktree(20,1);
+        Graph treeDecom = ktree.getDecomposition().getTree();
+        //add labels to nodes
+//        for (Node node : ktree.getGraph()) {
+//            node.addAttribute("ui.label", node.getId());
+//        }
+//        ktree.getGraph().display(true);
+//        for (Node node : treeDecom) {
+//            node.addAttribute("ui.label", node.getId());
+//        }
+//        treeDecom.display(true);
+    
+        new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), 4);
     }
 }

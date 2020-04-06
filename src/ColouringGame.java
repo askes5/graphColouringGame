@@ -94,7 +94,6 @@ public class ColouringGame extends JPanel {
         this.add(panel,c);
         
         textOutputArea = new JTextArea();
-        textOutputArea.setText("hello world\n"+ "135468");
 //        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
         textOutputArea.setLineWrap(true);
         textOutputArea.setWrapStyleWord(true);

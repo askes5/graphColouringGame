@@ -1,4 +1,3 @@
-import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 
 import java.util.*;
@@ -14,12 +13,11 @@ public class LOinTWGenerator {
     /**
      * Calculates and returns a linear order in a graph of bounded tree width k.
      *
-     * @param setMap a tree decomposition of the graph with width k
-     * @param tree   a tree that defines the shape of the tree decomposition
+     * @param decomposition a tree decomposition of the graph with width k
      * @return a linear order on the vertex set of the graph
      */
-    public static List<Node> calculateListOrder(Map<String, Set<Node>> setMap, Graph tree) {
-        Node root = tree.getNode(0);
+    public static List<Node> calculateListOrder(TreeDecomposition decomposition) {
+        Node root = decomposition.getTree().getNode(0);
         ArrayDeque<Node> queue = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
         Set<Node> visited = new HashSet<>();
@@ -35,7 +33,7 @@ public class LOinTWGenerator {
 //           $v \gets Q$.dequeue()
             Node next = queue.remove();
 //           $L \gets L \cup \{V\setminus L\}$
-            linearOrder.addAll(setMap.get(next.getId())
+            linearOrder.addAll(decomposition.getSetMap().get(next.getId())
                                        .stream()
                                        .filter(o -> !linearOrder.contains(o))
                                        .collect(Collectors.toSet())); // add all elements in next not already in L
@@ -59,20 +57,19 @@ public class LOinTWGenerator {
     /**
      * checks if a given node is in a tree decomposition
      *
-     * @param treeDecomposition a decomposition of a graph
-     * @param node              the node
+     * @param decomposition a decomposition of a graph
      * @return true iff the node is in the decomposition
      */
-    private static boolean nodeInDecomposition(Node node, List<Set<Node>> treeDecomposition) {
-        for (Set<Node> partition : treeDecomposition) {
-            if (partition.contains(node)) return true;
-        }
-        return false;
-    }
+//    private static boolean nodeInDecomposition(Node node, List<Set<Node>> treeDecomposition) {
+//        for (Set<Node> partition : treeDecomposition) {
+//            if (partition.contains(node)) return true;
+//        }
+//        return false;
+//    }
     
-    public static Comparator<String> calculateComparator(Map<String, Set<Node>> setMap, Graph tree) {
+    public static Comparator<String> calculateComparator(TreeDecomposition decomposition) {
 
-        List<Node> listOrder = calculateListOrder(setMap, tree);
+        List<Node> listOrder = calculateListOrder(decomposition);
     
         return getStringComparator(listOrder);
     
