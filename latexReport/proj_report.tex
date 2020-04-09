@@ -2,13 +2,14 @@
 %Author: Matthew Askes
 \documentclass[11pt
               , a4paper
-%              , twoside
-%              , openright
-              ]{report}
+              , twoside
+              , openright
+              ]{book}
 
+
+\pagestyle{plain}
 
 \usepackage{url} % for typesetting urls
-
 \usepackage{algorithm} % for writing algoritms  
 \usepackage[noend]{algpseudocode}
 
@@ -82,10 +83,9 @@
 \date{}
 
 \begin{document}
-
 % Make the page numbering roman, until after the contents, etc.
-\pagenumbering{roman}
-
+%\pagenumbering{roman}
+\frontmatter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
@@ -99,18 +99,18 @@ A short description of the project goes here.
 \maketitle
 
 %\include{acknowledge}
-
 \tableofcontents
-\clearpage
+%\cleardoublepage
 
 %a list of the figures we defined
 \listoffigures
-\clearpage
+%\cleardoublepage
 
 %return to normal numbering
-\pagenumbering{arabic}
+%\pagenumbering{arabic}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
 
 % individual chapters included here
 \include{Introduction}
@@ -123,6 +123,7 @@ A short description of the project goes here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\backmatter
 \bibliographystyle{amsplain}
 \bibliography{bibliography}
 
