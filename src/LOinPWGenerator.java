@@ -60,8 +60,12 @@ public class LOinPWGenerator {
     }
     
     public static Comparator<String> calculateComparator(List<Set<Node>> pathDecomposition) {
-        
-        List<Node> listOrder = calculateListOrder(pathDecomposition);
+    
+        List<String> listOrder = new ArrayList<>();
+        for (Node node : calculateListOrder(pathDecomposition)) {
+            String id = node.getId();
+            listOrder.add(id);
+        }
     
         return LOinTWGenerator.getStringComparator(listOrder);
     

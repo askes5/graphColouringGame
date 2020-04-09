@@ -42,11 +42,27 @@ public class ColouringGame extends JPanel {
                     "}";
     private int numOfColours;
     
-    public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
+    /**
+     * make a new game based on a given edgeset and stragety
+     * @return the game
+     */
+    static ColouringGame newGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours){
+        return new ColouringGame(edgeSet,stragety,numOfColours);
+    }
+    
+    /**
+     * Makes a random ktree of a given seize and width, and uses the activation strategy
+     * @return The game
+     */
+    static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
+        Ktree ktree = new Ktree(size,treeWidth);
+        return new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), numOfColours);
+    }
+    
+    private ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
         super(new GridBagLayout());
         this.numOfColours = numOfColours;
-        this.stragety = stragety;
-        newGameGraph(edgeSet);//reset the game graph
+        newGameGraph(edgeSet, stragety);//reset the game graph
     
         //initialize colours
         for (int i = 0; i < numOfColours; i++) {
@@ -75,6 +91,7 @@ public class ColouringGame extends JPanel {
         c.gridy = 0;
         this.add(new ColourPicker(this),c);
     
+        //add graph view
         JPanel panel = new JPanel(new GridLayout()){
             @Override
             public Dimension getPreferredSize() {
@@ -94,6 +111,7 @@ public class ColouringGame extends JPanel {
         c.gridy = 0;
         this.add(panel,c);
     
+        //add textoutput
         textOutputArea = new JTextArea();
 //        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
         textOutputArea.setText(((ActivationStrategy)stragety).getOrderedNodes().toString());
@@ -116,7 +134,8 @@ public class ColouringGame extends JPanel {
         frame.setVisible(true);
     }
     
-    private void newGameGraph(Collection<Edge> edgeSet) {
+    private void newGameGraph(Collection<Edge> edgeSet, Stragety stragety) {
+        this.stragety = stragety;
         graph = new SingleGraph("Colouring Game"); //initialize graph
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
@@ -304,6 +323,9 @@ public class ColouringGame extends JPanel {
         }
     }
     
+    public static void main(String[] args) {
+        ColouringGame.newRandomKtreeGame(10,2,8);
+    }
    
 }
 

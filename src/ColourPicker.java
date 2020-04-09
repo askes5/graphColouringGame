@@ -45,6 +45,7 @@ public class ColourPicker extends JPanel
         implements ActionListener {
     private ColouringGame game;
     private JComboBox<Integer> colourList;
+    
     public ColourPicker(ColouringGame game) {
         super(new BorderLayout());
         this.game = game;
@@ -58,7 +59,7 @@ public class ColourPicker extends JPanel
         //Create the combo box, select the item at index 0
         colourList = new JComboBox<>(colours);
         colourList.setSelectedIndex(0);
-        game.setSelectedColour((int)colourList.getSelectedItem());
+        game.setSelectedColour((int) colourList.getSelectedItem());
         this.setBackground(game.getColorMap().get(colourList.getSelectedItem()));
         colourList.addActionListener(this);
         
@@ -67,13 +68,15 @@ public class ColourPicker extends JPanel
         //Lay out the demo.
         add(label, BorderLayout.PAGE_START);
         add(colourList, BorderLayout.CENTER);
-        setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     }
     
-    /** Listens to the combo box. */
+    /**
+     * Listens to the combo box.
+     */
     public void actionPerformed(ActionEvent e) {
-        JComboBox cb = (JComboBox)e.getSource();
-        game.setSelectedColour((int)cb.getSelectedItem());
-        this.setBackground(game.getColorMap().get( colourList.getSelectedItem()));
+        JComboBox cb = (JComboBox) e.getSource();
+        game.setSelectedColour((int) cb.getSelectedItem());
+        this.setBackground(game.getColorMap().get(colourList.getSelectedItem()));
     }
 }
