@@ -1,17 +1,11 @@
-%% based on:
-%%      $RCSfile: proj_report_outline.tex,v $
-%%      $Revision: 1.3 $
-%%      $Date: 2016/06/10 03:41:54 $
-%%      $Author: kevin $
+
 %Author: Matthew Askes
 \documentclass[11pt
               , a4paper
-              , twoside
-              , openright
+%              , twoside
+%              , openright
               ]{report}
 
-
-\usepackage{float} % lets you have non-floating floats
 
 \usepackage{url} % for typesetting urls
 
@@ -40,11 +34,7 @@
 
 \usepackage{caption} %removes ':' from empty captions 
 
-%
-%  We don't want figures to float so we define
-%
-\newfloat{fig}{thp}{lof}[chapter]
-\floatname{fig}{Figure}
+
 
 %declare new commands
 \DeclareMathOperator{\col}{col_g}
@@ -94,9 +84,7 @@
 \begin{document}
 
 % Make the page numbering roman, until after the contents, etc.
-\frontmatter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -113,33 +101,28 @@ A short description of the project goes here.
 %\include{acknowledge}
 
 \tableofcontents
+\clearpage
 
-% we want a list of the figures we defined
-\listof{fig}{Figures}
+%a list of the figures we defined
+\listoffigures
+\clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\mainmatter
+%return to normal numbering
+\pagenumbering{arabic}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % individual chapters included here
-%\include{introduction}
-%\include{using}
-%\include{example}
-%\include{conclusion}
 \include{Introduction}
 \include{dominatingSets}
 \include{colouring}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\backmatter
+%\appendix
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%\bibliographystyle{ieeetr}
 \bibliographystyle{amsplain}
 \bibliography{bibliography}
 

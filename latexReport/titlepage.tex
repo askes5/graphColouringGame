@@ -1,0 +1,62 @@
+\begin{titlepage}
+\thispagestyle{empty}
+ \let\footnotesize\small
+ \let\footnoterule\relax
+ \if@twoside\setcounter{page}{-1}\else\setcounter{page}{0}\fi
+ \null
+
+\begin{center}
+{\pal V\t@s I\t@s C\t@s T\t@s O\t@s R\t@s I\t@s A\  \t@s
+U\t@s N\t@s I\t@s V\t@s E\t@s R\t@s S\t@s I\t@s T\t@s Y\ \t@s O\t@s F\ \t@s 
+W\t@s E\t@s L\t@s L\t@s I\t@s N\t@s G\t@s T\t@s O\t@s N}\\*[3pt]
+{\pali T\t@t e\  W\t@t h\t@t a\t@t r\t@t e\  W\t@t
+\=a\t@t n\t@t a\t@t n\t@t g\t@t a\  o\  t\t@t e\  \=U\t@t p\t@t o\t@t 
+k\t@t o\  o\  t\t@t e\  I\t@t k\t@t a\  a\  M\t@t \=a\t@t
+u\t@t i}\\*[8pt]
+% 
+\ifEcs@image
+  \includegraphics[width=0.36\textwidth]{VUWlogo}\\*[8pt]
+\else
+{\vuwf VUW}\\*[8pt]
+\fi
+\addtolength{\baselineskip}{6pt}
+{\pal \Ecs@school}
+\end{center}
+
+\vspace*{-2mm}
+\noindent
+\hspace*{3mm}
+{\small
+\parbox{40mm}{
+PO Box 600\\
+Wellington\\
+New Zealand}\hfill
+\parbox{65mm}{
+\flushright
+Tel:    +64 4 463 5341\\
+Fax:    +64 4 463 5045\\
+Internet: \Ecs@fromnetaddr}
+}
+\parbox{3mm}{\mbox{}}
+
+ \begin{center}
+  \parbox{100mm}{\center\LARGE\bf\@title}\par
+  \vskip 1em
+  \parbox{100mm}{\center\large\@author}\par
+  \vskip 1em
+   \parbox{100mm}{\center\large \@supervisor}\par 
+  \vskip 1em
+  {\large \@date \par}
+  \vskip 1em
+  \parbox{100mm}{\center Submitted in partial fulfilment of the requirements
+     for \\ \Ecs@degree.}\par
+\end{center} \par
+\@thanks
+\vskip 1em
+\begin{center}
+{\bf Abstract\vspace{-.5em}\vspace{0pt}}
+\end{center}
+\vskip 1ex
+\hskip\leftmargini\box\@abstract
+\vfill
+\end{titlepage}
