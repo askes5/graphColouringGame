@@ -18,7 +18,7 @@
 \usepackage{algorithm} % for writing algoritms  
 \usepackage[noend]{algpseudocode}
 
-\usepackage[mathcal]{euscript} %extra math fonts
+\usepackage[mathscr]{euscript} %extra math fonts
 
 \usepackage{tikz} %tikz libray for graphs
 \usepackage{tikz,fullpage}
@@ -28,7 +28,7 @@
 \tikzstyle{normalBlack}=[fill=black, draw=black, thick]
 
 \usepackage{amsthm} % for definging theorems and proofs
-\usepackage{amsmath}
+\usepackage{amsmath, mathtools}
 \usepackage{amssymb}
 
 \newtheorem{theorem}{Theorem}[chapter]
@@ -45,6 +45,9 @@
 %
 \newfloat{fig}{thp}{lof}[chapter]
 \floatname{fig}{Figure}
+
+%declare new commands
+\DeclareMathOperator{\col}{col_g}
 
 %% These are standard LaTeX definitions for the document
 %%                            
@@ -77,7 +80,6 @@
     urlcolor=black
 }
 
-% You should specifiy your supervisor here with
 \supervisor{Rod Downey}
 % use \supervisors if there is more than one supervisor
 
