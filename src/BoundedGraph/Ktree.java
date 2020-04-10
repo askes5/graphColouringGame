@@ -1,3 +1,5 @@
+package BoundedGraph;
+
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
@@ -6,10 +8,12 @@ import java.util.*;
 
 /**
  * pairs a k tree with its decomposition.
- * A Ktree is defined as follows: starting with a (k + 1)-vertex complete graph and then repeatedly adding vertices in such a way that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
+ * A BoundedGraph.Ktree is defined as follows: starting with a (k + 1)-vertex complete graph and then repeatedly adding vertices in such a way that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
  * @author Matthew Askes
  */
-public class Ktree {
+public class Ktree extends BoundedGraph{
+    private final int size;
+    private final int treeWidth;
     private Graph graph;
     private TreeDecomposition decomposition;
     private int nodeCounter = 0;
@@ -18,11 +22,13 @@ public class Ktree {
     //starting with a (k + 1)-vertex complete graph and then repeatedly adding vertices in such a way that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
     
     /**
-     * create a new random Ktree of given size and width
+     * create a new random BoundedGraph.Ktree of given size and width
      * @param size
      * @param treeWidth
      */
     public Ktree(int size, int treeWidth) {
+        this.size = size;
+        this.treeWidth = treeWidth;
         graph = new SingleGraph("kTree_"+ treeCounter++);
         graph.setAttribute("ui.quality");
         graph.setAttribute("ui.antialias");
@@ -30,7 +36,8 @@ public class Ktree {
         graph.setAutoCreate(true);
     
         decomposition = new TreeDecomposition(graph);
-        
+    
+        //starting with a (k + 1)-vertex complete graph
         Set<Node> clique = new HashSet<>();
         for (int i = 0; i < treeWidth+1; i++) {
             clique.add(graph.addNode(String.valueOf(getNodeCount())));
@@ -39,7 +46,7 @@ public class Ktree {
         decomposition.getTree().addNode(clique.toString());
         decomposition.getSetMap().put(clique.toString(),clique);
         
-        //add rest of nodes
+        //repeatedly add vertices such that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
         for (int i = size-clique.size(); i > 0; i--) {
         
             //pick random node, A, in decomposition tree
@@ -48,50 +55,39 @@ public class Ktree {
             Set<Node> decomSet = decomposition.getSetMap().get(node.getId());
     
             //pick random neighbours in decomNode
-            List<Node> list = new LinkedList<>(decomSet);
-//            Collections.shuffle(list);
-//            Set<Node> randomSet = new HashSet<>(list.subList(0, treeWidth));
-            
-            list.remove((int)(Math.random()*list.size()));
+            List<Node> neighbours = new LinkedList<>(decomSet);
+//            Collections.shuffle(neighbours);
+//            Set<Node> randomSet = new HashSet<>(neighbours.subList(0, treeWidth));
+            neighbours.remove((int)(Math.random()*neighbours.size()));
             
             //connect v to A with treewidth edges
             Node newNode = graph.addNode(String.valueOf(getNodeCount()));
-            Set<Node> newPartiton = new HashSet<>();
+            Set<Node> newPartiton = new HashSet<>(); //new set in the decomposition
             newPartiton.add(newNode);
-            for (Node s : list) {
-                graph.addEdge(newNode.getId()+s.getId(),newNode,s);
-                newPartiton.add(s);
-            }
+            newPartiton.addAll(neighbours);
+            makeClique(newPartiton);
             //create new node in decomposition
             DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(), DcomTree.addNode(newPartiton.toString()).getId());
             decomposition.getSetMap().put(newPartiton.toString(),newPartiton);
         }
     }
     
-    /**
-     * turns the set of nodes into a clique
-     * @param nodes
-     */
-    private void makeClique(Set<Node> nodes){
-        //todo improve
-        for (Node s : nodes) {
-            for (Node t : nodes) {
-                if (!t.equals(s)) {
-                    graph.addEdge(s.getId()+ t.getId(), s, t);
-                }
-            }
-        }
-    }
-    
+    @Override
     public Graph getGraph() {
         return graph;
     }
     
+    @Override
     public TreeDecomposition getDecomposition() {
         return decomposition;
     }
     
-    public int getNodeCount() {
+    @Override
+    public int getBound() {
+        return treeWidth;
+    }
+    
+    protected int getNodeCount() {
         return nodeCounter++;
     }
 }

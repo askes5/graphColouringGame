@@ -1,3 +1,7 @@
+package game;
+
+import game.ColouringGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

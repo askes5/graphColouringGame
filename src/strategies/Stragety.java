@@ -1,9 +1,12 @@
+package strategies;
+
+import game.ColouringGame;
 import org.graphstream.graph.Node;
 
 /**
  * @author Matthew Askes
  */
-interface Stragety {
+public interface Stragety {
     
     /**
      * Finds and colours the next node in the graph

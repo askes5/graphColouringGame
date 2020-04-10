@@ -1,3 +1,7 @@
+package game;
+
+import BoundedGraph.Ktree;
+import linearOrders.LOinTWGenerator;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Element;
 import org.graphstream.graph.Graph;
@@ -5,6 +9,8 @@ import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.swingViewer.ViewPanel;
 import org.graphstream.ui.view.Viewer;
+import strategies.ActivationStrategy;
+import strategies.Stragety;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +61,8 @@ public class ColouringGame extends JPanel {
      * @return The game
      */
     static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
-        Ktree ktree = new Ktree(size,treeWidth);
+        Ktree ktree = new Ktree(size, treeWidth);
+        ktree.getGraph().display(true);
         return new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), numOfColours);
     }
     
@@ -80,7 +87,7 @@ public class ColouringGame extends JPanel {
      */
     private void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("ColouringGame");
+        JFrame frame = new JFrame("game.ColouringGame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
         GridBagConstraints c = new GridBagConstraints();
@@ -89,7 +96,7 @@ public class ColouringGame extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(new ColourPicker(this),c);
+        this.add(new ColourPicker(this), c);
     
         //add graph view
         JPanel panel = new JPanel(new GridLayout()){
@@ -324,7 +331,7 @@ public class ColouringGame extends JPanel {
     }
     
     public static void main(String[] args) {
-        ColouringGame.newRandomKtreeGame(10,2,8);
+        ColouringGame.newRandomKtreeGame(20,4,8);
     }
    
 }

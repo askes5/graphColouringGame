@@ -1,3 +1,6 @@
+package linearOrders;
+
+import BoundedGraph.TreeDecomposition;
 import org.graphstream.graph.Element;
 import org.graphstream.graph.Node;
 

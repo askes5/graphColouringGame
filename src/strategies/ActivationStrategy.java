@@ -1,3 +1,7 @@
+package strategies;
+
+import game.ColouringGame;
+
 import java.util.*;
 
 /**

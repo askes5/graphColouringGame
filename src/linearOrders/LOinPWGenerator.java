@@ -1,3 +1,5 @@
+package linearOrders;
+
 import org.graphstream.graph.Node;
 
 import java.util.*;
