@@ -38,10 +38,7 @@ public class Ktree extends BoundedGraph{
         decomposition = new TreeDecomposition(graph);
     
         //starting with a (k + 1)-vertex complete graph
-        Set<Node> clique = new HashSet<>();
-        for (int i = 0; i < treeWidth+1; i++) {
-            clique.add(graph.addNode(String.valueOf(getNodeCount())));
-        }
+        Set<Node> clique = addNewClique(treeWidth+1);
         makeClique(clique);
         decomposition.getTree().addNode(clique.toString());
         decomposition.getSetMap().put(clique.toString(),clique);

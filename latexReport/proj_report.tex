@@ -9,7 +9,7 @@
 
 \pagestyle{plain}
 
-\usepackage{url} % for typesetting urls
+%\usepackage{url} % for typesetting urls
 \usepackage{algorithm} % for writing algoritms  
 \usepackage[noend]{algpseudocode}
 
@@ -22,9 +22,12 @@
 \tikzstyle{normal}=[fill=white, draw=black, thick]
 \tikzstyle{normalBlack}=[fill=black, draw=black, thick]
 
+
 \usepackage{amsthm} % for definging theorems and proofs
 \usepackage{amsmath, mathtools}
 \usepackage{amssymb}
+
+\usepackage{parskip} %make paragraphs be seperated by whitespace not tabs
 
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem*{claim}{Claim}
@@ -34,6 +37,8 @@
 \newtheorem{definition}[theorem]{Definition}
 
 \usepackage{caption} %removes ':' from empty captions 
+
+\usepackage{hyperref} % enables clickable table of contents and citations also adds url formatting
 
 %declare new commands
 \DeclareMathOperator{\col}{col_g}
@@ -60,7 +65,6 @@
 \usepackage[image,sms]{vuwproject}
 \otherdegree{Bachelor of Science with Honours in Mathematics}
 
-\usepackage{hyperref} % enables clickable table of contents and citations
 \hypersetup{
     colorlinks,
     citecolor=black,

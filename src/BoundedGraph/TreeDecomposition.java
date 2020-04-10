@@ -58,7 +58,7 @@ public class TreeDecomposition {
      * gets the graph on which this decomposition is defined
      * @return
      */
-    public Graph getGraph() {
+    private Graph getGraph() {
         return graph;
     }
 }

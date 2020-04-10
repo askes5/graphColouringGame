@@ -1,6 +1,7 @@
 package game;
 
 import BoundedGraph.Ktree;
+import BoundedGraph.PWGraph;
 import linearOrders.LOinTWGenerator;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Element;
@@ -57,13 +58,21 @@ public class ColouringGame extends JPanel {
     }
     
     /**
-     * Makes a random ktree of a given seize and width, and uses the activation strategy
+     * Makes a random ktree of a given size and width, and uses the activation strategy
      * @return The game
      */
     static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
         Ktree ktree = new Ktree(size, treeWidth);
-        ktree.getGraph().display(true);
         return new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), numOfColours);
+    }
+    
+    /**
+     * Makes a random pathwidth graph of a given size and width, and uses the activation strategy
+     * @return The game
+     */
+    static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
+        PWGraph pwGraph = new PWGraph(size, pathWidth);
+        return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(pwGraph.getDecomposition())), numOfColours);
     }
     
     private ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
@@ -331,7 +340,9 @@ public class ColouringGame extends JPanel {
     }
     
     public static void main(String[] args) {
-        ColouringGame.newRandomKtreeGame(20,4,8);
+//        ColouringGame.newRandomKtreeGame(20,4,8);
+    
+        ColouringGame.newRandomPWGraphGame(20,2,8);
     }
    
 }

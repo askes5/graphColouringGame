@@ -38,34 +38,46 @@ public class PWGraph extends BoundedGraph{
         decomposition = new TreeDecomposition(graph);
         
         //starting with a (k + 1)-vertex complete graph
-        Set<Node> clique = addNewClique(pathWidth-1);
+        Set<Node> clique = addNewClique(pathWidth+1);
         decomposition.getTree().addNode(clique.toString());
         decomposition.getSetMap().put(clique.toString(),clique);
-        
+    
+        String prevDecomNode = clique.toString();
+    
         //repeatedly add vertices such that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
         for (int i = size-clique.size(); i > 0; i--) {
-            
-            //pick random node, A, in decomposition tree
+    
             Graph DcomTree =  decomposition.getTree();
-            Node node = DcomTree.getNode((int) (Math.random()*DcomTree.getNodeCount()));
-            Set<Node> decomSet = decomposition.getSetMap().get(node.getId());
             
             //pick random neighbours in decomNode
-            List<Node> neighbours = new LinkedList<>(decomSet);
+            List<Node> neighbours = new LinkedList<>(decomposition.getSetMap().get(prevDecomNode));
 //            Collections.shuffle(neighbours);
 //            Set<Node> randomSet = new HashSet<>(neighbours.subList(0, pathWidth));
             neighbours.remove((int)(Math.random()*neighbours.size()));
             
-            //connect v to A with treewidth edges
+            //connect v to A with pathwidth edges
             Node newNode = graph.addNode(String.valueOf(getNodeCount()));
             Set<Node> newPartiton = new HashSet<>(); //new set in the decomposition
             newPartiton.add(newNode);
             newPartiton.addAll(neighbours);
             makeClique(newPartiton);
+            
             //create new node in decomposition
-            DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(), DcomTree.addNode(newPartiton.toString()).getId());
+            DcomTree.addEdge(newPartiton.toString()+prevDecomNode,prevDecomNode, DcomTree.addNode(newPartiton.toString()).getId());
             decomposition.getSetMap().put(newPartiton.toString(),newPartiton);
+            
+            //update prev node
+            prevDecomNode = newPartiton.toString();
         }
+    
+    
+        Graph tree =decomposition.getTree();
+                //add labels to nodes
+        for (Node node : tree) {
+            node.addAttribute("ui.label", node.getId());
+        }
+        tree.display();
+        
     }
     
     public int getNodeCount() {
