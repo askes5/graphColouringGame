@@ -1,179 +1,117 @@
-//import linearOrders.LOinPWGenerator;
-//import org.graphstream.graph.Graph;
-//import org.graphstream.graph.Node;
-//import org.graphstream.graph.implementations.SingleGraph;
-//
-//import java.util.*;
-//
-///**
-// * @author Matthew Askes
-// */
-//public class main {
-//
-//    protected String styleSheet =
-//            "node {" +
-//                    "fill-color: black;" +
-//                    "size: 15px; " +
-//                    "text-background-mode: rounded-box; " +
-//                    "text-background-color: red;" +
-//                    "}" +
-//                    "node.marked {" +
-//                    "	fill-color: red;" +
-//                    "}";
-//
-//
-//    public main() {
-//        Graph pwGraph = new SingleGraph("pathwidth");
-//        pwGraph.setAttribute("ui.quality");
-//        pwGraph.setAttribute("ui.antialias");
-//
-//        pwGraph.setStrict(false);
-//        pwGraph.setAutoCreate(true);
-//        pwGraph.addEdge("AB", "A", "B");
-//        pwGraph.addEdge("BC", "B", "C");
-//        pwGraph.addEdge("CA", "C", "A");
-//        pwGraph.addEdge("CD", "C", "D");
-//        pwGraph.addEdge("CE", "C", "E");
-//        pwGraph.addEdge("EF", "E", "F");
-//        pwGraph.addEdge("DH", "D", "H");
-//        pwGraph.addEdge("FH", "F", "H");
-//        pwGraph.addEdge("FG", "F", "G");
-//        pwGraph.addEdge("HI", "H", "I");
-//        pwGraph.addEdge("IJ", "I", "J");
-//        pwGraph.addEdge("IK", "I", "K");
-//
-//        Node A = pwGraph.getNode("A");
-//        Node B = pwGraph.getNode("B");
-//        Node C = pwGraph.getNode("C");
-//        Node D = pwGraph.getNode("D");
-//        Node E = pwGraph.getNode("E");
-//        Node F = pwGraph.getNode("F");
-//        Node G = pwGraph.getNode("G");
-//        Node H = pwGraph.getNode("H");
-//        Node I = pwGraph.getNode("I");
-//        Node J = pwGraph.getNode("J");
-//        Node K = pwGraph.getNode("K");
-//        pwGraph.addAttribute("ui.stylesheet", styleSheet);
-//
-//        List<Set<Node>> pathDecomposition = new ArrayList<>();
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(A, B, C)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(C, D, E)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, E, F)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, G)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(D, F, H)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(H, I)));
-//        pathDecomposition.add(new HashSet<>(Arrays.asList(I, J, K)));
-//        List<Node> linearOrder = LOinPWGenerator.calculateListOrder(pathDecomposition);
-//
-////        System.out.println(linearOrder.toString());
-////        new game.ColouringGame(pwGraph.getEdgeSet(), new strategies.ActivationStrategy(linearOrders.LOinPWGenerator.calculateComparator(pathDecomposition)), 3);
-//
-//        Graph twGraph = new SingleGraph("pathwidth");
-//        twGraph.setAttribute("ui.quality");
-//        twGraph.setAttribute("ui.antialias");
-//        twGraph.setStrict(false);
-//        twGraph.setAutoCreate(true);
-//        twGraph.addEdge("AB", "A", "B");
-//        twGraph.addEdge("AC", "A", "C");
-//        twGraph.addEdge("BC", "B", "C");
-//        twGraph.addEdge("BF", "B", "F");
-//        twGraph.addEdge("BG", "B", "G");
-//        twGraph.addEdge("BE", "B", "E");
-//        twGraph.addEdge("CD", "C", "D");
-//        twGraph.addEdge("CE", "C", "E");
-//        twGraph.addEdge("DE", "D", "E");
-//        twGraph.addEdge("EG", "E", "G");
-//        twGraph.addEdge("EH", "E", "H");
-//        twGraph.addEdge("FG", "F", "G");
-//        twGraph.addEdge("GH", "G", "H");
-//        twGraph.addAttribute("ui.stylesheet", styleSheet);
-//
-//         A = twGraph.getNode("A");
-//         B = twGraph.getNode("B");
-//         C = twGraph.getNode("C");
-//         D = twGraph.getNode("D");
-//         E = twGraph.getNode("E");
-//         F = twGraph.getNode("F");
-//         G = twGraph.getNode("G");
-//         H = twGraph.getNode("H");
-//
-//        //make the tree decomposition
-//        Graph tree = new SingleGraph("pathwidth");
-//        tree.setAttribute("ui.quality");
-//        tree.setAttribute("ui.antialias");
-//        tree.setStrict(false);
-//        tree.setAutoCreate(true);
-//
-//        tree.addEdge("AB", "A", "B");
-//        tree.addEdge("BC", "C", "B");
-//        tree.addEdge("AB", "A", "B");
-//        tree.addEdge("DB", "D", "B");
-//        tree.addEdge("DE", "D", "E");
-//        tree.addEdge("DF", "D", "F");
-//
-//        Map<String,Set<Node>> setMap = new HashMap<>();
-//
-//        setMap.put("A", new HashSet<>(Arrays.asList(A, B, C)));
-//        setMap.put("B", new HashSet<>(Arrays.asList(E, B, C)));
-//        setMap.put("C", new HashSet<>(Arrays.asList(C, D, C)));
-//        setMap.put("D", new HashSet<>(Arrays.asList(E, B, G)));
-//        setMap.put("E", new HashSet<>(Arrays.asList(B, F, G)));
-//        setMap.put("F", new HashSet<>(Arrays.asList(E, G, H)));
-//
-////        new game.ColouringGame(twGraph.getEdgeSet(), new strategies.ActivationStrategy(linearOrders.LOinTWGenerator.calculateComparator(new BoundedGraph.TreeDecomposition(twGraph,setMap,tree))), 8);
-//
-////        Viewer viewer = tree.display();
-////        viewer.getDefaultView().addMouseListener(new graphMouseListener(graph, viewer.getDefaultView()));
-//
-//
-////        try {
-////            Thread.sleep(1000);
-////
-////            graph.addEdge( "AD", "A", "D" );
-////
-////            Thread.sleep(1000);
-////            graph.addEdge( "CD", "C", "D" );
-////
-////            Thread.sleep(1000);
-////            graph.getNode("C").addAttribute("ui.class", "marked");
-////
-////            Thread.sleep(500);
-////            graph.addEdge( "DC", "C", "D" );
-////
-////            for (Edge edge : graph.getEachEdge()) {
-////                System.out.println(edge.toString());
-////            }
-////        } catch (InterruptedException e) {
-////            e.printStackTrace();
-////        }
-////
-////        //add labels to nodes
-////        for (Node node : graph) {
-////            node.addAttribute("ui.label", node.getId());
-////        }
-////
-////
-////
-//
-//
-//    }
-//
-////    public static void main(String[] args) {
-////
-//////        new main();
-////
-//////        BoundedGraph .Ktree ktree = new BoundedGraph.Ktree(50,2);
-//////        Graph treeDecom = ktree.getDecomposition().getTree();
-////        //add labels to nodes
-//////        for (Node node : ktree.getGraph()) {
-//////            node.addAttribute("ui.label", node.getId());
-//////        }
-//////        ktree.getGraph().display(true);
-//////        for (Node node : treeDecom) {
-//////            node.addAttribute("ui.label", node.getId());
-//////        }
-//////        treeDecom.display(true);
-////
-////        ColouringGame.newRandomKtreeGame(50, 2, 8);
-////    }
-//}
+import game.ColouringGame;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
+/**
+ * @author Matthew Askes
+ */
+public class main {
+
+    public main() {
+        createAndShowGUI();
+    }
+    
+    enum GraphTypes{
+        KTREE,
+        PATH_GRAPH
+    }
+    
+    private void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Graph Colouring Game Menu");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+        JPanel contentPane = new JPanel();
+        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
+        contentPane.setBounds(61, 11, 81, 140);
+    
+        JLabel title = new JLabel("Graph Coluring Game");
+        title.setFont(new Font("",Font.BOLD, 18));
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+    
+        contentPane.add(title);
+        contentPane.add(Box.createRigidArea(new Dimension(0, 15)));
+        
+        JLabel widthLabel = new JLabel("Graph Width");
+        widthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField widthInput = new JTextField(10);
+        contentPane.add(widthLabel);
+        contentPane.add(widthInput);
+        
+        JLabel sizeLabel = new JLabel("Number of nodes");
+        sizeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField sizeInput = new JTextField(10);
+        contentPane.add(sizeLabel);
+        contentPane.add(sizeInput);
+    
+        JLabel colourLabel = new JLabel("Number of Colours");
+        colourLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField colourInput = new JTextField(10);
+        contentPane.add(colourLabel);
+        contentPane.add(colourInput);
+    
+        JLabel graphLabel = new JLabel("Graph type");
+        graphLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JComboBox<GraphTypes> graphTypesBox = new JComboBox<>(GraphTypes.values());
+        graphTypesBox.setSelectedIndex(0);
+        contentPane.add(graphLabel);
+        contentPane.add(graphTypesBox);
+    
+        contentPane.add(Box.createRigidArea(new Dimension(0, 15)));
+        
+        JButton start = new JButton("Start");
+        start.setAlignmentX(Component.CENTER_ALIGNMENT);
+        start.addActionListener(e -> {
+            int size = getIntegerFromTextBox(sizeInput);
+            int width =getIntegerFromTextBox(widthInput);
+            int numColours = getIntegerFromTextBox(colourInput);
+            
+            if (size >=0 && width>=0 && numColours >= 0){
+                frame.dispose();
+                if (GraphTypes.KTREE.equals(graphTypesBox.getSelectedItem())) {
+                    ColouringGame.newRandomKtreeGame(size,width,numColours);
+                } else if (GraphTypes.PATH_GRAPH.equals(graphTypesBox.getSelectedItem())){
+                   ColouringGame.newRandomPWGraphGame(size,width,numColours);
+                }
+            }
+            
+        });
+        
+        contentPane.add(start);
+        
+        contentPane.setBorder(new EmptyBorder(30, 30, 30, 30));
+        
+        frame.getContentPane().add(contentPane);
+        
+        
+        //Display the window.
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setVisible(true);
+    }
+    
+    public static int getIntegerFromTextBox(JTextField textBox) {
+        int integer;
+        
+        if (textBox.getText().trim().equals("")) {
+            integer = 0;
+        } else {
+            try {
+                integer = Integer.parseInt(textBox.getText());
+            } catch (Exception ignored){
+                return -1;
+            }
+        }
+        
+        return integer;
+    }
+    
+    
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(main::new);
+    }
+}

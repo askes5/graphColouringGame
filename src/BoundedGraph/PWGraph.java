@@ -65,7 +65,6 @@ public class PWGraph extends BoundedGraph{
             decomposition.getList().add(newPartiton);
             
         }
-        System.out.println(decomposition.getList());
     }
     
     public int getNodeCount() {

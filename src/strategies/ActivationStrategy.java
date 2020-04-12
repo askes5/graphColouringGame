@@ -32,11 +32,12 @@ public class ActivationStrategy implements Stragety {
     
     @Override
     public void nextMove(ColouringGame game) {
-    
+    //todo make this return a node to colour
         //calculate the order of the nodes
         if (orderedNodes == null){
             orderedNodes = new ArrayList<>(game.getNodeSet());
             orderedNodes.sort(linearOrder);
+            game.updateTextOutput("linear order: " + orderedNodes);
         }
         
         //the set of uncoloured nodes
@@ -102,6 +103,8 @@ public class ActivationStrategy implements Stragety {
         game.setNodeColour(chosenNode,colour);
     
         game.getGraph().getNode(chosenNode);
+        
+        game.updateTextOutput("Computer coloured node " + chosenNode + " colour " + colour);
     }
     
     public List<String> getOrderedNodes() {

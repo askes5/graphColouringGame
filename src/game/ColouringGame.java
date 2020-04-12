@@ -37,7 +37,7 @@ public class ColouringGame extends JPanel {
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
     private final Set<String> nodeSet = new HashSet<>();
-    private JTextArea textOutputArea;
+    private JTextArea textOutputArea = new JTextArea();;
     private boolean isPlayersTurn = false;
     protected String styleSheet =
             "node {" +
@@ -56,7 +56,7 @@ public class ColouringGame extends JPanel {
      * Makes a random ktree of a given size and width, and uses the activation strategy
      * @return The game
      */
-    static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
+    public static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
         Ktree ktree = new Ktree(size, treeWidth);
         return new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), numOfColours);
     }
@@ -65,7 +65,7 @@ public class ColouringGame extends JPanel {
      * Makes a random pathwidth graph of a given size and width, and uses the activation strategy
      * @return The game
      */
-    static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
+    public static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
         PWGraph pwGraph = new PWGraph(size, pathWidth);
         //todo fix path width LO generator
         return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinPWGenerator.calculateComparator((PathDecomposition) pwGraph.getDecomposition())), numOfColours);
@@ -93,7 +93,7 @@ public class ColouringGame extends JPanel {
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private void createAndShowGUI() {
+    public void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("game.ColouringGame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,17 +127,19 @@ public class ColouringGame extends JPanel {
         this.add(panel,c);
     
         //add textoutput
-        textOutputArea = new JTextArea();
-//        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
-        textOutputArea.setText(((ActivationStrategy)stragety).getOrderedNodes().toString());
         textOutputArea.setLineWrap(true);
         textOutputArea.setWrapStyleWord(true);
-        textOutputArea.setPreferredSize(new Dimension(1240,100));
-        textOutputArea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        textOutputArea.setEnabled(false);
+        textOutputArea.setFont(new Font("Dialog", Font.BOLD + Font.ITALIC, 14));
+        JScrollPane scrollPane = new JScrollPane(textOutputArea);
+        scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        scrollPane.setPreferredSize(new Dimension(viewPanel.getPreferredSize().width,100));
+        scrollPane.getViewport().getView().setForeground(Color.RED);
+        
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        this.add(textOutputArea,c);
+        this.add(scrollPane,c);
     
         //Create and set up the content pane.
         JComponent newContentPane = this;
@@ -146,6 +148,7 @@ public class ColouringGame extends JPanel {
         //Display the window.
         frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
     
@@ -158,6 +161,9 @@ public class ColouringGame extends JPanel {
         graph.setAutoCreate(true);
         graph.addAttribute("ui.stylesheet", styleSheet);
     
+        updateTextOutput("Instructions: The goal is to colour nodes in such a way that the graph cannot be coloured using" +
+                                 " the available colours. The computer will attempt to thwart your attempts.");
+        
         edgeSet.forEach(edge -> graph.addEdge(edge.getId(), edge.getNode0().getId(), edge.getNode1().getId())); //add all edges to graph
         
         //label each node
@@ -176,6 +182,8 @@ public class ColouringGame extends JPanel {
             if (gameOver()) break;
             //Bob moves
             isPlayersTurn = true;
+            
+            updateTextOutput("Your turn");
             
             //wait until a valid node is selected
             selectedNode = null;
@@ -212,7 +220,8 @@ public class ColouringGame extends JPanel {
         if (aliceHasWon) {
             System.out.println("Alice has won");
                     JOptionPane.showMessageDialog(this, "You have lost!");
-                
+    
+            updateTextOutput("You have lost");
             return  true;
         }
         
@@ -233,6 +242,7 @@ public class ColouringGame extends JPanel {
                 if (colours.isEmpty()){
                     System.out.println("Bob has won");
                     JOptionPane.showMessageDialog(this, "You have won!");
+                    updateTextOutput("You have won");
                     return true;
                 }
                 
@@ -243,6 +253,14 @@ public class ColouringGame extends JPanel {
     
     private boolean isValidColour(int colour) {
         return colour >= 0 && colour < numOfColours;
+    }
+    
+    public void updateTextOutput(String message){
+        message = "> " + message;
+        if (!textOutputArea.getText().equals("")){
+            message = "\n"+message;
+        }
+        textOutputArea.setText(textOutputArea.getText() +message);
     }
     
     /**
@@ -343,10 +361,10 @@ public class ColouringGame extends JPanel {
     }
     
     public static void main(String[] args) {
-//        ColouringGame.newRandomKtreeGame(20,4,8);
+        ColouringGame.newRandomKtreeGame(20,4,8);
     
-        int pw = 2;
-        ColouringGame.newRandomPWGraphGame(15,pw,2*pw +2);
+//        int pw = 2;
+//        ColouringGame.newRandomPWGraphGame(15,pw,2*pw +2);
     }
    
 }

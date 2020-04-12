@@ -19,33 +19,17 @@ public class LOinPWGenerator {
      * @return a linear order on the vertex set of the graph
      */
     public static List<Node> calculateListOrder(PathDecomposition pathDecomposition) {
-        ArrayDeque<Node> queue = new ArrayDeque<>();
         List<Node> linearOrder = new ArrayList<>();
     
         List<Set<Node>> decomList = pathDecomposition.getList();
         
         //for each partition
-        for (int i = 0; i < decomList.size(); i++) {
-            Set<Node> partition = decomList.get(i);
-            
+        for (Set<Node> partition : decomList) {
             // tempQueue <- Queue union (partition - queue)
-            ArrayDeque<Node> tempQueue = new ArrayDeque<>(queue);
-            tempQueue.addAll(partition.stream()
-                                     .filter(x -> !queue.contains(x))
-                                     .collect(Collectors.toSet()) //everything in the partition not in the queue
+            linearOrder.addAll(partition.stream()
+                                       .filter(x -> !linearOrder.contains(x))
+                                       .collect(Collectors.toSet()) //everything in the partition not in the linear order
             );
-            queue.clear();
-            
-            for (Node node : tempQueue) {
-                
-                // add if the node does not appear in a latter partition in the decomposition
-                if (nodeInDecomposition(node, decomList.subList(i + 1, decomList.size()))) {
-                    queue.addLast(node);
-                } else {
-                    linearOrder.add(node);
-                }
-                
-            }
         }
         
         return linearOrder;
