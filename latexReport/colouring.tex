@@ -296,7 +296,7 @@ Recall the definition of pathwidth.
 %    The algorithm adds a vertex $v$ to $L$ iff there is no $j> i$ such that $v \in X_j$. Thus $i$ is the greatest $i$ such that $v \in X_i$. Therefore by definition of path decomposition all the neighbours of $v$ not in the $L$ are in $X_i$. Further the neighbours not in $L$ when $v$ is added to $L$ are greater than $v$ in $L$. Therefore is $N^-(v) \subset X_i$.
 %\end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm_pathwidth}
     Let $G$ be a graph of pathwidth $k$. Then, 
     \[\chi_g(G) \leq 3k + 1\]    
 \end{theorem}
@@ -439,11 +439,13 @@ Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions th
     An Interval graph can be online coloured with $3w-2$ colours, where $w$ is the size of the maximum clique.
 \end{theorem}
 
-\begin{theorem}[Kierstand \cite{KIERSTEAD2000}]
+\begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
     An Interval graph has chromatic number $3w-2$ where where $w$ is the size of the maximum clique.
 \end{theorem}
 
-These are the same because they both use the ordering of the leftmost element in each interval and first fit.        
+The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
+However he defines his linear order as left to right on left most element in each interval.  
+As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the leftmost element in each interval and first fit.        
 
 
 
