@@ -12,7 +12,7 @@ import java.util.Set;
  * Defines a tree decomposition of a given graph
  * @author Matthew Askes
  */
-public class TreeDecomposition implements Decomposition{
+public class TreeDecomposition {
     /**
      * the shape of the decomposition
      */

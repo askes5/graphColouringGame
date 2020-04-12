@@ -2,8 +2,6 @@ package game;
 
 import BoundedGraph.Ktree;
 import BoundedGraph.PWGraph;
-import BoundedGraph.PathDecomposition;
-import linearOrders.LOinPWGenerator;
 import linearOrders.LOinTWGenerator;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Element;
@@ -51,6 +49,13 @@ public class ColouringGame extends JPanel {
                     "}";
     private int numOfColours;
     
+    /**
+     * make a new game based on a given edgeset and stragety
+     * @return the game
+     */
+    static ColouringGame newGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours){
+        return new ColouringGame(edgeSet,stragety,numOfColours);
+    }
     
     /**
      * Makes a random ktree of a given size and width, and uses the activation strategy
@@ -67,14 +72,10 @@ public class ColouringGame extends JPanel {
      */
     static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
         PWGraph pwGraph = new PWGraph(size, pathWidth);
-        //todo fix path width LO generator
-        return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinPWGenerator.calculateComparator((PathDecomposition) pwGraph.getDecomposition())), numOfColours);
+        return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(pwGraph.getDecomposition())), numOfColours);
     }
     
-    /**
-     * make a new game based on a given edgeset and stragety
-     */
-    public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
+    private ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
         super(new GridBagLayout());
         this.numOfColours = numOfColours;
         newGameGraph(edgeSet, stragety);//reset the game graph
@@ -181,7 +182,7 @@ public class ColouringGame extends JPanel {
             selectedNode = null;
             while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) {
                 try {
-                    wait(); //wait until a node is selected, waits for mouse clicked event
+                    wait(); //wait until a node is selected
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -315,10 +316,6 @@ public class ColouringGame extends JPanel {
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAllowedColouring(String id, int i){
-        //cannot colour a node that is already coloured.
-        if (nodeColours.containsKey(id)) {
-            return false;
-        }
         AtomicBoolean toReturn = new AtomicBoolean(true);
         graph.getNode(id).getNeighborNodeIterator().forEachRemaining(node -> {
             if (nodeColours.containsKey(node.getId())
@@ -345,8 +342,7 @@ public class ColouringGame extends JPanel {
     public static void main(String[] args) {
 //        ColouringGame.newRandomKtreeGame(20,4,8);
     
-        int pw = 2;
-        ColouringGame.newRandomPWGraphGame(15,pw,2*pw +2);
+        ColouringGame.newRandomPWGraphGame(20,2,8);
     }
    
 }

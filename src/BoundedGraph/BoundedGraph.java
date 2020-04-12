@@ -22,7 +22,7 @@ public abstract class BoundedGraph {
      * get the decomposition of this graph
      * @return the decomposition of this graph
      */
-    public abstract Decomposition getDecomposition();
+    public abstract TreeDecomposition getDecomposition();
     
     /**
      * get the bound for this graph

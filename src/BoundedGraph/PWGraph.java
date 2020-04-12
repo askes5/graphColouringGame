@@ -17,7 +17,7 @@ public class PWGraph extends BoundedGraph{
     private final int size;
     private final int pathWidth;
     private Graph graph;
-    private PathDecomposition decomposition;
+    private TreeDecomposition decomposition;
     private int nodeCounter = 0;
     static int pathcounter = 0;
     
@@ -35,19 +35,22 @@ public class PWGraph extends BoundedGraph{
         graph.setStrict(false);
         graph.setAutoCreate(true);
         
-        decomposition = new PathDecomposition();
+        decomposition = new TreeDecomposition(graph);
         
         //starting with a (k + 1)-vertex complete graph
         Set<Node> clique = addNewClique(pathWidth+1);
-        decomposition.getList().add(clique);
+        decomposition.getTree().addNode(clique.toString());
+        decomposition.getSetMap().put(clique.toString(),clique);
     
-        Set<Node> prevPartition = clique;
+        String prevDecomNode = clique.toString();
     
         //repeatedly add vertices such that each added vertex v has exactly k neighbors U such that, together, the k + 1 vertices formed by v and U form a clique
-        for (int i = 0; i < size-clique.size(); i++) {
+        for (int i = size-clique.size(); i > 0; i--) {
     
+            Graph DcomTree =  decomposition.getTree();
+            
             //pick random neighbours in decomNode
-            List<Node> neighbours = new LinkedList<>(prevPartition);
+            List<Node> neighbours = new LinkedList<>(decomposition.getSetMap().get(prevDecomNode));
 //            Collections.shuffle(neighbours);
 //            Set<Node> randomSet = new HashSet<>(neighbours.subList(0, pathWidth));
             neighbours.remove((int)(Math.random()*neighbours.size()));
@@ -60,12 +63,21 @@ public class PWGraph extends BoundedGraph{
             makeClique(newPartiton);
             
             //create new node in decomposition
-            //update prev node
-            prevPartition = newPartiton;
-            decomposition.getList().add(newPartiton);
+            DcomTree.addEdge(newPartiton.toString()+prevDecomNode,prevDecomNode, DcomTree.addNode(newPartiton.toString()).getId());
+            decomposition.getSetMap().put(newPartiton.toString(),newPartiton);
             
+            //update prev node
+            prevDecomNode = newPartiton.toString();
         }
-        System.out.println(decomposition.getList());
+    
+    
+        Graph tree =decomposition.getTree();
+                //add labels to nodes
+        for (Node node : tree) {
+            node.addAttribute("ui.label", node.getId());
+        }
+        tree.display();
+        
     }
     
     public int getNodeCount() {
@@ -78,7 +90,7 @@ public class PWGraph extends BoundedGraph{
     }
     
     @Override
-    public Decomposition getDecomposition() {
+    public TreeDecomposition getDecomposition() {
         return decomposition;
     }
     
