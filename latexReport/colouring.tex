@@ -319,7 +319,7 @@ Recall the definition of pathwidth.
     Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)\leq k$. 
     
     Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$. %The idea is $b\in N+(v)$
-    There exits some $X_i,X_j$ such that $a\in X_i$ and $b\in x_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i$ xor $a\in x_j$. If $a \in X_j$ then $a < v$, this is a contribution. Thus $b\in X_i$. As $v\in X_i$ $b$ is incident ot $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
+    There exits some $X_i,X_j$ such that $a\in X_i$ and $b\in x_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$, for some $i,j\in I$. If $a \in X_j$ then $a < v$, this is a contribution. Thus $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
     
     $|Z| = |X|+|Y|$ Therefore, \[r(v,L,G) = d^+_{G_L}(u) + m(u,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
 \end{proof}
