@@ -33,18 +33,19 @@ public class main {
     
         contentPane.add(title);
         contentPane.add(Box.createRigidArea(new Dimension(0, 15)));
+    
+        JLabel sizeLabel = new JLabel("Number of nodes");
+        sizeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField sizeInput = new JTextField(10);
+        contentPane.add(sizeLabel);
+        contentPane.add(sizeInput);
+    
         
         JLabel widthLabel = new JLabel("Graph Width");
         widthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JTextField widthInput = new JTextField(10);
         contentPane.add(widthLabel);
         contentPane.add(widthInput);
-        
-        JLabel sizeLabel = new JLabel("Number of nodes");
-        sizeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JTextField sizeInput = new JTextField(10);
-        contentPane.add(sizeLabel);
-        contentPane.add(sizeInput);
     
         JLabel colourLabel = new JLabel("Number of Colours");
         colourLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -71,7 +72,7 @@ public class main {
             if (size >=0 && width>=0 && numColours >= 0){
                 frame.dispose();
                 if (GraphTypes.KTREE.equals(graphTypesBox.getSelectedItem())) {
-                    ColouringGame.newRandomKtreeGame(size,width,numColours);
+                    ColouringGame.newRandomKtreeGame(size, width, numColours);
                 } else if (GraphTypes.PATH_GRAPH.equals(graphTypesBox.getSelectedItem())){
                    ColouringGame.newRandomPWGraphGame(size,width,numColours);
                 }

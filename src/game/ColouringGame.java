@@ -85,7 +85,7 @@ public class ColouringGame extends JPanel {
         }
         
         SwingUtilities.invokeLater(this::createAndShowGUI); //display gui
-        playAsBob(); //start game
+        playAsComputer(); //start game
     }
     
     /**
@@ -173,35 +173,29 @@ public class ColouringGame extends JPanel {
         }
     }
     
+    private void playAsComputer(){
+        //Alice moves
+        stragety.nextMove(this);
+//        if (gameOver()) break;
+        //Bob moves
+        isPlayersTurn = true;
+        updateTextOutput("Your turn");
+    }
+    
     private synchronized void playAsBob() {
         //todo add ability to play as Alice
-        while (true) {
-            
-            //Alice moves
-            stragety.nextMove(this);
-            if (gameOver()) break;
-            //Bob moves
-            isPlayersTurn = true;
-            
-            updateTextOutput("Your turn");
-            
             //wait until a valid node is selected
-            selectedNode = null;
-            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) {
-                try {
-                    wait(); //wait until a node is selected, waits for mouse clicked event
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            
+        if (selectedNode != null && isAllowedColouring(selectedNode.getId(), selectedColour)) {
             //colour the node
             setNodeColour(selectedNode.getId(),selectedColour);
-    
+
             isPlayersTurn = false;
-            
-            if (gameOver()) break;
+
+            playAsComputer();
         }
+        selectedNode = null;
+        
+//            if (gameOver()) break;
     }
     
     /**
@@ -356,12 +350,13 @@ public class ColouringGame extends JPanel {
         Element element = viewer.getDefaultView().findNodeOrSpriteAt(e.getX(), e.getY());
         if (element instanceof Node) {
             ColouringGame.this.setSelectedNode(element.getId());
-            notifyAll(); //wake up
+//            notifyAll(); //wake up
+            playAsBob();
         }
     }
     
     public static void main(String[] args) {
-        ColouringGame.newRandomKtreeGame(20,4,8);
+        ColouringGame.newRandomKtreeGame(20,3,8);
     
 //        int pw = 2;
 //        ColouringGame.newRandomPWGraphGame(15,pw,2*pw +2);
