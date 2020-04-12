@@ -100,12 +100,26 @@ public class ColouringGame extends JPanel {
     
         GridBagConstraints c = new GridBagConstraints();
         
-        //add colour picker
+        //add left menu
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        //add colour picker to menu
+        menuPanel.add(new ColourPicker(this), c);
+    
+        //add new game button
+//        JButton button = new JButton("New Game");
+//        button.addActionListener((e) -> {
+//            frame.dispose();
+//            new Menu();
+//        });
+//        menuPanel.add(button);
+        
+        //add menu to content pane
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(new ColourPicker(this), c);
-    
+        this.add(menuPanel);
+        
         //add graph view
         JPanel panel = new JPanel(new GridLayout()){
             @Override
@@ -176,7 +190,7 @@ public class ColouringGame extends JPanel {
     private void playAsComputer(){
         //Alice moves
         stragety.nextMove(this);
-//        if (gameOver()) break;
+        if (gameOver()) return;
         //Bob moves
         isPlayersTurn = true;
         updateTextOutput("Your turn");
@@ -190,12 +204,13 @@ public class ColouringGame extends JPanel {
             setNodeColour(selectedNode.getId(),selectedColour);
 
             isPlayersTurn = false;
-
+            
+            if(gameOver()) return;
+    
             playAsComputer();
         }
         selectedNode = null;
         
-//            if (gameOver()) break;
     }
     
     /**

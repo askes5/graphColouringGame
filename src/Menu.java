@@ -7,9 +7,9 @@ import java.awt.*;
 /**
  * @author Matthew Askes
  */
-public class main {
+public class Menu {
 
-    public main() {
+    public Menu() {
         createAndShowGUI();
     }
     
@@ -88,7 +88,7 @@ public class main {
         
         
         //Display the window.
-        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+//        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -113,6 +113,6 @@ public class main {
     
     
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(main::new);
+        javax.swing.SwingUtilities.invokeLater(Menu::new);
     }
 }
