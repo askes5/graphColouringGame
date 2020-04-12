@@ -248,11 +248,11 @@ Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex b
 A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
 %TODO add defination reference
-Recall the definition of pathwidth.
 
 \subsection{proofs using the activation strategy}
-
 Note that $\chi_g(P) \geq w$
+
+Recall the definition of pathwidth.
 %
 %\begin{algorithm}[h]
 %    \caption{Linear order in path decomposition}
@@ -297,10 +297,32 @@ Note that $\chi_g(P) \geq w$
 %\end{proof}
 
 \begin{theorem}
-    Let $P$ be a graph of pathwidth $k$. Then, 
-    \[\chi_g(P) \leq 3k - 2\]    
+    Let $G$ be a graph of pathwidth $k$. Then, 
+    \[\chi_g(G) \leq 3k + 1\]    
 \end{theorem}
 
+\begin{proof}
+    Let Let $G=(E,V)$ be a graph of pathwidth $k$, with path decomposition $\{P_i:i\in I\}$. 
+
+    Consider the linear order $L$ on $V$ such that for any $a,b\in I$ where $a<b$ all elements in $P_a$ are less than all elements in $P_b\setminus P_a$.  
+    
+    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
+    
+    We can see that for any vertex, $v, d^+(v) \leq k$.
+    
+    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm_KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 3k$. 
+    
+    Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques.
+    
+    Let $v$ be any vertex in $V$. Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
+    
+    Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)\leq k$. 
+    
+    Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$. %The idea is $b\in N+(v)$
+    There exits some $X_i,X_j$ such that $a\in X_i$ and $b\in x_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i$ xor $a\in x_j$. If $a \in X_j$ then $a < v$, this is a contribution. Thus $b\in X_i$. As $v\in X_i$ $b$ is incident ot $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
+    
+    $|Z| = |X|+|Y|$ Therefore, \[r(v,L,G) = d^+_{G_L}(u) + m(u,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
+\end{proof}
 %note: this proof is abusive, i.e. it completly violates the spirt of theorem 3.6.
 %only works because N+ is bounded by the path width
 %\begin{proof}
@@ -310,7 +332,7 @@ Note that $\chi_g(P) \geq w$
 %    
 %    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm_KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 2k + 1$.        
 %    
-%    Let $v$ be any vertex in $V$. 
+%    
 %    
 %    By the definition of path width  all $X_i \in \mathscr{X}$, $ \left| X_i \right| \leq k + 1 $. And $d^+(v) \leq k$ by theorem \ref{thm_kinnersley}.
 %
@@ -376,10 +398,10 @@ The following result is not new see [insert ref here] but the proof is novel.
     Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
            
     Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$.
-    $N^+(a)$ is a clique. As $v,b\in N^+(a)$ $b$ is adjacent to $v$. Thus rng$(M)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
+    $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $X =$ rng$(M)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
     
     Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$.
-    Note that $N^+(a)$ is a clique. As $v,b\in N^+(a)$ $b$ is adjacent to $v$. Thus rng$(M)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
+    Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $Y =$ rng$(N)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
         
     $|Z| = |X|+|Y|$. Therefore \[r(v,L,G) = d^+(v) + m(v,L,G) = 3k +1 \qedhere\]        
 \end{proof}
