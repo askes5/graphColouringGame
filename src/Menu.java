@@ -15,7 +15,7 @@ public class Menu {
     
     enum GraphTypes{
         KTREE,
-        PATH_GRAPH
+        KPATH
     }
     
     private void createAndShowGUI() {
@@ -73,7 +73,7 @@ public class Menu {
                 frame.dispose();
                 if (GraphTypes.KTREE.equals(graphTypesBox.getSelectedItem())) {
                     ColouringGame.newRandomKtreeGame(size, width, numColours);
-                } else if (GraphTypes.PATH_GRAPH.equals(graphTypesBox.getSelectedItem())){
+                } else if (GraphTypes.KPATH.equals(graphTypesBox.getSelectedItem())){
                    ColouringGame.newRandomPWGraphGame(size,width,numColours);
                 }
             }

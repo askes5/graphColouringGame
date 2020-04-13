@@ -16,6 +16,7 @@ import strategies.ActivationStrategy;
 import strategies.Stragety;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -103,9 +104,15 @@ public class ColouringGame extends JPanel {
         //add left menu
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        //add colourpick label
+        JLabel label = new JLabel("Select colour");
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setBorder(new EmptyBorder(0,20,0,20));
+        menuPanel.add(label);
         //add colour picker to menu
-        menuPanel.add(new ColourPicker(this), c);
-    
+        ColourPicker colourPicker = new ColourPicker(this);
+        menuPanel.add(colourPicker);
+        menuPanel.add(Box.createVerticalGlue());
         //add new game button
 //        JButton button = new JButton("New Game");
 //        button.addActionListener((e) -> {
