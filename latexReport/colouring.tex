@@ -39,7 +39,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         \node [normal] (v1) at (-21,1) {};
         \node [normal] (v3) at (-19,-1) {};
         \node [normal] (v4) at (-17,-1) {};
-        \node [ normal] (v11) at (-15,-1) {};
+        \node [normal] (v11) at (-15,-1) {};
         \node [normal] (v10) at (-13.5,-1) {};
         \node [normal] (v9) at (-11.5,-1) {};
         \node [normal] (v8) at (-10,-1) {};
@@ -74,8 +74,9 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         \node at ($(v9)!.5!(v8)$) {\ldots};
         \node at ($(v16)!.5!(v17)$) {\ldots};
         
-        \draw [decorate,decoration={calligraphic brace,amplitude=11pt,mirror,raise=2ex}, line width=1.5pt]
-        (v12) -- (v4) node[midway,yshift=-3em]{$p$ vertices};
+%        \draw [decorate,decoration={calligraphic brace,amplitude=11pt,mirror,raise=2ex}, line width=1.5pt]
+%        (v12) -- (v4) node[midway,yshift=-3em]{$p$ vertices};
+        \draw[decorate, decoration={brace, amplitude=10pt,mirror,raise=2ex}, thick] ($(v12)+(-.25,0)$)--($(v4)+(.25,0)$) node[midway,yshift=-3em]{$p$ vertices};
         \end{tikzpicture}
         \caption{}
         \label{figure_multiPlayerTree1}
@@ -305,7 +306,7 @@ Recall the definition of pathwidth.
     Let Let $G=(E,V)$ be a graph of pathwidth $k$, with path decomposition $\{P_i:i\in I\}$. 
 
     Consider the linear order $L$ on $V$ such that for any $a,b\in I$ where $a<b$ all elements in $P_a$ are less than all elements in $P_b\setminus P_a$.  
-    
+        
     $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
     
     We can see that for any vertex, $v, d^+(v) \leq k$.
@@ -439,6 +440,8 @@ Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions th
     An Interval graph can be online coloured with $3w-2$ colours, where $w$ is the size of the maximum clique.
 \end{theorem}
 
+Can cover a graph with 3w-2 chains. In inductive proof each new A has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is 7*(w-1)+1 = 7w-6. however this relies on being able to see the whole of A.
+
 \begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
     An Interval graph has chromatic number $3w-2$ where where $w$ is the size of the maximum clique.
 \end{theorem}
@@ -448,7 +451,9 @@ However he defines his linear order as left to right on left most element in eac
 As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the leftmost element in each interval and first fit.        
 
 
+Link between decadency of graph and double trouble?
 
+vertex separation number > degeneracy, thus find double trouble for pathwidth, find for all graphs. 
 
 
 
