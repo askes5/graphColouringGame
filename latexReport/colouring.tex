@@ -297,6 +297,13 @@ Recall the definition of pathwidth.
 %    The algorithm adds a vertex $v$ to $L$ iff there is no $j> i$ such that $v \in X_j$. Thus $i$ is the greatest $i$ such that $v \in X_i$. Therefore by definition of path decomposition all the neighbours of $v$ not in the $L$ are in $X_i$. Further the neighbours not in $L$ when $v$ is added to $L$ are greater than $v$ in $L$. Therefore is $N^-(v) \subset X_i$.
 %\end{proof}
 
+%todo lower bound of pw+1.
+% thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
+%activation stragety only play aginest players in linear order of selection is at least (p+1)w +1. 
+
+%conjecture that tree is (p+1)w+1
+
+
 \begin{theorem}\label{thm_pathwidth}
     Let $G$ be a graph of pathwidth $k$. Then, 
     \[\chi_g(G) \leq 3k + 1\]    
@@ -440,7 +447,7 @@ Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions th
     An Interval graph can be online coloured with $3w-2$ colours, where $w$ is the size of the maximum clique.
 \end{theorem}
 
-Can cover a graph with 3w-2 chains. In inductive proof each new A has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is 7*(w-1)+1 = 7w-6. however this relies on being able to see the whole of A.
+Can cover a graph with $ 3w-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(w-1)+1 = 7w-6 $. however this relies on being able to see the whole of $ A $.
 
 \begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
     An Interval graph has chromatic number $3w-2$ where where $w$ is the size of the maximum clique.
@@ -448,7 +455,7 @@ Can cover a graph with 3w-2 chains. In inductive proof each new A has pathwidth 
 
 The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
 However he defines his linear order as left to right on left most element in each interval.  
-As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the leftmost element in each interval and first fit.        
+As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the left most element in each interval and first fit.        
 
 
 Link between decadency of graph and double trouble?
