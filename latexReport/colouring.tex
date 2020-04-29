@@ -31,7 +31,6 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
    \begin{figure}[h]
        \centering
         \begin{tikzpicture}[scale=.9, transform shape]
-        \tikzstyle{every node}=[circle]; 
         \node [normal] (v7) at (-7.5,1) {};
         \node [normal] (v6) at (-11,1) {};
         \node [normal] (v5) at (-14.5,1) {};
@@ -126,15 +125,15 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         \item Alice colours $2$, $x_1$, $x_2$, \ldots, or $x_p$.
         
         Bob colours $y_{p-1}$ with $c_p$ and $y_{p}$ with $c_{p+1}$. 
-        Vertex $3$ now has $p+1$ different coloured neighbours and thus Bob wins. 
-        
+        Vertex $3$ now has $p+1$ different coloured neighbours and thus Bob wins.     
+                    
         \item Alice colours $3$.
-        
+               
         The colour of $3$ cannot be one of $c_1 \ldots c_{p-1}$. Therefore $3$ is either $c_p$ or $c_{p+1}$. 
         W.l.o.g let the colour of $3$ be $c_{p+1}$.
         Bob colours $x_1$ \ldots $x_{p-1}$ with $c_2$ \ldots $c_{p}$ respectively.
-        Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins. 
-        
+        Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins.  
+                       
         \item Alice colours $y_{p-1}$ or $y_{p}$
         
         Bob colours $2$ with $c_p$ and $y_{p}$ (or $y_{p-1}$ if Alice coloured $y_p$) with $c_{p+1}$ .
@@ -143,6 +142,72 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
     Therefore we have a winning strategy on $G$ in $\mathcal{T}$ for Bob with $p+1$ colours. 
 \end{proof}
+
+\begin{theorem}
+    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[2w+1<\chi_g(\mathcal{P};p)\]
+\end{theorem}
+%todo lower bound of pw+1.
+% thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
+%activation stragety only play aginest players in linear order of selection is at least (p+1)w +1. 
+
+%conjecture that tree is (p+1)w+1
+
+\begin{figure}[H]
+    \centering
+%    \begin{tikzpicture}
+%    
+%    \draw[thick]  (0,0) ellipse (4 and 1);
+%    \node [normal, label=right:$v_{n}$] (v1) at (0,3) {};
+%    \node [normal, label=right:$v_{n-1}$] (v2) at (0,4) {};
+%    \node [normal, label=right:$v_{2}$] (v5) at (0,6) {};
+%    \node [normal, label=right:$v_{1}$] (v6) at (0,7) {}; 
+%    \node (v3) at (-4,0) {};
+%    \node (v4) at (4,0) {};    
+%    
+%    \node [] at (3.5,-1) {$K_w$};
+%    \node[normal, label=below:$u_{1}$] (v7) at (-2.5,0) {};
+%    \node[normal, label=below:$u_{2}$] (v8) at (-1.5,0) {};
+%    \node[normal, label=below:$u_{w-1}$] (v9) at (1.5,0) {};
+%    \node[normal, label=below:$u_{w}$] (v10) at (2.5,0) {};
+%    \draw  (v7) edge (v1);
+%    \draw  (v1) edge (v8);
+%    \draw  (v1) edge (v9);
+%    \draw  (v1) edge (v10);
+%    
+%    \draw [](v10) --(v2) -- (v7);
+%    \draw [](v7) -- (v5) -- (v10);
+%    \draw [](v7) -- (v6) -- (v10);
+%        
+%    \path (v2) -- (v5) node [ font=\Huge, midway, sloped] {$\dots$};
+%    \path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
+%    \end{tikzpicture}
+\begin{tikzpicture}
+\draw[thick]  (0,0) ellipse (4 and 1);
+\node [normal, label=right:$v_{n}$] (v1) at (0,3) {};
+\node [normal, label=right:$v_{1}$] (v6) at (0,5) {}; 
+\node (v3) at (-4,0) {};
+\node (v4) at (4,0) {};
+
+
+
+\node [] at (3.5,-1) {$K_w$};
+\node[normal, label=below:$u_{1}$] (v7) at (-3,0) {};
+\node[normal, label=below:$u_{2}$] (v8) at (-1.5,0) {};
+\node[normal, label=below:$u_{w-1}$] (v9) at (1.5,0) {};
+\node[normal, label=below:$u_{w}$] (v10) at (3,0) {};
+\draw  (v7) edge (v1);
+\draw  (v1) edge (v8);
+\draw  (v1) edge (v9);
+\draw  (v1) edge (v10);
+
+\draw [](v7) -- (v6) -- (v10);
+
+\path (v1) -- (v6) node [ font=\Huge, midway, sloped] {$\dots$};
+\path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
+\end{tikzpicture}
+    \caption{}
+    \label{fig:pwlowerbound}
+\end{figure}
 
 %TODO: check that these theorems are true.
 %  Find counter example to disprove this theorem.
@@ -297,11 +362,6 @@ Recall the definition of pathwidth.
 %    The algorithm adds a vertex $v$ to $L$ iff there is no $j> i$ such that $v \in X_j$. Thus $i$ is the greatest $i$ such that $v \in X_i$. Therefore by definition of path decomposition all the neighbours of $v$ not in the $L$ are in $X_i$. Further the neighbours not in $L$ when $v$ is added to $L$ are greater than $v$ in $L$. Therefore is $N^-(v) \subset X_i$.
 %\end{proof}
 
-%todo lower bound of pw+1.
-% thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
-%activation stragety only play aginest players in linear order of selection is at least (p+1)w +1. 
-
-%conjecture that tree is (p+1)w+1
 
 
 \begin{theorem}\label{thm_pathwidth}
