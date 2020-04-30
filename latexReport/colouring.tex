@@ -130,8 +130,8 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         \item Alice colours $3$.
                
         The colour of $3$ cannot be one of $c_1 \ldots c_{p-1}$. Therefore $3$ is either $c_p$ or $c_{p+1}$. 
-        W.l.o.g let the colour of $3$ be $c_{p+1}$.
-        Bob colours $x_1$ \ldots $x_{p-1}$ with $c_2$ \ldots $c_{p}$ respectively.
+        Without loss of generality assume the colour of $3$ is $c_{p+1}$.
+        Bob colours $x_1, \dots ,x_{p-1}$ with $c_2,\dots,c_{p}$ respectively.
         Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins.  
                        
         \item Alice colours $y_{p-1}$ or $y_{p}$
@@ -144,7 +144,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \end{proof}
 
 \begin{theorem}
-    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[2w+1<\chi_g(\mathcal{P};p)\]
+    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[2w+1\geq\chi_g(\mathcal{P};p)\]
 \end{theorem}
 %todo lower bound of pw+1.
 % thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
@@ -152,35 +152,67 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
 %conjecture that tree is (p+1)w+1
 
+ Note that having $p$ players is equivalent to having Bob have $p-1$ turns for every turn Alice has.
+\begin{proof}
+    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $2w$.
+    
+    We define the graph $G$ as follows. First start with a $w$-clique, $K_w$. Second take $n=pw$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_w$. Now copy this graph,  and connect by copies at any vertex not in $K_w$. We now have the graph, $G$, in figure \ref{fig:pwlowerbound1}.
+    
+    $G$ has the path decomposition $\{K_w\cup\{v_n\}, K_w\cup\{v_{n-1}\}, \dots, K_w\cup\{v_1\}, K_w'\cup\{v_1\}, K_w'\cup\{t_2\}, \dots, K_w'\cup\{t_n\}\}$, and therefore has path width $w$.
 \begin{figure}[H]
     \centering
-%    \begin{tikzpicture}
-%    
-%    \draw[thick]  (0,0) ellipse (4 and 1);
-%    \node [normal, label=right:$v_{n}$] (v1) at (0,3) {};
-%    \node [normal, label=right:$v_{n-1}$] (v2) at (0,4) {};
-%    \node [normal, label=right:$v_{2}$] (v5) at (0,6) {};
-%    \node [normal, label=right:$v_{1}$] (v6) at (0,7) {}; 
-%    \node (v3) at (-4,0) {};
-%    \node (v4) at (4,0) {};    
-%    
-%    \node [] at (3.5,-1) {$K_w$};
-%    \node[normal, label=below:$u_{1}$] (v7) at (-2.5,0) {};
-%    \node[normal, label=below:$u_{2}$] (v8) at (-1.5,0) {};
-%    \node[normal, label=below:$u_{w-1}$] (v9) at (1.5,0) {};
-%    \node[normal, label=below:$u_{w}$] (v10) at (2.5,0) {};
-%    \draw  (v7) edge (v1);
-%    \draw  (v1) edge (v8);
-%    \draw  (v1) edge (v9);
-%    \draw  (v1) edge (v10);
-%    
-%    \draw [](v10) --(v2) -- (v7);
-%    \draw [](v7) -- (v5) -- (v10);
-%    \draw [](v7) -- (v6) -- (v10);
-%        
-%    \path (v2) -- (v5) node [ font=\Huge, midway, sloped] {$\dots$};
-%    \path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
-%    \end{tikzpicture}
+\begin{tikzpicture}[rotate=90]
+\draw[thick]  (0,0) ellipse (4 and 1);
+\node [normal, label=right:$t_{n}$] (v1) at (0,3) {};
+\node [normal, label=below:$v_{1}/t_1$] (v6) at (0,5) {}; 
+
+\node[normal, label=below:$s_{1}$] (v7) at (-3,0) {};
+\node[normal, label=below:$s_{2}$] (v8) at (-1.5,0) {};
+\node[normal, label=below:$s_{w-1}$] (v9) at (1.5,0) {};
+\node[normal, label=below:$s_{w}$] (v10) at (3,0) {};
+\draw  (v7) edge (v1);
+\draw  (v1) edge (v8);
+\draw  (v1) edge (v9);
+\draw  (v1) edge (v10);
+\draw (v8) -- (v6) -- (v9);
+
+\node [] at (3.5,9) {$K_w'$};
+\draw [](v7) -- (v6) -- (v10);
+
+\path (v1) -- (v6) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
+\path (v8) -- (v9) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
+
+
+
+\draw[thick]  (0,10) ellipse (4 and 1);
+\node [normal, label=left:$v_{n}$] (v11) at (0,7) {};
+
+\node [] at (3.5,-1) {$K_w$};
+\node[normal, label=below:$u_{1}$] (v17) at (-3,10) {};
+\node[normal, label=below:$u_{2}$] (v18) at (-1.5,10) {};
+\node[normal, label=below:$u_{w-1}$] (v19) at (1.5,10) {};
+\node[normal, label=below:$u_{w}$] (v110) at (3,10) {};
+\draw  (v17) edge (v11);
+\draw  (v11) edge (v18);
+\draw  (v11) edge (v19);
+\draw  (v11) edge (v110);
+\draw (v18) -- (v6) -- (v19);
+
+\draw [](v17) -- (v6) -- (v110);
+
+\path (v11) -- (v6) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
+\path (v18) -- (v19) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
+
+
+\end{tikzpicture}
+    \caption{}
+\label{fig:pwlowerbound1}
+\end{figure}
+
+On Alice's first move she can
+
+\begin{figure}[H]
+    \centering
 \begin{tikzpicture}
 \draw[thick]  (0,0) ellipse (4 and 1);
 \node [normal, label=right:$v_{n}$] (v1) at (0,3) {};
@@ -207,8 +239,9 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
 \end{tikzpicture}
     \caption{}
-    \label{fig:pwlowerbound}
+    \label{fig:pwlowerbound2}
 \end{figure}
+\end{proof}
 
 %TODO: check that these theorems are true.
 %  Find counter example to disprove this theorem.
