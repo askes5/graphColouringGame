@@ -144,7 +144,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \end{proof}
 
 \begin{theorem}
-    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[2w+1\geq\chi_g(\mathcal{P};p)\]
+    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[2w\geq\chi_g(\mathcal{P};p)\]
 \end{theorem}
 %todo lower bound of pw+1.
 % thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
@@ -154,17 +154,17 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
  Note that having $p$ players is equivalent to having Bob have $p-1$ turns for every turn Alice has.
 \begin{proof}
-    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $2w$.
+    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $m=2w-1$ colours. Let the available colours be $\{c_1,c_2,\dots,c_m\}$.
     
-    We define the graph $G$ as follows. First start with a $w$-clique, $K_w$. Second take $n=pw$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_w$. Now copy this graph,  and connect by copies at any vertex not in $K_w$. We now have the graph, $G$, in figure \ref{fig:pwlowerbound1}.
+    We define the graph $G$ as follows. First start with a $w$-clique, $K_w$. Second take $n=p^2w$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_w$, forming a $w+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_w$. We now have the graph, $G$, in figure \ref{fig:pwlowerbound1}.
     
-    $G$ has the path decomposition $\{K_w\cup\{v_n\}, K_w\cup\{v_{n-1}\}, \dots, K_w\cup\{v_1\}, K_w'\cup\{v_1\}, K_w'\cup\{t_2\}, \dots, K_w'\cup\{t_n\}\}$, and therefore has path width $w$.
+    Note that $G$ has the path decomposition $\{K_w\cup\{v_n\}, K_w\cup\{v_{n-1}\}, \dots, K_w\cup\{v_1\}, K_w'\cup\{v_1\}, K_w'\cup\{t_2\}, \dots, K_w'\cup\{t_n\}\}$, and therefore has path width $w$.
 \begin{figure}[H]
     \centering
 \begin{tikzpicture}[rotate=90]
 \draw[thick]  (0,0) ellipse (4 and 1);
 \node [normal, label=right:$t_{n}$] (v1) at (0,3) {};
-\node [normal, label=below:$v_{1}/t_1$] (v6) at (0,5) {}; 
+\node [normal, label=below:$v_{1}(t_1)$] (v6) at (0,5) {}; 
 
 \node[normal, label=below:$s_{1}$] (v7) at (-3,0) {};
 \node[normal, label=below:$s_{2}$] (v8) at (-1.5,0) {};
@@ -176,7 +176,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \draw  (v1) edge (v10);
 \draw (v8) -- (v6) -- (v9);
 
-\node [] at (3.5,9) {$K_w'$};
+\node [] at (3.5,9) {$K_w$};
 \draw [](v7) -- (v6) -- (v10);
 
 \path (v1) -- (v6) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
@@ -187,7 +187,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \draw[thick]  (0,10) ellipse (4 and 1);
 \node [normal, label=left:$v_{n}$] (v11) at (0,7) {};
 
-\node [] at (3.5,-1) {$K_w$};
+\node [] at (3.5,-1) {$K_w'$};
 \node[normal, label=below:$u_{1}$] (v17) at (-3,10) {};
 \node[normal, label=below:$u_{2}$] (v18) at (-1.5,10) {};
 \node[normal, label=below:$u_{w-1}$] (v19) at (1.5,10) {};
@@ -203,13 +203,15 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \path (v11) -- (v6) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
 \path (v18) -- (v19) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
 
-
+%------------------------------------
 \end{tikzpicture}
     \caption{}
 \label{fig:pwlowerbound1}
 \end{figure}
 
-On Alice's first move she can
+On Alice's first turn she picks any vertex and colours it, let the colour be $c_1$. By the symmetry of the graph we can assume that Alice colours a vertex $t_i$ or $s_i$. 
+
+We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}. 
 
 \begin{figure}[H]
     \centering
@@ -241,7 +243,21 @@ On Alice's first move she can
     \caption{}
     \label{fig:pwlowerbound2}
 \end{figure}
+
+
+On Alice's first move she either coloured $v_1$ or a vertex not in $H$. Regardless on Bob's turn he always colours $p-1$ uncoloured vertices not in $K_w$ with colours not used in $H$. We keep playing until either $K_w$ is fully coloured bar one, Bob runs out of new colours.  
+
+If $K_w$ is fully coloured bar one. Let the uncoloured vertex be $u_w$. As each coloured vertex in $K_w$ must have been coloured by Alice there have been at least $w-1$ turns after the first turn. On the first turn Bob coloured $p-1$ vertices, and each subsequent turn he coloured $p-1$ vertices . When each vertex in $K_w$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $u_w$ is 
+\[(p-1)+(p-1)(w-1)+(w-1)=pw-1\]
+Therefore $u_w$ cannot be coloured, and Bob wins.
+
+Every turn Bob uses $p-1$ unique colours. Therefore it will take at least $(pw-1)\div(p-1)$ turns to exhaust all the colours. Each turn $p$ vertices are coloured and here are $n=p^2w$ vertices for Bob to colour. $p^2w > p(pw-1)\div(p-1)$ and hence Bob cannot run out of vertices to colour before he runs out of colours.
+
+If Bob runs out of colours before $K_w$ is fully coloured bar one then every uncloured vertex in $K_w$ is connected to $pw-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
+
+%todo alice coloured v_1?
 \end{proof}
+%---------------------------------------
 
 %TODO: check that these theorems are true.
 %  Find counter example to disprove this theorem.
@@ -311,11 +327,11 @@ Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex b
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G=(V, E)$ be a graph and $L$ a linear ordering $V$. We define the activation strategy $S(L,G)$ as follows:
     
-    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{algo_activStrat} to update A and choose the
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update A and choose the
     next vertex.
     \begin{algorithm}[h]
         \caption{Activation strategy}
-        \label{algo_activStrat}
+        \label{alg:activStrat}
         \begin{algorithmic}[1]
             \Statex
             \State $x \gets b$ 
