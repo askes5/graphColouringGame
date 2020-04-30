@@ -154,7 +154,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
  Note that having $p$ players is equivalent to having Bob have $p-1$ turns for every turn Alice has.
 \begin{proof}
-    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $m=2w+\left\lceil\frac{p-1}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
+    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $m=pw+\left\lceil\frac{p-1}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
     We define the graph $G$ as follows. First start with a $w$-clique, $K_w$. Second take $n=p^2w$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_w$, forming a $w+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_w$. We now have the graph, $G$, in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
     
