@@ -144,7 +144,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \end{proof}
 
 \begin{theorem}
-    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $w$. If we have $p\geq2$ players then \[pw+\left\lceil \frac{p-1}{2}\right\rceil\leq\chi_g(\mathcal{P};p)\]
+    Let $\mathcal{P}$ be family of graphs with bounded pathwidth $k$. If we have $p\geq2$ players then \[pk+\left\lceil \frac{p-1}{2}\right\rceil\leq\chi_g(\mathcal{P};p)\]
 \end{theorem}
 %todo lower bound of pw+1.
 % thus we need at least w extra colours for each extra player?? equilevlant to incrasing the pathwitdth by 1??
@@ -154,11 +154,11 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
  Note that having $p$ players is equivalent to having Bob have $p-1$ turns for every turn Alice has.
 \begin{proof}
-    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $m=pw+\left\lceil\frac{p-1}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
+    It suffices to show that there exists a graph in $\mathcal{P}$ for which bob has a winning strategy with $m=pk+\left\lceil\frac{p-1}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
-    We define the graph $G$ as follows. First start with a $w$-clique, $K_w$. Second take $n=p^2w$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_w$, forming a $w+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_w$. We now have the graph, $G$, in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
+    We define the graph $G$ as follows. First start with a $k$-clique, $K_k$. Second take $n=p^2k$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$, forming a $k+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
     
-    Note that $G$ has the path decomposition $\{K_w\cup\{v_n\}, K_w\cup\{v_{n-1}\}, \dots, K_w\cup\{v_1\}, K_w'\cup\{v_1\}, K_w'\cup\{t_2\}, \dots, K_w'\cup\{t_n\}\}$, and therefore has path width $w$.
+    Note that $G$ has the path decomposition $\{K_k\cup\{v_n\}, K_k\cup\{v_{n-1}\}, \dots, K_k\cup\{v_1\}, K_k'\cup\{v_1\}, K_k'\cup\{t_2\}, \dots, K_k'\cup\{t_n\}\}$, and therefore has path width $k$.
 \begin{figure}[H]
     \centering
 \begin{tikzpicture}[rotate=90]
@@ -168,15 +168,15 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 
 \node[normal, label=below:$s_{1}$] (v7) at (-3,0) {};
 \node[normal, label=below:$s_{2}$] (v8) at (-1.5,0) {};
-\node[normal, label=below:$s_{w-1}$] (v9) at (1.5,0) {};
-\node[normal, label=below:$s_{w}$] (v10) at (3,0) {};
+\node[normal, label=below:$s_{k-1}$] (v9) at (1.5,0) {};
+\node[normal, label=below:$s_{k}$] (v10) at (3,0) {};
 \draw  (v7) edge (v1);
 \draw  (v1) edge (v8);
 \draw  (v1) edge (v9);
 \draw  (v1) edge (v10);
 \draw (v8) -- (v6) -- (v9);
 
-\node [] at (3.5,9) {$K_w$};
+\node [] at (3.5,9) {$K_k$};
 \draw [](v7) -- (v6) -- (v10);
 
 \path (v1) -- (v6) node [ font=\Huge, midway, sloped,rotate=90] {$\dots$};
@@ -187,11 +187,11 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 \draw[thick]  (0,10) ellipse (4 and 1);
 \node [normal, label=left:$v_{n}$] (v11) at (0,7) {};
 
-\node [] at (3.5,-1) {$K_w'$};
+\node [] at (3.5,-1) {$K_k'$};
 \node[normal, label=below:$u_{1}$] (v17) at (-3,10) {};
 \node[normal, label=below:$u_{2}$] (v18) at (-1.5,10) {};
-\node[normal, label=below:$u_{w-1}$] (v19) at (1.5,10) {};
-\node[normal, label=below:$u_{w}$] (v110) at (3,10) {};
+\node[normal, label=below:$u_{k-1}$] (v19) at (1.5,10) {};
+\node[normal, label=below:$u_{k}$] (v110) at (3,10) {};
 \draw  (v17) edge (v11);
 \draw  (v11) edge (v18);
 \draw  (v11) edge (v19);
@@ -212,7 +212,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
 We can consider two disjoint copies of $G$. On Bob's first turn he colours in whichever copy Alice didn't. Hence we can assume that Bob can colour first.
 
 Therefore on Bobs first turn he colours $v_1$ $c_1$ and as many of $v_2,t_2,v_3,t_3,\dots$ in order that he can on his turn.
- By symmetry of $G$ was can assume Alice colours one of $t_2,\dots,t_n,s_1,\dots,s_w$. 
+ By symmetry of $G$ was can assume Alice colours one of $t_2,\dots,t_n,s_1,\dots,s_k$. 
 
 We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has not coloured in yet. 
 
@@ -227,11 +227,11 @@ We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has
 
 
 
-\node [] at (3.5,-1) {$K_w$};
+\node [] at (3.5,-1) {$K_k$};
 \node[normal, label=below:$u_{1}$] (v7) at (-3,0) {};
 \node[normal, label=below:$u_{2}$] (v8) at (-1.5,0) {};
-\node[normal, label=below:$u_{w-1}$] (v9) at (1.5,0) {};
-\node[normal, label=below:$u_{w}$] (v10) at (3,0) {};
+\node[normal, label=below:$u_{k-1}$] (v9) at (1.5,0) {};
+\node[normal, label=below:$u_{k}$] (v10) at (3,0) {};
 \draw  (v7) edge (v1);
 \draw  (v1) edge (v8);
 \draw  (v1) edge (v9);
@@ -248,15 +248,15 @@ We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has
 \end{figure}
 
 
-Bob's strategy is to always colours $p-1$ uncoloured vertices not in $K_w$ with colours not used in $H$. We keep playing until either $K_w$ is fully coloured bar one, or Bob runs out of new colours. We consider the cases separately 
+Bob's strategy is to always colours $p-1$ uncoloured vertices not in $K_k$ with colours not used in $H$. We keep playing until either $K_k$ is fully coloured bar one, or Bob runs out of new colours. We consider the cases separately 
 
-First, suppose $K_w$ is fully coloured bar one. let the uncoloured vertex be $u_w$. On the first turn Bob coloured $p-1$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{p-1}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $p-1$ vertices. As each coloured vertex in $K_w$ must have been coloured by Alice there have been at least $w-1$ turns after the second turn and each turn Bob coloured $p-1$ vertices. Finally when each vertex in $K_w$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $u_w$ is 
-\[\left\lceil \frac{p-1}{2}\right\rceil+(p-1) +(p-1)(w-1)+(w-1)=pw+\left\lceil \frac{p-1}{2}\right\rceil-1\]
-Therefore $u_w$ cannot be coloured, and Bob wins.
+First, suppose $K_k$ is fully coloured bar one. let the uncoloured vertex be $u_k$. On the first turn Bob coloured $p-1$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{p-1}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $p-1$ vertices. As each coloured vertex in $K_k$ must have been coloured by Alice there have been at least $k-1$ turns after the second turn and each turn Bob coloured $p-1$ vertices. Finally when each vertex in $K_k$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $u_k$ is 
+\[\left\lceil \frac{p-1}{2}\right\rceil+(p-1) +(p-1)(k-1)+(k-1)=pk+\left\lceil \frac{p-1}{2}\right\rceil-1\]
+Therefore $u_k$ cannot be coloured, and Bob wins.
 
-Every turn Bob uses $p-1$ unique colours. Therefore it will take at least $(pw-1)\div(p-1)$ turns to exhaust all the colours. Each turn $p$ vertices are coloured and here are $n=p^2w$ vertices for Bob to colour. $p^2w > p(pw-1)\div(p-1)$ . Therefore Bob cannot run out of vertices to colour before he runs out of colours.
+Every turn Bob uses $p-1$ unique colours. Therefore it will take at least $(pk-1)\div(p-1)$ turns to exhaust all the colours. Each turn $p$ vertices are coloured and here are $n=p^2k$ vertices for Bob to colour. $p^2k > p(pk-1)\div(p-1)$ . Therefore Bob cannot run out of vertices to colour before he runs out of colours.
 
-Second, suppose Bob has run out of colours then every uncoloured vertex in $K_w$ is connected to $pw-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
+Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $pk-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
 
 \end{proof}
 %---------------------------------------
@@ -368,7 +368,7 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
 %TODO add defination reference
 
 \subsection{proofs using the activation strategy}
-Note that $\chi_g(P) \geq w$
+Note that $\chi_g(P) > $ pathwidth
 
 Recall the definition of pathwidth.
 %
@@ -533,7 +533,7 @@ The following result is not new see [insert ref here] but the proof is novel.
 
 \begin{proof}
     Let $G$ be a graph of treewidth $k$.
-    $G$ is a subgraph of a k-tree. Therefore by theorem \ref{Thm_ktree} \[\chi_g(G) \leq 3w + 2 \qedhere\] 
+    $G$ is a subgraph of a k-tree. Therefore by theorem \ref{Thm_ktree} \[\chi_g(G) \leq 3k + 2 \qedhere\] 
 \end{proof}
 
 %-------------------------------------------------------------------------------------------------------------------
@@ -556,13 +556,13 @@ Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions th
 \section{Online colouring}
 
 \begin{theorem}[Kierstand and Trotter \cite{KierstandTrotter}]
-    An Interval graph can be online coloured with $3w-2$ colours, where $w$ is the size of the maximum clique.
+    An Interval graph can be online coloured with $3\omega-2$ colours, where $\omega$ is the size of the maximum clique.
 \end{theorem}
 
-Can cover a graph with $ 3w-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(w-1)+1 = 7w-6 $. however this relies on being able to see the whole of $ A $.
+Can cover a graph with $ 3\omega-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(\omega-1)+1 = 7\omega-6 $. however this relies on being able to see the whole of $ A $.
 
 \begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
-    An Interval graph has chromatic number $3w-2$ where where $w$ is the size of the maximum clique.
+    An Interval graph has chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
 \end{theorem}
 
 The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
