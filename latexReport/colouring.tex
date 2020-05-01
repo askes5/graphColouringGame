@@ -250,14 +250,15 @@ We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has
 
 Bob's strategy is to always colours $p-1$ uncoloured vertices not in $K_k$ with colours not used in $H$. We keep playing until either $K_k$ is fully coloured bar one, or Bob runs out of new colours. We consider the cases separately 
 
-First, suppose $K_k$ is fully coloured bar one. Let the uncoloured vertex be $x$. On the first turn Bob coloured $p-1$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{p-1}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $p-1$ vertices. As each coloured vertex in $K_k$ must have been coloured by Alice there have been at least $k-1$ turns after the second turn and each turn Bob coloured $p-1$ vertices. Finally when each vertex in $K_k$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $x$ is 
-\[\left\lceil \frac{p-1}{2}\right\rceil+(p-1) +(p-1)(k-1)+(k-1)=pk+\left\lceil \frac{p-1}{2}\right\rceil-1\]
-Therefore $x$ cannot be coloured, and Bob wins.
-
 Every turn Bob uses $p-1$ unique colours. Therefore it will take at least $(pk-1)\div(p-1)$ turns to exhaust all the colours. Each turn $p$ vertices are coloured and here are $n=p^2k$ vertices for Bob to colour. $p^2k > p(pk-1)\div(p-1)$ . Therefore Bob cannot run out of vertices to colour before he runs out of colours.
 
-Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $pk-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
+First, suppose $K_k$ is fully coloured bar one. Let the uncoloured vertex be $x$. On the first turn Bob coloured $p-1$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{p-1}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $p-1$ vertices. As each coloured vertex in $K_k$ must have been coloured by Alice there have been at least $k-1$ turns after the second turn and each turn Bob coloured $p-1$ vertices. Finally when each vertex in $K_k$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $x$ is 
+%
+\[\left\lceil \frac{p-1}{2}\right\rceil+(p-1) +(p-1)(k-1)+(k-1)=pk+\left\lceil \frac{p-1}{2}\right\rceil-1\]
+%
+Therefore $x$ cannot be coloured, and Bob wins.
 
+Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $pk-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
 \end{proof}
 %---------------------------------------
 
@@ -497,6 +498,8 @@ Recall the definition of pathwidth.
 
 %todo prove the above lemma
 
+%todo col_g(T) < 3k+1 is sharp
+
 %todo add defn of k-tree
 The following result is not new see [insert ref here] but the proof is novel.
 \begin{theorem} \label{Thm_ktree}
@@ -562,7 +565,7 @@ Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions th
 Can cover a graph with $ 3\omega-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(\omega-1)+1 = 7\omega-6 $. however this relies on being able to see the whole of $ A $.
 
 \begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
-    An Interval graph has chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
+    An Interval graph has game chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
 \end{theorem}
 
 The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
@@ -570,9 +573,9 @@ However he defines his linear order as left to right on left most element in eac
 As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the left most element in each interval and first fit.        
 
 
-Link between decadency of graph and double trouble?
+%Link between decadency of graph and double trouble?
 
-vertex separation number > degeneracy, thus find double trouble for pathwidth, find for all graphs. 
+%vertex separation number > degeneracy, thus find double trouble for pathwidth, find for all graphs. 
 
 
 
