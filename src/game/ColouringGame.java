@@ -31,13 +31,13 @@ public class ColouringGame extends JPanel {
     
     private Graph graph;
     private Map<String,Integer> nodeColours = new HashMap<>();
+    private final Set<String> nodeSet = new HashSet<>();
     private List<String> nodesPickedOrder = new ArrayList<>();
     private Viewer viewer;
     private Node selectedNode = null;
     private int selectedColour = -1;
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
-    private final Set<String> nodeSet = new HashSet<>();
     private JTextArea textOutputArea = new JTextArea();;
     private boolean isPlayersTurn = false;
     protected String styleSheet =
@@ -89,6 +89,8 @@ public class ColouringGame extends JPanel {
         playAsComputer(); //start game
     }
     
+    
+    
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
@@ -114,12 +116,13 @@ public class ColouringGame extends JPanel {
         menuPanel.add(colourPicker);
         menuPanel.add(Box.createVerticalGlue());
         //add new game button
-//        JButton button = new JButton("New Game");
-//        button.addActionListener((e) -> {
-//            frame.dispose();
-//            new Menu();
-//        });
-//        menuPanel.add(button);
+        JButton restartButton = new JButton("Restart Game");
+        restartButton.addActionListener((e) -> {
+            frame.dispose(); //dispose of current game
+            new ColouringGame(graph.getEdgeSet(),new ActivationStrategy((ActivationStrategy) stragety),numOfColours); //create a new game
+        });
+        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        menuPanel.add(restartButton);
         
         //add menu to content pane
         c.fill = GridBagConstraints.HORIZONTAL;

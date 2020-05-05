@@ -10,9 +10,9 @@ import java.util.*;
  */
 public class ActivationStrategy implements Stragety {
     
-    private Comparator<String> linearOrder;
+    private final Comparator<String> linearOrder;
     private Set<String> markedNodes;
-    private List<String> orderedNodes = null;
+    private List<String> orderedNodes;
     
     /**
      * The constructor.
@@ -23,7 +23,27 @@ public class ActivationStrategy implements Stragety {
         this.linearOrder = linearOrder;
         
         markedNodes = new HashSet<>();
+    
+        orderedNodes = null;
         
+//        for (String node : game.getNodeSet()) {
+//            if (!linearOrder.(node)) throw new IllegalArgumentException("The linear order doesn't contain all nodes");
+//        }
+    
+    }
+    
+    /**
+     * The constructor.
+     * @param activationStrategy The strategy to make a new strategy from
+     */
+    public ActivationStrategy( ActivationStrategy activationStrategy) {
+        
+        this.linearOrder = activationStrategy.linearOrder;
+        
+        markedNodes = new HashSet<>();
+        
+        orderedNodes = null;
+
 //        for (String node : game.getNodeSet()) {
 //            if (!linearOrder.(node)) throw new IllegalArgumentException("The linear order doesn't contain all nodes");
 //        }
@@ -110,4 +130,5 @@ public class ActivationStrategy implements Stragety {
     public List<String> getOrderedNodes() {
         return new ArrayList<>(orderedNodes);
     }
+    
 }
