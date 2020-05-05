@@ -122,6 +122,7 @@ public class ColouringGame extends JPanel {
             new ColouringGame(graph.getEdgeSet(),new ActivationStrategy((ActivationStrategy) stragety),numOfColours); //create a new game
         });
         restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        menuPanel.add(Box.createRigidArea(new Dimension(0,20)));//add space above restart button
         menuPanel.add(restartButton);
         
         //add menu to content pane
