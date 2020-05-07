@@ -138,15 +138,17 @@ public class ColouringGame extends JPanel {
                 return new Dimension(1240, 720);
             }
         };
-    
+
         this.viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         viewer.enableAutoLayout();
         ViewPanel viewPanel = viewer.addDefaultView(false);
-//        viewPanel.setPreferredSize(new Dimension(1000, 900));
+//        viewPanel.setPreferredSize(new Dimension(10, 10));
         panel.add(viewPanel);
         viewPanel.addMouseListener((PressedListener) this::mousePressed);
     
         c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weightx=1.0;
+//        c.weighty=1.0;
         c.gridx = 1;
         c.gridy = 0;
         this.add(panel,c);
@@ -162,10 +164,11 @@ public class ColouringGame extends JPanel {
         scrollPane.getViewport().getView().setForeground(Color.RED);
         
         c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weighty=0;
         c.gridx = 1;
         c.gridy = 1;
         this.add(scrollPane,c);
-    
+
         //Create and set up the content pane.
         JComponent newContentPane = this;
         newContentPane.setOpaque(true); //content panes must be opaque
@@ -382,6 +385,7 @@ public class ColouringGame extends JPanel {
     }
     
     public static void main(String[] args) {
+	    System.setProperty("sun.java2d.uiScale", "1.0"); //stop dpi scaling as it breaks mouse events in graph stream
         ColouringGame.newRandomKtreeGame(20,3,8);
     
 //        int pw = 2;

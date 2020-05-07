@@ -113,6 +113,7 @@ public class Menu {
     
     
     public static void main(String[] args) {
+	    System.setProperty("sun.java2d.uiScale", "1.0"); //stop dpi scaling as it breaks mouse events in graph stream
         javax.swing.SwingUtilities.invokeLater(Menu::new);
     }
 }
