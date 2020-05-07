@@ -64,7 +64,8 @@ public class Ktree extends BoundedGraph{
             newPartiton.addAll(neighbours);
             makeClique(newPartiton);
             //create new node in decomposition
-            DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(), DcomTree.addNode(newPartiton.toString()).getId());
+            DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(),
+                             DcomTree.addNode(newPartiton.toString()).getId());
             decomposition.getSetMap().put(newPartiton.toString(),newPartiton);
         }
     }

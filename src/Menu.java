@@ -69,7 +69,7 @@ public class Menu {
             int width =getIntegerFromTextBox(widthInput);
             int numColours = getIntegerFromTextBox(colourInput);
             
-            if (size >=0 && width>=0 && numColours >= 0){
+            if (size >0 && width>0 && numColours > 0){
                 frame.dispose();
                 if (GraphTypes.KTREE.equals(graphTypesBox.getSelectedItem())) {
                     ColouringGame.newRandomKtreeGame(size, width, numColours);
@@ -86,7 +86,7 @@ public class Menu {
         
         frame.getContentPane().add(contentPane);
     
-        frame.getRootPane().setDefaultButton(start);
+        frame.getRootPane().setDefaultButton(start);//enter activates the start button
         
         //Display the window.
 //        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
