@@ -85,7 +85,8 @@ public class Menu {
         contentPane.setBorder(new EmptyBorder(30, 30, 30, 30));
         
         frame.getContentPane().add(contentPane);
-        
+    
+        frame.getRootPane().setDefaultButton(start);
         
         //Display the window.
 //        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
