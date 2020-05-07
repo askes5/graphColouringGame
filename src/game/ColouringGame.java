@@ -144,7 +144,7 @@ public class ColouringGame extends JPanel {
         ViewPanel viewPanel = viewer.addDefaultView(false);
 //        viewPanel.setPreferredSize(new Dimension(1000, 900));
         panel.add(viewPanel);
-        viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
+        viewPanel.addMouseListener((PressedListener) this::mousePressed);
     
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
@@ -372,7 +372,7 @@ public class ColouringGame extends JPanel {
      * mouse listener to select a node by mouse click.
      * @param e the mouse event
      */
-    private synchronized void mouseClicked(MouseEvent e) {
+    private synchronized void mousePressed(MouseEvent e) {
         Element element = viewer.getDefaultView().findNodeOrSpriteAt(e.getX(), e.getY());
         if (element instanceof Node) {
             ColouringGame.this.setSelectedNode(element.getId());
