@@ -308,15 +308,29 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 
 %#####################################################################################################################
 \section{Activation Strategy}
-%-------------------------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+We define the marking game as follows. Let $G$ be a graph, and $n$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $n$ and Bob wins otherwise.
+
+\begin{definition}[Colouring number]
+    Suppose $G$ is a graph. The colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
+\end{definition}
+
+The marking game is commonly used for finding upper bounds for the game chromatic number, and was formally introduced in \cite{Zhu1999}, further examples can be found in  \cite{KIERSTEAD2000,Zhu2008}.
+
+Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $n$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $n$ coloured neighbours. Hence the game chromatic number is bound by the colouring number, that is $\chi_g(G)\leq\col(G)$
+
+Let $\mathcal{F}$ be the family of forests, $\mathcal{I}_k$ the family of interval graphs with clique number $k$, $\mathcal{P}$ the family of planar graphs, $\mathcal{Q}$ the family of outer planar graphs, and $\mathcal{K}_k$ the family of partial k trees. %note K_k is exactly the graphs of bounded tree width.
+
+The colouring number is known for a variety of different c
+
 \subsection{Summery of activation strategy}
+
+The activation strategy was introduced by H. A. Kirstead in \cite{KIERSTEAD2000}.
 
 Consider a graph $G(v,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
 
-Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice markes $w$, if not Alice repeats this on $w$ until she finds an active vertex.
-
-%TODO clearly \chi_g <= col_g 
-%TODO add shortcut for \operatorname{col}_g
+Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
 
 %TODO trim waffle
 \begin{definition}[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
@@ -560,6 +574,12 @@ Claim: for $p$ players $\col \leq p + \max{ \left| A \cap N(u)\right| }$.
 
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Refined Activation Strategy}
+The refined activation strategy is a refinement on the activation stragety introduced by Xuding Zhu in \cite{Zhu2008}. Zhu uses this stragety to find a bound for the ordering game for the class of planar graphs. 
+
+\begin{theorem}[\cite[Theorem 1]{Zhu2008}]
+    Let $G$ be a planar graph, then \[\chi_g(G)\leq\col(G)\leq17\]
+\end{theorem}
+
 The refined activation strategy applies the same basic strategy as above but with two differences. 
 
 First, we use a digraph $L$ on $G$ as our ordering. This is only a rough ordering. We partition $V$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i <$ then the an edge $xy$ is in $L$. The ordering may not be an ordering in each block. However if we ignore what happens in each block we get a linear ordering.
