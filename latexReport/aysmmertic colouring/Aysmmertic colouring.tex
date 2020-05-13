@@ -69,9 +69,10 @@
         \end{itemize}
     \end{theorem}
     
-    The proofs of the upper bounds tend to use the fact that $\chi_g(\FF)=\chi_g(\FF;a,b)= \col(\FF;a,b)\col(\FF)=4$. And then provides various unique strategies for Alice to follow.
+    The proofs of the upper bounds tend to use the fact that     
+    $\chi_g(\FF)= \chi_g(\FF;a,b)= \col(\FF;a,b)\col(\FF)=4$. And then provides various unique strategies for Alice to follow.
     
-    Interesting all the proofs of lower bounds are build on the following graph. Let $T=T_n$ be the forest on the vertex set $V=\bigcup_{i=1}^{20}[n]^i$, where $[n]^i$ is the set of $i$--sequences whose members are chosen from $\{1,2,\dots,n\}$. %Recall that sequences are enumerated collection with repetition allowed and order matters.  
+    All the proofs of lower bounds are build on the following graph. Let $T=T_n$ be the forest on the vertex set $V=\bigcup_{i=1}^{20}[n]^i$, where $[n]^i$ is the set of $i$--sequences whose members are chosen from $\{1,2,\dots,n\}$. %Recall that sequences are enumerated collection with repetition allowed and order matters.  
     The edges of $T_n$ are pairs of the form $e= (a_1,\dots,a_i) (a_1,\dots,a_{i+1})$. Note that $T_n$ is the graph with $n$ complete rooted $n$--ary trees with depth $20$. They then proceed to show that there is some sufficiently large $n$ such that Bob can win the $(a,b)$--game.
     
 %    As an aside the number of vertices in $T_n$ is $n\left(\frac{\left(n^{21}-1\right)}{n-1}\right)$, which rises faster than $n!$.   
@@ -121,7 +122,7 @@
         and begins his dinner.
     \end{quotation}
     
-    A summery of the Harmonious strategy is as follows.
+    A summery of the Harmonious strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
     
     Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
     \begin{itemize}
@@ -131,6 +132,8 @@
         contributed to all its outneighbors.
         \item [Step 3] Alice marks $z$
     \end{itemize}
+    
+    They proceed to use the Harmonious strategy to find upper bounds for for common graphs. They conclude by providing examples showing that many of the upper bounds are optimal.
     
     \section{title}
     The results in \cite{kierYang2005} and \cite{yangZhu2008} mainly concern the $(a,1)$--marking game.
