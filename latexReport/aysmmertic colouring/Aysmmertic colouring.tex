@@ -30,6 +30,8 @@
 \newcommand{\KK}{\mathcal{K}_k} %cursive K shorcut
 \newcommand{\FF}{\mathcal{F}} %cursive F shorcut
 \newcommand{\QQ}{\mathcal{Q}} %cursive Q shorcut
+\newcommand{\CC}{\mathcal{C}} %cursive C shorcut
+\newcommand{\GG}{\mathcal{G}} %cursive G shorcut
 \DeclareMathOperator{\col}{col_g}
 
 \title{Asymmetric graph colouring game}
@@ -49,15 +51,17 @@
         
     Kierstead also introduces the $(a,b)$--marking game, an extension of the marking game where  on each turn Alice marks $a$ vertices and Bob $b$ vertices. 
     
-    The $(a,b)$--colouring number,$\col(G;a,b)$ is then the smallest $s$ such that Alice has a strategy that guarantees a score of less than $s$ in the $(a,b)$--marking game on the graph $G$.
+    The $(a,b)$--colouring number, $\col(G;a,b)$ is then the smallest $s$ such that Alice has a strategy that guarantees a score of less than $s$ in the $(a,b)$--marking game on the graph $G$.
     
 %    The first appearance of this colouring game, that I am aware of, is by Faigle, U. and Kern, U. and Kierstead, H. and Trotter, W. T. in \cite{FaKeKiTr1993}.
     
-    In \cite{kierstead2005} Kierstead proves a series of upper and lower bounds on $\chi_g(\FF;a,b)$, where $\FF$ is the family of forests. The principle of which is that if $b>a$ then $\chi_g(\FF;a,b)=\infty$. In \cite{kierYang2005} Kierstead and Yang further investigate the $(a,b)$--marking game. They show that if G has an orientation with maximum outdegree $k$ then $\col(G;a,b)$ is at most $(2k +
-    2)$. Then in \cite{yangZhu2008} Yang and Zhu extend the popular activation strategy for the $(1,1)$--marking game to the $(a,b)$--marking game.
+    There are three papers that make up bulk of the work in the asymmetric graph colouring game. First there is \textit{Asymmetric graph coloring games} by Kierstead \cite{kierstead2005}, second \textit{Very asymmetric marking games} by Kierstead and Yang \cite{kierYang2005}, finally there is \textit{Activation strategy for asymmetric marking games} by Yang and Zhu \cite{yangZhu2008}.
+    
+    In the first paper Kierstead proves a series of upper and lower bounds on $\chi_g(\FF;a,b)$, where $\FF$ is the family of forests. The principle of which is that if $b>a$ then $\chi_g(\FF;a,b)=\infty$. In the second Kierstead and Yang further investigate the $(a,b)$--marking game. They show that if G has an orientation with maximum outdegree $k$ then $\col(G;a,b)$ is at most $(2k +
+    2)$. Then finally Yang and Zhu extend the popular activation strategy for the $(1,1)$--marking game to the $(a,b)$--marking game.
     
     \section{The class of forests}
-    The following theorem is all the bounds for $\chi_g(\FF;a,b)$ shown in \cite{kierstead2005}.    
+    In \cite{kierstead2005} Kierstead introduces the $(a,b)$--game and the following theorem is all the bounds for $\chi_g(\FF;a,b)$ Kierstead shows, and the principle theorem.     
     \begin{theorem} [Theroem 1 in \cite{kierstead2005}]
         Let $a,b$ be positive integers.
         \begin{itemize}
@@ -72,72 +76,91 @@
     The proofs of the upper bounds tend to use the fact that     
     $\chi_g(\FF)= \chi_g(\FF;a,b)= \col(\FF;a,b)\col(\FF)=4$. And then provides various unique strategies for Alice to follow.
     
-    All the proofs of lower bounds are build on the following graph. Let $T=T_n$ be the forest on the vertex set $V=\bigcup_{i=1}^{20}[n]^i$, where $[n]^i$ is the set of $i$--sequences whose members are chosen from $\{1,2,\dots,n\}$. %Recall that sequences are enumerated collection with repetition allowed and order matters.  
-    The edges of $T_n$ are pairs of the form $e= (a_1,\dots,a_i) (a_1,\dots,a_{i+1})$. Note that $T_n$ is the graph with $n$ complete rooted $n$--ary trees with depth $20$. They then proceed to show that there is some sufficiently large $n$ such that Bob can win the $(a,b)$--game.
+    All the proofs of lower bounds are build on the following graph, as defined in \cite{kierstead2005}. Let $T=T_n$ be the forest on the vertex set $V=\bigcup_{i=1}^{20}[n]^i$, where $[n]^i$ is the set of $i$--sequences whose members are chosen from $\{1,2,\dots,n\}$. %Recall that sequences are enumerated collection with repetition allowed and order matters.  
+    The edges of $T_n$ are pairs of the form $e= (a_1,\dots,a_i) (a_1,\dots,a_{i+1})$. Or more simply $T_n$ is the forest with $n$ complete rooted $n$--ary trees with depth $20$. They then proceed to show that there is some sufficiently large $n$ such that Bob can win the $(a,b)$--game.
     
 %    As an aside the number of vertices in $T_n$ is $n\left(\frac{\left(n^{21}-1\right)}{n-1}\right)$, which rises faster than $n!$.   
     
     \section{The $(a,b)$--marking game}
     
+    Kierstead and Yang further refine the $(a,b)$--marking game by introducing two new stragetys for Alice, the Harmonious Strategy and the limited Harmonious Strategy. The principle theorem of \cite{kierYang2005} is as follows. Let $\Delta^*(G)$ be the smallest maximum outdegree in all the orientations of $G$.
+    
     \begin{theorem}[Theorem 1 in \cite{kierYang2005}]
         Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
         $\col(G;a,1) \leq 2k + 2$.
     \end{theorem}
-    \begin{quotation}
-        Before proceeding we illustrate this theorem with the following fanciful Tame
-        Woodstock Problem. Suppose that a dinner-rock concert is being organized for
-        thousands of people over acres of farmland. The middle-aged audience will
-        come, spread out their picnic blankets, listen to the music, and talk with their
-        neighbors. The overwhelmed caterers will prepare and deliver meals to unfed
-        diners (in no particular order) continuously throughout the night on trays holding
-        four meals each. Any diner who receives a tray will keep one meal for himself
-        and distribute the rest, not necessarily to neighbors. The mellow rock fans are
-        perfectly willing to wait their turn for dinner as long as at any time not too many
-        (more than 7) of their neighbors have already been fed. Is it always possible to
-        satisfy this condition?
-        
-        Assuming that the neighbor relation yields a planar graph G, it has an
-        orientation $\vec{G}$ with $\Delta^+\vec{G}\leq 3$. Treating the delivery of a tray by the waiter as a
-        move by Bob and the distribution of the remaining meals as a move by Alice, we
-        have an instance of the $(3, 1)$-marking game on a graph G with $\Delta^*\vec{G}\leq 3$. Thus
-        applying the theorem, we see that the Tame Woodstock Problem is indeed
-        solvable.
-    \end{quotation}
     
-    In \cite{kierYang2005} Kierstead and Yang define a new strategy for Alice when playing the  $(a,1)$--marking game.
+%    As motivation for the $(a,1)$--marking game Kierstead and Yang provide the following problem.
+%
+%    \begin{quotation}
+%        Before proceeding we illustrate this theorem with the following fanciful Tame
+%        Woodstock Problem. Suppose that a dinner-rock concert is being organized for
+%        thousands of people over acres of farmland. The middle-aged audience will
+%        come, spread out their picnic blankets, listen to the music, and talk with their
+%        neighbors. The overwhelmed caterers will prepare and deliver meals to unfed
+%        diners (in no particular order) continuously throughout the night on trays holding
+%        four meals each. Any diner who receives a tray will keep one meal for himself
+%        and distribute the rest, not necessarily to neighbors. The mellow rock fans are
+%        perfectly willing to wait their turn for dinner as long as at any time not too many
+%        (more than 7) of their neighbors have already been fed. Is it always possible to
+%        satisfy this condition?
+%        
+%        Assuming that the neighbor relation yields a planar graph G, it has an
+%        orientation $\vec{G}$ with $\Delta^+\vec{G}\leq 3$. Treating the delivery of a tray by the waiter as a
+%        move by Bob and the distribution of the remaining meals as a move by Alice, we
+%        have an instance of the $(3, 1)$-marking game on a graph G with $\Delta^*\vec{G}\leq 3$. Thus
+%        applying the theorem, we see that the Tame Woodstock Problem is indeed
+%        solvable. \cite[Kierstead Yang 2005]{kierYang2005}
+%    \end{quotation}   
+%    
+%    Further, they provide motivation for the Harmonious Strategy as follows.
+%    
+%    \begin{quotation}
+%        \textellipsis the description of Alice’s Harmonious Strategy given
+%        below, we first solve the Tame Woodstock Problem. To satisfy all diners the
+%        organizers establish the following simple protocol. First the planar adjacency
+%        graph representing adjacent diners is oriented so that the maximum outdegree is
+%        at most three. Each diner is responsible for the contentment of his outneighbors.
+%        The diners agree to the following rules. If a waiter brings a tray of meals to a
+%        diner, he keeps one for himself and passes the other three to his unfed
+%        outneighbors (if he has less than three unfed outneighbors, the excess is passed to
+%        any unfed diner). When a diner passes a meal to an outneighbor we say that he is
+%        contributing the meal. If a diner receives a contribution of a meal from another
+%        diner and he has an unfed outneighbor to whom he has not yet contributed then
+%        he must contribute the meal to such an outneighbor. Otherwise he keeps the meal
+%        and begins his dinner. \cite[Kierstead Yang 2005]{kierYang2005}
+%    \end{quotation}
     
-    \begin{quotation}
-        To motivate the formal description of Alice’s Harmonious Strategy given
-        below, we first solve the Tame Woodstock Problem. To satisfy all diners the
-        organizers establish the following simple protocol. First the planar adjacency
-        graph representing adjacent diners is oriented so that the maximum outdegree is
-        at most three. Each diner is responsible for the contentment of his outneighbors.
-        The diners agree to the following rules. If a waiter brings a tray of meals to a
-        diner, he keeps one for himself and passes the other three to his unfed
-        outneighbors (if he has less than three unfed outneighbors, the excess is passed to
-        any unfed diner). When a diner passes a meal to an outneighbor we say that he is
-        contributing the meal. If a diner receives a contribution of a meal from another
-        diner and he has an unfed outneighbor to whom he has not yet contributed then
-        he must contribute the meal to such an outneighbor. Otherwise he keeps the meal
-        and begins his dinner.
-    \end{quotation}
-    
-    A summery of the Harmonious strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
+    The Harmonious Strategy is used in the case the the game is very symmetric, i.e. $\Delta^*(G)\leq \frac{a}{b}$. A summery of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
     
     Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
-    \begin{itemize}
-        \item [Step 1] Alice selects, $y$, the with the least unmarked outneighbor of $x$ to whom $x$ has not yet contributed and then contributes to y. If there is no such vertex she selects the least unmarked vertex.
-        \item [Step 2] The contribution from $y$
+    \begin{enumerate}
+        \item  Alice selects, $y$, the with the least unmarked outneighbor of $x$ to whom $x$ has not yet contributed and then contributes to y. If there is no such vertex she selects the least unmarked vertex.
+        \item  The contribution from $y$
          is passed along until finally it arrives at a vertex $z$ that has already
         contributed to all its outneighbors.
-        \item [Step 3] Alice marks $z$
+        \item  Alice marks $z$
+    \end{enumerate}
+    
+    They proceed to use the Harmonious Strategy to find upper bounds for general graphs, interval and chordal graphs, planar graphs, and outerplaner graphs. For a class of graphs $\mathcal{X}$, let $\mathcal{X}_k= \{G\in\mathcal{X}: \Delta^*(G)\leq k\}$. Some of the bounds are as follows.    
+    \begin{itemize}
+        \item If $a < k$ then $\col(\GG_k;a,b)=\infty$
+        \item $\col(\II)=3k+1\leq\col(\CC_k)=3k+2$
+        \item If $3<a $ then $7\leq \col(\PP;a,b)\leq 8$
+        \item If $2< a$ then $5\leq \col(\QQ;a,b)\leq 6$
     \end{itemize}
     
-    They proceed to use the Harmonious strategy to find upper bounds for for common graphs. They conclude by providing examples showing that many of the upper bounds are optimal.
+    In the case that $a$ is less than $\Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out neighbours of a vertex. The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out neighbours.   
     
-    \section{title}
-    The results in \cite{kierYang2005} and \cite{yangZhu2008} mainly concern the $(a,1)$--marking game.
+    \section{Activation strategy for asymmetric marking games}
+    The bounds found with the limited Harmonious Strategy, while good, are not as tight as the Harmonious Strategy. This provided the motivation for Yang and Zhu to improve the strategy. They provide a high level description of the new activation stragety as follows:
     
+    \begin{quotation}
+        Suppose that Bob has just marked a vertex $x$. Then Alice starts by activating (through making contributions to) unmarked outneighbors $y$ of $x$ according to its preference. The parameter $t_y$ records the total number of contributions made by $y$. Once a vertex $y$ receives a contribution, then $y$ passes a contribution to its unmarked out-neighbors according to its preference, provided that $y$ has made less than $a$ contributions in total. In case $y$ has already made a contributions or $y$ has no unmarked outneighbors,then $y$ will be marked when it receives another contribution. Alice repeats the above procedure a times, each time marks one vertex. (Yang and Zhu 2008 \cite{yangZhu2008})
+    \end{quotation}
+    
+    In the original activation strategy each vertex is activated once before it is marked, in the new activation strategy each vertex is activated $a$ times before it is marked. Hence we are able to use it to play the $(a,b)$--marking game.
+   
     \bibliographystyle{amsplain}
     \bibliography{../bibliography}
 

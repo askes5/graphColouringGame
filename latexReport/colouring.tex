@@ -17,10 +17,6 @@ We can also extend the colouring game to have $p$ players. The win conditions an
 \end{definition}
 Note that $\chi_g(G) = \chi_g(G;2)$.
 
-\begin{definition}
-    Let $G$ be a graph. Then, $\col(G)$ is the score on $G$, when playing the marking game.
-\end{definition}
-
 Consider a graph $G$ if there is a winning strategy for Bob with $n$ colours then $n$ is a lower bound for the game chromatic number of $G$. That is $\chi_g(G)>n$. This is because Alice cannot possibly win with less than $n$ colours. Conversely a winning strategy for Alice with $m$ colours is an upper bound,  $\chi_g(G)\leq n$.
 
 %todo add better title
@@ -310,15 +306,15 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 \section{Activation Strategy}
 %----------------------------------------------------------------------------------------
 
-Built on the work by Kierstead in \cite{faKeKiTr1993}.
+Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is strategy for Alice to use to play the marking game. IT is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. They showed that $\chi_g(\FF)\leq4$. 
+
+To provide bounds for the game chromatic number we introduce a the marking game. The marking game is commonly used for finding upper bounds for the game chromatic number, and was formally introduced in \cite{Zhu1999}, further examples can be found in  \cite{KIERSTEAD2000,Zhu2008}.
 
 We define the marking game as follows. Let $G$ be a graph, and $n$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $n$ and Bob wins otherwise.
 
-\begin{definition}[Colouring number]
+\begin{definition}[game colouring number]
     Suppose $G$ is a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
 \end{definition}
-
-The marking game is commonly used for finding upper bounds for the game chromatic number, and was formally introduced in \cite{Zhu1999}, further examples can be found in  \cite{KIERSTEAD2000,Zhu2008}.
 
 Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $n$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $n$ coloured neighbours. Hence the game chromatic number is bound by the colouring number, that is $\chi_g(G)\leq\col(G)$
 
@@ -327,14 +323,14 @@ The game colouring number for these classes of graphs are known. %todo either re
 
 \subsection{Summery of activation strategy}
 
-The activation strategy was introduced by H. A. Kirstead in \cite{KIERSTEAD2000}.
+
 
 Consider a graph $G(v,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
 
 Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
 
 %TODO trim waffle
-\begin{definition}[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
+\begin{definition}(graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
     Suppose $A,B$ are disjoint subsets of $V$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ saturates $A$ and $B\setminus A$ contains a cover of M. 
     
     Let $L$ be a linear order, $G=(V,E)$ be a graph, and $u$ a vertex in $V$.
@@ -394,6 +390,8 @@ A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such t
 %TODO add defination reference
 
 \subsection{proofs using the activation strategy}
+We will now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of bounded pathwidth and of bounded tree width.
+
 Note that $\chi_g(P) > $ pathwidth
 
 Recall the definition of pathwidth.
@@ -526,7 +524,7 @@ Recall the definition of pathwidth.
 %todo col_g(T) < 3k+1 is sharp
 
 %todo add defn of k-tree
-The following result is not new, see \cite[Wu, Zhu 2008]{WuZhu2008}, but the proof proved here is based on the activation strategy.
+The following result is not new, see \cite[Wu, Zhu 2008]{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial k-trees.
 \begin{theorem} \label{Thm_ktree}
         Let $G$ be a k-tree. Then, 
         \[\chi_g(G) \leq 3k + 2\]
@@ -565,13 +563,84 @@ The following result is not new, see \cite[Wu, Zhu 2008]{WuZhu2008}, but the pro
 \end{proof}
 
 %-------------------------------------------------------------------------------------------------------------------
-\subsection{Upper bound using activation strategy for p players}
+\subsection{Extending the activation strategy}
 
-The activation strategy finds an upper bound of $\col$ (The marking game) and as $\chi_g(G) \leq \col$ then we have an upper bound for the $\chi_g$. 
+The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted to Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new stragetys for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of G, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum outdegree in all the orientations of $G$. They use there new strategy to prove theorem \ref{thm:kiYa2005}.
 
-We know from \cite{Zhu2008} at any stage, for some unmarked $u \col \leq 2 + \max{\left| A \cup N(u)\right| }$, where A is the set of active vertices.
+\begin{theorem}[Theorem 1 in \cite{kierYang2005}]\label{thm:kiYa2005}
+    Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
+    $\col(G;a,1) \leq 2k + 2$.
+\end{theorem}
 
-Claim: for $p$ players $\col \leq p + \max{ \left| A \cap N(u)\right| }$. 
+%    As motivation for the $(a,1)$--marking game Kierstead and Yang provide the following problem.
+%
+%    \begin{quotation}
+%        Before proceeding we illustrate this theorem with the following fanciful Tame
+%        Woodstock Problem. Suppose that a dinner-rock concert is being organized for
+%        thousands of people over acres of farmland. The middle-aged audience will
+%        come, spread out their picnic blankets, listen to the music, and talk with their
+%        neighbors. The overwhelmed caterers will prepare and deliver meals to unfed
+%        diners (in no particular order) continuously throughout the night on trays holding
+%        four meals each. Any diner who receives a tray will keep one meal for himself
+%        and distribute the rest, not necessarily to neighbors. The mellow rock fans are
+%        perfectly willing to wait their turn for dinner as long as at any time not too many
+%        (more than 7) of their neighbors have already been fed. Is it always possible to
+%        satisfy this condition?
+%        
+%        Assuming that the neighbor relation yields a planar graph G, it has an
+%        orientation $\vec{G}$ with $\Delta^+\vec{G}\leq 3$. Treating the delivery of a tray by the waiter as a
+%        move by Bob and the distribution of the remaining meals as a move by Alice, we
+%        have an instance of the $(3, 1)$-marking game on a graph G with $\Delta^*\vec{G}\leq 3$. Thus
+%        applying the theorem, we see that the Tame Woodstock Problem is indeed
+%        solvable. \cite[Kierstead Yang 2005]{kierYang2005}
+%    \end{quotation}   
+%    
+%    Further, they provide motivation for the Harmonious Strategy as follows.
+%    
+%    \begin{quotation}
+%        \textellipsis the description of Alice’s Harmonious Strategy given
+%        below, we first solve the Tame Woodstock Problem. To satisfy all diners the
+%        organizers establish the following simple protocol. First the planar adjacency
+%        graph representing adjacent diners is oriented so that the maximum outdegree is
+%        at most three. Each diner is responsible for the contentment of his outneighbors.
+%        The diners agree to the following rules. If a waiter brings a tray of meals to a
+%        diner, he keeps one for himself and passes the other three to his unfed
+%        outneighbors (if he has less than three unfed outneighbors, the excess is passed to
+%        any unfed diner). When a diner passes a meal to an outneighbor we say that he is
+%        contributing the meal. If a diner receives a contribution of a meal from another
+%        diner and he has an unfed outneighbor to whom he has not yet contributed then
+%        he must contribute the meal to such an outneighbor. Otherwise he keeps the meal
+%        and begins his dinner. \cite[Kierstead Yang 2005]{kierYang2005}
+%    \end{quotation}
+
+The Harmonious Strategy is used in the case the the game is very symmetric, i.e. $\Delta^*(G)\leq \frac{a}{b}$. A summery of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
+
+Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
+\begin{enumerate}
+    \item  Alice selects, $y$, the with the least unmarked outneighbor of $x$ to whom $x$ has not yet contributed and then contributes to y. If there is no such vertex she selects the least unmarked vertex.
+    \item  The contribution from $y$
+    is passed along until finally it arrives at a vertex $z$ that has already
+    contributed to all its outneighbors.
+    \item  Alice marks $z$
+\end{enumerate}
+
+The Harmonious Strategy is used to find upper bounds for the classes of general graphs, interval and chordal graphs, planar graphs, and outerplaner graphs. For a class of graphs $\mathcal{X}$, let $\mathcal{X}_k= \{G\in\mathcal{X}: \Delta^*(G)\leq k\}$. Some of the bounds are as follows.    
+\begin{itemize}
+    \item If $a < k$ then $\col(\GG_k;a,b)=\infty$
+    \item $\col(\II)=3k+1\leq\col(\CC_k)=3k+2$
+    \item If $3<a $ then $7\leq \col(\PP;a,b)\leq 8$
+    \item If $2< a$ then $5\leq \col(\QQ;a,b)\leq 6$
+\end{itemize}
+
+In the case that $a$ is less than $\Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out neighbours of a vertex. The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out neighbours.    
+
+The bounds found with the limited Harmonious Strategy, while good, are not as tight as the Harmonious Strategy. This provided the motivation for Yang and Zhu to improve the strategy. In \cite{yangZhu2008} they introduce a new stragety based on their popular activation stragety. They summarise it as follows:
+
+\begin{quotation}
+    Suppose that Bob has just marked a vertex $x$. Then Alice starts by activating (through making contributions to) unmarked outneighbors $y$ of $x$ according to its preference. The parameter $t_y$ records the total number of contributions made by $y$. Once a vertex $y$ receives a contribution, then $y$ passes a contribution to its unmarked out-neighbors according to its preference, provided that $y$ has made less than $a$ contributions in total. In case $y$ has already made a contributions or $y$ has no unmarked outneighbors,then $y$ will be marked when it receives another contribution. Alice repeats the above procedure a times, each time marks one vertex. (Yang and Zhu 2008 \cite{yangZhu2008})
+\end{quotation}
+
+In summery the primary difference between the original activation strategy and the new activation strategy each vertex is activated $a$ times before it is marked.
 
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Refined Activation Strategy}
