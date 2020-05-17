@@ -1,7 +1,5 @@
 \chapter{Colouring}
 
-%TODO add deference between colouring and marking game
-
 We consider the colouring game played between two players, Alice and Bob. Let $G$ be any graph, and $C$ a set of colours.Beginning with Alice, ALice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assigns $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
 
 %todo add basic results e.g. \chi of subgraphs, composition, disconnected graphs, etc.
@@ -268,40 +266,6 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 \end{proof}
 %---------------------------------------
 
-%TODO: check that these theorems are true.
-%  Find counter example to disprove this theorem.
-%\begin{theorem}    
-%    \[\chi_g(G;p) \leq \chi_g(G;2) + p -2 \]
-%\end{theorem}
-%
-%\begin{proof}
-%    
-%    By induction on the number of vertices, $n$ and the number of players, $p$.
-%    
-%    We show for any $p$ $\chi_g(G_{n+1};p) \leq (\chi_g(G_{n+1};2) + p -2)$                   
-%    \begin{align}
-%    	\chi_g(G_n;p)          & \leq (\chi_g(G_n;2) + p -2)     & \text{from induction} \\
-%    	\chi_g(G_n;p)          & \leq \chi_g(G_{n+1};p)          &                       \\
-%    	(\chi_g(G_n;2) + p -2) & \leq (\chi_g(G_{n+1};2) + p -2) & 
-%    \end{align}
-%       
-%     Assume, for a contradiction, $\chi_g(G_{n+1};p) > \chi_g(G_{n+1};2) + p -2$. Then for $p=2$  $\chi_g(G_{n+1};2) > \chi_g(G_{n+1};2) + 2 -2$. This is a contradiction, therefore $\chi_g(G_{n+1};p) \leq \chi_g(G_{n+1};2) + p -2$.
-%       
-%    Claim: For some n $\chi_g(G_n;p) \implies \chi_g(G_n;p+1)$
-%    
-%    By induction hypothesis $\chi_g(G_n;p) \leq \chi_g(G_n;2) + p -2 $
-%    
-%\end{proof}
-%
-%
-%\begin{theorem}
-%       
-%    \[\chi_g(G;p) \leq \chi_g(G;p) +1 \leq \chi_g(G;p+1)\]
-%    
-%    \[ \chi_g(G;2) + p -2  \leq \chi_g(G;p+1) \]
-%    
-%\end{theorem}
-
 %#####################################################################################################################
 \section{Activation Strategy}
 %----------------------------------------------------------------------------------------
@@ -325,9 +289,9 @@ The game colouring number for these classes of graphs are known. %todo either re
 
 
 
-Consider a graph $G(v,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
+Consider a graph $G(V,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
 
-Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
+An informal summery of the activation strategy is as follows. Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
 
 %TODO trim waffle
 \begin{definition}(graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
@@ -565,7 +529,7 @@ The following result is not new, see \cite[Wu, Zhu 2008]{WuZhu2008}, but the pro
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Extending the activation strategy}
 
-The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted to Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new stragetys for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of G, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum outdegree in all the orientations of $G$. They use there new strategy to prove theorem \ref{thm:kiYa2005}.
+The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted to Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new strategies for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of G, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum outdegree in all the orientations of $G$. They use there new strategy to prove theorem \ref{thm:kiYa2005}.
 
 \begin{theorem}[Theorem 1 in \cite{kierYang2005}]\label{thm:kiYa2005}
     Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
@@ -613,7 +577,7 @@ The activation strategy works well for the $(1,1)$--marking game but fails in th
 %        and begins his dinner. \cite[Kierstead Yang 2005]{kierYang2005}
 %    \end{quotation}
 
-The Harmonious Strategy is used in the case the the game is very symmetric, i.e. $\Delta^*(G)\leq \frac{a}{b}$. A summery of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
+The Harmonious Strategy is used in the case the the game is very asymmetric, i.e. $\Delta^*(G)\leq \frac{a}{b}$. A summery of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
 
 Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
 \begin{enumerate}
@@ -631,16 +595,59 @@ The Harmonious Strategy is used to find upper bounds for the classes of general 
     \item If $3<a $ then $7\leq \col(\PP;a,b)\leq 8$
     \item If $2< a$ then $5\leq \col(\QQ;a,b)\leq 6$
 \end{itemize}
+More generally we have the following theorem for when Alice uses the Harmonious Strategy.
+\begin{theorem}[Theroem 13 in \cite{kierYang2005}]
+    let $a$ and $b$ be positive integers and $G$ a graph with $\Delta^*(G)=k\leq\frac{a}{b}$. Then $\col(G;a,b)\leq 2k+b+1$.
+\end{theorem}
 
 In the case that $a$ is less than $\Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out neighbours of a vertex. The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out neighbours.    
 
-The bounds found with the limited Harmonious Strategy, while good, are not as tight as the Harmonious Strategy. This provided the motivation for Yang and Zhu to improve the strategy. In \cite{yangZhu2008} they introduce a new stragety based on their popular activation stragety. They summarise it as follows:
+The bounds found with the limited Harmonious Strategy, while good, are not as tight as the Harmonious Strategy. This provided the motivation for Yang and Zhu to improve the strategy. In \cite{yangZhu2008} they introduce a new strategy for the $(a,1)$--marking game based on the popular activation strategy. They summarise it as follows:
 
 \begin{quotation}
     Suppose that Bob has just marked a vertex $x$. Then Alice starts by activating (through making contributions to) unmarked outneighbors $y$ of $x$ according to its preference. The parameter $t_y$ records the total number of contributions made by $y$. Once a vertex $y$ receives a contribution, then $y$ passes a contribution to its unmarked out-neighbors according to its preference, provided that $y$ has made less than $a$ contributions in total. In case $y$ has already made a contributions or $y$ has no unmarked outneighbors,then $y$ will be marked when it receives another contribution. Alice repeats the above procedure a times, each time marks one vertex. (Yang and Zhu 2008 \cite{yangZhu2008})
 \end{quotation}
 
 In summery the primary difference between the original activation strategy and the new activation strategy each vertex is activated $a$ times before it is marked.
+
+Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order of on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
+
+\begin{definition}[Asymmetric activation strategy, \cite{yangZhu2008}] 
+    Let $G$ be a graph, and let $U$ denote the set of unmarked vertices, and for all $v\in V(G)$ let $t_v=a$ track the number of activations. Let $L$ be a linear order of on $V(G)$, and let $G_L$ be the corresponding orientation of $G$.    
+    We consider the equivalent $(a,b)$--marking game where Bob goes first. Suppose that Bob has just activated a vertex $x$ Alice uses algorithm \ref{alg:asymActivStrat} to update the graph and mark vertices.
+    
+    \begin{algorithm}[h]
+        \caption{Asymmetric Activation strategy}
+        \label{alg:asymActivStrat}
+        \begin{algorithmic}[1]
+            \Statex
+            \For{$i$ from $1$ to $a$ and $U\neq\emptyset$}
+                \If{$(N^+\cap U\neq \emptyset) \land (t_x>0)$} 
+                    \State $y\gets \min_{L_x} N^+(x)\cap U$
+                    \State $t_x \gets t_x-1$
+                    \Else 
+                    \State $y\gets \min_L U$                  
+                \EndIf
+                \While{$(N^+(y)\cap \neq \emptyset) \land (t_y>0)$}
+                    \State $z\gets \min_{L_y} N^+(y)\cap U$
+                    \State $t_y \gets t_y-1$
+                    \State $y\gets z$
+                \EndWhile
+                \State $U \gets U \setminus y$
+                \State Mark the vertex $y$
+            \EndFor
+        \end{algorithmic}
+    \end{algorithm}
+    
+    By using the Asymmetric Activation Strategy on the $(a,1)$--marking game we get the following upper bound for $\col(G;a,1)$.
+
+    \begin{theorem}[Theorem 2.2 in \cite{yangZhu2008}]  
+        Let $G_P$ be an orientated graph with $\Delta^+(G_P)=k>a$ and let $r_{G_L}(\Sigma)=r$. If Alice uses the Asymmetric Activation Strategy then $\col(G;a,1)\leq k+\left\lfloor (1+\frac{1}{a})r \right\rfloor +2$
+    \end{theorem}
+
+\end{definition}
+
+
 
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Refined Activation Strategy}
