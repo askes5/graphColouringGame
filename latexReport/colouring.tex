@@ -270,7 +270,7 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 \section{Activation Strategy}
 %----------------------------------------------------------------------------------------
 
-Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is strategy for Alice to use to play the marking game. IT is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. They showed that $\chi_g(\FF)\leq4$. 
+Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is strategy for Alice to use to play the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)=4$. 
 
 To provide bounds for the game chromatic number we introduce a the marking game. The marking game is commonly used for finding upper bounds for the game chromatic number, and was formally introduced in \cite{Zhu1999}, further examples can be found in  \cite{KIERSTEAD2000,Zhu2008}.
 
@@ -285,9 +285,12 @@ Suppose that Alice has a winning strategy in the ordering game on a graph $G$, w
 For $\FF$ be the family of forests, $\II$ the family of interval graphs with clique number $k$, $\PP$ the family of planar graphs, $\QQ$ the family of outer planar graphs, and $\KK$ the family of partial k-trees. %note K_k is exactly the graphs of bounded tree width.
 The game colouring number for these classes of graphs are known. %todo either remove this or add refferences
 
+A quick note on notation. Let $G$ be a graph, $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$, that is for any two vertices, $u,v\in V(G)$ we have the directed edge $uv$ iff $u>_Lv$. 
+
+Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ the outneighbours are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$, the inneighbours $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$, the indegree is $d^+_{G_L}(v)=|N^+(v)|$, and the outdegree is $d^+_{G_L}(v)=|N^-(v)|$. In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. Let $V^+(v)=\{u\in V(g):v>_L u\}$, and $V^-(v)=\{u\in V(g):v<_L u\}$.  When it is clear from context we will drop the $G_L$ subscript. Finally let $N^+[v]=N^+(v)\cup\{v\}$, $N^-[v]=N^-(v)\cup\{v\}$, $V^+[v]=V^+(v)\cup\{v\}$,$V^-[v]=V^-(v)\cup\{v\}$. %todo improve
+ 
+
 \subsection{Summery of activation strategy}
-
-
 
 Consider a graph $G(V,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
 

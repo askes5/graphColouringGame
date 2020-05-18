@@ -1,10 +1,24 @@
 \chapter{Introduction}
-A note on notation.
 
-    Let $\mathcal{C}$ be a family of graphs, and $\varphi_g(G)$ is some game number on a graph $G \in \mathcal{C}$. Then $\varphi_g(\mathcal{C})$ is the smallest $k$ such that Alice has a winning strategy on any element in $\mathcal{C}$ in less than $k$ turns.
-    
-    %todo add definations for d^+, N^+, etc.
-    
+A graph is a collection of vertices and edges. Where the edges are represented a pair of vertices define a relation between the vertices. For example in figure \ref{fig:k3} we have three edges $ab$, $ac$, and $bc$. There are two main types of graphs directed where the direction of the edge matters ($ab\neq ba$) and undirected where the direction doesn't matter ($ab=ba$).
+\begin{figure}[h]
+    \centering
+\begin{tikzpicture}[scale=2]
+\node[normal, label=below:$a$] (v1) at (-1.5,-1) {};
+\node[normal, label=below:$b$] (v3) at (-0.5,-1) {};
+\node[normal, label=below:$c$] (v2) at (-1,0) {};  
+\draw (v1) edge (v2);
+\draw  (v2) edge (v3);
+\draw  (v3) edge (v1);
+\end{tikzpicture}
+    \caption{A undirected graph with three vertices and edges}
+\label{fig:k3}
+\end{figure}
+
+For a graph, $G$, a graph algorithm is an algorithm defined on the vertices, $V(G)$, and edges $E(G)$ of $G$. 
+
+A note on notation. Let $\mathcal{C}$ be a family of graphs, and $\varphi_g(G)$ is some game number on a graph $G \in \mathcal{C}$. Then $\varphi_g(\mathcal{C})$ is the smallest $k$ such that Alice has a winning strategy on any element in $\mathcal{C}$ in less than $k$ turns.
+       
     %todo What this this report about
     
     %todo why is this iteresting, applications
