@@ -16,18 +16,19 @@ A graph, $G$, is a collection of vertices, $V(G)$, and edges, $E(G)$. Where the 
 \label{fig:k3}
 \end{figure}
    
-A graph algorithm is an algorithm defined on the vertices and edges of a graph. 
-
+We introduce the idea of a graph game by considering the \textit{Dinner Party Problem}.
 Suppose Alice is hosting a party. All of the guest are mingling happy. However the guests are hungry and they demand to be feed but they are lazy will not move to collect food. To serve the food Alice decides to pass out platters to guests. When a guest receives a platter they take a piece and everyone within arms reach take a piece. As the food is expensive Alice wants to minimise the amount of platters handed out. What is the minimum number of platters that Alice needs to feed everybody? 
-We can define a graph, $G$, with guests as vertices and edges between two guests if when either of them are given a plate they will pass food between them. Thus minimising platters is a matter of finding a minimum dominating set.
 
-Alice decides to host a second party after the success of the first, but she decides to enlist the help of her friend Bob to help distribute the platters. As before Alice tries to minimise the number of platters, Bob on the other hand has no such desire and will pass out platters as he sees fit. If Alice has the same number of platters as the first party it is conceivable that Bob can force some people to go hungry. What is the smallest number of platters that Alice need to ensure that everyone will get feed? 
-If we define a graph as above, minimizing platters is a matter of finding the game dominating number of our graph. We further explore idea in Chapter \ref{sec:domSet}.
-This is not to say that Bob is trying to ruin Alice's party but rather he has his own criteria for distributing platters, perhaps he is trying to get everyone their favourite food with no regard to cost. 
+We can define a graph, $G$, with guests as vertices and edges between two guests if when either of them are given a plate they will pass food between them. Minimising platters is now a matter of finding a minimum dominating set.
 
-We can see how this concept could be applied to radio towers, where two competing companies have been contracted to build them, or perhaps as a measure of robustness in a network. Other applications include scheduling, register allocation, and computer science.  
+Alice decides to host a second party after the success of the first, but she decides to enlist the help of her friend Bob to help distribute the platters. As before Alice tries to minimise the number of platters, Bob on the other hand has no such desire and will pass out platters as he sees fit. If Alice has the same number of platters as the first party it is conceivable that Bob can force some people to go hungry. The problem now is what is the smallest number of platters that Alice need to ensure that everyone will get feed? 
 
-When considering graph games we will always consider them to be played by two players Alice and Bob, where Alice always has the first move. Later in this report we explore various different games on graphs. We introduce upper and lower bounds for graph some classes of graphs and provide details on popular strategies when playing these games.   
+If we define a graph as above, minimizing platters is a matter of finding the best strategy for Alice in the dominating game. 
+As an aside it is the intention to imply that Bob is trying to ruin Alice's party but rather he has his own criteria for distributing platters, perhaps he is trying to get everyone their favourite food with no regard to cost. We explore the idea of game dominating numbers in Chapter \ref{sec:domSet}.
+
+It is easy to see how this concept could be applied to radio towers, where two competing companies have been contracted to build them, or perhaps as a measure of robustness in a network. Other applications include scheduling, register allocation.  
+
+When considering graph games we will consider them to be played by two players Alice and Bob, where Alice always has the first move. Later in this report we explore various different games on graphs. We introduce upper and lower bounds for graph some classes of graphs and provide details on popular strategies when playing these games.   
 
  %todo why is this iteresting, applications
 
