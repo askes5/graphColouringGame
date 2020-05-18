@@ -7,14 +7,22 @@ We begin by listing some definitions.
 \end{definition}
 
 \begin{definition}
-    The Dominating number, $\gamma(G)$, of a graph, $G=(E,V)$, is the size of the smallest dominating set of $G$.
+    The Domination number, $\gamma(G)$, of a graph, $G=(E,V)$, is the size of the smallest dominating set of $G$.
 \end{definition}
 
-\begin{definition}
-    Independent set, maximum independent set, independence number $\alpha(G)$
-\end{definition}
+%\begin{definition}
+%    Independent set, maximum independent set, independence number $\alpha(G)$
+%\end{definition}
 
-\section{min size dominating set}
+\section{Dominating game}
+
+%first introduced in MR2411449 the formmaly in MR2680228 ??? check this
+
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add vertices to $D$ one at a time. The game stops when $D$ forms a dominating set in $G$. The score of the game is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise.
+
+\begin{definition}(game domination number)
+    Let $G$ be a graph. The game dominating number, $\gamma_g(G)$ is the minimum target score such that Alice has a winning strategy.
+\end{definition} 
 
 \begin{lemma}
     Let $G$ be a graph. 
@@ -42,7 +50,7 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
     \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 \end{theorem}
     
-    The trivial lower bound for $\gamma_g(G)$ when $\gamma(G)$ is known is $\gamma(G) > \gamma_g(G)$. This is because there is no dominating set smaller than $\gamma(G)$. 
+    The trivial lower bound for $\gamma_g(G)$ when $\gamma(G)$ is known is $\gamma(G) < \gamma_g(G)$. This is because there is no dominating set smaller than $\gamma(G)$. 
     
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{oreDomUpper} 
     For any graph $G$ with $n$ vertices,     
@@ -67,7 +75,7 @@ Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
 
 \begin{theorem} \label{gameDomNumLowerBound}
     Let $G$ be a graph with $n$ vertices, such that $n \geq 4$. Then,    
-    \[ \gamma_g(G) \geq \left \lfloor{\frac{n}{2}}\right \rfloor \]
+    \[  \left \lfloor{\frac{n}{2}}\right \rfloor \leq \gamma_g(G)  \]
     
 \end{theorem}
 
@@ -86,7 +94,7 @@ The trivial upper bound is $n$. This is because the set of vertices $V(G)$ is a 
 \end{theorem}
  
 \begin{proof}
-    A dominating set on a spanning tree in a dominating set in the parent graph.
+    A dominating set on a spanning tree is a dominating set in the parent graph.
     Thus for any graph, $G$, it suffices to show we have a winning strategy for a spanning tree of $G$. 
     let $T$ be a spanning tree of $G$.
     The winning strategy for Alice is the greedy strategy as follows. 
@@ -105,10 +113,18 @@ The trivial upper bound is $n$. This is because the set of vertices $V(G)$ is a 
     %TODO finish this proof
 \end{proof}
 
+\section{The $(a,b)$--dominating game}
+
+The natural extension of the dominating game is to allow Alice and Bob to select more than one vertex on each turn. We define this as the $(a,b)$--dominating game when Alice is allowed to select $a$ vertices per turn and Bob $b$ vertices.
+
+\begin{definition}[game domination number]
+    Let $G$ be a graph and $a,b>1$ integers. The game dominating number $\gamma_g(G;a,b)$ is the smallest target for such that Alice has a winning strategy win playing the $(a,b)$--dominating game.
+\end{definition}
+
 \begin{theorem} %TODO prove this theorem
-    Given $p$ players then,
-    \[\gamma_{g}(G;p) \geq p\gamma(G) \]    
-    \[\gamma_{g}(G;p) \leq p \gamma_{g}(G;2) \leq p\left\lceil \frac{2n}{3} \right\rceil\]
+    Let $G$ be a graph with $n$ vertices and $a,b>1$ integers. Then,
+    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
+    \[\gamma_{g}(G;1,b) \leq (b+1) \gamma_{g}(G;1,1) \leq (b+1)\left\lceil \frac{2n}{3} \right\rceil\]
 \end{theorem}
 
 
