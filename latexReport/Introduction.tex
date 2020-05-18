@@ -1,6 +1,7 @@
 \chapter{Introduction}
+%todo what is a graph
+A graph, $G$, is a collection of vertices, $V(G)$, and edges, $E(G)$. Where the edges are represented as pairs of vertices define a relation between the vertices. For example in figure \ref{fig:k3} we have three edges $ab$, $ac$, and $bc$. There are two main types of graphs directed where the direction of the edge matters ($ab\neq ba$) and undirected where the direction doesn't matter ($ab=ba$).
 
-A graph is a collection of vertices and edges. Where the edges are represented a pair of vertices define a relation between the vertices. For example in figure \ref{fig:k3} we have three edges $ab$, $ac$, and $bc$. There are two main types of graphs directed where the direction of the edge matters ($ab\neq ba$) and undirected where the direction doesn't matter ($ab=ba$).
 \begin{figure}[h]
     \centering
 \begin{tikzpicture}[scale=2]
@@ -11,20 +12,53 @@ A graph is a collection of vertices and edges. Where the edges are represented a
 \draw  (v2) edge (v3);
 \draw  (v3) edge (v1);
 \end{tikzpicture}
-    \caption{A undirected graph with three vertices and edges}
+    \caption{An undirected graph with three vertices and three edges}
 \label{fig:k3}
 \end{figure}
+   
+A graph algorithm is an algorithm defined on the vertices and edges of a graph. 
 
-For a graph, $G$, a graph algorithm is an algorithm defined on the vertices, $V(G)$, and edges $E(G)$ of $G$. 
+Suppose Alice is hosting a party. All of the guest are mingling happy. However the guests are hungry and they demand to be feed but they are lazy will not move to collect food. To serve the food Alice decides to pass out platters to guests. When a guest receives a platter they take a piece and everyone within arms reach take a piece. As the food is expensive Alice wants to minimise the amount of platters handed out. What is the minimum number of platters that Alice needs to feed everybody? 
+We can define a graph, $G$, with guests as vertices and edges between two guests if when either of them are given a plate they will pass food between them. Thus minimising platters is a matter of finding a minimum dominating set.
+
+Alice decides to host a second party after the success of the first, but she decides to enlist the help of her friend Bob to help distribute the platters. As before Alice tries to minimise the number of platters, Bob on the other hand has no such desire and will pass out platters as he sees fit. If Alice has the same number of platters as the first party it is conceivable that Bob can force some people to go hungry. What is the smallest number of platters that Alice need to ensure that everyone will get feed? 
+If we define a graph as above, minimizing platters is a matter of finding the game dominating number of our graph. We further explore idea in Chapter \ref{sec:domSet}.
+This is not to say that Bob is trying to ruin Alice's party but rather he has his own criteria for distributing platters, perhaps he is trying to get everyone their favourite food with no regard to cost. 
+
+We can see how this concept could be applied to radio towers, where two competing companies have been contracted to build them, or perhaps as a measure of robustness in a network. Other applications include scheduling, register allocation, and computer science.  
+
+When considering graph games we will always consider them to be played by two players Alice and Bob, where Alice always has the first move. Later in this report we explore various different games on graphs. We introduce upper and lower bounds for graph some classes of graphs and provide details on popular strategies when playing these games.   
+
+ %todo why is this iteresting, applications
+
+%todo What this this report about
+
+%todo where has this come from
 
 A note on notation. Let $\mathcal{C}$ be a family of graphs, and $\varphi_g(G)$ is some game number on a graph $G \in \mathcal{C}$. Then $\varphi_g(\mathcal{C})$ is the smallest $k$ such that Alice has a winning strategy on any element in $\mathcal{C}$ in less than $k$ turns.
-       
-    %todo What this this report about
+   
     
-    %todo why is this iteresting, applications
+This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest%note this is plagrisum
     
-    %todo where has this come from
     
-    %todo what is a graph
     
-    This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
