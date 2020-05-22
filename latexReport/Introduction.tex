@@ -1,4 +1,4 @@
-\chapter{Introduction}
+\chapter{Introduction}\label{chpt:into}
 %todo what is a graph
 A graph, $G$, is a collection of vertices, $V(G)$, and edges, $E(G)$. Where the edges are represented as pairs of vertices define a relation between the vertices. For example in figure \ref{fig:k3} we have three edges $ab$, $ac$, and $bc$. There are two main types of graphs directed where the direction of the edge matters ($ab\neq ba$) and undirected where the direction doesn't matter ($ab=ba$).
 
@@ -24,7 +24,7 @@ We can define a graph, $G$, with guests as vertices and edges between two guests
 Alice decides to host a second party after the success of the first, but she decides to enlist the help of her friend Bob to help distribute the platters. As before Alice tries to minimise the number of platters, Bob on the other hand has no such desire and will pass out platters as he sees fit. If Alice has the same number of platters as the first party it is conceivable that Bob can force some people to go hungry. The problem now is what is the smallest number of platters that Alice need to ensure that everyone will get feed? 
 
 If we define a graph as above, minimizing platters is a matter of finding the best strategy for Alice in the dominating game. 
-As an aside it is the intention to imply that Bob is trying to ruin Alice's party but rather he has his own criteria for distributing platters, perhaps he is trying to get everyone their favourite food with no regard to cost. We explore the idea of game dominating numbers in Chapter \ref{sec:domSet}.
+As an aside it is the intention to imply that Bob is trying to ruin Alice's party but rather he has his own criteria for distributing platters, perhaps he is trying to get everyone their favourite food with no regard to cost. We explore the idea of game dominating numbers in Chapter \ref{chpt:domSet}.
 
 It is easy to see how this concept could be applied to radio towers, where two competing companies have been contracted to build them, or perhaps as a measure of robustness in a network. Other applications include scheduling, register allocation.  
 
@@ -36,12 +36,12 @@ When considering graph games we will consider them to be played by two players A
 
 %todo where has this come from
 
-A note on notation. Let $\mathcal{C}$ be a family of graphs, and $\varphi_g(G)$ is some game number on a graph $G \in \mathcal{C}$. Then $\varphi_g(\mathcal{C})$ is the smallest $k$ such that Alice has a winning strategy on any element in $\mathcal{C}$ in less than $k$ turns.
-   
-    
+  
 This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest%note this is plagrisum
     
-    
+A note on notation. For $\CC$ a family of graphs, and $\varphi_g(G)$ some game number on a graph $G \in \CC$. Then $\varphi_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$ $\varphi_g(H)\leq k$.   
+
+%todo add summery of results
     
     
     

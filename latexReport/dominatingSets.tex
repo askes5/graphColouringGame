@@ -1,14 +1,17 @@
-\chapter{Dominating sets}\label{sec:domSet}
+\chapter{Graph Domination}\label{chpt:domSet}
 
-We begin by listing some definitions.
+\section{Introduction}
 
-\begin{definition}
-    The Dominating set, $D$, of a graph $G=(E,V)$ is any subset of $V$ such that every vertex in $V$ is adjacent to at least one vertex in $D$.
-\end{definition}
+We introduced dominating sets in chapter \ref{chpt:into} with the dinner party problem. The domination number, is in some sense, a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example any complete graph $K_n$ has domination number 1, and the graph that is just the set of $n$ independent vertices has domination number $.$. More formally we define  both dominating sets and the dominating number as follows.
 
 \begin{definition}
-    The Domination number, $\gamma(G)$, of a graph, $G=(E,V)$, is the size of the smallest dominating set of $G$.
+    Let $G$ be a graph. A Dominating set, $D$, of $G$ is a subset of $V(G)$ such that every vertex in $V(G)$ is adjacent to at least one vertex in $D$.
+\end{definition} 
+\begin{definition}
+    Let $G$ be a graph. The Domination number, $\gamma(G)$, of $G$ is the minimum size of a dominating set in $G$.
 \end{definition}
+
+ The dominating game was first introduced in form we are interested in by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar and Douglas RallF in 2010 \cite{BrKlRa2010}. There have been earlier versions of a dominating game, though these games were considered with minimising the dominating number in an induced orientation of a graph. We explore the game where the players build a dominating set directly and where Alice is trying to minimise its size. 
 
 %\begin{definition}
 %    Independent set, maximum independent set, independence number $\alpha(G)$
@@ -16,115 +19,131 @@ We begin by listing some definitions.
 
 \section{Dominating game}
 
-%first introduced in MR2411449 the formmaly in MR2680228 ??? check this
-
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add vertices to $D$ one at a time. The game stops when $D$ forms a dominating set in $G$. The score of the game is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise.
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add vertices to $D$ one at a time. The game stops when $D$ forms a dominating set in $G$. The score of the game is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
 \begin{definition}(game domination number)
     Let $G$ be a graph. The game dominating number, $\gamma_g(G)$ is the minimum target score such that Alice has a winning strategy.
 \end{definition} 
 
-\begin{lemma}
-    Let $G$ be a graph. 
-        
-    \[\gamma(G) \geq \alpha(G)\]
-\end{lemma}
-
-\begin{proof}
-    Let $X$ be a minimum dominating set in some graph $G=(V,E)$. By definition of dominating set vertex in $V$ is adjacent to at least one vertex in      
-\end{proof}
+%\begin{lemma}
+%    Let $G$ be a graph. 
+%        
+%    \[\gamma(G) \geq \alpha(G)\]
+%\end{lemma}
+%
+%\begin{proof}
+%    Let $X$ be a minimum dominating set in some graph $G=(V,E)$. By definition of dominating set vertex in $V$ is adjacent to at least one vertex in      
+%\end{proof}
+%    
+%Recall that $\chi(G)$ is the chromatic number of the graph $G$.
+%
+%\begin{theorem} [Willis 3.1 \cite{Willis2011BoundsFT}] \label{willis3.1}
+%    For any graph $G = (V,E)$ 
+%
+%    \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
+%\end{theorem}
+%
+%Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
+%
+%\begin{theorem} [Balakrishnan 10.3.2 \cite{balakrishnan2012}] \label{balakrishnan10.3.2}
+%    For any graph $G$ with $n$ vertices, 
+%    
+%    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
+%\end{theorem}
     
-Recall that $\chi(G)$ is the chromatic number of the graph $G$.
+For some graph,$G$, $\gamma(G)$ is the size of the smallest domination set and hence $\gamma(G)\leq\gamma_g(G)$. Hence $\gamma(G)$ is the trivial lower bound for the game domination number. Note theorem \ref{oreDomUpper}, it is a well known result that $\gamma(G) \leq \frac{n}{2}$, we will show $\frac{n}{2}$ is a lower bound for the game domination number. But first a couple of theorems.
 
-\begin{theorem} [Willis 3.1 \cite{Willis2011BoundsFT}] \label{willis3.1}
-    For any graph $G = (V,E)$ 
-
-    \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
-\end{theorem}
-
-Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
-
-\begin{theorem} [Balakrishnan 10.3.2 \cite{balakrishnan2012}] \label{balakrishnan10.3.2}
-    For any graph $G$ with $n$ vertices, 
-    
-    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
-\end{theorem}
-    
-    The trivial lower bound for $\gamma_g(G)$ when $\gamma(G)$ is known is $\gamma(G) < \gamma_g(G)$. This is because there is no dominating set smaller than $\gamma(G)$. 
-    
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{oreDomUpper} 
-    For any graph $G$ with $n$ vertices,     
+    For any connected graph $G$ with $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
 
 %TODO prove that Ore is tight
 
-\begin{theorem}\label{gameupper}
-    Let $G$ be a graph. If $x$ is a tight upper bound for the domination number, $\gamma(G)$, then      
-    \[x \leq  \gamma_g(G)\]
+\begin{theorem}\label{thm:domlow}
+    Let $\GG$ be a family of graphs and $\gamma(\GG)$ the domination number for $\GG$ then,
+    \[\gamma(\GG) \leq  \gamma_g(\GG)\]
 \end{theorem}
 
 \begin{proof}
-    Let $G$ be a graph where $\gamma(G) = x$.
-    Thus for $G$ we are unable to find a dominating set with $ < x$ vertices.
-    Therefore there cannot be a winning strategy for Alice with $< x$ vertices.
-    Therefore $\gamma_g(G) \geq x$
+    Let $\GG$ be a family of graphs and $G\in\GG$ be a graph such that $\gamma(G) = \gamma(\GG)$.
+    Therefore for $G$ we are unable to find a dominating set with $ <\gamma(\GG) $ vertices.
+    Therefore there cannot be a winning strategy for Alice with a score less than $\gamma(\GG)$.
+    Therefore $\gamma(\GG) \leq \gamma_g(\GG)$
 \end{proof}
 
 %add table of classes of graphs
 
-\begin{theorem} \label{gameDomNumLowerBound}
-    Let $G$ be a graph with $n$ vertices, such that $n \geq 4$. Then,    
-    \[  \left \lfloor{\frac{n}{2}}\right \rfloor \leq \gamma_g(G)  \]
-    
-\end{theorem}
+\begin{corollary} \label{thm:domLow}
+    Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then,    
+    \[  \frac{n}{2} \leq \gamma_g(G)  \]    
+\end{corollary}
 
-\begin{proof}
-    By combination of theorems \ref{oreDomUpper} and \ref{gameupper} we get  $ \gamma_g(G) \geq \left \lfloor{\frac{n}{2}}\right \rfloor $
+\begin{proof}[Theorem \ref{thm:domLow}]
+    Let $G$ be a graph with $n$ vertices.
+    
+    Consider the complete graph with $2$ vertices $K_2$, a dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=\frac{n}{2}=1$. Therefore $\frac{n}{2}$ is a tight upper bound for $\gamma(G)$. 
+    
+    Therefore by theorem \ref{thm:domlow} $ \frac{n}{2} \leq \gamma_g(G)$.
 \end{proof}
 
 %TODO insert disucssion
-Thereom \ref{gameDomNumLowerBound} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
+Theorem \ref{thm:domLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
 
-The trivial upper bound is $n$. This is because the set of vertices $V(G)$ is a dominating set.
+For some graph $G$ the set of vertices $V(G)$ is a dominating set and hence we have the trivial upper bound $\gamma_g(G) \leq |V(G)|$. However we can do better.
 
 \begin{theorem}
-    Let $G$ be a graph with $n$ vertices. Then,    
-    \[ \gamma_g(G) \leq \left\lceil \frac{2n}{3} \right\rceil\]
+    Let $G$ be a graph and $\gamma(G)$ the dominating number of $G$, then 
+    \[\gamma_g(G)<2\gamma(G)\]
+\end{theorem}
+\begin{proof}
+    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. Suppose Bob has just chosen a vertex and $D$ is the current dominating set. Alice's strategy is too pick any vertex, $v$, in $X$ that $v\notin D$. After $\gamma(G)$ turns the game must have ended as $X$ is a dominating set. On each turn both Alice and Bob added one vertex to $D$, hence the size of $D$ is at most $2\gamma_g$.
+\end{proof}
+%hence bounds for game relie on bounds for dom num
+
+\begin{theorem}
+    Let $T$ be a tree with $n$ vertices. Then,    
+    \[ \gamma_g(T) \leq \left\lceil \frac{2n}{3} \right\rceil\]
 \end{theorem}
  
-\begin{proof}
-    A dominating set on a spanning tree is a dominating set in the parent graph.
-    Thus for any graph, $G$, it suffices to show we have a winning strategy for a spanning tree of $G$. 
-    let $T$ be a spanning tree of $G$.
-    The winning strategy for Alice is the greedy strategy as follows. 
-    
-    Let $D$ be the current dominating set in $T$ i.e. neighbours of all selected vertices.
-    \begin{enumerate}
-        \item Pick any vertex, $v$, not in $D$ with a maximal number of neighbours not in $D$. That is maximise the set $\{x: x \in N(v) \bigwedge v \notin D\}$.
-        \item repeat until you have a dominating set.
-    \end{enumerate}
-
-       worst case path graph requires twice the minimum of the path graph???
-       
-       with no opponent this will give n/3 thus at worst with the opponent it will take 2n/3 
-       
-    At worst Alice will add two vertices to 
-    %TODO finish this proof
-\end{proof}
+%\begin{proof}
+%    Let $T$ be a tree with $n$ vertices. On Alice's first move she picks the vertex, $v$, with maximal degree. Initialise $A=N[v]$ to denote the activated vertices. 
+%
+%    Suppose Bob has just picked a vertex $u$ and let $D$ be the current dominating set in $T$. The winning strategy for Alice is the greedy strategy as follows.    
+%    
+%    Let $U=V(T)\ba D$ the unchosen vertices in $T$. Alice uses algorithm \ref{alg:greedy} to update $A$ and choose the next vertex.
+%        
+%    \begin{algorithm}[h]
+%        \caption{Greedy strategy}
+%        \label{alg:greedy}
+%        \begin{algorithmic}[1] 
+%            \State $A\gets A \cup N(u)$
+%            \State let $x\in U$ be the vertex that maximises $|N(x)\ba A|$
+%            \State $A\gets A \cup N(x)$            
+%            \State Choose $x$            
+%        \end{algorithmic}
+%    \end{algorithm}
+%    
+%   worst case path graph requires twice the minimum of the path graph???
+%   
+%   with no opponent this will give n/3 thus at worst with the opponent it will take 2n/3 
+%       
+%    At worst Alice will add two vertices to 
+%    %TODO finish this proof
+%\end{proof}
 
 \section{The $(a,b)$--dominating game}
 
 The natural extension of the dominating game is to allow Alice and Bob to select more than one vertex on each turn. We define this as the $(a,b)$--dominating game when Alice is allowed to select $a$ vertices per turn and Bob $b$ vertices.
 
 \begin{definition}[game domination number]
-    Let $G$ be a graph and $a,b>1$ integers. The game dominating number $\gamma_g(G;a,b)$ is the smallest target for such that Alice has a winning strategy win playing the $(a,b)$--dominating game.
+    Let $G$ be a graph and $a,b>1$ integers. The game dominating number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
 \end{definition}
 
 \begin{theorem} %TODO prove this theorem
     Let $G$ be a graph with $n$ vertices and $a,b>1$ integers. Then,
     \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
-    \[\gamma_{g}(G;1,b) \leq (b+1) \gamma_{g}(G;1,1) \leq (b+1)\left\lceil \frac{2n}{3} \right\rceil\]
+    \[\gamma_{g}(G;1,b) \leq b\cdot\gamma_{g}(G;1,1) \leq (b+1)\left\lceil \frac{2n}{3} \right\rceil\]
 \end{theorem}
 
 
