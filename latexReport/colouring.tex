@@ -151,6 +151,19 @@ The following proof is an extended version of the proof of Theorem 5.4 in Bodlae
     Therefore we have a winning strategy on $G$ in $\TT$ for Bob with $b+2$ colours. 
 \end{proof}
 
+\begin{definition}[Path decomposition]
+    Let $G$ be a graph. A path decomposition is list of subsets of $V(G)$, $P={P_1,P_2,\dots,P_n}$ that have the following properties.    
+    \begin{enumerate}[(i)]
+        \item For all edges $uv$ in $G$ there exits an $i$ such that such $u,v\in P_i$
+        \item If there exits an $i\leq j$ and a vertex $v$ such that $v\in P_i$ and $v\in P_j$ then for all $i<l<j$ $v\in P_l$
+    \end{enumerate}
+    The width of a path decomposition is the size if the largest set in $P$.
+\end{definition}
+
+\begin{definition}[Pathwidth]
+    The pathwidth of a graph $G$ is the minimum width of path decomposition of $G$.
+\end{definition}
+
 \begin{theorem}
     Let $\PP$ be family of graphs with bounded pathwidth $k$. If we have $p\geq2$ players then \[pk+\left\lceil \frac{p-1}{2}\right\rceil\leq\chi_g(\PP;p)\]
 \end{theorem}
