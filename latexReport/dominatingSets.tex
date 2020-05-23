@@ -51,7 +51,7 @@ We define the dominating game as follows. Let $G$ be a graph, $t$ be a target sc
 %    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 %\end{theorem}
     
-For some graph,$G$, $\gamma(G)$ is the size of the smallest domination set and hence $\gamma(G)\leq\gamma_g(G)$. Hence $\gamma(G)$ is the trivial lower bound for the game domination number. Note theorem \ref{oreDomUpper}, it is a well known result that $\gamma(G) \leq \frac{n}{2}$, we will show $\frac{n}{2}$ is a lower bound for the game domination number. But first a couple of theorems.
+For some graph,$G$, $\gamma(G)$ is the size of the smallest domination set and hence $\gamma(G)\leq\gamma_g(G)$. Hence $\gamma(G)$ is the trivial lower bound for the game domination number. Note theorem \ref{oreDomUpper}, it is a well known result that $\gamma(G) \leq n/2$, we will show $n/2$ is a lower bound for the game domination number. But first a couple of theorems.
 
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{oreDomUpper} 
     For any connected graph $G$ with $n$ vertices,     
@@ -61,38 +61,40 @@ For some graph,$G$, $\gamma(G)$ is the size of the smallest domination set and h
 %TODO prove that Ore is tight
 
 \begin{theorem}\label{thm:domlow}
-    Let $\GG$ be a family of graphs and $\gamma(\GG)$ the domination number for $\GG$ then,
+    Let $\GG$ be a family of graphs and $\gamma(\GG)$ tight upper bound for the domination number of $\GG$. That is for all $G\in\GG$ $\gamma(G)\leq\gamma(\GG)$ and there exists some $G\in\GG$ such that $\gamma(G)=\gamma(\GG)$. Then,
     \[\gamma(\GG) \leq  \gamma_g(\GG)\]
 \end{theorem}
 
 \begin{proof}
-    Let $\GG$ be a family of graphs and $G\in\GG$ be a graph such that $\gamma(G) = \gamma(\GG)$.
-    Therefore for $G$ we are unable to find a dominating set with $ <\gamma(\GG) $ vertices.
+    Let $\GG$ be a family of graphs and $G\in\GG$ a graph such that $\gamma(G) = \gamma(\GG)$.
+    Therefore for $G$ we are unable to find a dominating set with less than $ \gamma(\GG) $ vertices.
     Therefore there cannot be a winning strategy for Alice with a score less than $\gamma(\GG)$.
     Therefore $\gamma(\GG) \leq \gamma_g(\GG)$
 \end{proof}
 
 %add table of classes of graphs
 
-\begin{corollary} \label{thm:domLow}
+\begin{corollary} \label{thm:gamedomLow}
     Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then,    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
 \end{corollary}
 
-\begin{proof}[Theorem \ref{thm:domLow}]
+\begin{proof}
     Let $G$ be a graph with $n$ vertices.
     
-    Consider the complete graph with $2$ vertices $K_2$, a dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=\frac{n}{2}=1$. Therefore $\frac{n}{2}$ is a tight upper bound for $\gamma(G)$. 
+    Consider the complete graph with $2$ vertices $K_2$, a dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=n/2=1$. Therefore $n/2$ is a tight upper bound for $\gamma(G)$. 
     
-    Therefore by theorem \ref{thm:domlow} $ \frac{n}{2} \leq \gamma_g(G)$.
+    Therefore by theorem \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
+Corollary \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$ Alice will always loss but rather target score needed to ensure Alice will always win on a connected graph is greater than $n/2$.
+
 %TODO insert disucssion
-Theorem \ref{thm:domLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
+%C \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}.
 
-For some graph $G$ the set of vertices $V(G)$ is a dominating set and hence we have the trivial upper bound $\gamma_g(G) \leq |V(G)|$. However we can do better.
+An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ of $G$ is a dominating set and hence we have the trivial upper bound $\gamma_g(G) \leq |V(G)|$. However we can do better.
 
-\begin{theorem}
+\begin{theorem}\label{thm:gamedomup}
     Let $G$ be a graph and $\gamma(G)$ the dominating number of $G$, then 
     \[\gamma_g(G)<2\gamma(G)\]
 \end{theorem}
@@ -142,9 +144,14 @@ The natural extension of the dominating game is to allow Alice and Bob to select
 
 \begin{theorem} %TODO prove this theorem
     Let $G$ be a graph with $n$ vertices and $a,b>1$ integers. Then,
-    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
-    \[\gamma_{g}(G;1,b) \leq b\cdot\gamma_{g}(G;1,1) \leq (b+1)\left\lceil \frac{2n}{3} \right\rceil\]
+%    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
+    \[\gamma_{g}(G;a,b) \leq \frac{a+b}{a}\gamma(G)\]
 \end{theorem}
+\begin{proof}
+    This proof proceeds in much the same way as the proof of theorem \ref{thm:gamedomup}.
+    
+   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. Suppose Bob has just chosen $b$ vertices and $D$ is the current dominating set. Alice's strategy is to pick any $a$ vertices, $v_1,\dots,v_a$, in $X$ that each $v_i\notin D$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
+\end{proof}
 
 
 

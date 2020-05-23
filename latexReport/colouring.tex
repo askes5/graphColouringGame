@@ -1,6 +1,8 @@
 \chapter{Colouring}
 
-We consider the colouring game played between two players, Alice and Bob. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assigns $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
+A $k$--vertex colouring of a graph $G$ is a mapping from $V(G)$ to the colours $C=\{1,\dots,k\}$. A proper $k$--vertex colouring is a mapping such that for two vertices $u,v\in V(G)$ if $u$ and $v$ are neighbours they are different colours. The chromatic number,$\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper  $k$--vertex colouring.
+
+We define the colouring game played between Alice and Bob as follows. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assigns $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
 
 %todo add basic results e.g. \chi of subgraphs, composition, disconnected graphs, etc.
 
@@ -8,29 +10,29 @@ We consider the colouring game played between two players, Alice and Bob. Let $G
     Let $G$ be a graph. Then, $\chi_g(G)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game.     
 \end{definition}
 
-We can also extend the colouring game to have $p$ players. The win conditions and rules are the same as the standard game but for every turn Alice has Bob has $p-1$ turns. This can be seen as there being $p$ different players Alice, Bob, Charlie, etc. where a win for Bob is considered a win for all players apart from Alice.
+We also consider the an extension of the colouring game to the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but for every turn Alice colours $a$ vertices and Bob colours $b$ turns.
 \begin{definition}
-    let $G$ be a graph, and $p\in\mathbb{N}$. 
-     Then, $\chi_g(G;p)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game with $p$ players. 
+    let $G$ be a graph, and $a,b\in\mathbb{N}$. 
+     Then, $\chi_g(G;a,b)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the $(a,b)$--colouring game. 
 \end{definition}
 Note that $\chi_g(G) = \chi_g(G;2)$.
 
 Consider a graph $G$ if there is a winning strategy for Bob with $n$ colours then $n$ is a lower bound for the game chromatic number of $G$. That is $\chi_g(G)>n$. This is because Alice cannot possibly win with less than $n$ colours. Conversely a winning strategy for Alice with $m$ colours is an upper bound,  $\chi_g(G)\leq n$.
 
 %todo add better title
-\section{Direct proofs}
+\section{Lower bounds in the $(a,b)$--colouring game}
 
-The first results we will look at are results the stem directly from strategies for Alice and Bob.
+The first results we will look at are some lower bounds for the game chromatic number.
 
 \begin{theorem}
-    Let $\TT$ be the family of trees. If we have $p \geq 2$ players then,
-    \[\chi_g(\TT;p) \geq p + 2 \]
+    Let $\TT$ be the family of trees. If we have $b \geq 1$  then,
+    \[\chi_g(\TT;1,b) \geq b+3 \]
 \end{theorem}
 
-The following proof is an extended version of the proof of Theorem 5.4 in \cite[Bodlaender 1990]{bodlander1990}
+The following proof is an extended version of the proof of Theorem 5.4 in Bodlaender 1990 \cite{bodlander1990}
 
 \begin{proof}
-    It suffices to show that there is a tree in where Bob has a winning strategy with $p+1$ colours.
+    It suffices to show that there is a tree in where Bob has a winning strategy with $b+2$ colours.
     
     Consider the graph $G$ as defined in figure \ref{figure_multiPlayerTree1}. 
           
@@ -81,16 +83,16 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
         
 %        \draw [decorate,decoration={calligraphic brace,amplitude=11pt,mirror,raise=2ex}, line width=1.5pt]
 %        (v12) -- (v4) node[midway,yshift=-3em]{$p$ vertices};
-        \draw[decorate, decoration={brace, amplitude=10pt,mirror,raise=2ex}, thick] ($(v12)+(-.25,0)$)--($(v4)+(.25,0)$) node[midway,yshift=-3em]{$p$ vertices};
+        \draw[decorate, decoration={brace, amplitude=10pt,mirror,raise=2ex}, thick] ($(v12)+(-.25,0)$)--($(v4)+(.25,0)$) node[midway,yshift=-3em]{$b+1$ vertices};
         \end{tikzpicture}
         \caption{}
         \label{figure_multiPlayerTree1}
     \end{figure}    
 
     
-    Let the set of available colours be $\{c_1,c_2,\ldots,c_p,c_{p+1}\}$.
+    Let the set of available colours be $\{c_1,c_2,\ldots,c_{b+1},c_{b+2}\}$.
     On Alice's first move she picks any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
-    Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{figure_subgraphColouring}. We then colour $y_1$ \ldots $y_{p-2}$ with $c_2$ \ldots $c_{p-1}$ respectively.
+    Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{figure_subgraphColouring}. We then colour $y_1$ \ldots $y_{b-1}$ with $c_2$ \ldots $c_{b}$ respectively.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1,transform shape]
@@ -101,12 +103,12 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     \node [label=above left:1, normalBlack, label=below right:{\footnotesize$c_1$}] (v1) at (-22,1) {};
     \node [label=below:$x_1$, normal] (v12) at (-21,-1) {};
     \node [label=below:$x_2$, normal] (v3) at (-20,-1) {};
-    \node [label=below:$x_p$, normal] (v4) at (-18.5,-1) {};
+    \node [label=below:$x_{b+1}$, normal] (v4) at (-18.5,-1) {};
     \node [label=below:$y_1$, normalBlack, label=above left:{\footnotesize$c_2$}] (v13) at (-16.5,-1) {};
     \node [label=below:$y_2$, normalBlack, label=above left:{\footnotesize$c_3$}] (v11) at (-15.5,-1) {};
-    \node [label=below:$y_{p-2}$, normalBlack, label=above left:{\footnotesize$c_{p-1}$}] (v10) at (-14,-1) {};
-    \node [label=below:$y_{p-1}$,normal] (v7) at (-13,-1) {};
-    \node [label=below:$y_{p}$,normal] (v8) at (-12,-1) {};
+    \node [label=below:$y_{b-1}$, normalBlack, label=above left:{\footnotesize$c_{b}$}] (v10) at (-14,-1) {};
+    \node [label=below:$y_{b}$,normal] (v7) at (-13,-1) {};
+    \node [label=below:$y_{b+1}$,normal] (v8) at (-12,-1) {};
     \draw  (v1) edge (v2);
     \draw  (v2) edge (v3);
     \draw  (v2) edge (v4);
@@ -128,25 +130,25 @@ The following proof is an extended version of the proof of Theorem 5.4 in \cite[
     We consider three cases.
     
     \begin{enumerate}
-        \item Alice colours $2$, $x_1$, $x_2$, \ldots, or $x_p$.
+        \item Alice colours $2$, $x_1$, $x_2$, \ldots, or $x_{b+1}$.
         
-        Bob colours $y_{p-1}$ with $c_p$ and $y_{p}$ with $c_{p+1}$. 
-        Vertex $3$ now has $p+1$ different coloured neighbours and thus Bob wins.     
+        Bob colours $y_{b}$ with $c_{b+1}$ and $y_{b+1}$ with $c_{b+2}$. 
+        Vertex $3$ now has $b+2$ different coloured neighbours and thus Bob wins.     
                     
         \item Alice colours $3$.
                
-        The colour of $3$ cannot be one of $c_1 \ldots c_{p-1}$. Therefore $3$ is either $c_p$ or $c_{p+1}$. 
-        Without loss of generality assume the colour of $3$ is $c_{p+1}$.
-        Bob colours $x_1, \dots ,x_{p-1}$ with $c_2,\dots,c_{p}$ respectively.
-        Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins.  
+        The colour of $3$ cannot be one of $c_1 \ldots c_{b}$. Therefore $3$ is either $c_{b+1}$ or $c_{b+2}$. 
+        Without loss of generality assume the colour of $3$ is $c_{b+2}$.
+        Bob colours $x_1, \dots ,x_{b}$ with $c_2,\dots,c_{b+1}$ respectively.
+        Vertex $2$ now has $b+2$ different coloured neighbours and thus Bob wins.  
                        
-        \item Alice colours $y_{p-1}$ or $y_{p}$
+        \item Alice colours $y_{b}$ or $y_{b+1}$
         
-        Bob colours $2$ with $c_p$ and $y_{p}$ (or $y_{p-1}$ if Alice coloured $y_p$) with $c_{p+1}$ .
-        Vertex $2$ now has $p+1$ different coloured neighbours and thus Bob wins. 
+        Bob colours $2$ with $c_{b+1}$ and $y_{b+1}$ (or $y_{b}$ if Alice coloured $y_{b+1}$) with $c_{b+2}$ .
+        Vertex $2$ now has $b+2$ different coloured neighbours and thus Bob wins. 
     \end{enumerate}
 
-    Therefore we have a winning strategy on $G$ in $\TT$ for Bob with $p+1$ colours. 
+    Therefore we have a winning strategy on $G$ in $\TT$ for Bob with $b+2$ colours. 
 \end{proof}
 
 \begin{theorem}
@@ -352,12 +354,12 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
     For any graph $G=(V, E$) and linear ordering $L$ on $V$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
 \end{theorem}
 
-A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
+%A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
 %TODO add defination reference
 
 \subsection{proofs using the activation strategy}
-We will now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of bounded pathwidth and of bounded tree width.
+We now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of graphs with bounded pathwidth and with bounded tree width.
 
 Note that $\chi_g(P) > $ pathwidth
 
