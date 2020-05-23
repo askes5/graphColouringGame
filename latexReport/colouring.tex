@@ -155,7 +155,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in Bodlae
     Let $G$ be a graph. A path decomposition is list of subsets of $V(G)$, $P=\{P_1,P_2,\dots,P_n\}$ such that $\bigcup P=V(G)$ and has the following properties.    
     \begin{enumerate}[(i)]
         \item For all edges $uv$ in $G$ there exits an $i$ such that such $u,v\in P_i$
-        \item If there exits an $i\leq j$ and a vertex $v$ such that $v\in P_i$ and $v\in P_j$ then for all $i<l<j$ $v\in P_l$
+        \item If there exits an $i\leq j$ and a vertices $u,v$ such that $v\in P_i$ and $v\in P_j$ then for all $i<l<j$ $v\in P_l$
     \end{enumerate}
     The width of a path decomposition is one less the size if the largest set in $P$.
 \end{definition}
@@ -468,7 +468,17 @@ We now provide some basic results that demonstrate typical usage of the activati
 %\end{proof}
 
 \begin{definition}[Tree decomposition]
-    A tree decomposition $(X,T)$ of a graph $G$ is tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties 
+    A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
+    \begin{enumerate}[(i)]
+        \item For all edges $uv$ in $E(G)$ there exists an $i$ such that $u,v\in X_i$
+        \item  If there exits an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$ $v\in P_l$.
+    \end{enumerate} 
+    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
+\end{definition}
+
+\begin{definition}[Treewidth]
+    The treewidth of a graph $G$ is the minimum width of tree decomposition of $G$.    
+    A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
 \end{definition}
 
 %todo recall defn of tree width and tree decomposition
