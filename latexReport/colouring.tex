@@ -152,30 +152,32 @@ The following proof is an extended version of the proof of Theorem 5.4 in Bodlae
 \end{proof}
 
 \begin{definition}[Path decomposition]
-    Let $G$ be a graph. A path decomposition is list of subsets of $V(G)$, $P={P_1,P_2,\dots,P_n}$ that have the following properties.    
+    Let $G$ be a graph. A path decomposition is list of subsets of $V(G)$, $P={P_1,P_2,\dots,P_n}$ such that $\cup P=V(G)$. $P$ has the following properties.    
     \begin{enumerate}[(i)]
         \item For all edges $uv$ in $G$ there exits an $i$ such that such $u,v\in P_i$
         \item If there exits an $i\leq j$ and a vertex $v$ such that $v\in P_i$ and $v\in P_j$ then for all $i<l<j$ $v\in P_l$
     \end{enumerate}
-    The width of a path decomposition is the size if the largest set in $P$.
+    The width of a path decomposition is one less the size if the largest set in $P$.
 \end{definition}
 
 \begin{definition}[Pathwidth]
-    The pathwidth of a graph $G$ is the minimum width of path decomposition of $G$.
+    The pathwidth of a graph $G$ is the minimum width of path decomposition of $G$.    
+    A graph of bounded pathwidth, $k$, is a graph with a pathwidth less than or equal to $k$. 
 \end{definition}
 
 \begin{theorem}
-    Let $\PP$ be family of graphs with bounded pathwidth $k$. If we have $p\geq2$ players then \[pk+\left\lceil \frac{p-1}{2}\right\rceil\leq\chi_g(\PP;p)\]
+    Let $\PP$ be family of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP;1,b)\]
 \end{theorem}
 %todo upper bound of pw?
 %activation stragety only play aginest players in linear order of selection is at least (p+1)w +1. 
 %conjecture that tree is (p+1)w+1
 
- Note that having $p$ players is equivalent to having Bob have $p-1$ turns for every turn Alice has.
+Note that in a maximal graph, $G$, of pathwidth $k$  $k < \chi_g(G) $. %todo expand
+
 \begin{proof}
-    It suffices to show that there exists a graph in $\PP$ for which bob has a winning strategy with $m=pk+\left\lceil\frac{p-1}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
+    It suffices to show that there exists a graph in $\PP$ for which bob has a winning strategy with $m=(b+1)k+\left\lceil\frac{b}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
-    We define the graph $G$ as follows. First start with a $k$-clique, $K_k$. Second take $n=p^2k$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$, forming a $k+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
+    We define the graph $G$ as follows. First start with a $k$-clique, $K_k$. Second take $n=(b+1)^2k$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$, forming a $k+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
     
     Note that $G$ has the path decomposition $\{K_k\cup\{v_n\}, K_k\cup\{v_{n-1}\}, \dots, K_k\cup\{v_1\}, K_k'\cup\{v_1\}, K_k'\cup\{t_2\}, \dots, K_k'\cup\{t_n\}\}$, and therefore has path width $k$.
 \begin{figure}[H]
@@ -267,17 +269,17 @@ We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has
 \end{figure}
 
 
-Bob's strategy is to always colours $p-1$ uncoloured vertices not in $K_k$ with colours not used in $H$. We keep playing until either $K_k$ is fully coloured bar one, or Bob runs out of new colours. We consider the cases separately 
+Bob's strategy is to always colours $b$ uncoloured vertices not in $K_k$ with colours not used in $H$. We keep playing until either $K_k$ is fully coloured bar one, or Bob runs out of new colours. We consider the cases separately 
 
-Every turn Bob uses $p-1$ unique colours. Therefore it will take at least $(pk-1)\div(p-1)$ turns to exhaust all the colours. Each turn $p$ vertices are coloured and here are $n=p^2k$ vertices for Bob to colour. $p^2k > p(pk-1)\div(p-1)$ . Therefore Bob cannot run out of vertices to colour before he runs out of colours.
+Every turn Bob uses $b$ unique colours. Therefore it will take at least $((b+1)k-1)\div(b)$ turns to exhaust all the colours. Each turn $b+1$ vertices are coloured and here are $n=(b+1)^2k$ vertices for Bob to colour. $(b+1)^2k > (b+1)((b+1)k-1)\div((b+1)-1)$ . Therefore Bob cannot run out of vertices to colour before he runs out of colours.
 
-First, suppose $K_k$ is fully coloured bar one. Let the uncoloured vertex be $x$. On the first turn Bob coloured $p-1$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{p-1}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $p-1$ vertices. As each coloured vertex in $K_k$ must have been coloured by Alice there have been at least $k-1$ turns after the second turn and each turn Bob coloured $p-1$ vertices. Finally when each vertex in $K_k$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $x$ is 
+First, suppose $K_k$ is fully coloured bar one. Let the uncoloured vertex be $x$. On the first turn Bob coloured $b$ vertices, but at most half of these are in $H$ and so Bob coloured $\left\lceil \frac{b}{2}\right\rceil$ vertices in $H$. On the second turn Alice coloured no vertex in $H$ and Bob $b$ vertices. As each coloured vertex in $K_k$ must have been coloured by Alice there have been at least $k-1$ turns after the second turn and each turn Bob coloured $b$ vertices. Finally when each vertex in $K_k$ was coloured the vertex must have coloured differently than the ones before it. Therefore the total number of unique coloured neighbours of $x$ is 
 %
-\[\left\lceil \frac{p-1}{2}\right\rceil+(p-1) +(p-1)(k-1)+(k-1)=pk+\left\lceil \frac{p-1}{2}\right\rceil-1\]
+\[\left\lceil \frac{b}{2}\right\rceil+b +b(k-1)+(k-1)=(b+1)k+\left\lceil \frac{b}{2}\right\rceil-1\]
 %
 Therefore $x$ cannot be coloured, and Bob wins.
 
-Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $pk-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
+Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $(b+1)k-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
 \end{proof}
 %---------------------------------------
 
@@ -287,18 +289,19 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 
 Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is strategy for Alice to use to play the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)=4$. 
 
-To provide bounds for the game chromatic number we introduce a the marking game. The marking game is commonly used for finding upper bounds for the game chromatic number, and was formally introduced in \cite{Zhu1999}, further examples can be found in  \cite{KIERSTEAD2000,Zhu2008}.
+To provide bounds for the game chromatic number we introduce the marking game. The marking game was formally introduced in Zhu 1999 \cite{Zhu1999}. Is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
-We define the marking game as follows. Let $G$ be a graph, and $n$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $n$ and Bob wins otherwise.
+We define the marking game as follows. Let $G$ be a graph, and $t$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $t$ and Bob wins otherwise.
 
 \begin{definition}[game colouring number]
     Suppose $G$ is a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
 \end{definition}
 
-Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $n$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $n$ coloured neighbours. Hence the game chromatic number is bound by the colouring number, that is $\chi_g(G)\leq\col(G)$
+Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $t$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $t$ coloured neighbours. Hence the game chromatic number is bound by the colouring number, that is $\chi_g(G)\leq\col(G)$
 
-For $\FF$ be the family of forests, $\II$ the family of interval graphs with clique number $k$, $\PP$ the family of planar graphs, $\QQ$ the family of outer planar graphs, and $\KK$ the family of partial k-trees. %note K_k is exactly the graphs of bounded tree width.
-The game colouring number for these classes of graphs are known. %todo either remove this or add refferences
+%For $\FF$ be the family of forests, $\II$ the family of interval graphs with clique number $k$, $\PP$ the family of planar graphs, $\QQ$ the family of outer planar graphs, and $\KK$ the family of partial k-trees. %note K_k is exactly the graphs of bounded tree width.
+%The game colouring number for these classes of graphs are known. 
+%todo either remove this or add refferences
 
 A quick note on notation. Let $G$ be a graph, $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$, that is for any two vertices, $u,v\in V(G)$ we have the directed edge $uv$ iff $u>_Lv$. 
 
@@ -374,9 +377,6 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
 \subsection{proofs using the activation strategy}
 We now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of graphs with bounded pathwidth and with bounded tree width.
 
-Note that $\chi_g(P) > $ pathwidth
-
-Recall the definition of pathwidth.
 %
 %\begin{algorithm}[h]
 %    \caption{Linear order in path decomposition}
@@ -466,6 +466,8 @@ Recall the definition of pathwidth.
 %    
 %    By lemma \ref{lemma_neighboursAfter} $N^-[v] \subseteq X_i$ for some $X_i \in \mathscr{X}$ . Therefore $\left| Z\right| \leq \left| N^-(v)\right| \leq |X_i| \leq k+1$. Therefore by definition \ref{defnRank} $m(u,L,P) \leq k+1$. Thus $r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq 2k +1$.
 %\end{proof}
+
+
 
 %todo recall defn of tree width and tree decomposition
 %in tree decom (\{X_1,X_2,\dots,X_n\},T) X_i is a vertex in T
