@@ -1,5 +1,6 @@
 \chapter{Colouring}
 
+\section{Introduction}
 A $k$--vertex colouring of a graph $G$ is a mapping from $V(G)$ to the colours $C=\{1,\dots,k\}$. A proper $k$--vertex colouring is a mapping such that for two vertices $u,v\in V(G)$ if $u$ and $v$ are neighbours they are different colours. The chromatic number,$\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper  $k$--vertex colouring.
 
 We define the colouring game played between Alice and Bob as follows. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assigns $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
@@ -19,7 +20,6 @@ Note that $\chi_g(G) = \chi_g(G;1,1)$.
 
 Consider a graph $G$ if there is a winning strategy for Bob with $n$ colours then $n$ is a lower bound for the game chromatic number of $G$. That is $\chi_g(G)>n$. This is because Alice cannot possibly win with less than $n$ colours. Conversely a winning strategy for Alice with $m$ colours is an upper bound,  $\chi_g(G)\leq n$.
 
-%todo add better title
 \section{Lower bounds in the $(a,b)$--colouring game}
 
 The first results we will look at are some lower bounds for the game chromatic number.
@@ -154,7 +154,7 @@ The following proof is an extended version of the proof of Theorem 5.4 in Bodlae
 \begin{definition}[Path decomposition]
     Let $G$ be a graph. A path decomposition is list of subsets of $V(G)$, $P=\{P_1,P_2,\dots,P_n\}$ such that $\bigcup P=V(G)$ and has the following properties.    
     \begin{enumerate}[(i)]
-        \item For all edges $uv$ in $G$ there exits an $i$ such that such $u,v\in P_i$
+        \item For all edges $(u,v) \in E(G)$ there exits an $i$ such that such $u,v\in P_i$
         \item If there exits an $i\leq j$ and a vertices $u,v$ such that $v\in P_i$ and $v\in P_j$ then for all $i<l<j$ $v\in P_l$
     \end{enumerate}
     The width of a path decomposition is one less the size if the largest set in $P$.
@@ -165,21 +165,18 @@ The following proof is an extended version of the proof of Theorem 5.4 in Bodlae
     A graph of bounded pathwidth, $k$, is a graph with a pathwidth less than or equal to $k$. 
 \end{definition}
 
-\begin{theorem}
-    Let $\PP$ be family of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP;1,b)\]
-\end{theorem}
-%todo upper bound of pw?
-%activation stragety only play aginest players in linear order of selection is at least (p+1)w +1. 
-%conjecture that tree is (p+1)w+1
+In a maximal graph, $G$, of pathwidth $k$ we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. Hence there is no proper colouring of $G$ with less than $k+1$ colours. Hence we have a lower bound for the game chromatic number for graphs of path with $K$, that is $k < \chi_g(G) $. 
 
-Note that in a maximal graph, $G$, of pathwidth $k$  $k < \chi_g(G) $. %todo expand
+\begin{theorem}
+    Let $\PP_k$ be family of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP_k;1,b)\]
+\end{theorem}
 
 \begin{proof}
-    It suffices to show that there exists a graph in $\PP$ for which bob has a winning strategy with $m=(b+1)k+\left\lceil\frac{b}{2}\right\rceil-1$ colours. Let the available colours be $C=\{c_1,c_2,\dots,c_m\}$.
+    It suffices to show that there exists a graph in $\PP_k$ for which bob has a winning strategy with $m=(b+1)k+\left\lceil\frac{b}{2}\right\rceil-1$ colours. We let the set of available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
     We define the graph $G$ as follows. First start with a $k$-clique, $K_k$. Second take $n=(b+1)^2k$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$, forming a $k+1$-clique. Now copy this graph,  and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note: $v_1=t_1$. 
     
-    Note that $G$ has the path decomposition $\{K_k\cup\{v_n\}, K_k\cup\{v_{n-1}\}, \dots, K_k\cup\{v_1\}, K_k'\cup\{v_1\}, K_k'\cup\{t_2\}, \dots, K_k'\cup\{t_n\}\}$, and therefore has path width $k$.
+    Note that $G$ has the path decomposition $\{K_k\cup\{v_n\}, K_k\cup\{v_{n-1}\}, \dots, K_k\cup\{v_1\}, K_k'\cup\{v_1\}, K_k'\cup\{t_2\}, \dots, K_k'\cup\{t_n\}\}$, and therefore has pathwidth $k$.
 \begin{figure}[H]
     \centering
 \begin{tikzpicture}[rotate=90]
@@ -264,7 +261,7 @@ We consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has
 \path (v1) -- (v6) node [ font=\Huge, midway, sloped] {$\dots$};
 \path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
 \end{tikzpicture}
-    \caption{Graph $H$}
+    \caption{Subgraph $H$}
     \label{fig:pwlowerbound2}
 \end{figure}
 
@@ -287,7 +284,7 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 \section{Activation Strategy}
 %----------------------------------------------------------------------------------------
 
-Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is strategy for Alice to use to play the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)=4$. 
+Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is a strategy for Alice to use to play the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)=4$. 
 
 To provide bounds for the game chromatic number we introduce the marking game. The marking game was formally introduced in Zhu 1999 \cite{Zhu1999}. Is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
@@ -303,11 +300,10 @@ Suppose that Alice has a winning strategy in the ordering game on a graph $G$, w
 %The game colouring number for these classes of graphs are known. 
 %todo either remove this or add refferences
 
-A quick note on notation. Let $G$ be a graph, $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$, that is for any two vertices, $u,v\in V(G)$ we have the directed edge $uv$ iff $u>_Lv$. 
+A quick note on notation. Let $G$ be a graph, $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$, that is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)$ if and only if $u>_Lv$. This ordering may be the reverse of what you may expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest and so we want the edges directed from biggest to smallest.
 
-Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ the outneighbours are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$, the inneighbours $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$, the indegree is $d^+_{G_L}(v)=|N^+(v)|$, and the outdegree is $d^+_{G_L}(v)=|N^-(v)|$. In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. Let $V^+(v)=\{u\in V(g):v>_L u\}$, and $V^-(v)=\{u\in V(g):v<_L u\}$.  When it is clear from context we will drop the $G_L$ subscript. Finally let $N^+[v]=N^+(v)\cup\{v\}$, $N^-[v]=N^-(v)\cup\{v\}$, $V^+[v]=V^+(v)\cup\{v\}$,$V^-[v]=V^-(v)\cup\{v\}$. %todo improve
+Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ the outneighbours are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$, the inneighbours $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$, the outdegree is $d^+_{G_L}(v)=|N^+(v)|$, and the indegree is $d^-_{G_L}(v)=|N^-(v)|$. In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. $V^+(v)=\{u\in V(g):v>_L u\}$, $V^-(v)=\{u\in V(g):v<_L u\}$. Finally let $N^+[v]=N^+(v)\cup\{v\}$, $N^-[v]=N^-(v)\cup\{v\}$, $V^+[v]=V^+(v)\cup\{v\}$,$V^-[v]=V^-(v)\cup\{v\}$. When it is clear from context we will drop the $G_L$ subscript.  %todo improve
  
-
 \subsection{Summery of activation strategy}
 
 Consider a graph $G(V,E)$ with a linear ordering $L$ on $V$. $U$ is the set of unmarked vertices, and $A$ the active ones.
@@ -315,7 +311,8 @@ Consider a graph $G(V,E)$ with a linear ordering $L$ on $V$. $U$ is the set of u
 An informal summery of the activation strategy is as follows. Alice starts by marking the least $v$ in $L$. If $u$ is the last marked vertex by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
 
 %TODO trim waffle
-\begin{definition}(graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
+%todo defination matching
+\begin{definition}(Graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
     Suppose $A,B$ are disjoint subsets of $V$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ saturates $A$ and $B\setminus A$ contains a cover of M. 
     
     Let $L$ be a linear order, $G=(V,E)$ be a graph, and $u$ a vertex in $V$.
@@ -366,7 +363,7 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
 \end{definition}
 
 
-\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{thm_KIERSTEAD1}
+\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
     For any graph $G=(V, E$) and linear ordering $L$ on $V$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
 \end{theorem}
 
@@ -432,19 +429,19 @@ We now provide some basic results that demonstrate typical usage of the activati
 
     Consider the linear order $L$ on $V$ such that for any $a,b\in I$ where $a<b$ all elements in $P_a$ are less than all elements in $P_b\setminus P_a$.  
         
-    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
+%    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
     
     We can see that for any vertex, $v, d^+(v) \leq k$.
     
-    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm_KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 3k$. 
+    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 3k$. 
     
     Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques.
     
     Let $v$ be any vertex in $V$. Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
     
-    Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)\leq k$. 
+    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)\leq k$. 
     
-    Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$. %The idea is $b\in N+(v)$
+    Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$. %The idea is $b\in N+(v)$
     There exits some $X_i,X_j$ such that $a\in X_i$ and $b\in x_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$, for some $i,j\in I$. If $a \in X_j$ then $a < v$, this is a contribution. Thus $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
     
     $|Z| = |X|+|Y|$ Therefore, \[r(v,L,G) = d^+_{G_L}(u) + m(u,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
@@ -470,7 +467,7 @@ We now provide some basic results that demonstrate typical usage of the activati
 \begin{definition}[Tree decomposition]
     A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
     \begin{enumerate}[(i)]
-        \item For all edges $uv$ in $E(G)$ there exists an $i$ such that $u,v\in X_i$
+        \item For all edges $(u,v)$ in $E(G)$ there exists an $i$ such that $u,v\in X_i$
         \item  If there exits an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$ $v\in P_l$.
     \end{enumerate} 
     The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
@@ -481,10 +478,15 @@ We now provide some basic results that demonstrate typical usage of the activati
     A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
 \end{definition}
 
+To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg:LinOrderTW} to generate a linear order on the vertices of a graph, $G$, based on a minimal tree decomposition, $(X,T)$. Algorithm \ref{alg:LinOrderTW} traverses $T$ using breadth first traversal and adds any vertex from $X_i$ to the linear order if it is the first time we  had encountered the vertex.
+
+%todo explain breadth first traversal
+%todo add picture of traversial.
+
 %in tree decom (\{X_1,X_2,\dots,X_n\},T) X_i is a vertex in T
 \begin{algorithm}[h]
     \caption{Linear order in tree decomposition}
-    \label{algo_LinOrderTW}
+    \label{alg:LinOrderTW}
     \begin{algorithmic}[1]
         \Require {$\left( \mathscr{X}=\{X_i:i\in I\}, T \right) $ is the tree decomposition of a graph $G$. $r$ is the root of $T$}
         \Ensure {$L$ is a linear order on $V(G)$}
@@ -511,15 +513,18 @@ We now provide some basic results that demonstrate typical usage of the activati
 \begin{lemma} \label{Lemma_TWLinOrdBound}
     Let $G=(E,V)$ be a graph of treewidth $k$ and $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$.
     
-    Suppose $L$ is a linear ordering on $V$ generated by algorithm \ref{algo_LinOrderTW} and $v$ is any vertex in $G$. Then $d^+(v) \leq k$. 
+    Suppose $L$ is a linear ordering on $V(G)$ generated by algorithm \ref{alg:LinOrderTW} and $v$ is any vertex in $G$. Then $d^+(v) \leq k$. 
 \end{lemma}
 
-%todo prove the above lemma
+\begin{proof}    
+    Let $L$ is a linear ordering on $V(G)$ generated by algorithm \ref{alg:LinOrderTW}. Let $v$ be any vertex in $V(G)$. By definition $d^+(v) = |N^+(v)|$, that is the outdegree of $v$ is number of neighbours of $v$ that appear before $v$ in $L$. 
+    
+    Suppose that algorithm \ref{alg:LinOrderTW} has just traversed $X_i\in X$ and $v\in X_i$. Without loss of generality assume that $v$ is the last element $L$. By the definition of tree decomposition all the vertices in $X_i$ are neighbours of $v$. Note that $|X_i\setminus v|\leq k$. Therefore all the neighbours of $v$ in $L$ are in $X_i$. Therefore there are at most $k$ neighbours of $v$ in $L$.   
+\end{proof}
 
 %todo col_g(T) < 3k+1 is sharp
 
-%todo add defn of k-tree
-The following result is not new, see Wu, Zhu 2008 \cite{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial k-trees.
+We define a $k$--tree as a maximal graph with treewidth $k$. The following result was first introduced in Wu, Zhu 2008 \cite{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial k-trees.
 \begin{theorem} \label{Thm_ktree}
         Let $G$ be a k-tree. Then, 
         \[\chi_g(G) \leq 3k + 2\]
@@ -528,9 +533,9 @@ The following result is not new, see Wu, Zhu 2008 \cite{WuZhu2008}, but the proo
 \begin{proof}
     Suppose $G=(E,V)$ is a graph of treewidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
     
-    As $G$ is a k-tree $G$ is maximal with treewidth k. That is each $X_i$ is a clique.
+    As $G$ is a k-tree $G$ is maximal with treewidth k. That is, each $X_i$ is a clique.
     
-    Let $v$ be a vertex in $G$ It suffices to show $r(v,L,G) \leq 3k + 1$.
+    Let $v$ be a vertex in $G$. It suffices to show $r(v,L,G) \leq 3k + 1$.
     
     %todo is N^+(v) a clique?
     
@@ -538,13 +543,13 @@ The following result is not new, see Wu, Zhu 2008 \cite{WuZhu2008}, but the proo
     
     Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
            
-    Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$.
-    $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $X =$ rng$(M)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
+    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$.
+    $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $X =\rng(A)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
     
-    Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$.
-    Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $Y =$ rng$(N)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
+    Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$.
+    Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $Y =\rng(B)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
         
-    $|Z| = |X|+|Y|$. Therefore \[r(v,L,G) = d^+(v) + m(v,L,G) = 3k +1 \qedhere\]        
+    $|Z| = |X|+|Y|$. Therefore by theorem \[r(v,L,G) = d^+(v) + m(v,L,G) \leq 3k +1 \qedhere\]        
 \end{proof}
 
 \begin{corollary}
@@ -692,23 +697,23 @@ The refined activation strategy applies the same basic strategy as above but wit
 
 First, we use a digraph $L$ on $G$ as our ordering. This is only a rough ordering. We partition $V$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i <$ then the an edge $xy$ is in $L$. The ordering may not be an ordering in each block. However if we ignore what happens in each block we get a linear ordering.
 
-Second when we activate a vertex $v$ if the edge $uv$ fulfils some conditions then reverse the direction of the edge $uv$ in $L$.
+Second when we activate a vertex $v$ if the edge $(u,v)$ fulfils some conditions then reverse the direction of the edge $(u,v)$ in $L$.
 
-\section{Online colouring}
-
-\begin{theorem}[Kierstand and Trotter \cite{KierstandTrotter}]
-    An Interval graph can be online coloured with $3\omega-2$ colours, where $\omega$ is the size of the maximum clique.
-\end{theorem}
-
-Can cover a graph with $ 3\omega-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(\omega-1)+1 = 7\omega-6 $. however this relies on being able to see the whole of $ A $.
-
-\begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
-    An Interval graph has game chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
-\end{theorem}
-
-The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
-However he defines his linear order as left to right on left most element in each interval.  
-As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the left most element in each interval and first fit.        
+%\section{Online colouring}
+%
+%\begin{theorem}[Kierstand and Trotter \cite{KierstandTrotter}]
+%    An Interval graph can be online coloured with $3\omega-2$ colours, where $\omega$ is the size of the maximum clique.
+%\end{theorem}
+%
+%Can cover a graph with $ 3\omega-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(\omega-1)+1 = 7\omega-6 $. however this relies on being able to see the whole of $ A $.
+%
+%\begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
+%    An Interval graph has game chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
+%\end{theorem}
+%
+%The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
+%However he defines his linear order as left to right on left most element in each interval.  
+%As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the left most element in each interval and first fit.        
 
 
 %Link between decadency of graph and double trouble?

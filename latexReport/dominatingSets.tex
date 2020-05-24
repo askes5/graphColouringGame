@@ -17,7 +17,7 @@ We introduced dominating sets in chapter \ref{chpt:into} with the dinner party p
 %    Independent set, maximum independent set, independence number $\alpha(G)$
 %\end{definition}
 
-\section{Dominating game}
+\section{The Dominating game}
 
 We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add vertices to $D$ one at a time. The game stops when $D$ forms a dominating set in $G$. The score of the game is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
@@ -57,9 +57,7 @@ For some graph,$G$, $\gamma(G)$ is the size of the smallest domination set and h
     For any connected graph $G$ with $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
-
-%TODO prove that Ore is tight
-
+==
 \begin{theorem}\label{thm:domlow}
     Let $\GG$ be a family of graphs and $\gamma(\GG)$ tight upper bound for the domination number of $\GG$. That is for all $G\in\GG$ $\gamma(G)\leq\gamma(\GG)$ and there exists some $G\in\GG$ such that $\gamma(G)=\gamma(\GG)$. Then,
     \[\gamma(\GG) \leq  \gamma_g(\GG)\]
@@ -103,10 +101,14 @@ An upper bound for the game domination number for a class of graphs is a target 
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
-\begin{theorem}
+We can see from theorem \ref{thm:gamedomup} that improving the bounds for the game dominating number without restricting the family of graphs is a matter of finding better bounds for the dominating number. 
+%For a class of graphs we can find betters bounds by finding a strategies that end the game in less turns. 
+
+The following conjecture was put forth in Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}. It was shown in Bujt\'{a}s, Csilla 2015 that conjecture \ref{thm:gamedomup} holds for isolate-free forests in which no two leaves have distance 4.
+\begin{conjecture}[ Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
     Let $T$ be a tree with $n$ vertices. Then,    
-    \[ \gamma_g(T) \leq \left\lceil \frac{2n}{3} \right\rceil\]
-\end{theorem}
+    \[ \gamma_g(T) \leq \left\lceil \frac{3n}{5} \right\rceil\]
+\end{conjecture}
  
 %\begin{proof}
 %    Let $T$ be a tree with $n$ vertices. On Alice's first move she picks the vertex, $v$, with maximal degree. Initialise $A=N[v]$ to denote the activated vertices. 
