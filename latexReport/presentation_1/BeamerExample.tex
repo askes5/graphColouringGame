@@ -1,0 +1,440 @@
+
+ 
+\documentclass[]%   %the handout option removes all pauses for printing
+{beamer}
+%\usepackage{amsmath,amssymb,latexsym}
+
+\mode<presentation>
+{
+%  \usetheme{Antibes}
+%  \usetheme{Bergen}
+ %\usetheme{Berkeley}% might be useful for a lecture
+%  \usetheme{Berlin}%  this is quite nice 	
+ % \usetheme{Boadilla}%  lots of white space VIELLEICHT
+  %\usetheme{Copenhagen}% quite similar to Warsaw, but perhaps preferable to it
+%  \usetheme{Darmstadt}% quite similar to Warsaw, but perhaps preferable to it
+%  \usetheme{Dresden}% no boxes, uses much space but could be ideal if slightly modified ????
+%  \usetheme{Frankfurt}% also quite similar to Warsaw but better
+%  \usetheme{Goettingen}% has much space but also large fonts, sidebar on the right
+%  \usetheme{Hannover}% as Goettingen, with sidebar on the left
+% \usetheme{Ilmenau}% perhaps the best in the pseudo-Warsaw group
+%  \usetheme{JuanLesPins}% also pseudo-Warsaw, not optimal
+%  \usetheme{Luebeck}% again quite similar to Warsaw; not bad
+%  \usetheme{Madrid}% nice but font too large, no section display but frame counter!!!  ?????
+%  \usetheme{Malmoe}% no boxes, but otherwise quite nice ?????
+%  \usetheme{Marburg}% very similar to Goettingen, no boxes
+ %\usetheme{Montpellier}% very white, large fonts, second section not shown again ????
+%  \usetheme{NewcastleAU}%
+%  \usetheme{PaloAlto}% very similar to Berkeley
+ \usetheme{Pittsburgh}% very white, lots of space but no top- or sidebar information VIELLEICHT
+%  \usetheme{Rochester}% blue bar on top without any info in it
+%  \usetheme{Singapore}% very white, no boxes, all essential navigation needs, enough space
+%  \usetheme{Szeged}% very white, no boxes, wastes space, all essential navigation needs
+%  \usetheme{Warsaw}  %VIELLEICHT
+%  \usetheme{boxes}% very white, no boxes, ample space, no section navigation
+%  \usetheme{default}% very similar to boxes, not bad as a default
+%  \usetheme{compatibility}% does not take all commands
+% or ...
+%  \usetheme{bars}%
+ %\usetheme{classic}% seems to be ideal for a normal talk; just the essentials, no color overload
+%  \usetheme{lined}% semi-classic, NOTE PLACEMENT OF LOGO
+%  \usetheme{plain}%  does not take all commands
+%  \usetheme{shadow}% what's the difference to Warsaw? Not much.
+%  \usetheme{sidebar}%
+%  \usetheme{split}% VIELLEICHT
+%  \usetheme{tree}%
+
+ \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+  \usepackage{booktabs}
+%  \usepackage{topcapt}
+\title[A beamed example] % (optional, use only with long paper titles)
+{A beamed example}
+
+%\subtitle
+%{\scriptsize Based on joint work with Udo Baumgartner and Bertrand R\'emy} % (optional)
+
+\author[Jacqui Ramagge] % (optional, use only with lots of authors)
+{Jacqui Ramagge}
+%{F.~Author\inst{1} \and S.~Another\inst{2}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[U of Wollongong] % (optional, but mostly needed)
+{The University of Wollongong}
+%	{
+%	  \inst{1}%
+%	  Department of Computer Science\\
+%	  University of Somewhere
+%	  \and
+%	  \inst{2}%
+%	  Department of Theoretical Philosophy\\
+%	  University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[CRM, June 2007] % (optional)
+{Centre de Recerca Matem\`atica, June 2007}
+
+\subject{Talks}
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+	
+%	 \pgfdeclareimage[height=0.5cm]{university-logo}{blue-UoNheader}
+%	 \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%	\AtBeginSubsection[]
+%	{
+%	  \begin{frame}<beamer>
+%	    \frametitle{Outline}
+%	    \tableofcontents[currentsection,currentsubsection]
+%	  \end{frame}
+%	}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\providecolor[named]{loc-dark-green}{RGB}{0,96,0}
+\providecolor[named]{purple}{RGB}{80,0,20}
+
+
+%#################        MACROS      ##################################
+
+\newcommand{\ZZ}{\mathbb{Z}}%
+\newcommand{\RR}{\mathbb{R}}%
+\newcommand{\CC}{\mathbb{C}}%
+\newcommand{\QQ}{\mathbb{Q}}%
+\newcommand{\KK}{\mathbb{K}}%
+\newcommand{\NN}{\mathbb{N}}%
+
+
+\begin{document}
+
+\begin{frame}%
+  \titlepage
+\end{frame}
+
+
+\begin{frame}% # 00
+\frametitle{Overview}\tableofcontents[hideallsubsections]% pausesections
+
+\end{frame}
+
+\section{Section One} %This will appear on overview slide
+
+\begin{frame}[label=First-slide]
+\frametitle{First Slide Title}
+
+The usual \emph{emphasising} works.
+
+\bigskip
+You can write in colour using built-in definitions such as
+{\color{blue} blue} and {\color{red} red}.
+
+\bigskip
+{\color{purple} These words} are in the purple colour I defined.
+
+\bigskip
+\pause
+
+These words will appear in grey until you press return.
+
+\bigskip
+But
+\pause
+\uncover<3->{
+these words will be invisible until you press return again.
+}
+
+\bigskip
+\pause
+These words will appear in grey until you press return 3 times, which beamer counts as the 4th reveal.
+
+
+\hfill\hyperlink{sample buttons<1>}{\beamerreturnbutton{Sample Buttons}}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{More Revealing}
+
+You can do more fancy things.
+
+\bigskip
+\pause
+\uncover<2-2>{
+These words will appear}
+\pause
+\uncover<3->{
+and then go grey again.
+}
+
+\bigskip
+\pause
+\uncover<4-5>{
+These words will be visible on the fourth reveal (ie third return), be black for two reveals and then become grey.
+}
+
+\bigskip
+\pause
+\uncover<4->{
+These words will be visible in grey on the fourth reveal and become black after the fifth.
+because the number in the uncover command is larger than the reveal stage we are currently on.}
+
+\bigskip
+\pause
+This is just so you know I've finished messing around.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Revealing Mathematics}
+
+You can reveal mathematics in text
+$y=f(x)$
+\pause
+or in display mode
+\[
+y=\int e^x\, dx
+\]
+and you can even
+\pause
+\uncover<3->{ uncover stuff like $e^{i\pi}=-1$ or
+\[
+\frac{d}{dx}(e^x)=e^x
+\]
+}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Blocks}
+
+\begin{block}{Theorem (somebody)}
+This is a statement.
+\end{block}
+
+\medskip
+\begin{proof}
+Here is my proof, complete with an automatic tombstone.
+\end{proof}
+
+\medskip
+\begin{exampleblock}{Examples}
+This block is in a different colour.
+\end{exampleblock}
+
+\end{frame}
+
+
+\section{Section Two} %This will appear on overview slide
+
+
+\begin{frame}
+\frametitle{Items and enumerations}
+
+\begin{itemize}
+\item Itemizing
+\item works as usual
+\end{itemize}
+
+\begin{enumerate}
+\item as does
+\item enumeration.
+\item You can still label \label{item3}
+\item things
+\end{enumerate}
+
+and then refer to them as Item~\ref{item3}.
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Yet More Revealing}
+
+\begin{itemize}
+\item You can also do reveals
+\pause
+\item within itemized environments
+\pause
+\item<3-3> and even uncover
+\pause
+\item<4-> and hide.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pictures}
+
+You can also import .jpg or .pdf files as images
+
+\medskip
+\begin{center}
+\includegraphics[scale=0.75]{mp/hexagon-7}
+\end{center}
+
+\pause
+and they can even be uncovered
+
+\uncover<2->{\hfil\hfil\includegraphics<2->[scale=0.75]{mp/hexagon-9}\hfil}
+
+
+\end{frame}
+
+\begin{frame}[label=buttons]
+\frametitle{Buttons}
+
+\bigskip
+You can make buttons to help you navigate through your presentation.
+
+\bigskip
+The syntax is
+
+\bigskip
+$\backslash$hyperlink\{pageref$<$reveal stage$>$\}%
+\{\{$\backslash$beamerbutton\{button label\}\}\}
+
+\bigskip
+You need to have labelled the frame using
+$[$frame=pageref$]$.
+
+\end{frame}
+
+\begin{frame}[label=sample buttons]
+\frametitle{Sample Buttons}
+
+So $\backslash$hyperlink\{First-slide$<$1$>$\}%
+\{\{$\backslash$beamerbutton\{top of first slide\}\}\}
+produces
+
+\bigskip
+\hyperlink{First-slide<1>}{{\beamerbutton{top of first slide}}}
+\bigskip
+
+which takes you to the top of the first slide,
+\pause
+whereas
+
+\bigskip
+$\backslash$hyperlink\{First-slide$<$3$>$\}%
+\{\{$\backslash$beamerbutton\{first slide 3rd reveal\}\}\}
+
+produces
+
+\bigskip
+\hyperlink{First-slide<3>}{{\beamerbutton{first slide 3rd reveal}}}
+\bigskip
+
+which should take you to the 3rd reveal in the first slide.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Going back}
+
+There is a return button with the syntax
+
+\bigskip
+{\small
+$\backslash$hyperlink\{pageref$<$reveal stage$>$\}%
+\{\{$\backslash$beamerreturnbutton\{button label\}\}\}
+}
+
+\bigskip
+which produces buttons with an arrowhead like
+\hfill\hyperlink{buttons<1>}{\beamerreturnbutton{Buttons}}
+
+for when you want to go back to the main presentation if you have taken a detour.
+\end{frame}
+
+\begin{frame}[label=final detours]
+\frametitle{Final Detours}
+
+You can put minor detours after your final slide
+
+\hyperlink{detour<1>}{{\beamerbutton{a detour}}}
+
+\pause
+and come back later
+
+The only thing to watch out for is that you don't go
+from your final slide to the detour again after the end of your talk.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Pilot Eject Buttons}
+
+I recommend having buttons which take you to the last slide at appropriate cut-off points during the talk but I usually don't label them so as not to get people's hopes up$\dots$
+
+\hfill\hyperlink{last slide<1>}{{\beamerbutton{}}}
+
+\end{frame}
+
+
+\begin{frame}[label=last slide]
+\frametitle{Any questions?}
+
+\vfill
+\vfill
+\pause
+\uncover<2->{
+Thank you for your attention.}
+
+\vfill
+\vfill
+\vfill
+\vfill
+\vfill
+I sometimes include buttons linked to slides in case I get questions
+\bigskip
+\hyperlink{First-slide<1>}{{\beamerbutton{top of first slide}}}
+
+\end{frame}
+
+\begin{frame}[label=detour]
+\frametitle{Detour}
+
+Back you go!
+\hfill\hyperlink{final detours<2>}{\beamerreturnbutton{Final Detours}}
+
+
+\end{frame}
+
+
+
+
+
+\end{document}
+
+

@@ -312,10 +312,15 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
 
 %TODO trim waffle
 %todo defination matching
+
+\begin{definition}[Matching]
+    Let $G$ be a graph. A matching $M\subset E(G)$ is a set of independent edges.
+\end{definition}
+
 \begin{definition}(Graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
-    Suppose $A,B$ are disjoint subsets of $V$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ saturates $A$ and $B\setminus A$ contains a cover of M. 
+    Suppose $A,B$ are disjoint subsets of $V(G)$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ is defined on all $v\in A$ and $B\setminus A$ contains a cover of M. 
     
-    Let $L$ be a linear order, $G=(V,E)$ be a graph, and $u$ a vertex in $V$.
+    Let $L$ be a linear order, $G$ be a graph, and $u$ a vertex in $V(G)$.
         
     For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
     $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
@@ -331,9 +336,9 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
 % if N+ < a and d+ < b then  \col <= a+b+1 
 
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
-    Let $G=(V, E)$ be a graph and $L$ a linear ordering $V$. We define the activation strategy $S(L,G)$ as follows:
+    Let $G$ be a graph and $L$ a linear ordering on $V(G)$. We define the activation strategy $S(L,G)$ as follows:
     
-    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update A and choose the
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V(G)$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update A and choose the
     next vertex.
     \begin{algorithm}[h]
         \caption{Activation strategy}
@@ -344,7 +349,7 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
             
             \While {$x \notin A$}
                 \State $A := A \cup \{x\}$
-                \State $s(x) =\min_L(N^+[x] \cap (U \cup \{b\} )$
+                \State $s(x) =\min_L(N^+[x] \cap (U \cup \{b\} ))$
                 \State $x \gets s(x)$
             \EndWhile      
             
@@ -364,7 +369,7 @@ An informal summery of the activation strategy is as follows. Alice starts by ma
 
 
 \begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
-    For any graph $G=(V, E$) and linear ordering $L$ on $V$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
+    For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
 \end{theorem}
 
 %A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
@@ -425,26 +430,26 @@ We now provide some basic results that demonstrate typical usage of the activati
 \end{theorem}
 
 \begin{proof}
-    Let Let $G=(E,V)$ be a graph of pathwidth $k$, with path decomposition $\{P_i:i\in I\}$. 
+    Let Let $G$ be a graph of pathwidth $k$, with path decomposition $\{P_i:i\in I\}$. 
 
-    Consider the linear order $L$ on $V$ such that for any $a,b\in I$ where $a<b$ all elements in $P_a$ are less than all elements in $P_b\setminus P_a$.  
+    Consider the linear order $L$ on $V(G)$ such that for any $a,b\in I$ where $a<b$ all elements in $P_a$ are less than all elements in $P_b\setminus P_a$.  
         
 %    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
     
     We can see that for any vertex, $v, d^+(v) \leq k$.
     
-    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 3k$. 
+    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V(G)$ $r(v,L,G) \leq 3k$. 
     
     Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques.
     
-    Let $v$ be any vertex in $V$. Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
+    Let $v$ be any vertex in $V(G)$. Let $Z \subset N^-[v]$ and the partition $\{X,Y\}$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
     
-    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)\leq k$. 
+    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Thus $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)|\leq k$. 
     
     Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$. %The idea is $b\in N+(v)$
-    There exits some $X_i,X_j$ such that $a\in X_i$ and $b\in x_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$, for some $i,j\in I$. If $a \in X_j$ then $a < v$, this is a contribution. Thus $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
+    There exits some $i,j$ such that $a\in X_i$ and $b\in X_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$. If $a \in X_j$ then $a \in V^+[v]$, this contradicts the fact that $a\in N^-(v)$. Therefore $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
     
-    $|Z| = |X|+|Y|$ Therefore, \[r(v,L,G) = d^+_{G_L}(u) + m(u,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
+    $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by definition of rank, \[r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
 \end{proof}
 %note: this proof is abusive, i.e. it completly violates the spirt of theorem 3.6.
 %only works because N+ is bounded by the path width
@@ -499,7 +504,7 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
             
             \While{$Q$ is not empty}
                 \State $v \gets Q$.dequeue()
-                \State $L \gets L \cup \{v\setminus L\}$ \Comment add all elements in $V$ not already in the $L$
+                \State $L \gets L \cup \{v\setminus L\}$ \Comment add all elements in $V(G)$ not already in the $L$
                 \ForAll {$U\in N(v)$ s.t. $U$ is unvisited}
                     \State $Q$.enqueue($U$)
                     \State mark $U$ as visited
@@ -511,7 +516,7 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
 \end{algorithm}
 
 \begin{lemma} \label{Lemma_TWLinOrdBound}
-    Let $G=(E,V)$ be a graph of treewidth $k$ and $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$.
+    Let $G$ be a graph of treewidth $k$ and $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$.
     
     Suppose $L$ is a linear ordering on $V(G)$ generated by algorithm \ref{alg:LinOrderTW} and $v$ is any vertex in $G$. Then $d^+(v) \leq k$. 
 \end{lemma}
@@ -531,7 +536,7 @@ We define a $k$--tree as a maximal graph with treewidth $k$. The following resul
 \end{theorem}
 
 \begin{proof}
-    Suppose $G=(E,V)$ is a graph of treewidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
+    Suppose $G$ is a graph of treewidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
     
     As $G$ is a k-tree $G$ is maximal with treewidth k. That is, each $X_i$ is a clique.
     
@@ -539,9 +544,9 @@ We define a $k$--tree as a maximal graph with treewidth $k$. The following resul
     
     %todo is N^+(v) a clique?
     
-    Note that by lemma \ref{Lemma_TWLinOrdBound} for all $v \in V$ $d^+(v) \leq k$.
+    Note that by lemma \ref{Lemma_TWLinOrdBound} for all $v \in V(G)$ $d^+(v) \leq k$.
     
-    Let $Z \subset N^-(v)$ and the partition $[X,Y]$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
+    Let $Z \subset N^-[v]$ and the partition $\{X,Y\}$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
            
     Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$.
     $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $X =\rng(A)\subset N^+(v)$. Thus $|X| \leq |N^+(v)| \leq k$. 
@@ -549,7 +554,7 @@ We define a $k$--tree as a maximal graph with treewidth $k$. The following resul
     Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$.
     Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Thus $Y =\rng(B)\subset N^+[v]$. Thus $|Y| \leq |N^+[v]| \leq k+1$. 
         
-    $|Z| = |X|+|Y|$. Therefore by theorem \[r(v,L,G) = d^+(v) + m(v,L,G) \leq 3k +1 \qedhere\]        
+    $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by definition of rank \[r(v,L,G) = d^+(v) + m(v,L,G) \leq 3k +1 \qedhere\]        
 \end{proof}
 
 \begin{corollary}
@@ -646,26 +651,28 @@ The bounds found with the limited Harmonious Strategy, while good, are not as ti
 
 In summery the primary difference between the original activation strategy and the new activation strategy each vertex is activated $a$ times before it is marked.
 
-Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order of on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
+Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
 
-\begin{definition}[Asymmetric activation strategy, \cite{yangZhu2008}] 
-    Let $G$ be a graph, and let $U$ denote the set of unmarked vertices, and for all $v\in V(G)$ let $t_v=a$ track the number of activations. Let $L$ be a linear order of on $V(G)$, and let $G_L$ be the corresponding orientation of $G$.    
+\begin{definition}[$(a,1)$--Activation strategy, \cite{yangZhu2008}] 
+    Let $G$ be a graph, and let $U$ denote the set of unmarked vertices, and for all $v\in V(G)$ let $t_v=a$ track the number of activations. Let $L$ be a linear order of on $V(G)$, and let $G_L$ be the corresponding orientation of $G$. %Let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
+    %todo why are L_x and L seperate orerings
+       
     We consider the equivalent $(a,b)$--marking game where Bob goes first. Suppose that Bob has just activated a vertex $x$ Alice uses algorithm \ref{alg:asymActivStrat} to update the graph and mark vertices.
     
     \begin{algorithm}[h]
-        \caption{Asymmetric Activation strategy}
+        \caption{$(a,1)$--Activation strategy}
         \label{alg:asymActivStrat}
         \begin{algorithmic}[1]
             \Statex
             \For{$i$ from $1$ to $a$ and $U\neq\emptyset$}
-                \If{$(N^+\cap U\neq \emptyset) \land (t_x>0)$} 
-                    \State $y\gets \min_{L_x} N^+(x)\cap U$
+                \If{$((N^+\cap U\neq \emptyset) \land (t_x>0))$} 
+                    \State $y\gets \min_L (N^+(x)\cap U)$ %todo L_x min
                     \State $t_x \gets t_x-1$
                     \Else 
                     \State $y\gets \min_L U$                  
                 \EndIf
-                \While{$(N^+(y)\cap \neq \emptyset) \land (t_y>0)$}
-                    \State $z\gets \min_{L_y} N^+(y)\cap U$
+                \While{$((N^+(y)\cap \neq \emptyset) \land (t_y>0))$}
+                    \State $z\gets \min_L (N^+(y)\cap U)$ %todo L_y min
                     \State $t_y \gets t_y-1$
                     \State $y\gets z$
                 \EndWhile
@@ -677,8 +684,8 @@ Before we formally define the asymmetric activation strategy we need some notati
     
     By using the Asymmetric Activation Strategy on the $(a,1)$--marking game we get the following upper bound for $\col(G;a,1)$.
 
-    \begin{theorem}[Theorem 2.2 in \cite{yangZhu2008}]  
-        Let $G_P$ be an orientated graph with $\Delta^+(G_P)=k>a$ and let $r_{G_L}(\Sigma)=r$. If Alice uses the Asymmetric Activation Strategy then $\col(G;a,1)\leq k+\left\lfloor (1+\frac{1}{a})r \right\rfloor +2$
+    \begin{theorem}[Theorem 2.2 in \cite{yangZhu2008}]  %todo differntent rank notation
+        Let $G_L$ be an orientated graph with $\Delta^+(G_L)=k>a$ and let $r=\max_{v\in V(G)} |N^+(v)\cup \{u {<_L} v: N^-(u)\cap N^-(v) \neq \emptyset\}|$. If Alice uses the Asymmetric Activation Strategy then \[\col(G;a,1)\leq k+\left\lfloor (1+\frac{1}{a})r \right\rfloor +2\]
     \end{theorem}
 
 \end{definition}
@@ -687,7 +694,7 @@ Before we formally define the asymmetric activation strategy we need some notati
 
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Refined Activation Strategy}
-The refined activation strategy is a refinement on the activation stragety introduced by Xuding Zhu in \cite{Zhu2008}. Zhu uses this stragety to find a bound for the ordering game for the class of planar graphs. 
+The refined activation strategy is a refinement on the activation strategy introduced by Xuding Zhu in \cite{Zhu2008}. Zhu uses this strategy to find a bound for the $(1,1)$--marking game for the class of planar graphs . 
 
 \begin{theorem}[Theorem 1, Zhu 2008 \cite{Zhu2008}]
     If $G$ is a planar graph, then \[\chi_g(G)\leq\col(G)\leq17\]

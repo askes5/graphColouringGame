@@ -1,6 +1,6 @@
 \chapter{Introduction}\label{chpt:into}
 %todo what is a graph
-A graph, $G$, is a collection of vertices, $V(G)$, and edges, $E(G)$. Where the edges, represented as pairs of vertices, define a relation on the vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs directed where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected where the direction doesn't matter ($ab=(b,a)$).
+A graph, $G$, is a set of vertices, $V(G)$, and edges, $E(G)$. Where the set of edges defines a relation on $V(G)$, and are represented as pairs of vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs we consider, directed graphs where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected graphs where the direction doesn't matter ($(a,b)=(b,a)$).
 
 \begin{figure}[h]
     \centering
@@ -39,7 +39,7 @@ When considering graph games we consider them to be played by two players Alice 
   
 %This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest%note this is plagrisum
     
-A note on notation. For $\CC$ a family of graphs, and $\varphi_g(G)$ some property of a graph $G \in \CC$. Then $\varphi_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$ $\varphi_g(H)\leq k$.   
+A note on notation. If $\CC$ is a family of graphs, and $\varphi_g(G)$ some property of a graph $G \in \CC$. Then $\varphi_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$ $\varphi_g(H)\leq k$.   
 
 %todo add summery of results
     
