@@ -43,8 +43,6 @@
         A Graph $G$ is a pair $(V,E)$, where $V$ is a set of elements called vertices and $E$ a set of pairs of vertices called edges. 
     \end{block}
     
-    Define vertices as guests, and an edge between two guests if they will pass food between them.
-    
 \end{frame}
 
 
@@ -53,18 +51,18 @@
     \begin{figure}
         \begin{tikzpicture}
         
-        \node [normal] (v4) at (-3.5,0.5) {a};
+        \node [normal] (v11) at (-2.5,4) {a};
         \node [normal] (v9) at (-4.5,3) {b};
-        \node [normal] (v2) at (-5.5,-0.5) {c};
-        \node [normal] (v3) at (-6.5,1) {d};
-        \node [normal, alt=<2>{fill=red}{fill=white}] (v6) at (-2,-1) {e};
-        \node [normal] (v12) at (-0.5,2.5) {f};
-        \node [normal] (v5) at (-3.5,-0.5) {g};
+        \node [normal, alt=<2>{fill=red}{fill=white}] (v10) at (-3,2.5) {c};
+        \node [normal] (v12) at (-0.5,2.5) {d};
+        \node [normal] (v8) at (-1.5,1.5) {e};
+        \node [normal] (v4) at (-3.5,0.5) {f};
+        \node [normal] (v3) at (-6.5,1) {g};
         \node [normal, alt=<2>{fill=red}{fill=white}] (v1) at (-7,0) {h};
-        \node [normal] (v7) at (0.5,-1.5) {i};
-        \node [normal] (v11) at (-2.5,4) {j};
-        \node [normal] (v8) at (-1.5,1.5) {k};
-        \node [normal, alt=<2>{fill=red}{fill=white}] (v10) at (-3,2.5) {l};
+        \node [normal] (v2) at (-5.5,-0.5) {i};
+        \node [normal] (v5) at (-3.5,-0.5) {j};
+        \node [normal, alt=<2>{fill=red}{fill=white}] (v6) at (-2,-1) {k};
+        \node [normal] (v7) at (0.5,-1.5) {l};
         \draw [thick] (v1) edge (v2);
         \draw [thick] (v3) edge (v2);
         \draw [thick] (v1) edge (v3);
@@ -88,10 +86,10 @@
         \draw [thick] (v11) edge (v12);
         \draw [thick] (v10) edge (v8);
         \end{tikzpicture}
-        \caption{The relation between guests}
+        \caption{The graph of the party}
     \end{figure}
     \uncover<2->{
-    A dominating set is $\{e,l,h\}$
+    A dominating set is $\{c,h,k\}$
     }
 \end{frame}
 
@@ -135,18 +133,19 @@
     \begin{figure}
         \begin{tikzpicture}
         
-        \node [normal] (v4) at (-3.5,0.5) {a};
+        
+        \node [normal] (v11) at (-2.5,4) {a};
         \node [normal] (v9) at (-4.5,3) {b};
-        \node [normal] (v2) at (-5.5,-0.5) {c};
-        \node [normal, alt=<5>{draw=red}{draw=black}] (v3) at (-6.5,1) {d};
-        \node [normal, alt=<2->{fill=red}{fill=white}] (v6) at (-2,-1) {e};
-        \node [normal] (v12) at (-0.5,2.5) {f};
-        \node [normal, alt=<3->{fill=blue}{fill=white}] (v5) at (-3.5,-0.5) {g};
+        \node [normal, alt=<4->{fill=red}{fill=white}] (v10) at (-3,2.5) {c};
+        \node [normal] (v12) at (-0.5,2.5) {d};
+        \node [normal] (v8) at (-1.5,1.5) {e};
+        \node [normal] (v4) at (-3.5,0.5) {f};
+        \node [normal, alt=<5>{draw=red}{draw=black}] (v3) at (-6.5,1) {g};
         \node [normal, alt=<5>{draw=red}{draw=black}] (v1) at (-7,0) {h};
-        \node [normal] (v7) at (0.5,-1.5) {i};
-        \node [normal] (v11) at (-2.5,4) {j};
-        \node [normal] (v8) at (-1.5,1.5) {k};
-        \node [normal, alt=<4->{fill=red}{fill=white}] (v10) at (-3,2.5) {l};
+        \node [normal] (v2) at (-5.5,-0.5) {i};
+        \node [normal, alt=<3->{fill=blue}{fill=white}] (v5) at (-3.5,-0.5) {j};
+        \node [normal, alt=<2->{fill=red}{fill=white}] (v6) at (-2,-1) {k};
+        \node [normal] (v7) at (0.5,-1.5) {l};
         \draw [thick] (v1) edge (v2);
         \draw [thick] (v3) edge (v2);
         \draw [thick] (v1) edge (v3);
@@ -170,7 +169,7 @@
         \draw [thick] (v11) edge (v12);
         \draw [thick] (v10) edge (v8);
         \end{tikzpicture}
-        \caption{The relationship between guests}
+        \caption{The graph of the party}
     \end{figure}
 
 \end{frame}
@@ -190,18 +189,19 @@
     \begin{figure}
         \begin{tikzpicture}
         
-        \node [normal, alt=<5->{fill=blue}{fill=white}] (v4) at (-3.5,0.5) {a};
+        \node [normal] (v11) at (-2.5,4) {a};
         \node [normal] (v9) at (-4.5,3) {b};
-        \node [normal] (v2) at (-5.5,-0.5) {c};
-        \node [normal] (v3) at (-6.5,1) {d};
-        \node [normal, alt=<2->{fill=red}{fill=white}] (v6) at (-2,-1) {e};
-        \node [normal] (v12) at (-0.5,2.5) {f};
-        \node [normal, alt=<3->{fill=blue}{fill=white}] (v5) at (-3.5,-0.5) {g};
+        \node [normal, alt=<4->{fill=red}{fill=white}] (v10) at (-3,2.5) {c};
+        \node [normal] (v12) at (-0.5,2.5) {d};
+        \node [normal] (v8) at (-1.5,1.5) {e};
+        \node [normal, alt=<5->{fill=blue}{fill=white}] (v4) at (-3.5,0.5) {f};
+        \node [normal] (v3) at (-6.5,1) {g};
         \node [normal, alt=<6->{fill=red}{fill=white}] (v1) at (-7,0) {h};
-        \node [normal] (v7) at (0.5,-1.5) {i};
-        \node [normal] (v11) at (-2.5,4) {j};
-        \node [normal] (v8) at (-1.5,1.5) {k};
-        \node [normal, alt=<4->{fill=red}{fill=white}] (v10) at (-3,2.5) {l};
+        \node [normal] (v2) at (-5.5,-0.5) {i};
+        \node [normal, alt=<3->{fill=blue}{fill=white}] (v5) at (-3.5,-0.5) {j};
+        \node [normal, alt=<2->{fill=red}{fill=white}] (v6) at (-2,-1) {k};
+        \node [normal] (v7) at (0.5,-1.5) {l};
+        
         \draw [thick] (v1) edge (v2);
         \draw [thick] (v3) edge (v2);
         \draw [thick] (v1) edge (v3);
@@ -225,7 +225,7 @@
         \draw [thick] (v11) edge (v12);
         \draw [thick] (v10) edge (v8);
         \end{tikzpicture}
-        \caption{The relation between guests}
+        \caption{The graph of the party}
     \end{figure}
 \end{frame}
 
