@@ -90,7 +90,7 @@ Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. We will s
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
-Corollary \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$ Alice will always lose but rather a target score greater than $n/2$ is needed to ensure Alice will always win on a connected graph.
+Corollary \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$ Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on a connected graph.
 
 %TODO insert disucssion
 %C \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
@@ -111,12 +111,12 @@ We can see from theorem \ref{thm:gamedomup} that finding better upper bounds for
 
 %todo add more bounds based on classes of graphs
 
-The following conjecture was put forth in Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}. It was shown in Bujt\'{a}s, Csilla 2015 that conjecture \ref{thm:gamedomup} holds for isolate-free forests in which no two leaves have distance 4.
+Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013} conjectured the following. 
 \begin{conjecture}[ Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
     Let $T$ be a tree with $n$ vertices. Then,    
     \[ \gamma_g(T) \leq \left\lceil \frac{3n}{5} \right\rceil\]
 \end{conjecture}
- 
+ It was shown in Bujt\'{a}s, Csilla 2015 that Conjecture \ref{thm:gamedomup} holds for forests with no isolated vertices and in which no two leaves have distance 4.
 %\begin{proof}
 %    Let $T$ be a tree with $n$ vertices. On Alice's first move she picks the vertex, $v$, with maximal degree. Initialise $A=N[v]$ to denote the activated vertices. 
 %
@@ -147,7 +147,7 @@ The following conjecture was put forth in Kinnersley, William B. and West, Dougl
 
 The natural extension of the dominating game is to allow Alice and Bob to select more than one vertex on each turn. We define this extension as the $(a,b)$--dominating game when Alice is allowed to select $a$ vertices per turn and Bob $b$ vertices.
 
-\begin{definition}[game domination number]
+\begin{definition}[Game Domination Number]
     Let $G$ be a graph and $a,b\in\mathbb{N}$ integers. The game dominating number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
 \end{definition}
 
