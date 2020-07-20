@@ -11,7 +11,9 @@ In chapter \ref{chpt:into} we introduced the \textit{Dinner Party Problem}. To f
     Let $G$ be a graph. The Domination number, $\gamma(G)$, of $G$ is the minimum size of a dominating set in $G$.
 \end{definition}
 
-The size of a minimal dominating set is in some sense a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example, any complete graph $K_n$ has domination number 1, and the graph that is just the set of $n$ independent vertices has domination number $n$.
+Suppose we wish to build a 5g network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $A$ and $B$ are connected if a 5g tower placed on building $A$ one will provide service to building $B$. A minimum number of towers is a dominating set if this graph.
+
+The size of a minimal dominating set is in some sense a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example, a city that is densely packed requires less towers. Every new 5g tower reaches many buildings. Whereas a sparsely populated city will require more towers. Each tower only services a few buildings.   
 
 The dominating game was first introduced in the form we consider in Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas RallF 2010 \cite{BrKlRa2010}. There have been earlier versions of a similar dominating game, though these games considered minimising the dominating number in an induced orientation of a graph. In the game we consider Alice and Bob build a dominating set directly and Alice attempts to minimise the size of the dominating set.
 
