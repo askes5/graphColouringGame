@@ -17,8 +17,10 @@ A graph, $G$, is a set of vertices, $V(G)$, and edges, $E(G)$. Where the set of 
 \end{figure}
    
 %ubiqity of graphs 
-Graphs are everywhere.  
-
+Graphs are everywhere. Though they may not be immediately apparent. 
+Graphs help us understand data and structures in a way that is easier to visualise and analyse. An example from recent events is COVID--19, and more generally infectious diseases.  We can build a graph by considering infected people as vertices in the graph, and we join them with an edge if the disease spread between them. %todo insert picture of spread
+From such a graph we can easily determine things like, who is the most infectious (who has the most infected neighbours), and where is community transmission is occurring (a peice of the graph that is disconnected from the rest represents an unknown origin).
+     
 %graph algorithms   
 A graph algorithm is a set of instructions that define some procedure on a graph. 
 For example an algorithm for finding a minimum spanning tree is as simple as picking the next smallest edge such that each edge does not create a cycle in the tree.  
