@@ -4,11 +4,11 @@
 
 In chapter \ref{chpt:into} we introduced the \textit{Dinner Party Problem}. To formalize the \textit{Dinner Party Problem} we introduce dominating sets. 
 
-\begin{definition}
-    Let $G$ be a graph. A Dominating set, $D$, of $G$ is a subset of $V(G)$ such that every vertex in $V(G)$ is adjacent to at least one vertex in $D$.
+\begin{definition}[Dominating Set]
+    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)$ is adjacent to at least one vertex in $D$.
 \end{definition} 
-\begin{definition}
-    Let $G$ be a graph. The Domination number, $\gamma(G)$, of $G$ is the minimum size of a dominating set in $G$.
+\begin{definition}[Domination Number]
+    Let $G$ be a graph. The Domination number $\gamma(G)$ of $G$ is the minimum size of a dominating set in $G$.
 \end{definition}
 
 One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5g network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $A$ and $B$ are connected if a 5g tower placed on building $A$ one will provide service to building $B$. A minimum number of towers is a dominating set if this graph.
@@ -17,13 +17,13 @@ The size of a minimal dominating set is in some sense a measure of how unconnect
 
 There are various games involving dominating sets. One such game was introduced by  Alon, Noga and Balogh, J\'{o}zsef and Bollob\'{a}s, B\'{e}la and Szab\'{o}, Tam\'{a}s 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced orientations. A dominating set in an oriented graph is the standard definition with the exception for two vertices $u,v$, $u$ is adjacent to  
 \begin{definition}
-    Let $G$ be an oriented graph.  A Dominating set, $D$, of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)$ there exists a vertex $u\in D$ such that $v=u$ or the edge $(u,v)\in E(G)$. 
+    Let $G$ be an oriented graph.  A Dominating set $D$ of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)$ there exists a vertex $u\in D$ such that $v=u$ or the edge $(u,v)\in E(G)$. 
 \end{definition}
 The game that they describe is played as follows: Alice and Bob take turns assigning an orientation to edges in a graph $G$ until all the edges are oriented. Alice tries to minimise the size of a minimum dominating set in $G$. Bob tries to maximise the size of a minimal dominating set in $G$.     
 
-The dominating game that is of interest to us was introduced by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas F. Rall 2010 \cite{BrKlRa2010}. 
+The dominating game that is of interest to us was introduced by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas F. Rall 2010 \cite{BrKlRa2010}. In this game Alice and Bob take turns adding vertices to a set until it forms a dominating set. We will refer to this game as the dominating game.
 
-In this chapter we show how the dominating game can be bounded in terms of both the number of vertices and the dominating number.
+In this chapter we show how the dominating game can be bounded in terms of both the number of vertices and the domination number. We also demonstrate a strategy for Alice that ensures she will win if the number of turns passes half the number of vertices.
 
 %\begin{definition}
 %    Independent set, maximum independent set, independence number $\alpha(G)$
@@ -33,8 +33,19 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add a vertex to $D$. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
-\begin{definition}(game domination number)
-    Let $G$ be a graph. The game dominating number, $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
+A strategy in the dominating game is a prescribed next move for every possible game state. That is at any stage in the game a strategy defines the next move for the player on their turn. 
+
+\begin{definition}[Domination Game Strategy]
+    Let $G$ be a graph, and $D$
+    \begin{align}        
+        \varphi &: \GG \times {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
+    \end{align}
+\end{definition}
+
+A play is a path through the space $\GG\times{V(G)}^{<\Nn}$. 
+\[\varphi(G,\varphi'(G,\dots, \varphi'(G,\varphi(G,\emptyset))))\]
+\begin{definition}[Game Domination Number]
+    Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
 \end{definition} 
 
 %\begin{lemma}
@@ -63,7 +74,7 @@ We define the dominating game as follows. Let $G$ be a graph, $t$ be a target sc
 %    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 %\end{theorem}
     
-For some graph, $G$, $\gamma(G)$ is the size of the smallest domination set and hence if the score of the dominating game is less than $\gamma(G)$ then Alice cannot win. Therefore $\gamma(G)$ is a lower bound for the game domination number and $\gamma(G)\leq\gamma_g(G)$. 
+For some graph $G$ $\gamma(G)$ is the size of the smallest domination set and hence if the score of the dominating game is less than $\gamma(G)$ then Alice cannot win. Therefore $\gamma(G)$ is a lower bound for the game domination number and $\gamma(G)\leq\gamma_g(G)$. 
 
 Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. We will show that theorem \ref{thm:oreDomUpper} provides us a lower bound for the game domination number.
 
