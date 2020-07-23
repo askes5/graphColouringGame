@@ -33,17 +33,24 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add a vertex to $D$. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
-A strategy in the dominating game is a prescribed next move for every possible game state. That is at any stage in the game a strategy defines the next move for the player on their turn. 
+At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a game state. 
 
-\begin{definition}[Domination Game Strategy]
-    Let $G$ be a graph, and $D$
-    \begin{align}        
-        \varphi &: \GG \times {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
-    \end{align}
+\begin{definition}[Game State]
+    Let $G$ be a graph and $D\subseteq V(G)$. The pair $(G,D)$ is a game state.
 \end{definition}
 
-A play is a path through the space $\GG\times{V(G)}^{<\Nn}$. 
-\[\varphi(G,\varphi'(G,\dots, \varphi'(G,\varphi(G,\emptyset))))\]
+A strategy in the dominating game is a prescribed next move for every possible game state. That is a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
+
+\begin{definition}[Domination Game Strategy]
+    Let $G$ be a graph, $D\subseteq V(G)$, and $\GG$ be the class of all graphs. A function
+    \begin{align*}        
+        \varphi &: \GG \times {V(G)}^{<\Nn} \to \GG\times{V(G)}^{<\Nn} 
+    \end{align*}
+    is a strategy if it is defined on any game state and $\varphi(G,D)=(G',D')$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ such that $v\in V(G)\ba D$ and $G=G'$. 
+\end{definition}
+
+A strategy for Alice is a function that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
+
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
 \end{definition} 
@@ -74,45 +81,45 @@ A play is a path through the space $\GG\times{V(G)}^{<\Nn}$.
 %    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 %\end{theorem}
     
-For some graph $G$ $\gamma(G)$ is the size of the smallest domination set and hence if the score of the dominating game is less than $\gamma(G)$ then Alice cannot win. Therefore $\gamma(G)$ is a lower bound for the game domination number and $\gamma(G)\leq\gamma_g(G)$. 
+For some graph $G$, $\gamma(G)$ is the size of the smallest domination set. Hence if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is $\gamma(G)\leq\gamma_g(G)$. 
 
-Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. We will show that theorem \ref{thm:oreDomUpper} provides us a lower bound for the game domination number.
+Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.
 
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{thm:oreDomUpper} 
     For any connected graph $G$ with $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
-\begin{theorem}\label{thm:domlow}
-    Let $\GG$ be a family of graphs and $\gamma(\GG)$ tight upper bound for the domination number of $\GG$. That is for all $G\in\GG$ $\gamma(G)\leq\gamma(\GG)$ and there exists some $G\in\GG$ such that $\gamma(G)=\gamma(\GG)$. Then,
-    \[\gamma(\GG) \leq  \gamma_g(\GG)\]
-\end{theorem}
 
+I introduce the following lemma. 
+\begin{lemma}\label{thm:domlow}
+    Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is for all $G\in\CC$ $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
+    \[\gamma(\CC) \leq  \gamma_g(\CC)\]
+\end{lemma}
 \begin{proof}
-    Let $\GG$ be a family of graphs and $G\in\GG$ a graph such that $\gamma(G) = \gamma(\GG)$.
-    Therefore for $G$ we are unable to find a dominating set with less than $ \gamma(\GG) $ vertices.
-    Therefore there cannot be a winning strategy for Alice with a score less than $\gamma(\GG)$.
-    Therefore $\gamma(\GG) \leq \gamma_g(\GG)$
+    Let $\CC$ be a class of graphs and $G\in\CC$ a graph such that $\gamma(G) = \gamma(\CC)$. 
+    Therefore for $G$ we are unable to find a dominating set with less than $ \gamma(\CC) $ vertices.
+    Therefore there cannot be a winning strategy for Alice with a score less than $\gamma(\CC)$.
+    Therefore $\gamma(\CC) \leq \gamma_g(\CC)$
 \end{proof}
 
-%add table of classes of graphs
-
-\begin{corollary} \label{thm:gamedomLow}
+\begin{theorem} \label{thm:gamedomLow}
     Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then,    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
-\end{corollary}
-
+\end{theorem}
 \begin{proof}
-    Let $G$ be a graph with $n$ vertices.
+    Let $G$ be a connected graph with $n$ vertices.
     
-    Consider the complete graph with $2$ vertices $K_2$, a dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=n/2=1$. Therefore $n/2$ is a tight upper bound for $\gamma(G)$. 
+    Consider the complete graph with 2 vertices $K_2$. A dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=n/2=1$. Therefore $n/2$ is a tight upper bound for $\gamma(\CC)$. 
     
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
-Corollary \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$ Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on a connected graph.
+%todo example with all vertices in a line
+
+Theorem \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph.
 
 %TODO insert disucssion
-%C \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
+%thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
 
 An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set and hence we have an upper bound for the game domination number, $\gamma_g(G) \leq |V(G)|$. However, we can do better.
 
