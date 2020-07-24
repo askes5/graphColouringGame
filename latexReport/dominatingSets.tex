@@ -31,7 +31,9 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 \section{The Dominating game}
 
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add a vertex to $D$. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
+For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
+
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
 At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a game state. 
 
@@ -44,12 +46,14 @@ A strategy in the dominating game is a prescribed next move for every possible g
 \begin{definition}[Domination Game Strategy]
     Let $G$ be a graph, $D\subseteq V(G)$, and $\GG$ be the class of all graphs. A function
     \begin{align*}        
-        \varphi &: \GG \times {V(G)}^{<\Nn} \to \GG\times{V(G)}^{<\Nn} 
+        \varphi &\colon \GG \times {V(G)}^{<\Nn} \to \GG\times{V(G)}^{<\Nn} 
     \end{align*}
     is a strategy if it is defined on any game state and $\varphi(G,D)=(G',D')$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ such that $v\in V(G)\ba D$ and $G=G'$. 
 \end{definition}
 
-A strategy for Alice is a function that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
+A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
+
+A winning strategy for Alice is a strategy for Alice that guarantees she will win. Similarly, a winning strategy for Bob is a strategy for Bob that guarantees he will win.
 
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
@@ -103,7 +107,7 @@ I introduce the following lemma.
 \end{proof}
 
 \begin{theorem} \label{thm:gamedomLow}
-    Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then,    
+    Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then, there is a winning strategy for Alice with    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
 \end{theorem}
 \begin{proof}
