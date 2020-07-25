@@ -52,6 +52,9 @@
 \DeclareOption{mcompsci}{%
 \gdef\Ecs@degree{Master of Computer Science}}
 
+\DeclareOption{bschonsmath}{%
+    \gdef\Ecs@degree{Bachelor of Science with Honours in Mathematics}}
+
 \DeclareOption{sms}{%
 \gdef\Ecs@school{School of Mathematics and Statistics\\ \pali Te Kura M\=atai Tatauranga}%
 \gdef\Ecs@schoolacronymlower{sms}
@@ -129,13 +132,11 @@
 {\pal V\t@s I\t@s C\t@s T\t@s O\t@s R\t@s I\t@s A\  \t@s
 U\t@s N\t@s I\t@s V\t@s E\t@s R\t@s S\t@s I\t@s T\t@s Y\ \t@s O\t@s F\ \t@s 
 W\t@s E\t@s L\t@s L\t@s I\t@s N\t@s G\t@s T\t@s O\t@s N}\\*[3pt]
-{\pali T\t@t e\  W\t@t h\t@t a\t@t r\t@t e\  W\t@t
-\=a\t@t n\t@t a\t@t n\t@t g\t@t a\  o\  t\t@t e\  \=U\t@t p\t@t o\t@t 
-k\t@t o\  o\  t\t@t e\  I\t@t k\t@t a\  a\  M\t@t \=a\t@t
-u\t@t i}\\*[8pt]
+{\pali T\t@t e\  H\t@t e\t@t r\t@t e\t@t n\t@t g\t@t a\  W\t@t a\t@t
+k\t@t a}\\*[8pt]
 % 
 \ifEcs@image
-  \includegraphics[width=0.36\textwidth]{VUWlogo}\\*[8pt]
+  \includegraphics[width=0.36\textwidth]{crest_new_black}\\*[8pt]
 \else
 {\vuwf VUW}\\*[8pt]
 \fi
@@ -149,13 +150,13 @@ u\t@t i}\\*[8pt]
 {\small
 \parbox{40mm}{
 PO Box 600\\
-Wellington\\
+Wellington 6140\\
 New Zealand}\hfill
 \parbox{65mm}{
 \flushright
 Tel:    +64 4 463 5341\\
 Fax:    +64 4 463 5045\\
-Internet: \Ecs@fromnetaddr}
+Email: \Ecs@fromnetaddr}
 }
 \parbox{3mm}{\mbox{}}
 
