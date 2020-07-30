@@ -87,8 +87,7 @@ A winning strategy for Alice is a strategy for Alice that guarantees she will wi
     
 For some graph $G$, $\gamma(G)$ is the size of the smallest domination set. Hence if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is $\gamma(G)\leq\gamma_g(G)$. 
 
-Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.
-
+Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.    
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{thm:oreDomUpper} 
     For any connected graph $G$ with $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
@@ -109,7 +108,7 @@ I introduce the following lemma.
 \begin{theorem} \label{thm:gamedomLow}
     Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then, there is a winning strategy for Alice with    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
-\end{theorem}
+\end{theorem} %todo true?????????
 \begin{proof}
     Let $G$ be a connected graph with $n$ vertices.
     
@@ -118,9 +117,8 @@ I introduce the following lemma.
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
-%todo example with all vertices in a line
-
-Theorem \ref{thm:gamedomLow} does not say that for all graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph.
+Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph. This can be seen by considering the path graph $P_n$. That is the graph with $n$ vertices connected in a single line. %todo insert picture 
+In $P_n$ any vertex that Alice chooses will increase the size of dominated vertices, that is the size of the set $N[D]$, by at most 3. If Bob picks a vertex in $N(D)$ then he will increase the size of $N[D]$ by at most 1. Hence, after each round $N[D]$ has increase by at most 4 and $D$ has increase by 2. Thus when $D$ forms a dominating set $|D|\leq n/2$.
 
 %TODO insert disucssion
 %thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
