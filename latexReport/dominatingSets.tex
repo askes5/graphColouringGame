@@ -33,7 +33,7 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
 
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N(D)$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N(D)$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
 
 At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a game state. 
 
@@ -118,13 +118,38 @@ Before we can show $n/2$ is a lower bound we introduce the following lemma.
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
-Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph. This can be seen by considering the path graph $P_n$. That is the graph with $n$ vertices connected in a single line. %todo insert picture 
-In $P_n$ any vertex that Alice chooses will increase the size of dominated vertices, that is the size of the set $N[D]$, by at most 3. If Bob picks a vertex in $N(D)$ then he will increase the size of $N[D]$ by at most 1. Hence, after each round $N[D]$ has increase by at most 4 and $D$ has increase by 2. Thus when $D$ forms a dominating set $|D|\leq n/2$.
+Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph. As an example consider a path graph $P_n$. That is the graph with $n$ vertices connected in a single line. %todo insert picture 
 
-%TODO insert disucssion
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \node [normal] (v1) at (-2.5,-0.5) {};
+        \node [normal] (v2) at (-1,-0.5) {};
+        \node [normal] (v6) at (5,-0.5) {};
+        \node [normal] (v7) at (6.5,-0.5) {};
+        \node [normal] (v8) at (8,-0.5) {};
+        \node [normal] (v3) at (0.5,-0.5) {};
+        \node [normal] (v4) at (2,-0.5) {};
+        \node [normal] (v5) at (3.5,-0.5) {};
+        
+        \draw[ultra thick]  (v1) edge (v2);
+        \draw[ultra thick] (v2) edge (v3);
+        \draw[ultra thick] (v3) edge (v4);
+        \draw[ultra thick] (v4) edge (v5);
+        \draw[ultra thick] (v5) edge (v6);
+        \draw[ultra thick] (v6) edge (v7);
+        \draw[ultra thick] (v7) edge (v8);
+    \end{tikzpicture}
+    \caption{The path graph $P_8$}
+\end{figure}
+
+Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice chooses will increase the number of dominated vertices ($N(D)$) by at most 3. If Bob picks a vertex in $N(D)$ then he will increase the size of $N(D)$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
+
 %thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
 
-An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set and hence we have an upper bound for the game domination number, $\gamma_g(G) \leq |V(G)|$. However, we can do better.
+An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
+
+For a better upper bound we introduce the Imagination strategy. The imagination strategy was first ntroducted by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
 
 \begin{theorem}\label{thm:gamedomup}
     Let $G$ be a graph and $\gamma(G)$ the dominating number of $G$, then 
