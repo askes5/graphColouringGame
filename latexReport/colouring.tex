@@ -295,11 +295,31 @@ Suppose that Alice has a winning strategy in the ordering game on a graph $G$, w
 %The game colouring number for these classes of graphs are known. 
 %todo either remove this or add refferences
 
-Introduced by by H. A. Kirstead in \cite{KIERSTEAD2000} the activation strategy is a strategy for Alice to use to play the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)\leq 4$. 
+Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is a strategy for Alice to use when playing the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)\leq 4$. %todo expand
 
-A quick note on notation. Let $G$ be a graph, $L$ a linear order on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$, that is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)$ if and only if $u>_Lv$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest.
+Before we formally define the activation strategy we need some notation and the concept of induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
-Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ the outneighbours are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$, the inneighbours $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$, the outdegree is $d^+_{G_L}(v)=|N^+(v)|$, and the indegree is $d^-_{G_L}(v)=|N^-(v)|$. In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. $V^+(v)=\{u\in V(g):v>_L u\}$, $V^-(v)=\{u\in V(g):v<_L u\}$. Finally let $N^+[v]=N^+(v)\cup\{v\}$, $N^-[v]=N^-(v)\cup\{v\}$, $V^+[v]=V^+(v)\cup\{v\}$,$V^-[v]=V^-(v)\cup\{v\}$. When it is clear what orientation we are referring to from context we will drop the $G_L$ subscript.  %todo improve
+Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ with have the following
+\begin{itemize}        
+\item The \textit{outneighbours} are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$ 
+\item The \textit{inneighbours} are $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$ 
+\item The \textit{outdegree} is $d^+_{G_L}(v)=|N^+(v)|$ 
+\item The \textit{indegree} is $d^-_{G_L}(v)=|N^-(v)|$
+\item $V^+_{G_L}(v)=\{u\in V(g):v>_L u\}$     
+\item $V^-_{G_L}(v)=\{u\in V(g):v<_L u\}$ 
+\end{itemize}
+
+ In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and 
+ the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. 
+
+Finally,
+ \begin{itemize}  
+     \item $N^+[v]=N^+(v)\cup\{v\}$
+     \item $N^-[v]=N^-(v)\cup\{v\}$
+     \item $V^+[v]=V^+(v)\cup\{v\}$
+     \item $V^-[v]=V^-(v)\cup\{v\}$
+    \end{itemize}
+ When it is clear what orientation we are referring to from context we will drop the $G_L$ subscript.  %todo improve
  
 \subsection{Summery of activation strategy}
 
