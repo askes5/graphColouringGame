@@ -34,7 +34,7 @@ In Bodlaender 1990 \cite{bodlander1990} Bodlaneder showed that for the class of 
 \begin{proof}
     It suffices to show that there exists a tree in which Bob has a winning strategy with $b+2$ colours.
     
-    Consider the graph $G$ as defined in figure \ref{figure_multiPlayerTree1}. 
+    Consider the graph $G$ as defined in figure \ref{fig:multiPlayerTree1}. 
           
    \begin{figure}[h]
        \centering
@@ -86,13 +86,12 @@ In Bodlaender 1990 \cite{bodlander1990} Bodlaneder showed that for the class of 
         \draw[decorate, decoration={brace, amplitude=10pt,mirror,raise=2ex}, thick] ($(v12)+(-.25,0)$)--($(v4)+(.25,0)$) node[midway,yshift=-3em]{$b+1$ vertices};
         \end{tikzpicture}
         \caption{A tree, $G$}
-        \label{figure_multiPlayerTree1}
+        \label{fig:multiPlayerTree1}
     \end{figure}    
-
     
-    Let the set of available colours be $\{c_1,c_2,\ldots,c_{b+1},c_{b+2}\}$.
+    Let $\{c_1,c_2,\ldots,c_{b+1},c_{b+2}\}$ be the set of available colours.
     On Alice's first move she picks any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
-    Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{figure_subgraphColouring}. Bob then colours $y_1, \dots, y_{b-1}$ with $c_2, \dots, c_{b}$ respectively.
+    Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{fig:subgraphColouring}. Bob then colours $y_1, \dots, y_{b-1}$ with $c_2, \dots, c_{b}$ respectively.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=1,transform shape]
@@ -123,8 +122,8 @@ In Bodlaender 1990 \cite{bodlander1990} Bodlaneder showed that for the class of 
     \node (e1) at ($(v3)!.5!(v4)$) {\ldots};
     \node (e1) at ($(v11)!.5!(v10)$) {\ldots};
     \end{tikzpicture}
-    \caption{A subgraph of the tree, $G$}
-    \label{figure_subgraphColouring}
+    \caption{A subgraph of the tree $G$ in figure \ref{fig:multiPlayerTree1}}
+    \label{fig:subgraphColouring}
 \end{figure}
 
     We consider three cases.
@@ -261,7 +260,7 @@ Therefore we consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that
 \path (v1) -- (v6) node [ font=\Huge, midway, sloped] {$\dots$};
 \path (v8) -- (v9) node [ font=\Huge, midway, sloped] {$\dots$};
 \end{tikzpicture}
-    \caption{Subgraph $H$}
+    \caption{Subgraph $H$ of $G$ in figure \ref{fig:pwlowerbound1}}
     \label{fig:pwlowerbound2}
 \end{figure}
 
