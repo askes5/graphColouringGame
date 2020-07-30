@@ -33,7 +33,7 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
 
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N(D)$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s<t$ and Bob wins otherwise. %todo add the requirement that on each turn the D must grow?
 
 At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a game state. 
 
@@ -53,7 +53,7 @@ A strategy in the dominating game is a prescribed next move for every possible g
 
 A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
 
-A winning strategy for Alice is a strategy for Alice that guarantees she will win. Similarly, a winning strategy for Bob is a strategy for Bob that guarantees he will win.
+For some fixed target score $t$ a winning strategy for Alice is a strategy for Alice that guarantees $D$ will form a dominating set of size less that $t$. Similarly, a winning strategy for Bob is a strategy for Bob that guarantees $D$ will form a dominating set of size greater than $t$.
 
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
@@ -85,15 +85,16 @@ A winning strategy for Alice is a strategy for Alice that guarantees she will wi
 %    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
 %\end{theorem}
     
-For some graph $G$, $\gamma(G)$ is the size of the smallest domination set. Hence if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is $\gamma(G)\leq\gamma_g(G)$. 
+For some graph $G$ $\gamma(G)$ is the size of the smallest domination set. Hence if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is $\gamma(G)\leq\gamma_g(G)$. 
 
-Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.    
+Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.  
+  
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{thm:oreDomUpper} 
     For any connected graph $G$ with $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
 
-I introduce the following lemma. 
+Before we can show $n/2$ is a lower bound we introduce the following lemma. 
 \begin{lemma}\label{thm:domlow}
     Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is for all $G\in\CC$ $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
     \[\gamma(\CC) \leq  \gamma_g(\CC)\]
@@ -135,6 +136,7 @@ An upper bound for the game domination number for a class of graphs is a target 
 %hence bounds for game relie on bounds for dom num
 
 We can see from theorem \ref{thm:gamedomup} that finding better upper bounds for the game dominating number is a matter of finding better bounds for the dominating number and is out of the scope of this paper. 
+If the domination number of a class of graphs is known then we know an upper bound for the game domination number. If the domination number is not known but we know an upper bound for it then we have an upper bound for the game domination number. Thus an improvement on the upper bound of the domination number gives us a better upper bound for the game domination number.
 %For a class of graphs we can find betters bounds by finding a strategies that end the game in less turns. 
 
 %todo add more bounds based on classes of graphs
@@ -144,7 +146,7 @@ Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa20
     Let $T$ be a tree with $n$ vertices. Then,    
     \[ \gamma_g(T) \leq \left\lceil \frac{3n}{5} \right\rceil\]
 \end{conjecture}
- It was shown in Bujt\'{a}s, Csilla 2015 that Conjecture \ref{thm:gamedomup} holds for forests with no isolated vertices and in which no two leaves have distance 4.
+ It was shown in Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} that Conjecture \ref{thm:gamedomup} holds for forests with no isolated vertices and in which no two leaves have distance 4.
 %\begin{proof}
 %    Let $T$ be a tree with $n$ vertices. On Alice's first move she picks the vertex, $v$, with maximal degree. Initialise $A=N[v]$ to denote the activated vertices. 
 %
