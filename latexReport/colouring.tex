@@ -286,7 +286,7 @@ To provide bounds for the game chromatic number we introduce the marking game. T
 We define the marking game as follows. Let $G$ be a graph, and $t$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $t$ and Bob wins otherwise.
 
 \begin{definition}[Game Colouring Number]
-    Suppose $G$ is a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
+    Let $G$ be a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
 \end{definition}
 
 Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $t$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $t$ coloured neighbours. Hence the game chromatic number is bounded by the colouring number, that is $\chi_g(G)\leq\col(G)$
