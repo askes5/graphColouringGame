@@ -35,20 +35,20 @@ For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbou
 
 We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N(D)$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
 
-At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a game state. 
+At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a \textit{game state}. 
 
 \begin{definition}[Game State]
-    Let $G$ be a graph and $D\subseteq V(G)$. The pair $(G,D)$ is a game state.
+    Let $G$ be a graph and $(v_n)_n$ a sequence of vertices in $V(G)$. $(v_n)_n$ is then a game state for $G$.
 \end{definition}
 
-A strategy in the dominating game is a prescribed next move for every possible game state. That is a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
+A strategy in the dominating game is a prescribed next move for every possible game state. In other words a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
 
 \begin{definition}[Domination Game Strategy]
-    Let $G$ be a graph, $D\subseteq V(G)$, and $\GG$ be the class of all graphs. A function
+    For $G$ a graph and $D=(v_n)_n$ a game state for $G$, 
     \begin{align*}        
-        \varphi &\colon \GG \times {V(G)}^{<\Nn} \to \GG\times{V(G)}^{<\Nn} 
+        \varphi_G &\colon {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
     \end{align*}
-    is a strategy if it is defined on any game state and $\varphi(G,D)=(G',D')$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ such that $v\in V(G)\ba D$ and $G=G'$. 
+    is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ such that $v\in V(G)\setminus D$ and is a game state for $G$. 
 \end{definition}
 
 A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
@@ -95,7 +95,7 @@ Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will sh
 \end{theorem}
 
 Before we can show $n/2$ is a lower bound we introduce the following lemma. 
-\begin{lemma}\label{thm:domlow}
+\begin{lemma}[Askes]\label{thm:domlow}
     Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is for all $G\in\CC$ $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
     \[\gamma(\CC) \leq  \gamma_g(\CC)\]
 \end{lemma}
@@ -106,7 +106,7 @@ Before we can show $n/2$ is a lower bound we introduce the following lemma.
     Therefore $\gamma(\CC) \leq \gamma_g(\CC)$
 \end{proof}
 
-\begin{theorem} \label{thm:gamedomLow}
+\begin{theorem}[Askes] \label{thm:gamedomLow}
     Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then, there is a winning strategy for Alice with    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
 \end{theorem} %todo true?????????
@@ -118,7 +118,7 @@ Before we can show $n/2$ is a lower bound we introduce the following lemma.
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
 
-Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph. As an example consider a path graph $P_n$. That is the graph with $n$ vertices connected in a single line. %todo insert picture 
+Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with domination number less than $n/2$, Alice will always lose. Rather a target score greater than $n/2$ is needed to ensure Alice will always win on any arbitrary connected graph. As an example consider a path graph $P_n$. That is the graph with $n$ vertices connected in a single line. 
 
 \begin{figure}[H]
     \centering
@@ -142,17 +142,17 @@ Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with dom
     \end{tikzpicture}
     \caption{The path graph $P_8$}
 \end{figure}
-
-Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice chooses will increase the number of dominated vertices ($N(D)$) by at most 3. If Bob picks a vertex in $N(D)$ then he will increase the size of $N(D)$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
+%\todo N[v] notation
+Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice chooses will increase the number of dominated vertices ($N[D]$) by at most 3. Bob can pick a vertex in $N(D)$. Doing this will increase the size of $N[D]$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
 
 %thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
 
 An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
 
-For a better upper bound we introduce the Imagination strategy. The imagination strategy was first ntroducted by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
+For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. The imagination strategy involves imagining a perfect play and using this play as a sragety for Alice. In the dominating game Alice imagines a minimum dominating set. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself and Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.  
 
 \begin{theorem}\label{thm:gamedomup}
-    Let $G$ be a graph and $\gamma(G)$ the dominating number of $G$, then 
+    For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
     \[\gamma_g(G)<2\gamma(G)\]
 \end{theorem}
 \begin{proof}
@@ -160,11 +160,11 @@ For a better upper bound we introduce the Imagination strategy. The imagination 
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
-We can see from theorem \ref{thm:gamedomup} that finding better upper bounds for the game dominating number is a matter of finding better bounds for the dominating number and is out of the scope of this paper. 
-If the domination number of a class of graphs is known then we know an upper bound for the game domination number. If the domination number is not known but we know an upper bound for it then we have an upper bound for the game domination number. Thus an improvement on the upper bound of the domination number gives us a better upper bound for the game domination number.
-%For a class of graphs we can find betters bounds by finding a strategies that end the game in less turns. 
+If the domination number of a class of graphs is known then we know an upper bound for the game domination number. However, the domination number of most classes of graphs is not known. If the domination number is not known, but we know an upper bound for it. Then we have an upper bound for the game domination number. Thus, an improvement on the upper bound of the domination number gives us a better upper bound for the game domination number.
+%We can see from theorem \ref{thm:gamedomup} that finding better upper bounds for the game dominating number is a matter of finding better bounds for the dominating number and is out of the scope of this paper. 
 
 %todo add more bounds based on classes of graphs
+
 
 Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013} conjectured the following. 
 \begin{conjecture}[ Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
@@ -211,9 +211,8 @@ The natural extension of the dominating game is to allow Alice and Bob to select
 %    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
     \[\gamma_{g}(G;a,b) \leq \frac{a+b}{a}\gamma(G)\]
 \end{theorem}
-\begin{proof}
     This proof proceeds in much the same way as the proof of theorem \ref{thm:gamedomup}.
-    
+\begin{proof}    
    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. One Alice's first move she chooses any $a$ vertices in $X$. Suppose Bob has just chosen $b$ vertices and $D$ is the current dominating set. Alice's strategy is to pick any $a$ unchosen vertices, $v_1,\dots,v_a \in X$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
 \end{proof}
 
