@@ -149,14 +149,16 @@ Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex th
 
 An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
 
-For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. The imagination strategy involves imagining a perfect play and using this play as a sragety for Alice. In the dominating game Alice imagines a minimum dominating set. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself and Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.  
+%For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
+For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself and Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
 
-\begin{theorem}\label{thm:gamedomup}
+\begin{theorem}[Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}]\label{thm:gamedomup}
     For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
     \[\gamma_g(G)<2\gamma(G)\]
 \end{theorem}
+In \cite{BrKlRa2010} the authors do not give a formal proof. Rather they give a explanation of why the result is true. Here we aim to formalise the proof.
 \begin{proof}
-    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she picks any vertex in $X$. Suppose Bob has just chosen a vertex and $D$ is the current dominating set. Alice's strategy is too pick any unchosen vertex, $v\in X$. After $\gamma(G)$ turns the game must have ended as $X$ is a dominating set and Alice picks a vertex from $X$ in each turn. On each turn Alice and Bob each add one vertex to $D$, hence the size of $D$ is at most $2\gamma$.
+    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she picks any vertex in $X$. Now, suppose Bob has just picked a vertex and $D$ is the current dominating set. Alice's strategy is to pick any unchosen vertex, $v\in X\setminus D$. After $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice picks a vertex from $X$ in each round. On each round Alice and Bob each add one vertex to $D$, hence the size of $D$ is at most $2\gamma(G)$.
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
@@ -167,8 +169,8 @@ If the domination number of a class of graphs is known then we know an upper bou
 
 
 Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013} conjectured the following. 
-\begin{conjecture}[ Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
-    Let $T$ be a tree with $n$ vertices. Then,    
+\begin{conjecture}[Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
+    For a forest $G$ with $n$ vertices and no isolated vertices,    
     \[ \gamma_g(T) \leq \left\lceil \frac{3n}{5} \right\rceil\]
 \end{conjecture}
  It was shown in Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} that Conjecture \ref{thm:gamedomup} holds for forests with no isolated vertices and in which no two leaves have distance 4.
