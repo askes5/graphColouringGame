@@ -243,7 +243,7 @@ A \textit{caterpillar graph} is a tree in which all the vertices lie on a path o
 %
 In \cite{KiWeZa2013} the authors proved conjecture \ref{conj:treedomup} for $n$--vertex forests with no isolated vertices where each component is a caterpillar. 
 
-\begin{theorem}\label{thm:domcat}
+\begin{theorem}[Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}]\label{thm:domcat}
     For $F$ a forest of caterpillars with no isolated vertices then 
     $\gamma_g(F)\leq 3n/5$ 
 \end{theorem}
@@ -265,11 +265,23 @@ By using this strategy Alice will always win on $F$ if the target score is less 
     
 Further work has been done to improve the class of trees that the conjecture holds for. In Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} it was shown that conjecture \ref{conj:treedomup} holds for forests that have no isolated vertices and in which no two leaves have distance 4.
 %
-\begin{theorem}[Bujt\'{a}s, Csilla 2015 \cite{Bujt2015}]
+\begin{theorem}[Bujt\'{a}s, Csilla 2015 \cite{Bujt2015}]\label{thm:domtreedist4}
     For $T$ a forest with no isolated vertices such that no two leaves have distance 4
     $\gamma_g(T)\leq 3n/5$.
 \end{theorem}
-
+In Alice's strategy for theorem \ref{thm:domtreedist4} there are 4 stages. The stages define what vertices Alice can play. The game starts in stage 1. If on Alice's turn there is no suitable vertex at that stage then she moves to the next stage. To choose vertices Alice assigns a value to each vertex $v$ as follows: 
+\begin{itemize}
+    \item $v$ has value 3 if it is not dominated.
+    \item $v$ has value 2 is it is partially dominated.
+    \item $v$ has value 0 if it is totally dominated.
+\end{itemize}
+The gain of a play is the difference between the sum of all the values in the tree before and after each play.
+\begin{enumerate}[St{a}ge 1:]
+    \item There is a vertex $v$ with gain greater than 7 such that $D\cup\{v\}$ totally dominates two new vertices. Alice plays $v$.
+    \item There is a vertex $v$ with gain greater than 7. Alice plays $v$.
+    \item There is a vertex $v$ with gain greater than 6. Alice plays a vertex $u$ with maximum gain. Subject to maximum gain Alice plays a vertex with value 3 that is incident to a leaf with value 3.
+    \item There is a vertex $v$ with gain greater than 3. Alice plays $v$.
+\end{enumerate}
 
 \section{The $(a,b)$--dominating game}
 
