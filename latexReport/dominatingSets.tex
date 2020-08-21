@@ -48,12 +48,14 @@ A strategy in the dominating game is a prescribed next move for every possible g
     \begin{align*}        
         \varphi_G &\colon {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
     \end{align*}
-    is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ such that $v\in V(G)\setminus D$ and is a game state for $G$. 
+    is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ for some $v\in V(G)$ such that $D'$ dominates strictly more vertices than $D$. 
 \end{definition}
 
 A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
 
 For some fixed target score $t$ a winning strategy for Alice is a strategy for Alice that guarantees $D$ will form a dominating set of size less that $t$. Similarly, a winning strategy for Bob is a strategy for Bob that guarantees $D$ will form a dominating set of size greater than $t$.
+
+The formalisation of strategies provides good background to the domination game. However to simplify proofs and intuition we will not explicitly define strategies as functions. Rather we will do it implicitly.    
 
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
@@ -269,13 +271,13 @@ Further work has been done to improve the class of trees that the conjecture hol
     For $T$ a forest with no isolated vertices such that no two leaves have distance 4
     $\gamma_g(T)\leq 3n/5$.
 \end{theorem}
-In Alice's strategy for theorem \ref{thm:domtreedist4} there are 4 stages. The stages define what vertices Alice can play. The game starts in stage 1. If on Alice's turn there is no suitable vertex at that stage then she moves to the next stage. To choose vertices Alice assigns a value to each vertex $v$ as follows: 
+To choose vertices Alice assigns a value to each vertex $v$ as follows: 
 \begin{itemize}
     \item $v$ has value 3 if it is not dominated.
-    \item $v$ has value 2 is it is partially dominated.
+    \item $v$ has value 2 is it is dominated but has an undominated neighbour.
     \item $v$ has value 0 if it is totally dominated.
 \end{itemize}
-The gain of a play is the difference between the sum of all the values in the tree before and after each play.
+The gain of a play is the difference between the sum of all the values in the tree before and after each play. In Alice's strategy for theorem \ref{thm:domtreedist4} there are 4 stages. At each stage Alice's strategy changes. The game starts in stage 1. If on Alice's turn there is no suitable vertex at that stage then she moves to the next stage. 
 \begin{enumerate}[St{a}ge 1:]
     \item There is a vertex $v$ with gain greater than 7 such that $D\cup\{v\}$ totally dominates two new vertices. Alice plays $v$.
     \item There is a vertex $v$ with gain greater than 7. Alice plays $v$.
@@ -285,20 +287,20 @@ The gain of a play is the difference between the sum of all the values in the tr
 
 \section{The $(a,b)$--dominating game}
 
-The natural extension of the dominating game is to allow Alice and Bob to select more than one vertex on each turn. We define this extension as the $(a,b)$--dominating game when Alice is allowed to select $a$ vertices per turn and Bob $b$ vertices.
+The natural extension of the dominating game is to allow Alice and Bob to select more than one vertex on each turn. We cal this extension as the $(a,b)$--dominating game. In the $(a,b)$--dominating game the only difference is Alice plays $a$ vertices per turn and Bob plays $b$ vertices.
 
 \begin{definition}[Game Domination Number]
-    Let $G$ be a graph and $a,b\in\mathbb{N}$ integers. The game dominating number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
+    Let $G$ be a graph and $a,b\in\mathbb{N}$ integers. The game domination number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
 \end{definition}
 
-\begin{theorem} 
+\begin{theorem}[Askes] 
     Let $G$ be a graph with $n$ vertices and $a,b>1$ integers. Then,
 %    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
     \[\gamma_{g}(G;a,b) \leq \frac{a+b}{a}\gamma(G)\]
 \end{theorem}
-    This proof proceeds in much the same way as the proof of theorem \ref{thm:gamedomup}.
+    The following proof is an extension of the proof of theorem \ref{thm:gamedomup} to the $(a,b)$--dominating game.
 \begin{proof}    
-   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. One Alice's first move she chooses any $a$ vertices in $X$. Suppose Bob has just chosen $b$ vertices and $D$ is the current dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
+   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. On Alice's first move she plays any $a$ vertices in $X$. Now, suppose Bob has just played $b$ vertices and $D$ is the current partial dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X\setminus D$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
 \end{proof}
 
 
