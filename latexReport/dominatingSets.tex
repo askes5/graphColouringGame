@@ -143,7 +143,7 @@ Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with dom
     \caption{The path graph $P_8$}
 \end{figure}
 %\todo N[v] notation
-Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice chooses will increase the number of dominated vertices ($N[D]$) by at most 3. Bob can pick a vertex in $N(D)$. Doing this will increase the size of $N[D]$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
+Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice chooses will increase the number of dominated vertices ($N[D]$) by at most 3. Bob can play a vertex in $N(D)$. Doing this will increase the size of $N[D]$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
 
 %thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
 
@@ -158,7 +158,7 @@ For a better upper bound we introduce a new strategy for Alice. This strategy in
 \end{theorem}
 In \cite{BrKlRa2010} the authors do not give a formal proof. Rather they give a explanation of why the result is true. Here we aim to formalise the proof.
 \begin{proof}
-    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she picks any vertex in $X$. Now, suppose Bob has just picked a vertex and $D$ is the current dominating set. Alice's strategy is to pick any unchosen vertex, $v\in X\setminus D$. After $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice picks a vertex from $X$ in each round. On each round Alice and Bob each add one vertex to $D$, hence the size of $D$ is at most $2\gamma(G)$.
+    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she plays any vertex in $X$. Now, suppose Bob has just played a vertex and $D$ is the current dominating set. Alice's strategy is to play any unchosen vertex, $v\in X\setminus D$. After $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice play a vertex from $X$ in each round. On each round Alice and Bob each add one vertex to $D$, hence the size of $D$ is at most $2\gamma(G)$.
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
@@ -167,38 +167,109 @@ If the domination number of a class of graphs is known then we know an upper bou
 
 %todo add more bounds based on classes of graphs
 
-
+Finding better bounds for the class of all graphs is a difficult problem. But for other, smaller, classes of graphs better bounds can be found. For example the class of tress
 Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013} conjectured the following. 
-\begin{conjecture}[Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{thm:treedomup}
+\begin{conjecture}[Kinnersley, William B. and West, Douglas B. and Zamani, Reza 2013 \cite{KiWeZa2013}] \label{conj:treedomup}
     For a forest $G$ with $n$ vertices and no isolated vertices,    
     \[ \gamma_g(T) \leq \left\lceil \frac{3n}{5} \right\rceil\]
 \end{conjecture}
- It was shown in Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} that Conjecture \ref{thm:gamedomup} holds for forests with no isolated vertices and in which no two leaves have distance 4.
-%\begin{proof}
-%    Let $T$ be a tree with $n$ vertices. On Alice's first move she picks the vertex, $v$, with maximal degree. Initialise $A=N[v]$ to denote the activated vertices. 
+While conjecture \ref{conj:treedomup} is still undecided it has been shown for certain types of trees. 
+
+A \textit{caterpillar graph} is a tree in which all the vertices lie on a path or have distance at most one from a central path. See figure \ref{fig:catgraphs} for some examples.
 %
-%    Suppose Bob has just picked a vertex $u$ and let $D$ be the current dominating set in $T$. The winning strategy for Alice is the greedy strategy as follows.    
-%    
-%    Let $U=V(T)\ba D$ the unchosen vertices in $T$. Alice uses algorithm \ref{alg:greedy} to update $A$ and choose the next vertex.
-%        
-%    \begin{algorithm}[h]
-%        \caption{Greedy strategy}
-%        \label{alg:greedy}
-%        \begin{algorithmic}[1] 
-%            \State $A\gets A \cup N(u)$
-%            \State let $x\in U$ be the vertex that maximises $|N(x)\ba A|$
-%            \State $A\gets A \cup N(x)$            
-%            \State Choose $x$            
-%        \end{algorithmic}
-%    \end{algorithm}
-%    
-%   worst case path graph requires twice the minimum of the path graph???
-%   
-%   with no opponent this will give n/3 thus at worst with the opponent it will take 2n/3 
-%       
-%    At worst Alice will add two vertices to 
-%    %TODO finish this proof
-%\end{proof}
+\begin{figure} [h]
+    \centering
+    \begin{subfigure}{.3\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.7]
+        \node [normal] (v5) at (-2.5,-2) {};
+        \node [normal] (v4) at (-1.5,-1) {};
+        \node [normal] (v3) at (-0.5,0) {};
+        \node [normal] (v2) at (0.5,1) {};
+        \node [normal] (v6) at (-2,0) {};
+        \node [normal] (v8) at (0.5,-1) {};
+        \node [normal] (v7) at (0,-1.5) {};
+        \node [normal] (v1) at (-0.5,2.5) {};
+        \draw [ultra thick] (v1) edge (v2);
+        \draw [ultra thick] (v2) edge (v3);
+        \draw [ultra thick] (v3) edge (v4);
+        \draw [ultra thick] (v4) edge (v5);
+        \draw [ultra thick] (v6) edge (v4);
+        \draw [ultra thick] (v3) edge (v7);
+        \draw [ultra thick] (v8) edge (v3);
+        \end{tikzpicture}
+    \end{subfigure}
+\begin{subfigure}{.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=.7]
+    \node [normal] (v1) at (0,0) {};
+    \node [normal] (v2) at (1,1) {};
+    \node [normal] (v3) at (2.5,1.5) {};
+    \node [normal] (v4) at (4,0.5) {};
+    \draw [ultra thick] (v1) edge (v2);
+    \draw [ultra thick] (v2) edge (v3);
+    \draw [ultra thick] (v3) edge (v4);
+    \node [normal] (v5) at (5.5,0) {};
+    \draw [ultra thick] (v5) edge (v4);
+    \end{tikzpicture}
+\end{subfigure}
+\begin{subfigure}{.3\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=.7]
+    \node [normal] (v1) at (0,0) {};
+    \node [normal] (v3) at (0,1) {};
+    \node [normal] (v9) at (0,2) {};
+    \node [normal] (v4) at (-1.5,0) {};
+    \node [normal] (v2) at (-2,0.5) {};
+    \node [normal] (v5) at (1.5,0) {};
+    \node [normal] (v6) at (2,0.5) {};
+    \draw [ultra thick] (v2) edge (v3);
+    \draw [ultra thick] (v3) edge (v4);
+    \draw [ultra thick] (v3) edge (v5);
+    \draw [ultra thick] (v6) edge (v3);
+    \draw [ultra thick] (v1) edge (v3);
+    \node [normal] (v10) at (1,2) {};
+    \node [normal] (v11) at (1,3) {};
+    \node [normal] (v12) at (1.5,3) {};
+    \draw [ultra thick] (v9) edge (v10);
+    \draw [ultra thick] (v10) edge (v11);
+    \draw [ultra thick] (v10) edge (v12);
+    \draw [ultra thick] (v9) edge (v3);
+    \end{tikzpicture}
+\end{subfigure}
+    \caption{Some caterpillar graphs}
+    \label{fig:catgraphs}
+\end{figure} 
+%
+In \cite{KiWeZa2013} the authors proved conjecture \ref{conj:treedomup} for $n$--vertex forests with no isolated vertices where each component is a caterpillar. 
+
+\begin{theorem}\label{thm:domcat}
+    For $F$ a forest of caterpillars with no isolated vertices then 
+    $\gamma_g(F)\leq 3n/5$ 
+\end{theorem}
+Rather than provide a full proof we describe Alice's strategy for $F$ a forest of caterpillars with no isolated vertices. 
+    %We show this bound by induction on $n$ the number of vertices in the forest $F$. For $n\leq 5$ the hypothesis  follows from an analysis of the few possible graphs.
+    %
+    %For the inductive step assume that $n\geq 6$. 
+    Let $D$ be the current partial dominating set on Alice's turn. The \textit{residual graph} $F'$ of $F$ is $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq N[D]\}$. In the residual graph $F'$ is the subgraph that contains only valid moves. Alice only considers the graph $F'$ when deciding on her next play. Alice considers three cases.
+    %
+    \begin{enumerate}        
+    \item $F'$ has a vertex $v$ incident to two leaves. Alice plays $v$. 
+    %Let $F'$ be $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq D\}$. Then by the inductive hypothesis $\gamma_g(F) \leq 1 + \gamma_g'(F') < 3n/5$.
+    
+    \item $F'$ has a component $C$ isomorphic to one of the path graphs $P_2,P_4,P_5$. Alice plays a winning strategy on $C$. 
+    
+    \item $F'$ has no vertices incident to 2 leaves and no component isomorphic to one of the path graphs $P_2,P_4,P_5$. If this is the case then no component of $F'$ has less than 6 vertices. Fix a component $C$ of $F$ and let $u_1,\dots,u_k$ the longest path in $C$. If there is some $i$ such that $d(u_i)=3$ then Alice plays $u_i$. If not, then Alice plays $u_6$.    
+    \end{enumerate}
+By using this strategy Alice will always win on $F$ if the target score is less than $3n/5$.
+    
+Further work has been done to improve the class of trees that the conjecture holds for. In Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} it was shown that conjecture \ref{conj:treedomup} holds for forests that have no isolated vertices and in which no two leaves have distance 4.
+%
+\begin{theorem}[Bujt\'{a}s, Csilla 2015 \cite{Bujt2015}]
+    For $T$ a forest with no isolated vertices such that no two leaves have distance 4
+    $\gamma_g(T)\leq 3n/5$.
+\end{theorem}
+
 
 \section{The $(a,b)$--dominating game}
 
@@ -215,7 +286,7 @@ The natural extension of the dominating game is to allow Alice and Bob to select
 \end{theorem}
     This proof proceeds in much the same way as the proof of theorem \ref{thm:gamedomup}.
 \begin{proof}    
-   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. One Alice's first move she chooses any $a$ vertices in $X$. Suppose Bob has just chosen $b$ vertices and $D$ is the current dominating set. Alice's strategy is to pick any $a$ unchosen vertices, $v_1,\dots,v_a \in X$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
+   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. One Alice's first move she chooses any $a$ vertices in $X$. Suppose Bob has just chosen $b$ vertices and $D$ is the current dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
 \end{proof}
 
 
