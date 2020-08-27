@@ -44,11 +44,11 @@ At any stage in the game we can consider the current dominating set along with t
 A strategy in the dominating game is a prescribed next move for every possible game state. In other words a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
 
 \begin{definition}[Domination Game Strategy]
-    For $G$ a graph and $D=(v_n)_n$ a game state for $G$, 
+    For $G$ a graph and $D=(v_n)_n$ a game state for $G$ let
     \begin{align*}        
         \varphi_G &\colon {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
     \end{align*}
-    is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ for some $v\in V(G)$ such that $D'$ dominates strictly more vertices than $D$. 
+    where ${V(G)}^{<\Nn}$ denotes the set of all sequences of vertices in $V(G)$. $\varphi_G$ is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ for some $v\in V(G)$ such that $D'$ dominates strictly more vertices than $D$. 
 \end{definition}
 
 A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
@@ -158,9 +158,13 @@ For a better upper bound we introduce a new strategy for Alice. This strategy in
     For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
     \[\gamma_g(G)<2\gamma(G)\]
 \end{theorem}
-In \cite{BrKlRa2010} the authors do not give a formal proof. Rather they give a explanation of why the result is true. Here we aim to formalise the proof.
+In \cite{BrKlRa2010} the authors do not give a formal proof. Rather they give the inspiration for the proof. Here we aim to formalise a proof.
 \begin{proof}
-    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she plays any vertex in $X$. Now, suppose Bob has just played a vertex and $D$ is the current dominating set. Alice's strategy is to play any unchosen vertex, $v\in X\setminus D$. After $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice play a vertex from $X$ in each round. On each round Alice and Bob each add one vertex to $D$, hence the size of $D$ is at most $2\gamma(G)$.
+    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she plays any vertex in $X$. Now, suppose Bob has just played a vertex and $D$ is the current dominating set. Alice's strategy is to play any unchosen vertex, $v\in X\setminus D$. After no more than $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice played a vertex from $X$ in each round. 
+    
+    If the game ends in exactly $\gamma(G)$ rounds then it ended on Alice's turn. In this case Bob has had one less turn that Alice. In each round Alice and Bob each add one vertex to $D$. Hence the game ends with size of $D$ exactly $2\gamma(G) -1$. 
+    
+    If the game ends in strictly less than $\gamma(G)$ rounds then the size of $D$ is strictly less than $2\gamma(G)$.
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
@@ -291,18 +295,18 @@ In the dinner party problem Alice and Bob each only place one platter in an alte
 
 This extended dinner party problem is a natural extension of the dominating game We allow Alice and Bob to select more than one vertex on each turn. We call this extension as the $(a,b)$--dominating game. In the $(a,b)$--dominating game the only difference is Alice plays $a$ vertices per turn and Bob plays $b$ vertices.
 
-\begin{definition}[Game Domination Number]
-    Let $G$ be a graph and $a,b\in\mathbb{N}$ integers. The game domination number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
+\begin{definition}[$(a,b)$--Game Domination Number]
+    Let $G$ be a graph and $a,b\in\Nn$ integers. The game domination number $\gamma_g(G;a,b)$ is the smallest target score such that Alice has a winning strategy when playing the $(a,b)$--dominating game.
 \end{definition}
 
 \begin{theorem}[Askes] 
     Let $G$ be a graph with $n$ vertices and $a,b>1$ integers. Then,
 %    \[\gamma_{g}(G;1,b) \geq (b+1)\gamma(G) \]    
-    \[\gamma_{g}(G;a,b) \leq \frac{a+b}{a}\gamma(G)\]
+    \[\gamma_{g}(G;a,b) \leq \frac{a+b}{a}\gamma(G) - 1\]
 \end{theorem}
-    The following proof is an extension of the proof of theorem \ref{thm:gamedomup} to the $(a,b)$--dominating game.
+    The following proof is an extension of the proof of theorem \ref{thm:gamedomup} to the $(a,b)$--dominating game. In fact when $a=b=1$ the proof is the same as the proof of theorem \ref{thm:gamedomup}.
 \begin{proof}    
-   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. On Alice's first move she plays any $a$ vertices in $X$. Now, suppose Bob has just played $b$ vertices and $D$ is the current partial dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X\setminus D$. After $\frac{\gamma(G)}{a}$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)\frac{\gamma(G)}{a}$.
+   Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. On Alice's first move she plays any $a$ vertices in $X$. Now, suppose Bob has just played $b$ vertices and $D$ is the current partial dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X\setminus D$. After no more than $\gamma(G)/a$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)/a$ times the number of rounds. If the number of rounds is exactly $\gamma(G)/a$ then the game ends on Alice's turn. In such a case Bob has had one less turn than Alice. Hence $|D|=(a+b)\frac{\gamma(G)}{a} -b$. If the number of rounds is strictly less than $\gamma(G)/a$ then the size of $D$ is strictly less than $(a+b)\frac{\gamma(G)}{a}$. In either case the game ends with $|D| \leq \frac{a+b}{a}\gamma(G) - 1$.
 \end{proof}
 
 
