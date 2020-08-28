@@ -1,30 +1,43 @@
 \chapter{Colouring}
 
 \section{Introduction}
-Let $C=\{1,\dots,k\}$ be a set of colours, a $k$--vertex colouring of a graph $G$ is a mapping $c\colon V(G) \to C$. A proper $k$--vertex colouring of $G$ is a mapping $c\colon V(G) \to C$ such that for two vertices $u,v\in V(G)$ if $(u,v)\in E(G)$ then $c(u)\neq c(v)$. The chromatic number, $\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper  $k$--vertex colouring.
 
-We define the colouring game played between Alice and Bob as follows. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assigns $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
+Suppose Alice has a business that colouring in world maps. Ink is expensive. So she wants to use the least number of colours possible. To ensure the maps are pleasing to the eye she wants to ensure that no two bordering countries are have the same colour. What is the smallest number of colours she needs to colour a map in such a fashion? For a map that is drawn on the plane she only needs four colours. This is known as the \textit{four colour theorem}. The four colour theorem states that any plane that is divided into regions can be coloured using only four colours. 
+
+We formally define a colouring as follows.
+\begin{definition}[Proper $k$--Vertex Colouring]
+Let $C=\{1,\dots,k\}$ be a set of colours, a $k$--vertex colouring of a graph $G$ is a mapping $c\colon V(G) \to C$. A \textit{proper $k$--vertex colouring} of $G$ is a mapping $c\colon V(G) \to C$ such that for two vertices $u,v\in V(G)$ if $(u,v)\in E(G)$ then $c(u)\neq c(v)$. 
+\end{definition}
+When referring to graph colourings we will henceforth be referring to proper $k$--vertex colourings for some $k$. 
+\begin{definition}[Chromatic Number]
+The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper $k$--vertex colouring.
+\end{definition} 
+
+Alice's map colour businesses is a huge success. She decides to hire Bob to help her colour maps. Unbeknownst to Alice Bob is part of a secret ink cabal whose goal is to drive up ink sales. Bob will try to use as many colours as possible when colouring maps. To colour a map Alice and Bob take turns assigning a colour to each country. They continue until all the countries are coloured. A problem arises almost immediately. By strategical choosing colours Bob can make it so the map cannot be coloured with four colours. What is the total number of colours Alice needs to ensure that any map can always be coloured? This is an open question. The current best bound is 17 \cite{Zhu2008}. In section \ref{sec:refActStrat} we will show how this bound is found. We can also ask the same question about different types of graphs. 
+
+But first we define the \textit{colouring game}. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
 
 %todo add basic results e.g. \chi of subgraphs, composition, disconnected graphs, etc.
 
-\begin{definition}
-    Let $G$ be a graph. The game chromatic number, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game in$G$.     
+\begin{definition}[Game Chromatic Number]
+    For a graph $G$ the\textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game in $G$.     
 \end{definition}
-
-We also consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but on each every turn Alice colours $a$ vertices and Bob colours $b$ turns.
-\begin{definition}
-    Let $G$ be a graph, and $a,b\in\mathbb{N}$. 
-     Then, $\chi_g(G;a,b)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the $(a,b)$--colouring game. 
-\end{definition}
-Note that $\chi_g(G) = \chi_g(G;1,1)$.
 
 Consider a graph $G$, if there is a winning strategy for Bob with $n$ colours then $n$ is a lower bound for the game chromatic number of $G$. That is $n<\chi_g(G)$. Conversely, if there is a strategy for Alice that guarantees colouring with $m$ colours then $m$ is an upper bound for the game chromatic number, that is $\chi_g(G)\leq m$.
 
 \section{Lower bounds for the $(a,b)$--colouring game}
 
+
+We also consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but on each every turn Alice colours $a$ vertices and Bob colours $b$ turns.
+\begin{definition}[$(a,b)$--Game Chromatic Number]
+    Let $G$ be a graph, and $a,b\in\mathbb{N}$. 
+    Then, $\chi_g(G;a,b)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the $(a,b)$--colouring game. 
+\end{definition}
+Note that $\chi_g(G) = \chi_g(G;1,1)$.
+
 The first results we will look at are some lower bounds for the game chromatic number.
 
-In Bodlaender 1990 \cite{bodlander1990} Bodlaneder showed that for the class of trees $\chi_g(\TT) \geq 4$. This result can be extended to the $(a,b)$--colouring game.
+Bodlaender 1990 \cite{bodlander1990} showed that for the class of trees $\chi_g(\TT) \geq 4$. This result can be extended to the $(a,b)$--colouring game.
 
 \begin{theorem}
     Let $\TT$ be the family of trees. If we have $b \geq 1$  then,
@@ -173,7 +186,7 @@ A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more ed
 \begin{proof}
     It suffices to show that there exists a graph in $\PP_k$ for which Bob has a winning strategy with $m=(b+1)k+\left\lceil\frac{b}{2}\right\rceil-1$ colours. Let the set of available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
-    We define the graph $G$ as follows. Start with a $k$-clique, $K_k$, then take $n=2|C|+1$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$, where for each $v_i$ $V(k_k)\cup\{v_i\}$ forms a $k+1$--clique. Now copy this graph, and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note that $v_1=t_1$. 
+    We define the graph $G$ as follows. Start with a $k$-clique, $K_k$, then take $n=2|C|+1$ vertices, $v_1,\dots,v_n$ and connect each $v_i$ to each vertex in $K_k$. Note that for each $v_i$, $K_k\cup\{v_i\}$ forms a $k+1$--clique. Now copy this graph, and connect the copies at any vertex not in $K_k$. We now have the graph, $G$, as in figure \ref{fig:pwlowerbound1}. Note that $v_1=t_1$. 
     
     Note that $G$ has the path decomposition \[\left\{K_k\cup\{v_n\}, K_k\cup\{v_{n-1}\}, \dots, K_k\cup\{v_1\}, K_k'\cup\{v_1\}, K_k'\cup\{t_2\}, \dots, K_k'\cup\{t_n\}\right\}\] and therefore has pathwidth $k$.
 \begin{figure}[H]
@@ -226,9 +239,9 @@ A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more ed
 \label{fig:pwlowerbound1}
 \end{figure}
 
-Consider two disjoint copies of $G$, $G_1$ and $G_2$. On Bob's first turn he colours a vertex in whichever copy Alice didn't, say $G_1$. Bob then only plays in $G_1$. Therefore we can assume that Bob can colour first.
+Consider two disjoint copies of $G$, $G_1$ and $G_2$. On Bob's first turn he colours a vertex in whichever copy Alice didn't, say $G_1$. Bob then only plays in $G_1$. Therefore without loss of generality we can assume that Bob has the first move.
 
-Therefore on Bobs first turn he colours $v_1$ with $c_1$ and $v_2,t_2,v_3,t_3,\dots, v_{b/2}, t{b/2}$ with unique colours.
+On Bobs first turn he colours $v_1$ with $c_1$ and $v_2,t_2,v_3,t_3,\dots, v_{b/2}, t{b/2}$ with unique colours.
  By the symmetry of $G$ we can assume Alice colours one of $t_2,\dots,t_n,s_1,\dots,s_k$. 
 
 Therefore we consider the subgraph, $H$, in figure \ref{fig:pwlowerbound2}, that Alice has not coloured in yet. 
@@ -297,9 +310,9 @@ Suppose that Alice has a winning strategy in the ordering game on a graph $G$, w
 
 Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is a strategy for Alice to use when playing the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)\leq 4$. %todo expand
 
-Before we formally define the activation strategy we need some notation and the concept of induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
+Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
-Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ with have the following
+The last thing before we give a summery of the activation strategy is we need some notation. Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ we have the following
 \begin{itemize}        
 \item The \textit{outneighbours} are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$ 
 \item The \textit{inneighbours} are $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$ 
@@ -319,7 +332,7 @@ Finally,
      \item $V^+[v]=V^+(v)\cup\{v\}$
      \item $V^-[v]=V^-(v)\cup\{v\}$
     \end{itemize}
- When it is clear what orientation we are referring to from context we will drop the $G_L$ subscript.  %todo improve
+ When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is $+$ is before in the linear order and $-$ is after. For example $N+(v)$ is the set the neighbours before $v$.
  
 \subsection{Summery of activation strategy}
 
@@ -671,7 +684,7 @@ In summery, the primary difference between the original activation strategy and 
 
 
 %-------------------------------------------------------------------------------------------------------------------
-\subsection{Refined Activation Strategy}
+\subsection{Refined Activation Strategy}\label{sec:refActStrat}
 The refined activation strategy is a refinement on the activation strategy introduced by Xuding Zhu in \cite{Zhu2008}. The refined activation strategy is used to find the current best upper bound for the $(1,1)$--marking game for the class of planar graphs. 
 
 \begin{theorem}[Theorem 1, Zhu 2008 \cite{Zhu2008}]
