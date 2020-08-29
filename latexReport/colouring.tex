@@ -296,12 +296,13 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 
 First introduced by  Zhu 1999 \cite{Zhu1999} the marking game is simplified version of the colouring game. In the marking game the players simply pick vertices. They don't colour the vertices. 
 
-The marking game is played as follows. Let $G$ be a graph, and $t\in\Nn$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_{G_L}(v)\}$. Alice wins is the score is strictly less $t$ and Bob wins otherwise. 
+The marking game is played as follows. Let $G$ be a graph, and $t\in\Nn$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}d^+(v)$. Alice wins is the score is strictly less $t$ and Bob wins otherwise. 
 %
 \begin{definition}[Game Colouring Number]
     Let $G$ be a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
 \end{definition}
 %
+
 There is simple strategy for Alice that takes a strategy for the marking game and converts it to a strategy. This strategy is called \textit{first fit}. Fix $C=\{c_1,c_2,\dots,c_k\}$ a set of colours. Suppose Alice has chosen a vertex $v$ in the marking game. In the colouring game she colours $v$ with the least $i$ such that $c_i$ is a valid colour in the colouring game. Let the score of marking game be $s$. At no point will Alice try to colour a vertex with more than $s$ coloured neighbours. Hence by using first fit Alice has a winning strategy for the colouring game if $|C|\leq s+1$. Note that Alice wins if the target score is equal to the number of colours. Hence the game colouring number bounds the game chromatic number. That is $\chi_g(G)\leq\col(G)$.
 
 %It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
@@ -425,7 +426,7 @@ When using this strategy Alice will always win if there are four or more availab
  
 \subsection{Summery of activation strategy}
 %
-Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
+Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any edge, $(u,v)\in E(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
 The last thing before we formally define the activation strategy is we need some notation. Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ we have the following
 \begin{itemize}        
@@ -491,16 +492,15 @@ The activation strategy can be summarised as follows.
 \end{definition}
 
 \begin{definition}[Matching]
-    Let $G$ be a graph. A \textit{matching} $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices. 
+    Let $G$ be a graph. A \textit{matching} $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices. We say $M$ is a matching from $X$ to $Y$ if $X,Y\subseteq V(G)$ and all the edges in $M$ go from a vertex in $X$ to a vertex in $Y$. That is if $(u,v)\in M$ then $u\in X$ and $v\in Y$. 
 \end{definition}
-
 
 \begin{definition}[Graph Rank \cite{KIERSTEAD2000}] \label{defnRank}
     Suppose $A,B$ are disjoint subsets of $V(G)$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ is defined on all $v\in A$ and $B\setminus A$ contains a cover of M. 
     
     Let $G$ be a graph and $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$
     
-    For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
+    For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $\{X, Y\}$ of $Z$ and there exist matchings $M$ from
     $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
     
     The rank $r(L,G)$ and rank $r(G)$ are defined as:
@@ -511,11 +511,36 @@ The activation strategy can be summarised as follows.
     \end{align*}
 \end{definition}
 
-The graph rank is technical detail used to prove results using the activation strategy. When using the activating strategy we get the following upper bound for the game colouring number. 
+The graph rank is technical detail used to prove results using the activation strategy. Most bounds found when using the activation strategy involve finding the rank if the graph. Once the rank is known we have a linear order $L$ on which to play the activation strategy. When using the activating strategy on such a $L$ we get the following upper bound for the game colouring number. 
 
 \begin{theorem}[Kierstead 2000 Theorem 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
     For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
 \end{theorem}
+
+\begin{proof}[Proof Summary]
+    Fix $G$ a graph and $L$ a linear ordering of $V(G)$. We need to show that on any turn any unchosen vertex $u$ has at most $r(u,L,G)$ many active neighbours. Denote the set of active vertices $A$ and the set of unmarked vertices $U$. The main task is to show that $|N^-(u)\cap A|\leq m(u,L,G)$. Once this is done we have 
+    \begin{align*}
+        |N(u)\cap A| &\leq d^+(u) + |N^-(u)\cap A| \\
+        & \leq  d^+_{G_L}(u) + m(u,L,G) \\
+        & = r(u,L,G)
+    \end{align*} 
+    and the result follows.
+    
+    Let $s(x)$ be the $L$--least unmarked vertex in $N^+[x]$. We define the sets $P,Q$ as follows,
+    \begin{align*}
+        P&=\{x\in N^-(u)\cap A : \text{x is activated before $s(x)$}\} \\        
+        Q&=\{x\in N^-(u)\cap A : \text{x is activated after $s(x)$}\}
+    \end{align*}
+    $\{P,Q\}$ is a partition of $N^-(u)\cap A$. Note that for any vertex $x\in N^-(u)\cap A $ $u\in N+(x)\cup U$. This means that $s(x)\leq u$ and so $s(x)\in V^+[u]$. Thus $S_P = \{(x,s(x)):x\in P)\}$ and $S_Q = \{(x,s(x)):x\in Q)\}$ are matchings from $N^-(u)$ to $V^+[u]$.
+    
+    There is a problem with these matchings. They both go from $N^-(u)$ to $V^+[u]$. To match the definition of $m(r,L,G)$ we need one of $S_P$ and $S_Q$ to go from $N^-[u]$ to $V^+(u)$. If there are no vertices $x\in P, y\in Q$ such that $s(x)=u=s(y)$ then both matchings are from $N^-(u)$ to $V^+(u)$ and we are done. 
+    
+    If there are vertices $x\in P, y\in Q$ such that $s(x)=u=s(y)$ then fix some $x$ and $y$. Since $u$ is unchosen it must be that $u \in N^-(s(u))$. If $u\in P$ then set $X = (P'\setminus x) \cup\{u\}$ and $Y= Q$. 
+    
+    If $u\notin P$ then set $X = (Q'\setminus y) \cup\{u\}$ and $Y= P$.
+    
+    In either case $S_X= \{(x,s(x)):x\in X)\}$ is a matching from $N^-[u]$ to $V^+(u)$ and $S_Y= \{(x,s(x)):x\in Y)\}$ is a matching from $N^-(u)$ to $V^+[u]$. So we have our matchings as desired.
+\end{proof}
 
 %A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
@@ -653,7 +678,7 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
 
 %todo col_g(T) < 3k+1 is sharp
 
-A $k$--tree is a maximal graph with treewidth $k$. This characterisation of $k$--trees means that a graph with pathwidth $k$ is a subgraph of some $k$--tree. Therefore to find a bound the class of trees with bounded treewidth we only need to find a bound for the class of $k$--trees. Theorem \ref{thm:ktreeUpper} was first introduced in Wu, Zhu 2008 \cite{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial $k$--trees.
+A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$--trees means that a graph with pathwidth $k$ is a subgraph of some $k$--tree. Therefore to find a bound the class of trees with bounded treewidth we only need to find a bound for the class of $k$--trees. Theorem \ref{thm:ktreeUpper} was first introduced in Wu, Zhu 2008 \cite{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial $k$--trees.
 \begin{theorem} \label{thm:ktreeUpper}
         Let $G$ be a k-tree. Then, 
         \[\chi_g(G) \leq 3k + 2\]
