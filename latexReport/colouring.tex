@@ -361,7 +361,7 @@ Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winni
     \label{fig:actvStrateg}
 \end{figure}
 
-Consider the tree $T$ in figure \ref{fig:actvStrateg}. $T$ has the vertex set $\{a,b,c\dots,t,u\}$. Fix a set of colours $C=\{\text{red},\text{green},\text{blue},\text{yellow}\}$. We consider $T$ to have a root $a$. Part of Alice's strategy is to keep track of a set $A$ of activated vertices. Alice starts by colouring $a$ red and adding $a$ to $A$. Suppose Bob colours vertex $j$ red. 
+Consider the tree $T$ in figure \ref{fig:actvStrateg}. $T$ has the vertex set $\{a,b,c,\dots,t,u\}$. Let the set of colours be $C=\{\text{red},\text{green},\text{blue},\text{yellow}\}$. We consider $T$ to have a root $a$. Part of Alice's strategy is to keep track of a set $A$ of activated vertices. Alice starts by colouring $a$ red and adding $a$ to $A$. Suppose Bob colours vertex $j$ red. 
 Let $P$ be the path starting with $j$ and traversing up the tree until it reaches a vertex in $A$. In this case $P= j, f, d, c, a$. Alice adds all the vertices in $P$ to $A$. Alice picks the vertex to colour by following these rules:
 %
 \begin{enumerate}
@@ -371,8 +371,8 @@ Let $P$ be the path starting with $j$ and traversing up the tree until it reache
 \end{enumerate}
 %
 So, on this turn she colours $c$ green. At this stage $A=\{a,c,d,f,g\}$. Bobs next move is to colour $k$ green. As before Alice traverses upwards forming a path $P_2=k,f$. The last vertex in $P_2$ is $f$ and $f$ is not coloured. So she colours $f$ blue. Bob colours $g$ red. Alice adds $g$ to $A$ and colours $d$ yellow for the same reason as her last turn. The current game state is represented in figure \ref{fig:actvStrateg_2}.
- 
- \begin{figure}
+ %
+ \begin{figure}[H]
      \centering
      \begin{tikzpicture}
      
@@ -421,12 +421,11 @@ So, on this turn she colours $c$ green. At this stage $A=\{a,c,d,f,g\}$. Bobs ne
      \caption{The tree $T$ after 6 turns}
      \label{fig:actvStrateg_2}
  \end{figure}
+%
+Some final example plays are as follows. Bob colours $q$ blue. Alice adds $q,l,h,e$ to $A$ and colours $e$ red. Bob colours $r$ red. Alice adds $r$ to $A$ and colours $l$ green. Bob colours $h$ blue. By the third rule Alice colours $b$ green. The game proceeds in this manor until all the vertices are coloured. 
 
-Bob colours $q$ blue. Alice adds $q,l,h,e$ to $A$ and colours $e$ red. Bob colours $r$ red. Alice adds $r$ to $A$ and colours $l$ green. Bob colours $h$ blue. By the third rule Alice colours $b$ green. The game proceeds in this manor until all the vertices are coloured. 
-
-When using this strategy Alice will always win if there are four or more colours. The full activation stragety is an extension of this strategy to arbitrary graphs. 
+When using this strategy Alice will always win if there are four or more available colours. This strategy is for the colouring game. But, if instead of colouring vertices we mark them it becomes a strategy for the marking game. Introduced by Kirstead 2000 \cite{KIERSTEAD2000} activation strategy is an extension of this strategy to arbitrary graphs in the marking game. 
 %In section \ref{sec:actvStratProofs} we will provide a short proof of this result using the activation strategy.
- Kirstead 2000 \cite{KIERSTEAD2000} introduced the activation strategy as a strategy for Alice in the marking game. 
  
 \subsection{Summery of activation strategy}
 %
@@ -454,37 +453,17 @@ Finally,
 \end{itemize}
 When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is $+$ is before in the linear order and $-$ is after. For example $N^+(v)$ is the set the neighbours before $v$.
 
-The activation strategy can be  summarised as follows. 
+The activation strategy can be summarised as follows. 
 \begin{enumerate}
     \item Alice starts by marking the least $v$ in $L$.
-    \item On her next turn let $u$ be the last vertex marked by Bob. Alice starts at $u$ activates it and moves to $w$ the least unmarked neighbour of $u$ in $L$.
-    \item If $w$ is activated or has no unmarked neighbours then Alice marks $w$. If not Alice repeats step (2) on $w$ until she either finds an active vertex.
+    \item On her next turn let $u$ be the last vertex marked by Bob. Alice starts at $u$ activates it and moves to $w$ the least unmarked neighbour of $u$ in $L$. \label{enum:actvstrat}
+    \item If $w$ is activated or has no unmarked neighbours then Alice marks $w$. If not Alice repeats step (\ref{enum:actvstrat}) on $w$ until she either finds an active vertex.
 \end{enumerate}
 
-%TODO trim waffle
-%todo defination matching
-
-\begin{definition}[Matching]
-    Let $G$ be a graph. A matching $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices. 
-\end{definition}
-
-\begin{definition}(Graph Rank)[Kierstead, \cite{KIERSTEAD2000}] \label{defnRank}
-    Suppose $A,B$ are disjoint subsets of $V(G)$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ is defined on all $v\in A$ and $B\setminus A$ contains a cover of M. 
-    
-    Let $G$ be a graph and $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$
-        
-    For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
-    $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
-    
-    The rank $r(L,G)$ and rank $r(G)$ are defined as:
-    \begin{align*}
-    	r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
-    	r(L,G)   & = \max_{u \in V}r(u,L,G)  \\
-    	r(G)     & = \min_{L \in \Pi(G)} r(L,G)
-    \end{align*}
-\end{definition}
 %todo investigate  d^+_{G_L} is less than or eqaul to the degenerary number of the graph
 % if N+ < a and d+ < b then  \col <= a+b+1 
+
+ We can now give a formal description of the activation strategy.
 
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G$ be a graph and $L$ a linear ordering on $V(G)$. We define the activation strategy $S(L,G)$ as follows:
@@ -517,7 +496,28 @@ The activation strategy can be  summarised as follows.
     
 \end{definition}
 
-By using the activating strategy we get the following upper bound for the game colouring number. 
+\begin{definition}[Matching]
+    Let $G$ be a graph. A \textit{matching} $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices. 
+\end{definition}
+
+
+\begin{definition}[Graph Rank \cite{KIERSTEAD2000}] \label{defnRank}
+    Suppose $A,B$ are disjoint subsets of $V(G)$. We say that a matching $M$ is a matching from $A$ to $B$ if $M$ is defined on all $v\in A$ and $B\setminus A$ contains a cover of M. 
+    
+    Let $G$ be a graph and $L$ a linear order on $V(G)$, and $\Pi(G)$ the set of all linear orders on $V(G)$
+    
+    For $u \in V(G)$ the matching number $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $[X, Y]$ of $Z$ and there exist matchings $M$ from
+    $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
+    
+    The rank $r(L,G)$ and rank $r(G)$ are defined as:
+    \begin{align*}
+    r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
+    r(L,G)   & = \max_{u \in V}r(u,L,G)  \\
+    r(G)     & = \min_{L \in \Pi(G)} r(L,G)
+    \end{align*}
+\end{definition}
+
+The graph rank is technical detail used to prove results using the activation strategy. When using the activating strategy we get the following upper bound for the game colouring number. 
 
 \begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
     For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
