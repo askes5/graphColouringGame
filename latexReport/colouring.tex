@@ -15,7 +15,7 @@ The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ suc
 
 Alice's map colour businesses is a huge success. She decides to hire Bob to help her colour maps. Unbeknownst to Alice Bob is part of a secret ink cabal whose goal is to drive up ink sales. Bob will try to use as many colours as possible when colouring maps. To colour a map Alice and Bob take turns assigning a colour to each country. They continue until all the countries are coloured. A problem arises almost immediately. By strategical choosing colours Bob can make it so the map cannot be coloured with four colours. What is the total number of colours Alice needs to ensure that any map can always be coloured? This is an open question. The current best bound is 17 \cite{Zhu2008}. In section \ref{sec:refActStrat} we will show how this bound is found. We can also ask the same question about different types of graphs. 
 
-But first we define the \textit{colouring game}. Let $G$ be any graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
+But first we define the \textit{colouring game}. Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
 
 %todo add basic results e.g. \chi of subgraphs, composition, disconnected graphs, etc.
 
@@ -294,49 +294,172 @@ Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$
 \section{Activation Strategy}
 %----------------------------------------------------------------------------------------
 
-To provide bounds for the game chromatic number we introduce the marking game. The marking game was formally introduced in Zhu 1999 \cite{Zhu1999}. It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
+First introduced by  Zhu 1999 \cite{Zhu1999} the marking game is simplified version of the colouring game. In the marking game the players simply pick vertices. They don't colour the vertices. 
 
-We define the marking game as follows. Let $G$ be a graph, and $t$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex, $v$ in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_L(v)\}$. Alice wins is the score is less than $t$ and Bob wins otherwise.
-
+The marking game is played as follows. Let $G$ be a graph, and $t\in\Nn$ a target score. Starting with Alice, Alice and Bob take turns to choose an unchosen vertex in $G$. The order in which the vertices were chosen forms a linear order, $L$. The score of the game is $\max_{v\in V(G)}\{d^+_{G_L}(v)\}$. Alice wins is the score is strictly less $t$ and Bob wins otherwise. 
+%
 \begin{definition}[Game Colouring Number]
     Let $G$ be a graph. The game colouring number $\col(G)$ is the minimum target score in the marking game such that Alice has a winning strategy. 
 \end{definition}
+%
+There is simple strategy for Alice that takes a strategy for the marking game and converts it to a strategy. This strategy is called \textit{first fit}. Fix $C=\{c_1,c_2,\dots,c_k\}$ a set of colours. Suppose Alice has chosen a vertex $v$ in the marking game. In the colouring game she colours $v$ with the least $i$ such that $c_i$ is a valid colour in the colouring game. Let the score of marking game be $s$. At no point will Alice try to colour a vertex with more than $s$ coloured neighbours. Hence by using first fit Alice has a winning strategy for the colouring game if $|C|\leq s+1$. Note that Alice wins if the target score is equal to the number of colours. Hence the game colouring number bounds the game chromatic number. That is $\chi_g(G)\leq\col(G)$.
 
-Suppose that Alice has a winning strategy in the ordering game on a graph $G$, with target score $t$. By using first fit colouring she also has a winning strategy for the colouring game. This can be seen as she any vertex she chooses will have at most $t$ coloured neighbours. Hence the game chromatic number is bounded by the colouring number, that is $\chi_g(G)\leq\col(G)$
+%It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
 %For $\FF$ be the family of forests, $\II$ the family of interval graphs with clique number $k$, $\PP$ the family of planar graphs, $\QQ$ the family of outer planar graphs, and $\KK$ the family of partial k-trees. %note K_k is exactly the graphs of bounded tree width.
 %The game colouring number for these classes of graphs are known. 
 %todo either remove this or add refferences
 
-Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is a strategy for Alice to use when playing the marking game. It is built on the work in \cite{faKeKiTr1993}, where the authors introduced a winning strategy for Alice in the class of forests. In which they showed that $\chi_g(\FF)\leq 4$. %todo expand
+Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy with four colours for Alice on the class of forests. We present it here to give some inspiration for the activation strategy. While this example misses some nuance of the full activation strategy, the basic premise is the same.  
 
-Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}    
+        \node [normal, label=below:$a$] (v1) at (0,2.5) {};
+        \node [normal, label=below:$b$] (v2) at (-1,1.5) {};
+        \node [normal, label=below:$c$] (v8) at (1,1.5) {};
+        \node [normal, label=below:$d$] (v9) at (0,0.5) {};
+        \node [normal, label=below:$e$] (v10) at (2,0.5) {};
+        \node [normal, label=below:$f$] (v14) at (-0.5,-0.5) {};
+        \node [normal, label=below:$g$] (v13) at (0.5,-0.5) {};
+        \node [normal, label=below:$h$] (v11) at (1.5,-0.5) {};
+        \node [normal, label=below:$i$] (v12) at (3.5,-0.5) {};
+        \node [normal, label=below:$j$] (v3) at (-1,-1.5) {};
+        \node [normal, label=below:$k$] (v19) at (0,-1.5) {};
+        \node [normal, label=below:$l$] (v6) at (2,-1.5) {};
+        \node [normal, label=below:$m$] (v20) at (3,-1.5) {};
+        \node [normal, label=below:$n$] (v21) at (4,-1.5) {};
+        \node [normal, label=below:$o$] (v4) at (-1.5,-2.5) {};
+        \node [normal, label=below:$p$] (v5) at (-0.5,-2.5) {};
+        \node [normal, label=below:$q$] (v15) at (1.5,-2.5) {};
+        \node [normal, label=below:$r$] (v7) at (2.5,-2.5) {};
+        \node [normal, label=below:$s$] (v16) at (-1,-3.5) {};
+        \node [normal, label=below:$t$] (v17) at (0,-3.5) {};
+        \node [normal, label=below:$u$] (v18) at (2,-3.5) {};
+        \draw  (v1) edge (v2);
+        \draw  (v3) edge (v4);
+        \draw  (v3) edge (v5);
+        \draw  (v6) edge (v7);
+        \draw  (v1) edge (v8);
+        \draw  (v8) edge (v9);
+        \draw  (v8) edge (v10);
+        \draw  (v10) edge (v11);
+        \draw  (v10) edge (v12);
+        \draw  (v13) edge (v9);
+        \draw  (v9) edge (v14);
+        \draw  (v15) edge (v6);
+        \draw  (v5) edge (v16);
+        \draw  (v5) edge (v17);
+        \draw  (v15) edge (v18);
+        \draw  (v14) edge (v19);
+        \draw  (v12) edge (v20);
+        \draw  (v12) edge (v21);
+        \draw  (v14) edge (v3);
+        \draw  (v11) edge (v6);
+    \end{tikzpicture}
+    \caption{A tree, $T$}
+    \label{fig:actvStrateg}
+\end{figure}
 
-The last thing before we give a summery of the activation strategy is we need some notation. Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ we have the following
-\begin{itemize}        
-\item The \textit{outneighbours} are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$ 
-\item The \textit{inneighbours} are $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$ 
-\item The \textit{outdegree} is $d^+_{G_L}(v)=|N^+(v)|$ 
-\item The \textit{indegree} is $d^-_{G_L}(v)=|N^-(v)|$
-\item $V^+_{G_L}(v)=\{u\in V(g):v>_L u\}$     
-\item $V^-_{G_L}(v)=\{u\in V(g):v<_L u\}$ 
-\end{itemize}
+Consider the tree $T$ in figure \ref{fig:actvStrateg}. $T$ has the vertex set $\{a,b,c\dots,t,u\}$. Fix a set of colours $C=\{\text{red},\text{green},\text{blue},\text{yellow}\}$. We consider $T$ to have a root $a$. Part of Alice's strategy is to keep track of a set $A$ of activated vertices. Alice starts by colouring $a$ red and adding $a$ to $A$. Suppose Bob colours vertex $j$ red. 
+Let $P$ be the path starting with $j$ and traversing up the tree until it reaches a vertex in $A$. In this case $P= j, f, d, c, a$. Alice adds all the vertices in $P$ to $A$. Alice picks the vertex to colour by following these rules:
+%
+\begin{enumerate}
+    \item If the end of the path $P$ is not coloured she colours it. 
+    \item If the last vertex in $P$ is coloured then she colours the second to last vertex. 
+    \item If both the last and second to last vertices are coloured she colours any vertex whose parent is coloured. 
+\end{enumerate}
+%
+So, on this turn she colours $c$ green. At this stage $A=\{a,c,d,f,g\}$. Bobs next move is to colour $k$ green. As before Alice traverses upwards forming a path $P_2=k,f$. The last vertex in $P_2$ is $f$ and $f$ is not coloured. So she colours $f$ blue. Bob colours $g$ red. Alice adds $g$ to $A$ and colours $d$ yellow for the same reason as her last turn. The current game state is represented in figure \ref{fig:actvStrateg_2}.
+ 
+ \begin{figure}
+     \centering
+     \begin{tikzpicture}
+     
+     \node [normalBlack, label=below:$a$, label=above left: {\footnotesize red}]   (v1) at (0,2.5) {};
+     \node [normal,      label=below:$b$]                                          (v2) at (-1,1.5) {};
+     \node [normalBlack, label=below:$c$, label=above right:{\footnotesize green}] (v8) at (1,1.5) {};
+     \node [normalBlack, label=below:$d$, label=left      : {\footnotesize yellow}](v9) at (0,0.5) {};
+     \node [normal,      label=below:$e$]                                          (v10) at (2,0.5) {};
+     \node [normalBlack, label=below:$f$, label=left:       {\footnotesize blue}]  (v14) at (-0.5,-0.5) {};
+     \node [normalBlack, label=below:$g$, label=above right:{\footnotesize red}]   (v13) at (0.5,-0.5) {};
+     \node [normal,      label=below:$h$]                                          (v11) at (1.5,-0.5) {};
+     \node [normal,      label=below:$i$]                                          (v12) at (3.5,-0.5) {};
+     \node [normalBlack, label=below:$j$, label=left:       {\footnotesize red}]   (v3) at (-1,-1.5) {};
+     \node [normalBlack, label=below:$k$, label=right:      {\footnotesize green}] (v19) at (0,-1.5) {};
+     \node [normal,      label=below:$l$]                                          (v6) at (2,-1.5) {};
+     \node [normal,      label=below:$m$]                                          (v20) at (3,-1.5) {};
+     \node [normal,      label=below:$n$]                                          (v21) at (4,-1.5) {};
+     \node [normal,      label=below:$o$]                                          (v4) at (-1.5,-2.5) {};
+     \node [normal,      label=below:$p$]                                          (v5) at (-0.5,-2.5) {};
+     \node [normal,      label=below:$q$]                                          (v15) at (1.5,-2.5) {};
+     \node [normal,      label=below:$r$]                                          (v7) at (2.5,-2.5) {};
+     \node [normal,      label=below:$s$]                                          (v16) at (-1,-3.5) {};
+     \node [normal,      label=below:$t$]                                          (v17) at (0,-3.5) {};
+     \node [normal,      label=below:$u$]                                          (v18) at (2,-3.5) {};
+     \draw  (v1) edge (v2);
+     \draw  (v3) edge (v4);
+     \draw  (v3) edge (v5);
+     \draw  (v6) edge (v7);
+     \draw  (v1) edge (v8);
+     \draw  (v8) edge (v9);
+     \draw  (v8) edge (v10);
+     \draw  (v10) edge (v11);
+     \draw  (v10) edge (v12);
+     \draw  (v13) edge (v9);
+     \draw  (v9) edge (v14);
+     \draw  (v15) edge (v6);
+     \draw  (v5) edge (v16);
+     \draw  (v5) edge (v17);
+     \draw  (v15) edge (v18);
+     \draw  (v14) edge (v19);
+     \draw  (v12) edge (v20);
+     \draw  (v12) edge (v21);
+     \draw  (v14) edge (v3);
+     \draw  (v11) edge (v6);
+     \end{tikzpicture}
+     \caption{The tree $T$ after 6 turns}
+     \label{fig:actvStrateg_2}
+ \end{figure}
 
- In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and 
- the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. 
+Bob colours $q$ blue. Alice adds $q,l,h,e$ to $A$ and colours $e$ red. Bob colours $r$ red. Alice adds $r$ to $A$ and colours $l$ green. Bob colours $h$ blue. By the third rule Alice colours $b$ green. The game proceeds in this manor until all the vertices are coloured. 
 
-Finally,
- \begin{itemize}  
-     \item $N^+[v]=N^+(v)\cup\{v\}$
-     \item $N^-[v]=N^-(v)\cup\{v\}$
-     \item $V^+[v]=V^+(v)\cup\{v\}$
-     \item $V^-[v]=V^-(v)\cup\{v\}$
-    \end{itemize}
- When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is $+$ is before in the linear order and $-$ is after. For example $N+(v)$ is the set the neighbours before $v$.
+When using this strategy Alice will always win if there are four or more colours. The full activation stragety is an extension of this strategy to arbitrary graphs. 
+%In section \ref{sec:actvStratProofs} we will provide a short proof of this result using the activation strategy.
+ Kirstead 2000 \cite{KIERSTEAD2000} introduced the activation strategy as a strategy for Alice in the marking game. 
  
 \subsection{Summery of activation strategy}
+%
+Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any two vertices, $u,v\in V(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
-We summarise of the activation strategy is as follows. Alice starts by marking the least $v$ in $L$. On her next turn let $u$ be the last vertex marked by Bob, Alice starts at $u$ activates it and moves to the least unmarked neighbour of $u$, say $w$, in $L$. If $w$ is active Alice marks $w$, if not Alice repeats this on $w$ until she finds an active vertex.
+The last thing before we formally define the activation strategy is we need some notation. Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ we have the following
+\begin{itemize}        
+    \item The \textit{outneighbours} are $N^+_{G_L}(v)=\{u\in N(v):v>_L u\}$ 
+    \item The \textit{inneighbours} are $N^-_{G_L}(v)=\{u\in N(v):v<_L u\}$ 
+    \item The \textit{outdegree} is $d^+_{G_L}(v)=|N^+_{G_L}(v)|$ 
+    \item The \textit{indegree} is $d^-_{G_L}(v)=|N^-_{G_L}(v)|$
+    \item $V^+_{G_L}(v)=\{u\in V(g):v>_L u\}$     
+    \item $V^-_{G_L}(v)=\{u\in V(g):v<_L u\}$ 
+\end{itemize}
+
+In $G$ the maximum outdegree is $\Delta^+(G)=\max_{v\in V(G)}N^+(v)$, and 
+the maximum indegree is $\Delta^-(G)=\max_{v\in V(G)}N^-(v)$. 
+
+Finally,
+\begin{itemize}  
+    \item $N^+[v]=N^+(v)\cup\{v\}$
+    \item $N^-[v]=N^-(v)\cup\{v\}$
+    \item $V^+[v]=V^+(v)\cup\{v\}$
+    \item $V^-[v]=V^-(v)\cup\{v\}$
+\end{itemize}
+When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is $+$ is before in the linear order and $-$ is after. For example $N^+(v)$ is the set the neighbours before $v$.
+
+The activation strategy can be  summarised as follows. 
+\begin{enumerate}
+    \item Alice starts by marking the least $v$ in $L$.
+    \item On her next turn let $u$ be the last vertex marked by Bob. Alice starts at $u$ activates it and moves to $w$ the least unmarked neighbour of $u$ in $L$.
+    \item If $w$ is activated or has no unmarked neighbours then Alice marks $w$. If not Alice repeats step (2) on $w$ until she either finds an active vertex.
+\end{enumerate}
 
 %TODO trim waffle
 %todo defination matching
@@ -366,8 +489,7 @@ We summarise of the activation strategy is as follows. Alice starts by marking t
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G$ be a graph and $L$ a linear ordering on $V(G)$. We define the activation strategy $S(L,G)$ as follows:
     
-    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V(G)$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update A and choose the
-    next vertex.
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V(G)$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update $A$ and choose the next vertex.
     \begin{algorithm}[h]
         \caption{Activation strategy}
         \label{alg:activStrat}
@@ -405,7 +527,7 @@ By using the activating strategy we get the following upper bound for the game c
 
 %TODO add defination reference
 
-\subsection{proofs using the activation strategy}
+\subsection{proofs using the activation strategy} \label{sec:actvStratProofs}
 We now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of graphs with bounded pathwidth and with bounded tree width.
 
 %
