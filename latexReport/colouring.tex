@@ -306,10 +306,6 @@ There is simple strategy for Alice that takes a strategy for the marking game an
 
 %It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
-%For $\FF$ be the family of forests, $\II$ the family of interval graphs with clique number $k$, $\PP$ the family of planar graphs, $\QQ$ the family of outer planar graphs, and $\KK$ the family of partial k-trees. %note K_k is exactly the graphs of bounded tree width.
-%The game colouring number for these classes of graphs are known. 
-%todo either remove this or add refferences
-
 Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy with four colours for Alice on the class of forests. We present it here to give some inspiration for the activation strategy. While this example misses some nuance of the full activation strategy, the basic premise is the same.  
 
 \begin{figure}[h]
@@ -460,8 +456,6 @@ The activation strategy can be summarised as follows.
     \item If $w$ is activated or has no unmarked neighbours then Alice marks $w$. If not Alice repeats step (\ref{enum:actvstrat}) on $w$ until she either finds an active vertex.
 \end{enumerate}
 
-%todo investigate  d^+_{G_L} is less than or eqaul to the degenerary number of the graph
-% if N+ < a and d+ < b then  \col <= a+b+1 
 
  We can now give a formal description of the activation strategy.
 
@@ -519,15 +513,13 @@ The activation strategy can be summarised as follows.
 
 The graph rank is technical detail used to prove results using the activation strategy. When using the activating strategy we get the following upper bound for the game colouring number. 
 
-\begin{theorem}[Kierstead 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
+\begin{theorem}[Kierstead 2000 Theorem 1 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
     For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
 \end{theorem}
 
 %A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
-%TODO add defination reference
-
-\subsection{proofs using the activation strategy} \label{sec:actvStratProofs}
+\subsection{Proofs Using the Activation Strategy} \label{sec:actvStratProofs}
 We now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of graphs with bounded pathwidth and with bounded tree width.
 
 %
@@ -573,8 +565,6 @@ We now provide some basic results that demonstrate typical usage of the activati
 %    The algorithm adds a vertex $v$ to $L$ iff there is no $j> i$ such that $v \in X_j$. Thus $i$ is the greatest $i$ such that $v \in X_i$. Therefore by definition of path decomposition all the neighbours of $v$ not in the $L$ are in $X_i$. Further the neighbours not in $L$ when $v$ is added to $L$ are greater than $v$ in $L$. Therefore is $N^-(v) \subset X_i$.
 %\end{proof}
 
-
-
 \begin{theorem}\label{thm_pathwidth}
     Let $G$ be a graph of pathwidth $k$. Then, 
     \[\chi_g(G) \leq 3k + 1\]    
@@ -587,7 +577,7 @@ We now provide some basic results that demonstrate typical usage of the activati
         
 %    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
     
-    We can see that for any vertex, $v, d^+(v) \leq k$. %todo clarify
+    We can see that $d^+(v) \leq k$ for any vertex $v$. %todo clarify
     
     As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V(G)$ $r(v,L,G) \leq 3k$. 
     
@@ -600,25 +590,8 @@ We now provide some basic results that demonstrate typical usage of the activati
     Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$. %The idea is $b\in N+(v)$
     There exists some $i,j$ such that $a\in X_i$ and $b\in X_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$. If $a \in X_j$ then $a \in V^+[v]$, this contradicts the fact that $a\in N^-(v)$. Therefore $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
     
-    $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by definition of rank, \[r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
+    $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by the definition of rank, \[r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
 \end{proof}
-%note: this proof is abusive, i.e. it completly violates the spirt of theorem 3.6.
-%only works because N+ is bounded by the path width
-%\begin{proof}
-%    Suppose $P=(E,V)$ is a graph of pathwidth $k$ and let $\mathscr{X} = \{X_1,X_2,\dots,X_n\}$ be a path decomposition of $P$ with width $k$.
-%    
-%    Let $L$ is a linear ordering on $V$ generated by algorithm \ref*{algo_LinOrderPW} using $\mathscr{X}$. 
-%    
-%    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm_KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 2k + 1$.        
-%    
-%    
-%    
-%    By the definition of path width  all $X_i \in \mathscr{X}$, $ \left| X_i \right| \leq k + 1 $. And $d^+(v) \leq k$ by theorem \ref{thm_kinnersley}.
-%
-%    Let $Z\subset N^-[v]$.
-%    
-%    By lemma \ref{lemma_neighboursAfter} $N^-[v] \subseteq X_i$ for some $X_i \in \mathscr{X}$ . Therefore $\left| Z\right| \leq \left| N^-(v)\right| \leq |X_i| \leq k+1$. Therefore by definition \ref{defnRank} $m(u,L,P) \leq k+1$. Thus $r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq 2k +1$.
-%\end{proof}
 
 \begin{definition}[Tree decomposition]
     A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
@@ -655,7 +628,7 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
             
             \While{$Q$ is not empty}
                 \State $v \gets Q$.dequeue()
-                \State $L \gets L \cup \{v\setminus L\}$ \Comment add all elements in $V(G)$ not already in the $L$
+                \State $L \gets L \cup \{v\setminus L\}$ \Comment add all elements in $V(G)$ not already in $L$
                 \ForAll {$U\in N(v)$ s.t. $U$ is unvisited}
                     \State $Q$.enqueue($U$)
                     \State mark $U$ as visited
