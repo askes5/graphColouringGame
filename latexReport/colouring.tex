@@ -28,6 +28,7 @@ Consider a graph $G$, if there is a winning strategy for Bob with $n$ colours th
 \section{Lower bounds for the $(a,b)$--colouring game}
 
 
+
 We also consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but on each every turn Alice colours $a$ vertices and Bob colours $b$ turns.
 \begin{definition}[$(a,b)$--Game Chromatic Number]
     Let $G$ be a graph, and $a,b\in\mathbb{N}$. 
@@ -37,12 +38,14 @@ Note that $\chi_g(G) = \chi_g(G;1,1)$.
 
 The first results we will look at are some lower bounds for the game chromatic number.
 
-Bodlaender 1990 \cite{bodlander1990} showed that for the class of trees $\chi_g(\TT) \geq 4$. This result can be extended to the $(a,b)$--colouring game.
+Bodlaender 1990 \cite{bodlander1990} showed that for the class of trees $\chi_g(\TT) \geq 4$. This result can be extended to the $(a,b)$--colouring game. 
 
 \begin{theorem}
     Let $\TT$ be the family of trees. If we have $b \geq 1$  then,
     \[\chi_g(\TT;1,b) \geq b+3 \]
 \end{theorem}
+
+
 
 \begin{proof}
     It suffices to show that there exists a tree in which Bob has a winning strategy with $b+2$ colours.
@@ -603,10 +606,10 @@ To demonstrate the basic idea behind the proofs in this section we prove theorem
     Then we have \[r(v,L,T) = d^+(v)+m(v,L,T) \leq 1 + 2 =3\] as desired.
 \end{proof}
 
-The next result we show is theorem \ref{thm:pathwidth}. It is not a new result, a proof apair in \cite{faKeKiTr1993}. 
+Recall theorem 
 
 Interval graphs are graphs defined from a series of intervals. The vertices represent the intervals and two vertices are connected with an edge if the associated intervals overlap. For an example see figure \ref{fig:intvGraph}.
-
+%
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}  
@@ -637,7 +640,7 @@ Interval graphs are graphs defined from a series of intervals. The vertices repr
     \caption{An interval graph}
     \label{fig:intvGraph}
 \end{figure}
-
+%
 The \textit{clique width} of an interval graph is the size of its maximal clique. The \textit{interval width} of a graph $G$ is the minimal clique width of an interval graph that contains $G$ as a subgraph. It is shown in \cite{faKeKiTr1993} that for any graph with interval width $w$ $\chi_g(G)\leq 3w -1$. Building on this result \cite{KIERSTEAD2000} uses the activation strategy to prove the same result. The pathwidth of a graph is one less than it's interval width \cite{Bodlaender1998}. This then gives us theorem \ref{thm:pathwidth}. 
 
 \begin{theorem}\label{thm:pathwidth}
@@ -680,14 +683,11 @@ The proof that we present here is new and based directly on the definition of pa
 \end{definition}
 
 \begin{definition}[Treewidth]
-    The treewidth of a graph $G$ is the minimum width of tree decomposition of $G$.    
+    The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$.    
     A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
 \end{definition}
 
-To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg:LinOrderTW} to generate a linear order on the vertices of a graph, $G$, based on a minimal tree decomposition, $(X,T)$. Algorithm \ref{alg:LinOrderTW} traverses $T$ using breadth first traversal and adds any vertex from $X_i$ to the linear order if it is the first time we  had encountered the vertex.
-
-%todo explain breadth first traversal
-%todo add picture of traversial.
+To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg:LinOrderTW} to generate a linear order on the vertices of a graph, $G$. Such an ordering is based on a minimal tree decomposition, $(X,T)$. Algorithm \ref{alg:LinOrderTW} traverses $T$ using breadth first traversal and adds any vertex from $X_i$ to the linear order if it is the first time we  had encountered the vertex.
 
 %in tree decom (\{X_1,X_2,\dots,X_n\},T) X_i is a vertex in T
 \begin{algorithm}[h]
