@@ -348,7 +348,33 @@ Compared to the domination and total domination game there has been comparativel
 
 %todo prove this result
 %todo provide example
-For the domination game (and the total domination game) the difference between Alice and Bob starting is at most 1. Interestingly this is not true for the competition-independence game. For an example consider the values for path graphs, equations \ref{eq1} and \ref{eq2}. 
+There is an interesting fact about the domination game. If Bob has the first move the Bob start domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends he has the first move the subgraph $G'=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(G')+1$.   
+This is not true for the competition-independence game. For an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}  
+        \node [normal, label=above right:$v$] (v1) at (0,0.5) {};
+        \node [normal, label=above right:$u_1$] (v2) at (0,3) {};
+        \node [normal, label=above right:$u_2$] (v3) at (2.35,1.5) {};
+        \node [normal, label=above right:$u_3$] (v8) at (2,-1) {};
+        \node [normal, label=above right:$u_4$] (v4) at (0.5,-1.95) {};
+        \node [normal, label=above:$u_5$] (v5) at (-2,-1) {};
+        \node [normal, label=above right:$u_6$] (v6) at (-2.5,0.5) {};
+        \node [normal, label=above right:$u_7$] (v7) at (-2,2) {};
+        \draw [thick] (v1) edge (v2);
+        \draw [thick] (v1) edge (v3);
+        \draw [thick] (v1) edge (v4);
+        \draw [thick] (v5) edge (v1);
+        \draw [thick] (v1) edge (v6);
+        \draw [thick] (v7) edge (v1);
+        \draw [thick] (v8) edge (v1);
+    \end{tikzpicture}
+    \caption{The star graph $S_7$}
+    \label{fig:starS7}
+\end{figure}
+
+If Alice starts she will play $v$ and the game ends with $|I| = 1$. If Bob starts he will play a vertex $u_i$. Alice cannot pick $v$ so must play a vertex $u_j$ such that $i\neq j$. The game will end with $|I| = 7$. Thus $I_A(S_7)=1$ and $I_B(S_7)=7$.
 
 The independence number of a graph $G$ is denoted $\alpha(G)$. It was shown in Borg 2010 \cite{borg2010sharp} that for a graph $G$ with maximal degree $k$ and $n$ vertices 
 %
