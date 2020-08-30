@@ -307,7 +307,11 @@ There is simple strategy for Alice that takes a strategy for the marking game an
 
 %It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
-Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy with four colours for Alice on the class of forests. We present it here to give some inspiration for the activation strategy. While this example misses some nuance of the full activation strategy, the basic premise is the same.  
+Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy with four colours for Alice on the class of forests. We present the strategy here to give some inspiration for the activation strategy. While this example misses some nuance of the full activation strategy, the basic premise is the same.  
+
+\begin{theorem}\label{thm:colTreeleq4}
+    For $F$ a forest $\chi_g(F) \leq 4$
+\end{theorem}
 
 \begin{figure}[h]
     \centering
@@ -421,7 +425,7 @@ So, on this turn she colours $c$ green. At this stage $A=\{a,c,d,f,g\}$. Bobs ne
 %
 Some final example plays are as follows. Bob colours $q$ blue. Alice adds $q,l,h,e$ to $A$ and colours $e$ red. Bob colours $r$ red. Alice adds $r$ to $A$ and colours $l$ green. Bob colours $h$ blue. By the third rule Alice colours $b$ green. The game proceeds in this manor until all the vertices are coloured. 
 
-When using this strategy Alice will always win if there are four or more available colours. This strategy is for the colouring game. But, if instead of colouring vertices we mark them it becomes a strategy for the marking game. Introduced by Kirstead 2000 \cite{KIERSTEAD2000} activation strategy is an extension of this strategy to arbitrary graphs in the marking game. 
+When using this strategy Alice will always win if there are four or more available colours. This strategy is for the colouring game. But, if instead of colouring vertices we mark them it becomes a strategy for the marking game. Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is an extension of this strategy to arbitrary graphs in the marking game. 
 %In section \ref{sec:actvStratProofs} we will provide a short proof of this result using the activation strategy.
  
 \subsection{Summery of activation strategy}
@@ -535,7 +539,9 @@ The graph rank is technical detail used to prove results using the activation st
     
     There is a problem with these matchings. They both go from $N^-(u)$ to $V^+[u]$. To match the definition of $m(r,L,G)$ we need one of $S_P$ and $S_Q$ to go from $N^-[u]$ to $V^+(u)$. If there are no vertices $x\in P, y\in Q$ such that $s(x)=u=s(y)$ then both matchings are from $N^-(u)$ to $V^+(u)$ and we are done. 
     
-    If there are vertices $x\in P, y\in Q$ such that $s(x)=u=s(y)$ then fix some $x$ and $y$. Since $u$ is unchosen it must be that $u \in N^-(s(u))$. If $u\in P$ then set $X = (P'\setminus x) \cup\{u\}$ and $Y= Q$. 
+    If there are vertices $x\in P, y\in Q$ such that $s(x)=u=s(y)$ then fix some $x$ and $y$. Since $u$ is unchosen it must be that $u \in N^-(s(u))$. 
+    
+    If $u\in P$ then set $X = (P'\setminus x) \cup\{u\}$ and $Y= Q$. 
     
     If $u\notin P$ then set $X = (Q'\setminus y) \cup\{u\}$ and $Y= P$.
     
@@ -545,52 +551,95 @@ The graph rank is technical detail used to prove results using the activation st
 %A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
 \subsection{Proofs Using the Activation Strategy} \label{sec:actvStratProofs}
-We now provide some basic results that demonstrate typical usage of the activation strategy. We bound the families of graphs with bounded pathwidth and with bounded tree width.
+Recall that theorem \ref{thm:colTreeleq4} states that for any tree $T$ \[\chi_g(T)\leq 4\]
+To demonstrate the basic idea behind the proofs in this section we prove theorem \ref{thm:colTreeleq4} using the activation strategy. This method is not needed to prove theorem \ref{thm:colTreeleq4}. But it makes a good example.
 
-%
-%\begin{algorithm}[h]
-%    \caption{Linear order in path decomposition}
-%    \label{algo_LinOrderPW}
-%    \begin{algorithmic}[1]
-%        \Require {$\mathscr{X}=\{X_1,X_2,\dots,X_n\}$ is the path decomposition of a graph $G$}
-%        \Ensure {$L$ is a linear order on $V(G)$}
-%        
-%        \Function{LOinPath}{$\mathscr{X}$}
-%        
-%            \State $Q \gets \emptyset$ \Comment $Q$ is a FIFO queue
-%            \State $L \gets \emptyset$ \Comment our linear order for $V(G)$
-%           
-%            \ForAll {$X_i \in \mathscr{X}$}
-%                \State $Q' \gets Q \cup (X_i\setminus Q)$ \Comment $Q'$ is a FIFO queue
-%                \State $Q \gets \emptyset$
-%                \ForAll {$x \in Q'$}
-%                    \If {$x \in \{X_{i+1} \cup \dots \cup X_n\}$}
-%                        \State $Q \gets Q\cup \{x\}$
-%                    \Else 
-%                        \State $L \gets L\cup \{x\}$   
-%                    \EndIf    
-%            \EndFor
-%           
-%            \EndFor 
-%            \State \textbf{return}  $L$
-%       \EndFunction 
-%    \end{algorithmic}
-%\end{algorithm}
-%
-%The following lemma is effectively the definition of the linear order given by algorithm \ref{algo_LinOrderPW}. 
-%
-%\begin{lemma} \label{lemma_neighboursAfter}
-%    Let $P=(E,V)$ be a graph of pathwidth $k$ and $\{X_1,X_2,\dots,X_n\}$ be a path decomposition of $P$ of width $k$.
-%    
-%    Suppose $L$ is a linear ordering on $V$ generated by algorithm \ref{algo_LinOrderPW} and $v$ is a vertex in $P$. Then there is some $i$ such that $v\in X_i$ and $N^-(v) \subset X_i$. Further $i$ is the largest $i$ for which $X_i$ contains $v$. 
-%\end{lemma}
-%
-%\begin{proof}
-%    Let $X_i$ be the segment in which $v$ is added to $L$, that is $i$ is the number of times line 4 has been looped when $v$ is added to $L$.  
-%    The algorithm adds a vertex $v$ to $L$ iff there is no $j> i$ such that $v \in X_j$. Thus $i$ is the greatest $i$ such that $v \in X_i$. Therefore by definition of path decomposition all the neighbours of $v$ not in the $L$ are in $X_i$. Further the neighbours not in $L$ when $v$ is added to $L$ are greater than $v$ in $L$. Therefore is $N^-(v) \subset X_i$.
-%\end{proof}
+\begin{proof}[Proof of theorem \ref{thm:colTreeleq4} \cite{KIERSTEAD2000}]
+    Fix a tree $T$. By theorem \ref{thm:KIERSTEAD1} $\col(T)\leq1 + r(T)$. So it suffices to show that the rank of $G$ is less than or equal to 3. We define a linear order $L$ on $V(T)$ by using \textit{breath first traversal}. First we pick some vertex $r$ to be the root of our tree. $r$ becomes the least element in $L$. We then add all the children of $r$ then all of their children and so on. For an example see figure \ref{fig:BFT}.  
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+        \node [normal, label=right: {\footnotesize 1}, label=left: {\footnotesize $r$}] (v1) at (0.25,0) {};
+        \node [normal, label=right: {\footnotesize 2}] (v2) at (-1,-1) {};
+        \node [normal, label=right: {\footnotesize 3}] (v9) at (1.5,-1) {};
+        \node [normal, label=right: {\footnotesize 4}] (v3) at (-2,-2) {};
+        \node [normal, label=right: {\footnotesize 5}] (v7) at (-0.5,-2) {};
+        \node [normal, label=right: {\footnotesize 6}] (v10) at (1,-2) {};
+        \node [normal, label=right: {\footnotesize 7}] (v11) at (2.5,-2) {};
+        \node [normal, label=below: {\footnotesize 8}] (v4) at (-2.5,-3) {};
+        \node [normal, label=below: {\footnotesize 9}] (v5) at (-1.5,-3) {};
+        \node [normal, label=below: {\footnotesize 10}] (v6) at (-1,-3) {};
+        \node [normal, label=below: {\footnotesize 11}] (v8) at (0,-3) {};
+        \node [normal, label=below: {\footnotesize 12}] (v12) at (0.5,-3) {};
+        \node [normal, label=below: {\footnotesize 13}] (v13) at (1.5,-3) {};
+        \node [normal, label=below: {\footnotesize 14}] (v14) at (2,-3) {};
+        \node [normal, label=below: {\footnotesize 15}] (v15) at (3,-3) {};
+        \draw  (v1) edge (v2);
+        \draw  (v2) edge (v3);
+        \draw  (v3) edge (v4);
+        \draw  (v3) edge (v5);
+        \draw  (v6) edge (v7);
+        \draw  (v7) edge (v8);
+        \draw  (v1) edge (v9);
+        \draw  (v2) edge (v7);
+        \draw  (v9) edge (v10);
+        \draw  (v9) edge (v11);
+        \draw  (v10) edge (v12);
+        \draw  (v14) edge (v11);
+        \draw  (v10) edge (v13);
+        \draw  (v11) edge (v15);
+        \end{tikzpicture}
+        \caption{Breath first traversal}
+        \label{fig:BFT}
+    \end{figure}
+    Fix some $v\in V(T)$. We show $r(v,L,T)\leq 3$. In $L$ every vertex $u$ apart from $r$ has $d^+(u) = 1$. For $r$, $d^+(r) = 0$. In other words every vertex has a single parent. Hence $d^+(v)\leq 1$.
+    
+    Let $Z\subseteq N^-[v]$ and $\{X,Y\}$ such that $X\subseteq N^-[v]$ and $Y\subseteq N^-(v)$. 
+    
+    It remains to show that if there exists matchings $M:X\to V^+(v)$ and $N:Y\to V^+[v]$ then $|Z| = |X|+|Y| \leq 2$.
+    
+    Assume there exists such matchings $M$ and $N$. There exists no edges from $N^-(v)$ to $V+(v)$. Therefore $M$ can contain at most the single edge $(v,u)$ for some $u\in N^+(v)$. Thus the only vertex $X$ can contain is $v$.    
+    The same is true for $N$. $N$ can contain at most the single edge $(u,v)$ for some $u\in N^+(v)$. Thus the only edge $Y$ can contain is $u$. Therefore $|Z| = |X|+|Y|\leq 2$.    
+    Then we have \[r(v,L,T) = d^+(v)+m(v,L,T) \leq 1 + 2 =3\] as desired.
+\end{proof}
 
-\begin{theorem}\label{thm_pathwidth}
+The next result we show is theorem \ref{thm:pathwidth}. It is not a new result, a proof apair in \cite{faKeKiTr1993}. 
+
+Interval graphs are graphs defined from a series of intervals. The vertices represent the intervals and two vertices are connected with an edge if the associated intervals overlap. For an example see figure \ref{fig:intvGraph}.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}  
+    \draw [thick, |-| ] (-1,-1.5) -- (0.5,-1.5) node [nodelabel] {$a$};
+    \draw [thick, |-| ](0,-2) -- (4.5,-2) node [nodelabel] {$b$};
+    \draw [thick, |-| ](2.5,-1.5) -- (4,-1.5) node [nodelabel] {$c$};
+    \draw [thick, |-| ](1.5,-2.5) -- (7,-2.5) node [nodelabel] {$d$};
+    \draw [thick, |-| ](0.5,-2.5) -- (-2.5,-2.5) node [nodelabel] {$e$};
+    \draw [thick, |-| ](-3,-3) -- (2,-3) node [nodelabel] {$f$};
+    
+    \node [normal, label=left:$a$] (v1) at (0,1) {};
+    \node [normal, label=above:$b$] (v2) at (2,2) {};
+    \node [normal, label=above:$c$] (v5) at (3.5,2) {};
+    \node [normal, label=right:$d$] (v6) at (4,0) {};
+    \node [normal, label=left:$e$] (v3) at (-1,2) {};
+    \node [normal, label=left:$f$] (v4) at (-0.5,0) {};
+    \draw [thick] (v1) edge (v2);
+    \draw [thick] (v1) edge (v3);
+    \draw [thick] (v1) edge (v4);
+    \draw [thick] (v2) edge (v5);
+    \draw [thick] (v6) edge (v2);
+    \draw [thick] (v5) edge (v6);
+    \draw [thick] (v6) edge (v4);
+    \draw [thick] (v3) edge (v4);
+    \draw [thick] (v2) edge (v3);
+    \end{tikzpicture}
+    \caption{An interval graph}
+    \label{fig:intvGraph}
+\end{figure}
+
+The interval width of a graph is the size of the maximal clique in 
+
+\begin{theorem}\label{thm:pathwidth}
     Let $G$ be a graph of pathwidth $k$. Then, 
     \[\chi_g(G) \leq 3k + 1\]    
 \end{theorem}
