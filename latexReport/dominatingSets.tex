@@ -92,7 +92,7 @@ For some graph $G$ $\gamma(G)$ is the size of the smallest domination set. Hence
 Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory. I will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.  
   
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{thm:oreDomUpper} 
-    For any connected graph $G$ with $n$ vertices,     
+    For any connected graph $G$ with no isolated vertices and $n$ vertices,     
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
 
@@ -309,6 +309,85 @@ This extended dinner party problem is a natural extension of the dominating game
    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. On Alice's first move she plays any $a$ vertices in $X$. Now, suppose Bob has just played $b$ vertices and $D$ is the current partial dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X\setminus D$. After no more than $\gamma(G)/a$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)/a$ times the number of rounds. If the number of rounds is exactly $\gamma(G)/a$ then the game ends on Alice's turn. In such a case Bob has had one less turn than Alice. Hence $|D|=(a+b)\frac{\gamma(G)}{a} -b$. If the number of rounds is strictly less than $\gamma(G)/a$ then the size of $D$ is strictly less than $(a+b)\frac{\gamma(G)}{a}$. In either case the game ends with $|D| \leq \frac{a+b}{a}\gamma(G) - 1$.
 \end{proof}
 
+\section{The Independent Dominating Game}
+
+To inspire the independent dominating game we introduce the cover band \textit{David and the Derivatives}. David and the Derivatives are the headline act at a large concert. On a normal night there would be no problems filling the seats at the concert hall. The problem is, they are under COVID restrictions. This means that all the guests must remain 2m apart. Alice works for the Ministry of health. Her job is to seat as few people as possible while still filling the hall. Bob is David and the Derivatives' manager. His job to maximise the number of people seated in the hall. There are only door sales for concert. So the more people Bob can seat the more profit he and David and the Derivatives make. The guests arrive one by one. Alternating, Alice and Bob direct people to seats. This continuous until no more people can be seated without breaking social distancing. Denoting the number of people seated as $n$. How small can Alice guarantee $n$ will be? And, how large can Bob guarantee $n$ will be? These questions have non-trivial solutions. And are a specific instance of the Independent Dominating Game.
+
+\begin{definition}[Independent Set]
+    For a graph $G$, an \textit{independent Set} is a subset $I\subseteq V(G)$ such that no two vertices in $I$ are adjacent. That is, for all $u,v\in I$ there exists no edge $(u,v)\in E(G)$.
+\end{definition}
+
+\begin{definition}[Independent Dominating Set]
+   For a graph $G$, an \textit{independent dominating set} is a set of vertices in $G$ that is both independent and dominating.
+\end{definition}
+
+The independent domination game is played on a graph $G$ as follows. Starting with Alice. The players take turns picking a vertex $v$ such that $v$ is not incident with any vertex that is already dominated. That is $v\in V(G)\backslash N[D]$, where $D$ is the current dominating set. Alice and Bob continue picking vertices until $D$ forms a dominating set. The score of the game is the size of the dominating set. Alice's goal is to minimise the score, and Bob's goal is to maximise it.
+
+
+Since an independent dominating set is a maximal independent set and vice versa the independent dominating game is equivalent to the Independent set game. This game is called the \textit{competition-independence game}. In this game Alice and Bob take turns constructing a maximal independent set. As before Alice tries to minimise the size of the independent set. Bob tries to maximise the independent set. The competition-independence number $I_A(G)$ (respectively $I_B(G)$) is the optimal size of a maximal independent set when Alice starts (or Bob respectively). 
+
+The competition-independence game was first introduced in Phillips and Slater 2001 \cite{PhillpsSlater2001}. In \cite{PhillpsSlater2001} the authors demonstrate some bounds for path graphs. In particular, they prove theorem \ref{thm:indDomPath}.
+\begin{theorem}[Phillips and Slater 2001 \cite{PhillpsSlater2001}]\label{thm:indDomPath}
+    For $P_n$ the path graph with $n$ vertices
+    \begin{align*}
+    I_A(P_n) &=\lfloor(3n+4)/4\rfloor\\
+    I_B(P_n) &=\lfloor(3n+6)/4\rfloor       
+    \end{align*} 
+\end{theorem}
+Further work on bounds competition-independence game was done by Goddard and Henning 2008 \cite{GoddardHenning2018}. In \cite{GoddardHenning2018} the authors proving a winning strategy for Alice on trees of with maximum degree less than 3.
+
+\begin{theorem}[Goddard and Henning 2008 \cite{GoddardHenning2018}]    \label{thm:indDomtree}
+For any tree $T$ with greater than or equal to 2 vertices and with maximum degree 3 
+\[I_A(T)\leq 4n/7\]
+\end{theorem}
+
+We demonstrate the strategy for Alice introduced in theorem \ref{thm:indDomtree}. Fix some tree $T$. Suppose it is Alice's turn. Let $I$ be the current independent set. Define $J_I$ to be the set of isolated vertices in $T\ba N[I]$. The \textit{energy} of $I$ is defined as \[\varphi(I) = |I| + |J_I| + 4/7|V(T) - N[I] - J_I|\]. Alice's strategy is to play the vertex  that minimises this energy. That is the $v\in V(T)$ that minimises $\varphi(I\cup\{v\})$
+
+Compared to the domination and total domination game there has been comparatively little work on the competition-independence game. In total there is probably less than a dozen papers on the topic. Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the form: For a positive integer $n$, there is some graph $G$ such that
+\[\gamma_g(G) - I_A(G) = n\]
+
+%todo prove this result
+%todo provide example
+There is an interesting fact about the domination game. If Bob has the first move the Bob start domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends he has the first move the subgraph $G'=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(G')+1$.   
+This is not true for the competition-independence game. For an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}  
+        \node [normal, label=above right:$v$] (v1) at (0,0.5) {};
+        \node [normal, label=above right:$u_1$] (v2) at (0,3) {};
+        \node [normal, label=above right:$u_2$] (v3) at (2.35,1.5) {};
+        \node [normal, label=above right:$u_3$] (v8) at (2,-1) {};
+        \node [normal, label=above right:$u_4$] (v4) at (0.5,-1.95) {};
+        \node [normal, label=above:$u_5$] (v5) at (-2,-1) {};
+        \node [normal, label=above right:$u_6$] (v6) at (-2.5,0.5) {};
+        \node [normal, label=above right:$u_7$] (v7) at (-2,2) {};
+        \draw [thick] (v1) edge (v2);
+        \draw [thick] (v1) edge (v3);
+        \draw [thick] (v1) edge (v4);
+        \draw [thick] (v5) edge (v1);
+        \draw [thick] (v1) edge (v6);
+        \draw [thick] (v7) edge (v1);
+        \draw [thick] (v8) edge (v1);
+    \end{tikzpicture}
+    \caption{The star graph $S_7$}
+    \label{fig:starS7}
+\end{figure}
+
+If Alice starts she will play $v$ and the game ends with $|I| = 1$. If Bob starts he will play a vertex $u_i$. Alice cannot pick $v$ so must play a vertex $u_j$ such that $i\neq j$. The game will end with $|I| = 7$. Thus $I_A(S_7)=1$ and $I_B(S_7)=7$.
+
+The independence number of a graph $G$ is denoted $\alpha(G)$. It was shown in Borg 2010 \cite{borg2010sharp} that for a graph $G$ with maximal degree $k$ and $n$ vertices 
+%
+\begin{equation}
+\label{equ3}
+\alpha(G) \leq n - \left\lceil\frac{n-1}{k}\right\rceil
+\end{equation}
+%
+Further the authors show that this bound is sharp. 
+
+$I_A$ is bounded above by the independence number. As the bound in equation \ref{equ3} is sharp the independence number of the class of graphs with maximal degree $k$ is bounded below by $n - \left\lceil(n-1)/k\right\rceil$. Hence for the class of graphs $\mathcal{C}$ with maximal degree $k$ and $n$ vertices 
+
+\[\gamma_g(\mathcal{C}) = n -\left\lceil\frac{n-1}{k}\right\rceil\] 
 
 
 
