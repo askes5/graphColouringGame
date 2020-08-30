@@ -596,7 +596,7 @@ To demonstrate the basic idea behind the proofs in this section we prove theorem
     
     Let $Z\subseteq N^-[v]$ and $\{X,Y\}$ such that $X\subseteq N^-[v]$ and $Y\subseteq N^-(v)$. 
     
-    It remains to show that if there exists matchings $M:X\to V^+(v)$ and $N:Y\to V^+[v]$ then $|Z| = |X|+|Y| \leq 2$.
+    It remains to show that if there exists matchings $M:X\to V^+(v)$ and $N:Y\to V^+[v]$ then $|Z| = |X|+|Y| \leq 2$. This in the crux of the entire proof. In short, we bound $X$ and $Y$ by assuming they are part of the matchings $M$ and $N$.
     
     Assume there exists such matchings $M$ and $N$. There exists no edges from $N^-(v)$ to $V+(v)$. Therefore $M$ can contain at most the single edge $(v,u)$ for some $u\in N^+(v)$. Thus the only vertex $X$ can contain is $v$.    
     The same is true for $N$. $N$ can contain at most the single edge $(u,v)$ for some $u\in N^+(v)$. Thus the only edge $Y$ can contain is $u$. Therefore $|Z| = |X|+|Y|\leq 2$.    
@@ -610,39 +610,42 @@ Interval graphs are graphs defined from a series of intervals. The vertices repr
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}  
-    \draw [thick, |-| ] (-1,-1.5) -- (0.5,-1.5) node [nodelabel] {$a$};
-    \draw [thick, |-| ](0,-2) -- (4.5,-2) node [nodelabel] {$b$};
-    \draw [thick, |-| ](2.5,-1.5) -- (4,-1.5) node [nodelabel] {$c$};
-    \draw [thick, |-| ](1.5,-2.5) -- (7,-2.5) node [nodelabel] {$d$};
-    \draw [thick, |-| ](0.5,-2.5) -- (-2.5,-2.5) node [nodelabel] {$e$};
-    \draw [thick, |-| ](-3,-3) -- (2,-3) node [nodelabel] {$f$};
-    
-    \node [normal, label=left:$a$] (v1) at (0,1) {};
-    \node [normal, label=above:$b$] (v2) at (2,2) {};
-    \node [normal, label=above:$c$] (v5) at (3.5,2) {};
-    \node [normal, label=right:$d$] (v6) at (4,0) {};
-    \node [normal, label=left:$e$] (v3) at (-1,2) {};
-    \node [normal, label=left:$f$] (v4) at (-0.5,0) {};
-    \draw [thick] (v1) edge (v2);
-    \draw [thick] (v1) edge (v3);
-    \draw [thick] (v1) edge (v4);
-    \draw [thick] (v2) edge (v5);
-    \draw [thick] (v6) edge (v2);
-    \draw [thick] (v5) edge (v6);
-    \draw [thick] (v6) edge (v4);
-    \draw [thick] (v3) edge (v4);
-    \draw [thick] (v2) edge (v3);
+        \draw [thick, |-|] (-1,-1.5) -- (0.5,-1.5) node [nodelabel] {$a$};
+        \draw [thick, |-|](0,-2) -- (4.5,-2) node [nodelabel] {$b$};
+        \draw [thick, |-|](2.5,-1.5) -- (4,-1.5) node [nodelabel] {$c$};
+        \draw [thick, |-|](1.5,-2.5) -- (7,-2.5) node [nodelabel] {$d$};
+        \draw [thick, |-|](0.5,-2.5) -- (-2.5,-2.5) node [nodelabel] {$e$};
+        \draw [thick, |-|](-3,-3) -- (2,-3) node [nodelabel] {$f$};
+        
+        \node [normal, label=left:$a$] (v1) at (0,0.5) {};
+        \node [normal, label=above:$b$] (v2) at (2,1.5) {};
+        \node [normal, label=above:$c$] (v5) at (3.5,1.5) {};
+        \node [normal, label=right:$d$] (v6) at (4,-0.5) {};
+        \node [normal, label=left:$e$] (v3) at (-1,1.5) {};
+        \node [normal, label=left:$f$] (v4) at (-0.5,-0.5) {};
+        \draw [thick] (v1) edge (v2);
+        \draw [thick] (v1) edge (v3);
+        \draw [thick] (v1) edge (v4);
+        \draw [thick] (v2) edge (v5);
+        \draw [thick] (v6) edge (v2);
+        \draw [thick] (v5) edge (v6);
+        \draw [thick] (v6) edge (v4);
+        \draw [thick] (v3) edge (v4);
+        \draw [thick] (v2) edge (v3);
+        \draw [thick] (v4) edge (v2);
     \end{tikzpicture}
     \caption{An interval graph}
     \label{fig:intvGraph}
 \end{figure}
 
-The interval width of a graph is the size of the maximal clique in 
+The \textit{clique width} of an interval graph is the size of its maximal clique. The \textit{interval width} of a graph $G$ is the minimal clique width of an interval graph that contains $G$ as a subgraph. It is shown in \cite{faKeKiTr1993} that for any graph with interval width $w$ $\chi_g(G)\leq 3w -1$. Building on this result \cite{KIERSTEAD2000} uses the activation strategy to prove the same result. The pathwidth of a graph is one less than it's interval width \cite{Bodlaender1998}. This then gives us theorem \ref{thm:pathwidth}. 
 
 \begin{theorem}\label{thm:pathwidth}
     Let $G$ be a graph of pathwidth $k$. Then, 
     \[\chi_g(G) \leq 3k + 1\]    
 \end{theorem}
+
+The proof that we present here is new and based directly on the definition of pathwidth. Rather than the previous results (\cite{faKeKiTr1993,KIERSTEAD2000}) whose proofs are based on properties of interval graphs. 
 
 \begin{proof}
     Let $G$ be a graph of pathwidth $k$, with path decomposition $P=\{P_1,\dots,P_n\}$. 
@@ -655,7 +658,7 @@ The interval width of a graph is the size of the maximal clique in
     
     As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V(G)$ $r(v,L,G) \leq 3k$. 
     
-    Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques.
+    Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques. 
     
     Let $v$ be any vertex in $V(G)$. Let $Z \subset N^-[v]$ and the partition $\{X,Y\}$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
     
