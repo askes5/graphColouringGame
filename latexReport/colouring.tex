@@ -23,10 +23,9 @@ But first we define the \textit{colouring game}. Let $G$ be any graph, and $C$ a
     For a graph $G$ the\textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game in $G$.     
 \end{definition}
 
-Consider a graph $G$, if there is a winning strategy for Bob with $n$ colours then $n$ is a lower bound for the game chromatic number of $G$. That is $n<\chi_g(G)$. Conversely, if there is a strategy for Alice that guarantees colouring with $m$ colours then $m$ is an upper bound for the game chromatic number, that is $\chi_g(G)\leq m$.
+Consider a graph $G$. If there is a winning strategy for Bob with $n$ colours then $n+1$ is a lower bound for the game chromatic number of $G$. That is $n\leq\chi_g(G)$. Conversely, if there is a strategy for Alice that guarantees a colouring with $m$ colours then $m$ is an upper bound for the game chromatic number, that is $\chi_g(G)\leq m$.
 
 \section{Lower bounds for the $(a,b)$--colouring game}
-
 
 We also consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but on each every turn Alice colours $a$ vertices and Bob colours $b$ turns.
 \begin{definition}[$(a,b)$--Game Chromatic Number]
@@ -37,14 +36,13 @@ Note that $\chi_g(G) = \chi_g(G;1,1)$.
 
 The first results we will look at are some lower bounds for the game chromatic number.
 
-Bodlaender 1990 \cite{bodlander1990} showed that for the class of trees $\chi_g(\TT) \geq 4$. This result can be extended to the $(a,b)$--colouring game.
+For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\chi_g(\TT) \geq 4$. This was done by giving a graph and associated strategy for Bob. We take this proof and extend it to a new proof of theorem \ref{thm:treeColLow}. 
 
-\begin{theorem}
+\begin{theorem}\label{thm:treeColLow}
     Let $\TT$ be the family of trees. If we have $b \geq 1$  then,
     \[\chi_g(\TT;1,b) \geq b+3 \]
 \end{theorem}
-
-\begin{proof}
+\begin{proof}[Proof (Askes)]
     It suffices to show that there exists a tree in which Bob has a winning strategy with $b+2$ colours.
     
     Consider the graph $G$ as defined in figure \ref{fig:multiPlayerTree1}. 
@@ -286,7 +284,7 @@ First, suppose $K_k$ is fully coloured bar one. Let the uncoloured vertex be $x$
 %
 Therefore $x$ cannot be coloured, and Bob wins.
 
-Second, suppose Bob has run out of colours then every uncoloured vertex in $K_k$ is connected to $(b+1)k-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
+Second, suppose Bob has run out of colours. Then every uncoloured vertex in $K_k$ is connected to $(b+1)k-1$ many unique coloured neighbours and thus cannot be coloured, therefore Bob has won.
 \end{proof}
 %---------------------------------------
 
