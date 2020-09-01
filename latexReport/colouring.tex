@@ -27,8 +27,7 @@ Consider a graph $G$. If there is a winning strategy for Bob with $n$ colours th
 
 \section{Lower bounds for the $(a,b)$--colouring game}
 
-
-We also consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game but on each every turn Alice colours $a$ vertices and Bob colours $b$ turns.
+We consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game. But on each turn Alice colours $a$ vertices and Bob colours $b$ turns.
 \begin{definition}[$(a,b)$--Game Chromatic Number]
     Let $G$ be a graph, and $a,b\in\mathbb{N}$. 
     Then, $\chi_g(G;a,b)$ is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the $(a,b)$--colouring game. 
@@ -38,11 +37,11 @@ Note that $\chi_g(G) = \chi_g(G;1,1)$.
 The first results we will look at are some lower bounds for the game chromatic number.
 
 
-For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\chi_g(\TT) \geq 4$. This was done by giving a graph and associated strategy for Bob. We take this proof and extend it to a new proof of theorem \ref{thm:treeColLow}. 
+For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\chi_g(\TT) \geq 4$. This was done by defining a tree and and associated strategy for Bob. We take this proof and extend it to a new proof of theorem \ref{thm:treeColLow}. 
 
 
 \begin{theorem}\label{thm:treeColLow}
-    Let $\TT$ be the family of trees. If we have $b \geq 1$  then,
+    Let $\TT$ be the class of trees. If we have $b \geq 1$  then,
     \[\chi_g(\TT;1,b) \geq b+3 \]
 \end{theorem}
 
@@ -182,7 +181,7 @@ For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\
 A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. Hence there is no proper colouring of $G$ with less than $k+1$ colours. Therefore $k$ a lower bound for the game chromatic number for graphs with pathwidth $k$, that is $k < \chi_g(G) $. 
 
 \begin{theorem}
-    Let $\PP_k$ be family of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP_k;1,b)\]
+    Let $\PP_k$ be class of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP_k;1,b)\]
 \end{theorem}
 
 \begin{proof}
@@ -605,7 +604,11 @@ To demonstrate the basic idea behind the proofs in this section we prove theorem
     Then we have \[r(v,L,T) = d^+(v)+m(v,L,T) \leq 1 + 2 =3\] as desired.
 \end{proof}
 
-Recall theorem 
+Recall theorem \ref{thm:treeColLow} sates that for $T$ a tree $chi_g(\TT;1,b) \geq b+3 $. When $b=1$ we get the lower bound for the game domination number on the class of trees. Further, when combined with theorem \ref{thm:colTreeleq4} we get corollary \ref{cor:colTreeExact} as an immediate consequence.  
+
+\begin{corollary} \label{cor:colTreeExact}
+    For $T$ a tree \[\chi_g(T) = 4\]
+\end{corollary}
 
 Interval graphs are graphs defined from a series of intervals. The vertices represent the intervals and two vertices are connected with an edge if the associated intervals overlap. For an example see figure \ref{fig:intvGraph}.
 %
