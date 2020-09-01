@@ -324,7 +324,7 @@ To inspire the independent dominating game we introduce the cover band \textit{D
 The independent domination game is played on a graph $G$ as follows. Starting with Alice. The players take turns picking a vertex $v$ such that $v$ is not incident with any vertex that is already dominated. That is $v\in V(G)\backslash N[D]$, where $D$ is the current dominating set. Alice and Bob continue picking vertices until $D$ forms a dominating set. The score of the game is the size of the dominating set. Alice's goal is to minimise the score, and Bob's goal is to maximise it.
 
 
-Since an independent dominating set is a maximal independent set and vice versa the independent dominating game is equivalent to the Independent set game. This game is called the \textit{competition-independence game}. In this game Alice and Bob take turns constructing a maximal independent set. As before Alice tries to minimise the size of the independent set. Bob tries to maximise the independent set. The competition-independence number $I_A(G)$ (respectively $I_B(G)$) is the optimal size of a maximal independent set when Alice starts (or Bob respectively). 
+Since an independent dominating set is a maximal independent set and vice versa the independent dominating game is equivalent to the Independent set game. This game is called the \textit{competition-independence game}. In this game Alice and Bob take turns constructing a maximal independent set. As before Alice tries to minimise the size of the independent set. Bob tries to maximise the independent set. The \text{competition-independence number} $I_A(G)$ (respectively $I_B(G)$) is the optimal size of a maximal independent set when Alice starts (or Bob respectively). 
 
 The competition-independence game was first introduced in Phillips and Slater 2001 \cite{PhillpsSlater2001}. In \cite{PhillpsSlater2001} the authors demonstrate some bounds for path graphs. In particular, they prove theorem \ref{thm:indDomPath}.
 \begin{theorem}[Phillips and Slater 2001 \cite{PhillpsSlater2001}]\label{thm:indDomPath}
@@ -343,12 +343,14 @@ For any tree $T$ with greater than or equal to 2 vertices and with maximum degre
 
 We demonstrate the strategy for Alice introduced in theorem \ref{thm:indDomtree}. Fix some tree $T$. Suppose it is Alice's turn. Let $I$ be the current independent set. Define $J_I$ to be the set of isolated vertices in $T\ba N[I]$. The \textit{energy} of $I$ is defined as \[\varphi(I) = |I| + |J_I| + 4/7|V(T) - N[I] - J_I|\]. Alice's strategy is to play the vertex  that minimises this energy. That is the $v\in V(T)$ that minimises $\varphi(I\cup\{v\})$
 
-Compared to the domination and total domination game there has been comparatively little work on the competition-independence game. In total there is probably less than a dozen papers on the topic. Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the form: For a positive integer $n$, there is some graph $G$ such that
+Compared to the domination and total domination game there has been comparatively little work on the competition-independence game. 
+%In total there is probably less than a dozen papers on the topic. 
+Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the form: For a positive integer $n$, there is some graph $G$ such that
 \[\gamma_g(G) - I_A(G) = n\]
 
 %todo prove this result
 %todo provide example
-There is an interesting fact about the domination game. If Bob has the first move the Bob start domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends he has the first move the subgraph $G'=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(G')+1$.   
+There is an interesting fact about the domination game. If Bob has the first move the Bob start domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends he has the first move the subgraph $G'=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(G')+1\leq \gamma_g(G)+1$.   
 This is not true for the competition-independence game. For an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
 
 \begin{figure}[h]
@@ -376,18 +378,30 @@ This is not true for the competition-independence game. For an example consider 
 
 If Alice starts she will play $v$ and the game ends with $|I| = 1$. If Bob starts he will play a vertex $u_i$. Alice cannot pick $v$ so must play a vertex $u_j$ such that $i\neq j$. The game will end with $|I| = 7$. Thus $I_A(S_7)=1$ and $I_B(S_7)=7$.
 
-The independence number of a graph $G$ is denoted $\alpha(G)$. It was shown in Borg 2010 \cite{borg2010sharp} that for a graph $G$ with maximal degree $k$ and $n$ vertices 
-%
-\begin{equation}
-\label{equ3}
-\alpha(G) \leq n - \left\lceil\frac{n-1}{k}\right\rceil
-\end{equation}
-%
-Further the authors show that this bound is sharp. 
+\begin{definition}[Independence number]
+    The \textit{independence number} of a graph $G$, denoted $\alpha(G)$, is the size of the independent set in $G$.
+\end{definition}
 
-$I_A$ is bounded above by the independence number. As the bound in equation \ref{equ3} is sharp the independence number of the class of graphs with maximal degree $k$ is bounded below by $n - \left\lceil(n-1)/k\right\rceil$. Hence for the class of graphs $\mathcal{C}$ with maximal degree $k$ and $n$ vertices 
+A graph has no independent sets larger than it's independence number. Consequently, when playing the competition-independence game the size of the independent set formed is no larger than the  independence number. This means the competition-independence number is bounded above by the independence number. Hence we get theorem \ref{thm:indgameup}.
 
-\[\gamma_g(\mathcal{C}) = n -\left\lceil\frac{n-1}{k}\right\rceil\] 
+\begin{theorem}\label{thm:indgameup}
+    For a graph $G$, $I_A(G)\leq \alpha(G)$.    
+\end{theorem}
+
+%If 
+%
+%It was shown in Borg 2010 \cite{borg2010sharp} that for a graph $G$ with maximal degree $k$ and $n$ vertices 
+%%
+%\begin{equation}
+%\label{equ3}
+%\alpha(G) \leq n - \left\lceil\frac{n-1}{k}\right\rceil
+%\end{equation}
+%
+%Further the authors show that this bound is sharp. 
+%
+%$I_A$ is bounded above by the independence number. As the bound in equation \ref{equ3} is sharp the independence number of the class of graphs with maximal degree $k$ is bounded below by $n - \left\lceil(n-1)/k\right\rceil$. Hence for the class of graphs $\mathcal{C}$ with maximal degree $k$ and $n$ vertices 
+%
+%\[\gamma_g(\mathcal{C}) = n -\left\lceil\frac{n-1}{k}\right\rceil\] 
 
 
 
