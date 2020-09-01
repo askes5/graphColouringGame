@@ -104,7 +104,7 @@ For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\
     \end{figure}    
     
     Let $\{c_1,c_2,\ldots,c_{b+1},c_{b+2}\}$ be the set of available colours.
-    On Alice's first move she picks any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
+    On Alice's first move she plays any vertex, $v$, and colours it. Let the colour of $v$ be $c_1$.
     Bobs first move is to colour any vertex with distance 3 to $v$. We now have a subgraph in $G$ of the type shown in figure \ref{fig:subgraphColouring}. Bob then colours $y_1, \dots, y_{b-1}$ with $c_2, \dots, c_{b}$ respectively.
 \begin{figure}[H]
     \centering
@@ -468,7 +468,7 @@ The activation strategy can be summarised as follows.
 \begin{definition} [Activation strategy \cite{KIERSTEAD2000}]
     Let $G$ be a graph and $L$ a linear ordering on $V(G)$. We define the activation strategy $S(L,G)$ as follows:
     
-    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V(G)$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update $A$ and choose the next vertex.
+    Let U denote the set of unmarked vertices. Alice maintains a subset $A \subset V(G)$ of active vertices. Initially $A = \emptyset$. We activate a vertex $x$ by adding it to $A$. On her first turn Alice activates and marks the least vertex in the ordering $L$. Now suppose that Bob has just marked the vertex $b$. Alice uses algorithm \ref{alg:activStrat} to update $A$ and choose the next vertex to play.
     \begin{algorithm}[h]
         \caption{Activation strategy}
         \label{alg:activStrat}
@@ -483,13 +483,13 @@ The activation strategy can be summarised as follows.
             \EndWhile      
             
             \If{$x \neq b$} 
-                \State choose x
+                \State play x
             \Else
                 \State $y \gets \min_L U$
                 \If{$y \neq A$}
                     \State $A \gets A \cup \{y\}$                    
                 \EndIf     
-                \State choose y
+                \State play y
             \EndIf   
         \end{algorithmic}
     \end{algorithm}
