@@ -178,9 +178,13 @@ For the class of trees $\TT$ Bodlaender 1990 \cite{bodlander1990} showed that $\
     A graph of bounded pathwidth, $k$, is a graph with a pathwidth less than or equal to $k$. 
 \end{definition}
 
-A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. Hence there is no proper colouring of $G$ with less than $k+1$ colours. Therefore $k$ a lower bound for the game chromatic number for graphs with pathwidth $k$, that is $k < \chi_g(G) $. 
+%todo deine $k-path
 
-\begin{theorem}
+A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. Hence there is no proper colouring of $G$ with less than $k+1$ colours. Therefore $k$ a lower bound for the game chromatic number for graphs with pathwidth $k$, that is 
+%todo make theorem
+$k < \chi_g(G) $. 
+
+\begin{theorem}[Askes]
     Let $\PP_k$ be class of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP_k;1,b)\]
 \end{theorem}
 
@@ -556,9 +560,9 @@ The graph rank is technical detail used to prove results using the activation st
 
 \subsection{Proofs Using the Activation Strategy} \label{sec:actvStratProofs}
 Recall that theorem \ref{thm:colTreeleq4} states that for any tree $T$ \[\chi_g(T)\leq 4\]
-To demonstrate the basic idea behind the proofs in this section we prove theorem \ref{thm:colTreeleq4} using the activation strategy. This method is not needed to prove theorem \ref{thm:colTreeleq4}. But it makes a good example.
+To demonstrate the basic idea behind the proofs in this section we prove theorem \ref{thm:colTreeleq4} using the activation strategy. This proof is based on the proof in \cite{KIERSTEAD2000}. But here we expand out the details. We also provide an explicit linear ordering on the vertices. By doing so the proof fits the mould used in the proofs of theorems \ref{thm:pathwidth} and \ref{thm:ktreeUpper}. 
 
-\begin{proof}[Proof of theorem \ref{thm:colTreeleq4} \cite{KIERSTEAD2000}]
+\begin{proof}[Proof of Theorem \ref{thm:colTreeleq4} \cite{KIERSTEAD2000}]
     Fix a tree $T$. By theorem \ref{thm:KIERSTEAD1} $\col(T)\leq1 + r(T)$. So it suffices to show that the rank of $G$ is less than or equal to 3. We define a linear order $L$ on $V(T)$ by using \textit{breath first traversal}. First we pick some vertex $r$ to be the root of our tree. $r$ becomes the least element in $L$. We then add all the children of $r$ then all of their children and so on. For an example see figure \ref{fig:BFT}.  
     \begin{figure}[h]
         \centering
@@ -642,7 +646,7 @@ Interval graphs are graphs defined from a series of intervals. The vertices repr
         \draw [thick] (v2) edge (v3);
         \draw [thick] (v4) edge (v2);
     \end{tikzpicture}
-    \caption{An interval graph}
+    \caption{An interval graph with clique width 4}
     \label{fig:intvGraph}
 \end{figure}
 %
@@ -783,14 +787,13 @@ The activation strategy works well for the $(1,1)$--marking game but fails in th
     $\col(G;a,1) \leq 2k + 2$.
 \end{theorem}
 
-The Harmonious Strategy is used in the case the game is very asymmetric, i.e. $\Delta^*(G)\leq \frac{a}{b}$. A summery of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
+The Harmonious Strategy is used in the case the game is very asymmetric, that is $\Delta^*(G)\leq \frac{a}{b}$. We summerise the main ideas of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out degree in a linear ordering on the vertices.
 
 Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
 \begin{enumerate}
     \item  Alice selects, $y$, the with the least unmarked outneighbor of $x$ to whom $x$ has not yet contributed and then contributes to y. If there is no such vertex she selects the least unmarked vertex.
     \item  The contribution from $y$
-    is passed along until finally it arrives at a vertex $z$ that has already
-    contributed to all its outneighbors.
+    is passed along until finally it arrives at a vertex $z$ that has already contributed to all its outneighbors.
     \item  Alice marks $z$
 \end{enumerate}
 
