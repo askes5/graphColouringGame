@@ -196,13 +196,13 @@ A \textit{caterpillar graph} is a tree in which all the vertices lie on a path o
         \node [normal] (v8) at (0.5,-1) {};
         \node [normal] (v7) at (0,-1.5) {};
         \node [normal] (v1) at (-0.5,2.5) {};
-        \draw [ultra thick] (v1) edge (v2);
-        \draw [ultra thick] (v2) edge (v3);
-        \draw [ultra thick] (v3) edge (v4);
-        \draw [ultra thick] (v4) edge (v5);
-        \draw [ultra thick] (v6) edge (v4);
-        \draw [ultra thick] (v3) edge (v7);
-        \draw [ultra thick] (v8) edge (v3);
+        \draw [] (v1) edge (v2);
+        \draw [] (v2) edge (v3);
+        \draw [] (v3) edge (v4);
+        \draw [] (v4) edge (v5);
+        \draw [] (v6) edge (v4);
+        \draw [] (v3) edge (v7);
+        \draw [] (v8) edge (v3);
         \end{tikzpicture}
     \end{subfigure}
 \begin{subfigure}{.3\textwidth}
@@ -212,11 +212,11 @@ A \textit{caterpillar graph} is a tree in which all the vertices lie on a path o
     \node [normal] (v2) at (1,1) {};
     \node [normal] (v3) at (2.5,1.5) {};
     \node [normal] (v4) at (4,0.5) {};
-    \draw [ultra thick] (v1) edge (v2);
-    \draw [ultra thick] (v2) edge (v3);
-    \draw [ultra thick] (v3) edge (v4);
+    \draw [] (v1) edge (v2);
+    \draw [] (v2) edge (v3);
+    \draw [] (v3) edge (v4);
     \node [normal] (v5) at (5.5,0) {};
-    \draw [ultra thick] (v5) edge (v4);
+    \draw [] (v5) edge (v4);
     \end{tikzpicture}
 \end{subfigure}
 \begin{subfigure}{.3\textwidth}
@@ -229,18 +229,18 @@ A \textit{caterpillar graph} is a tree in which all the vertices lie on a path o
     \node [normal] (v2) at (-2,0.5) {};
     \node [normal] (v5) at (1.5,0) {};
     \node [normal] (v6) at (2,0.5) {};
-    \draw [ultra thick] (v2) edge (v3);
-    \draw [ultra thick] (v3) edge (v4);
-    \draw [ultra thick] (v3) edge (v5);
-    \draw [ultra thick] (v6) edge (v3);
-    \draw [ultra thick] (v1) edge (v3);
+    \draw [] (v2) edge (v3);
+    \draw [] (v3) edge (v4);
+    \draw [] (v3) edge (v5);
+    \draw [] (v6) edge (v3);
+    \draw [] (v1) edge (v3);
     \node [normal] (v10) at (1,2) {};
     \node [normal] (v11) at (1,3) {};
     \node [normal] (v12) at (1.5,3) {};
-    \draw [ultra thick] (v9) edge (v10);
-    \draw [ultra thick] (v10) edge (v11);
-    \draw [ultra thick] (v10) edge (v12);
-    \draw [ultra thick] (v9) edge (v3);
+    \draw [] (v9) edge (v10);
+    \draw [] (v10) edge (v11);
+    \draw [] (v10) edge (v12);
+    \draw [] (v9) edge (v3);
     \end{tikzpicture}
 \end{subfigure}
     \caption{Some caterpillar graphs}
@@ -258,7 +258,7 @@ Rather than provide a full proof we describe Alice's strategy for $F$ a forest o
     %We show this bound by induction on $n$ the number of vertices in the forest $F$. For $n\leq 5$ the hypothesis  follows from an analysis of the few possible graphs.
     %
     %For the inductive step assume that $n\geq 6$. 
-    Let $D$ be the current partial dominating set on Alice's turn. The \textit{residual graph} $F'$ of $F$ is $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq N[D]\}$. In the residual graph $F'$ is the subgraph that contains only valid moves. Alice only considers the graph $F'$ when deciding on her next play. Alice considers three cases.
+    Let $D$ be the current partial dominating set on Alice's turn. The \textit{residual graph} $F'$ of $F$ is $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq N[D]\}$. The residual graph $F'$ is the subgraph that contains only valid moves. Alice only considers the graph $F'$ when deciding on her next play. Alice considers three cases.
     %
     \begin{enumerate}        
     \item $F'$ has a vertex $v$ incident to two leaves. Alice plays $v$. 
