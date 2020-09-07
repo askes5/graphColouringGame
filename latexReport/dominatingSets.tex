@@ -2,7 +2,7 @@
 
 \section{Introduction}
 
-In chapter \ref{chpt:into} we introduced the \textit{Dinner Party Problem}. To formalize the \textit{Dinner Party Problem} we introduce dominating sets. 
+In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem we introduce dominating sets. 
 
 \begin{definition}[Dominating Set]
     Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)$ is adjacent to at least one vertex in $D$.
@@ -13,9 +13,9 @@ In chapter \ref{chpt:into} we introduced the \textit{Dinner Party Problem}. To f
 
 One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5g network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $A$ and $B$ are connected if a 5g tower placed on building $A$ one will provide service to building $B$. A minimum number of towers is a dominating set if this graph.
 
-The size of a minimal dominating set is in some sense a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example, a city that is densely packed requires less towers. Every new 5g tower reaches many buildings. Whereas a sparsely populated city will require more towers. Each tower only services a few buildings.   
+The size of a minimal dominating set is in some sense a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example, a city that is densely packed requires less towers. Every new 5g tower reaching many buildings. Whereas a sparsely populated city will require more towers. Each tower only servicing only a few buildings.   
 
-There are various games involving dominating sets. One such game was introduced by  Alon, Noga and Balogh, J\'{o}zsef and Bollob\'{a}s, B\'{e}la and Szab\'{o}, Tam\'{a}s 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced orientations. A dominating set in an oriented graph is the standard definition with the exception for two vertices $u,v$, $u$ is adjacent to  
+There are various games involving dominating sets. One such game was introduced by  Alon, Noga and Balogh, J\'{o}zsef and Bollob\'{a}s, B\'{e}la and Szab\'{o}, Tam\'{a}s 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced orientations. A dominating set in an oriented graph is the standard definition with the exception for two vertices $u$ and $v$, $u$ is is dominated by $v$ if there is an edge $(u,v)$ in $E(G)$.
 \begin{definition}
     Let $G$ be an oriented graph.  A Dominating set $D$ of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)$ there exists a vertex $u\in D$ such that $v=u$ or the edge $(u,v)\in E(G)$. 
 \end{definition}
@@ -33,12 +33,12 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
 
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N(D)$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game, that is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
 
 At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice if even and Bob if odd). This snapshot is called a \textit{game state}. 
 
 \begin{definition}[Game State]
-    Let $G$ be a graph and $(v_n)_n$ a sequence of vertices in $V(G)$. $(v_n)_n$ is then a game state for $G$.
+    Let $G$ be a graph and $(v_n)$ a sequence of vertices in $V(G)$. $(v_n)$ is then a \textit{game state} for $G$.
 \end{definition}
 
 A strategy in the dominating game is a prescribed next move for every possible game state. In other words a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
@@ -149,10 +149,10 @@ Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex th
 
 %thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
 
-An upper bound for the game domination number for a class of graphs is a target score that guarantees Alice has a winning strategy. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
+Suppose Alice has a winning strategy on the class of graphs $\CC$ with target score $t$. $t$ is then an upper bound for the game domination number for $\CC$. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
 
 %For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
-For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself and Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
+For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself. Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
 
 \begin{theorem}[Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}]\label{thm:gamedomup}
     For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
@@ -311,7 +311,7 @@ This extended dinner party problem is a natural extension of the dominating game
 
 \section{The Independent Dominating Game}
 
-To inspire the independent dominating game we introduce the cover band \textit{David and the Derivatives}. David and the Derivatives are the headline act at a large concert. On a normal night there would be no problems filling the seats at the concert hall. The problem is, they are under COVID restrictions. This means that all the guests must remain 2m apart. Alice works for the Ministry of health. Her job is to seat as few people as possible while still filling the hall. Bob is David and the Derivatives' manager. His job to maximise the number of people seated in the hall. There are only door sales for concert. So the more people Bob can seat the more profit he and David and the Derivatives make. The guests arrive one by one. Alternating, Alice and Bob direct people to seats. This continuous until no more people can be seated without breaking social distancing. Denoting the number of people seated as $n$. How small can Alice guarantee $n$ will be? And, how large can Bob guarantee $n$ will be? These questions have non-trivial solutions. And are a specific instance of the Independent Dominating Game.
+To inspire the independent dominating game we introduce the cover band \textit{David and the Derivatives}. David and the Derivatives are the headline act at a large concert. On a normal night there would be no problems filling the seats in the concert hall. The problem is, they are under COVID restrictions. This means that all the guests must be seated 2 meters apart. Alice works for the Ministry of health. Her job is to seat as few people as possible while still filling the hall. Bob is David and the Derivatives' manager. His job to maximise the number of people seated in the hall. There are only door sales for this concert. So the more people Bob can seat the more profit he and David and the Derivatives make. The guests arrive one by one. Alternating, Alice and Bob direct people to seats. This continuous until no more people can be seated without breaking social distancing. Denoting the number of people seated as $n$. How small can Alice guarantee $n$ will be? And, how large can Bob guarantee $n$ will be? These questions have non-trivial solutions. And are a specific instance of the Independent Dominating Game.
 
 \begin{definition}[Independent Set]
     For a graph $G$, an \textit{independent Set} is a subset $I\subseteq V(G)$ such that no two vertices in $I$ are adjacent. That is, for all $u,v\in I$ there exists no edge $(u,v)\in E(G)$.
