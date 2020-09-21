@@ -113,9 +113,10 @@ Before we can show $n/2$ is a lower bound we introduce the following lemma.
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
 \end{theorem} %todo true?????????
 \begin{proof}
-    Let $G$ be a connected graph with $n$ vertices.
+    Let $G$ be a connected graph with $n$ vertices. We first need to show that theorem \ref{thm:oreDomUpper} is a tight upper bound.
     
-    Consider the complete graph with 2 vertices $K_2$. A dominating set in $K_2$ is a single vertex, and hence $\gamma(K_2)=n/2=1$. Therefore $n/2$ is a tight upper bound for $\gamma(\CC)$. 
+    Consider the path graph with $n/2$ vertices with a single vertex attached to each. That is the graph in figure \ref{}. %todo picture
+     A dominating set in $G$ is the set of vertices in the orignal path graph. Hence $\gamma(G)\leq n/2$. Therefore $n/2$ is a tight upper bound for $\gamma(\CC)$. 
     
     Therefore by theorems \ref{thm:oreDomUpper} and \ref{thm:domlow} $ n/2 \leq \gamma_g(G)$.
 \end{proof}
