@@ -2,10 +2,10 @@
 
 \section{Introduction}
 
-In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem we introduce dominating sets. 
+In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party  Problem in the language of graphs we introduce the concept of dominating sets. 
 
 \begin{definition}[Dominating Set]
-    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)$ is adjacent to at least one vertex in $D$.
+    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)\setminus D$ is adjacent to at least one vertex in $D$.
 \end{definition} 
 \begin{definition}[Domination Number]
     Let $G$ be a graph. The Domination number $\gamma(G)$ of $G$ is the minimum size of a dominating set in $G$.
@@ -15,7 +15,7 @@ One way of visualising dominating sets is to consider cell tower placement. Supp
 
 The size of a minimal dominating set is in some sense a measure of how unconnected a graph. A graph with a low domination number has high connectivity, and a graph with a high domination number has low connectivity. For example, a city that is densely packed requires less towers. Every new 5g tower reaching many buildings. Whereas a sparsely populated city will require more towers. Each tower only servicing only a few buildings.   
 
-There are various games involving dominating sets. One such game was introduced by  Alon, Noga and Balogh, J\'{o}zsef and Bollob\'{a}s, B\'{e}la and Szab\'{o}, Tam\'{a}s 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced orientations. A dominating set in an oriented graph is the standard definition with the exception for two vertices $u$ and $v$, $u$ is is dominated by $v$ if there is an edge $(u,v)$ in $E(G)$.
+There are various games involving dominating sets. One such game was introduced by  Alon, Balogh, Bollob\'{a}s, and Szab\'{o} 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced orientations. A dominating set in an oriented graph is the standard definition with the exception for two vertices $u$ and $v$, $u$ is is dominated by $v$ if there is an edge $(u,v)$ in $E(G)$.
 \begin{definition}
     Let $G$ be an oriented graph.  A Dominating set $D$ of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)$ there exists a vertex $u\in D$ such that $v=u$ or the edge $(u,v)\in E(G)$. 
 \end{definition}
