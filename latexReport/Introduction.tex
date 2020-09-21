@@ -1,5 +1,6 @@
 \chapter{Introduction}\label{chpt:into}
-%todo what is a graph
+
+\section{Graphs}
 A graph, denoted $G$, is a set of vertices, $V(G)$, and edges, $E(G)$. Where the set of edges defines a relation on $V(G)$, and are represented as pairs of vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs we consider, directed graphs where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected graphs where the direction doesn't matter ($(a,b)=(b,a)$). 
 
 \begin{figure}[h]
@@ -17,15 +18,16 @@ A graph, denoted $G$, is a set of vertices, $V(G)$, and edges, $E(G)$. Where the
 \end{figure}
    
 %ubiqity of graphs 
-Graphs are everywhere. Though they may not be immediately apparent. 
-Graphs help us understand data and structures in a way that is easier to visualise and analyse. An example from recent events is COVID--19, and more generally infectious diseases.  Suppose we are in charge of contact tracing a small country. And we have a list of all the people who have contracted COVID-19. We can build a graph by considering infected people as vertices in the graph. We join two people with an edge if the disease spread between them. %todo insert picture of spread
-From such a graph we can easily determine things like, who is the most infectious (who has the most infected neighbours), and where is community transmission occurring (a piece of the graph that is disconnected from the rest represents a cluster).
-     
+Graphs are abstract representations of relationship between objects. They do this in a way that is easier to visualise and analyse. An example from recent events is COVID--19, and more generally infectious diseases.  Suppose we are in charge of monitoring an outbreak small country. We have a list of all the people who have contracted COVID-19. We consider a graph by representing people as vertices in the graph. We join two people with an edge if the disease could spread between them.
+Then by colouring infected vertices we can easily visualise things like, who is the most infectious (who has the most infected neighbours), and where is community transmission occurring (a group of infections that are disconnected from the rest).
+  
+\section{Graph Algorithms}
 %graph algorithms   
 A graph algorithm is a set of instructions that define some procedure on a graph. An algorithm can be as simple as finding a certain vertex. Or can be as complicated as colouring all the vertices using only a finite number of colours.  
 
 Suppose we are charged with laying fibre optic cable in a neighbourhood. Our goal is to use the least amount of cable possible while still connecting all the houses. We can form a graph with the houses as vertices and an edge between two houses if it is possible to lay cable between them. We then label each edge with a number representing the cost of laying cable between the two houses. The first step is to lay cable at the edge with the lowest cost. Next we lay cable at the edge with the least cost such that laying cable at this edge will not introduce a cycle (a closed path) of cable. By repeating this last step eventually we will have laid cable that connects all the houses. Further the cable we laid will have the least possible cost. These steps are an example of a graph algorithm.
-   
+ 
+ \section{Graph Games}  
 We introduce the idea of a graph game by considering the \textit{Dinner Party Problem}.
 Suppose Alice is hosting a party and all the guests are mingling happily. However, the guests are hungry and need to be feed. But they are lazy will not move to collect food. When serving, food platters are placed around the room near the guests. A guest will take some food if a platter is placed within arm's reach. Alice needs to place platters in such a way that every guest can reach a platter. The food is expensive. So Alice wants to place the smallest number of platters possible. The problem is then, what is the minimum number of platters that Alice needs to feed everybody? 
 
