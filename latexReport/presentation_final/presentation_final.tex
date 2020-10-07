@@ -27,8 +27,7 @@
 
 %-------------------------------frame 0------------------------------------------
 
-\begin{frame}
-    \frametitle{Outline}
+\begin{frame}{Outline}
     \tableofcontents
 \end{frame}
 
@@ -39,6 +38,33 @@
 
 \begin{frame}{\secname}{What is a Graph?}
     %definations 1.
+      
+    \begin{columns}
+        \begin{column}{0.7\textwidth}
+             A graph, $G=(V,E)$, is a pair consisting of objects and a relation on these objects. The objects are called vertices and the set of all vertices is denoted $V$. E.g. $a,b,c$ are vertices in the figure.
+             
+            \bigskip
+            
+            The relation is represented as pairs of vertices called edges. The set of all edges is denoted $E$. E.g. $(a,b)$ and $(c,a)$ are edges in the figure.
+        \end{column}
+        \begin{column}{0.3\textwidth}  
+            \begin{center}
+                \begin{figure}[h]
+                    \centering
+                    \begin{tikzpicture}[scale=2]
+                    \node[normal, label=below:$a$] (v1) at (-1.5,-1) {};
+                    \node[normal, label=below:$b$] (v3) at (-0.5,-1) {};
+                    \node[normal, label=below:$c$] (v2) at (-1,0) {};  
+                    \draw (v1) edge (v2);
+                    \draw  (v2) edge (v3);
+                    \draw  (v3) edge (v1);
+                    \end{tikzpicture}
+                    \caption{An graph with three vertices and three edges}
+                    \label{fig:k3}
+                \end{figure}
+            \end{center}
+        \end{column}
+    \end{columns}
     
 \end{frame}
 
@@ -46,7 +72,17 @@
 
 \begin{frame}{\secname}{What is a Graph Colouring?}
     %definations 2.
+    
+    Let $C=\{1,\dots,k\}$ be a set of colours, a \textit{$k$--vertex colouring} of a graph $G=(V,E)$ is a mapping $c\colon V \to C$. 
+    
+    \bigskip
+    
+    A \textit{proper $k$--vertex colouring} of $G$ is a colouring such that for two vertices $u,v\in V$ if $(u,v)\in E(G)$ then $c(u)\neq c(v)$.
+    
+    \bigskip
     %chromatic number 3. 
+    
+    The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper $k$--vertex colouring.
 \end{frame}
 
 
@@ -61,7 +97,15 @@
         
     %defination 5.
     
-    %
+    The game is played between two players, Alice and Bob.
+    
+    \bigskip
+    
+    Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. 
+    
+    \bigskip
+    
+    This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
 \end{frame}
 
 %-------------------------------frame 4------------------------------------------
@@ -70,16 +114,50 @@
     
     %play with the audiance 6.
     
-    %link to game
+    Any volunteers to play this game?
+    
+    \bigskip
+    
+    You play as Bob. Your goal is to prevent the graph from being coloured.
+    
+    %todo link to game
 \end{frame}
 
 %-------------------------------frame 5------------------------------------------
 
-\begin{frame}{\secname}{Unable to win?}
+\begin{frame}{\secname}{An Unwinnable Game}
     
     %why they cannot win? 7.
     
+    The volunteers were unable to prevent the graph from being coloured. Why?
+    
+    \bigskip
+    
+    In short, there were too few colours.
+    
     %colouring number 8.
+    
+    \bigskip
+    \pause
+    
+    \begin{block}{Defination}
+        For a graph $G$ the \textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game in $G$.
+    \end{block}
+   
+\end{frame}
+
+\begin{frame}{\secname}{How many colours is enough?}
+    Trivial bounds for the colouring number,$\chi_g(G)$, on $G=(V,E)$:
+    \[\chi(G) \leq \chi_g(G) \leq |V|\]
+    
+    \bigskip
+    
+    For a better bound we need a strategy for Alice.
+    
+    \bigskip
+    \pause
+    
+    Such a strategy is the \textit{Activation Strategy}.
 \end{frame}
 
 
@@ -90,6 +168,14 @@
 
 \begin{frame}{\secname}
     %explain stategy 9.
+    Fix a graph $G$ and a linear order $L$ on $V$. We keep track of a set of activated vertices $A$. Alice plays activation strategy is played as follows,
+    \begin{enumerate}
+        \item Alice starts by colouring and activating the least vertex in the ordering $L$.
+        \item On her next turn, let $u$ be the last vertex marked by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured out--neighbour of $v$, $w$. \label{enum:actvstrat}
+        \item If $w$ is activated then Alice stops and colours $w$. If not, then Alice repeats from step (\ref{enum:actvstrat}) on $w$ instead of $u$. 
+        This continues until Alice lands on a vertex $x$ that is activated or has no uncoloured out--neighbours. Alice then colours $x$.
+        \item If the last vertex marked by Bob has no uncoloured out--neigbbours, then Alice colours and activates the least uncoloured vertex in the ordering $L$.
+    \end{enumerate}
 \end{frame}
 
 %-------------------------------frame 7------------------------------------------
