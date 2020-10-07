@@ -20,7 +20,6 @@
 \date{\today}
 
 
-
 \begin{document}
 
 \frame{\titlepage}
@@ -173,24 +172,54 @@
         \item Alice starts by colouring and activating the least vertex in the ordering $L$.
         \item On her next turn, let $u$ be the last vertex marked by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured out--neighbour of $v$, $w$. \label{enum:actvstrat}
         \item If $w$ is activated then Alice stops and colours $w$. If not, then Alice repeats from step (\ref{enum:actvstrat}) on $w$ instead of $u$. 
-        This continues until Alice lands on a vertex $x$ that is activated or has no uncoloured out--neighbours. Alice then colours $x$.
+        This continues until Alice lands on a vertex $x$ that is activated or has no uncoloured out--neighbours. Alice colours $x$.
         \item If the last vertex marked by Bob has no uncoloured out--neigbbours, then Alice colours and activates the least uncoloured vertex in the ordering $L$.
     \end{enumerate}
 \end{frame}
 
 %-------------------------------frame 7------------------------------------------
 
-\begin{frame}{\secname}{Graph rank}
+\begin{frame}{\secname}{Graph Matchings}
     %we bound col. num. using actv. strat. 10.
     
     % graph rank 11.
+    
+    \begin{definition}[Matching]
+        Let $G$ be a graph. A \textit{matching} $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices.\\
+        
+         We say $M$ is a matching from $X$ to $Y$ if $X,Y\subseteq V(G)$ and all the edges in $M$ connect a vertex in $X$ to a vertex in $Y$. That is if $(u,v)\in M$ then $u\in X$ and $v\in Y$. 
+        
+    \end{definition}
+
 \end{frame}
 
+\begin{frame}{\secname}{Graph Rank}
+    %we bound col. num. using actv. strat. 10.
+    
+    % graph rank 11.
+    
+    \begin{definition}[Graph Rank]   
+    Let $G$ be a graph and $L$ a linear order on $V(G)$.
+    
+    For $u \in V(G)$ the \textit{matching number} $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $\{X, Y\}$ of $Z$ and there exist matchings $M$ from
+    $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
+    
+    The rank $r(L,G)$ and rank $r(G)$ are defined as:
+    \begin{align*}
+    r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
+    r(L,G)   & = \max_{u \in V}r(u,L,G)  
+    \end{align*}
+\end{definition}
+\end{frame}
 
 %-------------------------------frame 8------------------------------------------
 
 \begin{frame}{\secname}{Upper Bound Using Activation Strategy}
     %auctal bound (thm) 12.
+    
+    \begin{block}{Theorem [Kierstead 2000]}
+        For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy to play the colouring game on $G$, then she will win if there are at least $1+r(L, G)$ colours. In particular, $\chi_g(G) \leq 1+r(L, G)$.
+    \end{block}
 \end{frame}
 
 %-------------------------------frame 9------------------------------------------
@@ -198,12 +227,40 @@
 \begin{frame}{\secname}{Treewidth and Pathwidth Definitions}
     %Treewidth and pathwidth and their linear orders 13., 14.
     
+    
+    A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$, $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
+    \begin{enumerate}[(i)]
+        \item For all edges $(u,v)$ in $E(G)$ there exists an $i$ such that $u,v\in X_i$
+        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$ $v\in P_l$.
+    \end{enumerate} 
+    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
+
+    
+    \begin{definition}[Treewidth]
+        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$.    
+        A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
+    \end{definition}
+    
 \end{frame}
 
 %-------------------------------frame 10------------------------------------------
 
 \begin{frame}{\secname}{Treewidth and Pathwidth Bounds}
     %bounds for treewidth, pathwidth, trees, ?planar graphs?, 15.
+    Some bounds using the activation strategy are as follows,
+    \begin{itemize}
+        \item For a tree $T$ \begin{flalign*}
+            &&\chi_g(T) = 4 && \text{[Kierstead 2000]}
+        \end{flalign*}
+        \pause
+        \item For $G$ a graph of pathwidth $k$\begin{flalign*}
+       & &\chi_g(G) \leq 3k + 1\ && \text{[Bodlaender 1998]]}
+        \end{flalign*}
+        \pause
+        \item For $G$ a graph of treewidth $k$\begin{flalign*}
+        & &\chi_g(G) \leq 3k + 2\ && \text{[Wu, Zhu 2008]]}
+        \end{flalign*}
+    \end{itemize}
     
 \end{frame}
 
