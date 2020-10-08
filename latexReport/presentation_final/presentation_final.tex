@@ -40,11 +40,11 @@
       
     \begin{columns}
         \begin{column}{0.7\textwidth}
-             A graph, $G=(V,E)$, is a pair consisting of objects and a relation on these objects. The objects are called vertices and the set of all vertices is denoted $V$. E.g. $a,b,c$ are vertices in the figure.
+             A graph, $G=(V,E)$, consists of a set of vertices, $V$, and a set of edges, $E$. Each edge connects a pair of vertices. 
              
             \bigskip
             
-            The relation is represented as pairs of vertices called edges. The set of all edges is denoted $E$. E.g. $(a,b)$ and $(c,a)$ are edges in the figure.
+            For example, $a,b,c$ are the vertices in the figure and. $(a,b)$, $(b,c)$, and $(c,a)$ are the edges in the figure.
         \end{column}
         \begin{column}{0.3\textwidth}  
             \begin{center}
@@ -72,7 +72,7 @@
 \begin{frame}{\secname}{What is a Graph Colouring?}
     %definations 2.
     
-    Let $C=\{1,\dots,k\}$ be a set of colours, a \textit{$k$--vertex colouring} of a graph $G=(V,E)$ is a mapping $c\colon V \to C$. 
+    Let $C=\{1,\dots,k\}$ be a set of colours. A \textit{$k$--vertex colouring} of a graph $G=(V,E)$ is a mapping $c\colon V \to C$. 
     
     \bigskip
     
@@ -96,11 +96,11 @@
         
     %defination 5.
     
-    The game is played between two players, Alice and Bob.
+    The colouring game is played between two players, Alice and Bob.
     
     \bigskip
     
-    Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. 
+    Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they colour an uncoloured vertex with a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. 
     
     \bigskip
     
@@ -117,7 +117,7 @@
     
     \bigskip
     
-    You play as Bob. Your goal is to prevent the graph from being coloured.
+    You will play as Bob. Your goal is to prevent the graph from being coloured.
     
     %todo link to game
 \end{frame}
@@ -139,14 +139,14 @@
     \bigskip
     \pause
     
-    \begin{block}{Defination}
-        For a graph $G$ the \textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game in $G$.
-    \end{block}
+    \begin{definition}[Game Chromatic Number]
+        For a graph $G$ the \textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice will always win when playing the colouring game on $G$.
+    \end{definition}
    
 \end{frame}
 
 \begin{frame}{\secname}{How many colours is enough?}
-    Trivial bounds for the colouring number,$\chi_g(G)$, on $G=(V,E)$:
+    Simple bounds for the colouring number,$\chi_g(G)$, on $G=(V,E)$:
     \[\chi(G) \leq \chi_g(G) \leq |V|\]
     
     \bigskip
@@ -163,16 +163,29 @@
 %###############################Activation Strategy##############################
 \section{Activation Strategy}
 
+\begin{frame}{\secname}{Some Notation}
+Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we say,
+\begin{itemize}        
+    \item The \textit{out--neighbours} $N^+(v)=\{u\in N(v):v>_L u\}$ 
+    \item The \textit{in--neighbours} are $N^-(v)=\{u\in N(v):v<_L u\}$ 
+    \item $V^+(v)=\{u\in V(g):v>_L u\}$     
+    \item $V^-(v)=\{u\in V(g):v<_L u\}$ 
+\end{itemize}
+\end{frame}
+
 %-------------------------------frame 6------------------------------------------
 
 \begin{frame}{\secname}
     %explain stategy 9.
-    Fix a graph $G$ and a linear order $L$ on $V$. We keep track of a set of activated vertices $A$. Alice plays activation strategy is played as follows,
+    Fix a graph $G$ and a linear order $L$ on $V$. We keep track of a set of activated vertices $A$. Alice plays the activation strategy is as follows,
     \begin{enumerate}
         \item Alice starts by colouring and activating the least vertex in the ordering $L$.
-        \item On her next turn, let $u$ be the last vertex marked by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured out--neighbour of $v$, $w$. \label{enum:actvstrat}
+        \pause
+        \item On her next turn, let $u$ be the last vertex marked by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured $w\in N^+(v)$.
+        \pause \label{enum:actvstrat}
         \item If $w$ is activated then Alice stops and colours $w$. If not, then Alice repeats from step (\ref{enum:actvstrat}) on $w$ instead of $u$. 
         This continues until Alice lands on a vertex $x$ that is activated or has no uncoloured out--neighbours. Alice colours $x$.
+        \pause
         \item If the last vertex marked by Bob has no uncoloured out--neigbbours, then Alice colours and activates the least uncoloured vertex in the ordering $L$.
     \end{enumerate}
 \end{frame}
@@ -185,9 +198,9 @@
     % graph rank 11.
     
     \begin{definition}[Matching]
-        Let $G$ be a graph. A \textit{matching} $M\subset E(G)$ is a set of independent edges, that is a set of edges that share no common vertices.\\
+        Let $G=(V,E)$ be a graph. A \textit{matching} $M\subset E$ is a set of independent edges, that is a set of edges that share no common vertices.\\
         
-         We say $M$ is a matching from $X$ to $Y$ if $X,Y\subseteq V(G)$ and all the edges in $M$ connect a vertex in $X$ to a vertex in $Y$. That is if $(u,v)\in M$ then $u\in X$ and $v\in Y$. 
+         We say $M:X \to Y$ is a matching from $X$ to $Y$, if $X,Y\subseteq V$ and all the edges in $M$ connect a vertex in $X$ to a vertex in $Y$. That is if $(u,v)\in M$ then $u\in X$ and $v\in Y$. 
         
     \end{definition}
 
@@ -198,13 +211,27 @@
     
     % graph rank 11.
     
-    \begin{definition}[Graph Rank]   
-    Let $G$ be a graph and $L$ a linear order on $V(G)$.
     
-    For $u \in V(G)$ the \textit{matching number} $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is defined to be the size of the largest set $Z \subset N^-[u]$ such that there exists a partition $\{X, Y\}$ of $Z$ and there exist matchings $M$ from
-    $X\subset N^-[u]$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+[u]$.
+%    Let $G=(V,E)$ be a graph and $L$ a linear order on $V$.
+%    
+%    Let $u\in V$. Let $Z \subset N^-(u)\cup\{u\}$. The matching number $m(u, L, G)=|Z|$ if:
+%    \begin{itemize}
+%        \item  There exists a partition $\{X, Y\}$ of $Z$ and there exist matchings $M$ from
+%        $X\subset N^-(u)\cup\{u\}$ to $V^+(u)$ and $N$ from $Y\subset N^-(u)$ to $V^+(u)\cup\{u\}$
+%        \item $Z$ is the largest such set.
+%    \end{itemize}
     
-    The rank $r(L,G)$ and rank $r(G)$ are defined as:
+      
+    Let $G=(V,E)$ be a graph and $L$ a linear order on $V$.
+    
+    \begin{definition}[Matching Number] 
+    For $u \in V$ the \textit{matching number} $m(u, L, G)$ of $u$ with respect to $L$ in $G$ is the size of the largest set $Z \subset N^-(u)\cup\{u\}$ such that there exists a partition $\{X, Y\}$ of $Z$ and there exists matchings $M:X\subset N^-(u)\cup\{u\} \to V^+(u)$ and $N:Y\subset N^-(u)\to V^+(u)\cup\{u\}$.
+    \end{definition}
+    
+    \pause
+    
+    \begin{definition}[Rank]
+    For $u\in V$, the rank $r(u,L,G)$ and $r(L,G)$ are defined as:
     \begin{align*}
     r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
     r(L,G)   & = \max_{u \in V}r(u,L,G)  
@@ -218,24 +245,23 @@
     %auctal bound (thm) 12.
     
     \begin{block}{Theorem [Kierstead 2000]}
-        For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy to play the colouring game on $G$, then she will win if there are at least $1+r(L, G)$ colours. In particular, $\chi_g(G) \leq 1+r(L, G)$.
+        For any graph $G=(V,E)$ and linear ordering $L$ on $V$, if Alice uses the activation strategy to play the colouring game on $G$, then she will win if there are at least $1+r(L, G)$ colours. In particular, $\chi_g(G) \leq 1+r(L, G)$.
     \end{block}
 \end{frame}
 
 %-------------------------------frame 9------------------------------------------
 
-\begin{frame}{\secname}{Treewidth and Pathwidth Definitions}
+\begin{frame}{\secname}{Treewidth}
     %Treewidth and pathwidth and their linear orders 13., 14.
     
     
-    A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$, $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
+    A tree decomposition $(X,T)$ of a graph $G=(V,E)$ is a tree, $T$, along a collection of subsets of $V$, $\mathcal{X}=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V=\bigcup X$ and obeys the following properties.
     \begin{enumerate}[(i)]
-        \item For all edges $(u,v)$ in $E(G)$ there exists an $i$ such that $u,v\in X_i$
-        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$ $v\in P_l$.
+        \item For all edges $(u,v)$ in $E$ there exists an $i$ such that $u,v\in X_i$
+        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$, $v\in P_l$.
     \end{enumerate} 
     The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
 
-    
     \begin{definition}[Treewidth]
         The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$.    
         A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
@@ -245,7 +271,7 @@
 
 %-------------------------------frame 10------------------------------------------
 
-\begin{frame}{\secname}{Treewidth and Pathwidth Bounds}
+\begin{frame}{\secname}{Bounds on Some Classes of Graphs}
     %bounds for treewidth, pathwidth, trees, ?planar graphs?, 15.
     Some bounds using the activation strategy are as follows,
     \begin{itemize}
@@ -253,12 +279,12 @@
             &&\chi_g(T) = 4 && \text{[Kierstead 2000]}
         \end{flalign*}
         \pause
-        \item For $G$ a graph of pathwidth $k$\begin{flalign*}
-       & &\chi_g(G) \leq 3k + 1\ && \text{[Bodlaender 1998]]}
+        \item For $G$ a graph of treewidth $k$\begin{flalign*}
+        & &\chi_g(G) \leq 3k + 2\ && \text{[Wu, Zhu 2008]}
         \end{flalign*}
         \pause
-        \item For $G$ a graph of treewidth $k$\begin{flalign*}
-        & &\chi_g(G) \leq 3k + 2\ && \text{[Wu, Zhu 2008]]}
+        \item For $G$ a graph of pathwidth $k$\begin{flalign*}
+       & &\chi_g(G) \leq 3k + 1\ && \text{[Bodlaender 1998]}
         \end{flalign*}
     \end{itemize}
     
@@ -266,18 +292,29 @@
 
 
 %##############################Other Graph Games##################################
-\section{Other Graph Games}
+%\section{Other Graph Games}
 
 %-------------------------------frame 11------------------------------------------
 
-\begin{frame}{\secname}
-    %Other games 16.
-        % marking game 17.
-        % other col. strat. and col. extensions 18.
-        % dom. game 19.
-        % ind. dom. game. 20
-    j
-\end{frame}
+%\begin{frame}{\secname}
+%    %Other games 16.
+%        % marking game 17.
+%        % other col. strat. and col. extensions 18.
+%        % dom. game 19.
+%        % ind. dom. game. 20
+%    
+%    Some of the other games I have studied are,
+%    \begin{itemize}
+%        \item Marking Game
+%        %
+%        \item Dominating Game
+%        %
+%        \item Competition--Independence Game
+%        %
+%        \item $(a,b)$--colouring game
+%    \end{itemize}
+%    
+%\end{frame}
 \end{document}
 
 
