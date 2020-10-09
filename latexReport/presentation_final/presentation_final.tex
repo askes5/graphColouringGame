@@ -35,37 +35,37 @@
 
 %-------------------------------frame 1------------------------------------------
 
-\begin{frame}{\secname}{What is a Graph?}
-    %definations 1.
-      
-    \begin{columns}
-        \begin{column}{0.7\textwidth}
-             A graph, $G=(V,E)$, consists of a set of vertices, $V$, and a set of edges, $E$. Each edge connects a pair of vertices. 
-             
-            \bigskip
-            
-            For example, $a,b,c$ are the vertices in the figure and. $(a,b)$, $(b,c)$, and $(c,a)$ are the edges in the figure.
-        \end{column}
-        \begin{column}{0.3\textwidth}  
-            \begin{center}
-                \begin{figure}[h]
-                    \centering
-                    \begin{tikzpicture}[scale=2]
-                    \node[normal, label=below:$a$] (v1) at (-1.5,-1) {};
-                    \node[normal, label=below:$b$] (v3) at (-0.5,-1) {};
-                    \node[normal, label=below:$c$] (v2) at (-1,0) {};  
-                    \draw (v1) edge (v2);
-                    \draw  (v2) edge (v3);
-                    \draw  (v3) edge (v1);
-                    \end{tikzpicture}
-                    \caption{An graph with three vertices and three edges}
-                    \label{fig:k3}
-                \end{figure}
-            \end{center}
-        \end{column}
-    \end{columns}
-    
-\end{frame}
+%\begin{frame}{\secname}{What is a Graph?}
+%    %definations 1.
+%      
+%    \begin{columns}
+%        \begin{column}{0.7\textwidth}
+%             A graph, $G=(V,E)$, consists of a set of vertices, $V$, and a set of edges, $E$. Each edge connects a pair of vertices. 
+%             
+%            \bigskip
+%            
+%            For example, $a,b,c$ are the vertices in the figure and. $(a,b)$, $(b,c)$, and $(c,a)$ are the edges in the figure.
+%        \end{column}
+%        \begin{column}{0.3\textwidth}  
+%            \begin{center}
+%                \begin{figure}[h]
+%                    \centering
+%                    \begin{tikzpicture}[scale=2]
+%                    \node[normal, label=below:$a$] (v1) at (-1.5,-1) {};
+%                    \node[normal, label=below:$b$] (v3) at (-0.5,-1) {};
+%                    \node[normal, label=below:$c$] (v2) at (-1,0) {};  
+%                    \draw (v1) edge (v2);
+%                    \draw  (v2) edge (v3);
+%                    \draw  (v3) edge (v1);
+%                    \end{tikzpicture}
+%                    \caption{An graph with three vertices and three edges}
+%                    \label{fig:k3}
+%                \end{figure}
+%            \end{center}
+%        \end{column}
+%    \end{columns}
+%    
+%\end{frame}
 
 %-------------------------------frame 2------------------------------------------
 
@@ -292,29 +292,29 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
 
 
 %##############################Other Graph Games##################################
-%\section{Other Graph Games}
+\section{Other Graph Games}
 
 %-------------------------------frame 11------------------------------------------
 
-%\begin{frame}{\secname}
-%    %Other games 16.
-%        % marking game 17.
-%        % other col. strat. and col. extensions 18.
-%        % dom. game 19.
-%        % ind. dom. game. 20
-%    
-%    Some of the other games I have studied are,
-%    \begin{itemize}
-%        \item Marking Game
-%        %
-%        \item Dominating Game
-%        %
-%        \item Competition--Independence Game
-%        %
-%        \item $(a,b)$--colouring game
-%    \end{itemize}
-%    
-%\end{frame}
+\begin{frame}{\secname}
+    %Other games 16.
+        % marking game 17.
+        % other col. strat. and col. extensions 18.
+        % dom. game 19.
+        % ind. dom. game. 20
+    
+    Some of the other games I have studied are,
+    \begin{itemize}
+        \item Marking Game
+        %
+        \item Dominating Game
+        %
+        \item Competition--Independence Game
+        %
+        \item $(a,b)$ versions of these games
+    \end{itemize}
+    
+\end{frame}
 \end{document}
 
 
