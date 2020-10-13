@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \usepackage[utf8]{inputenc}
 
@@ -31,7 +31,7 @@
 \end{frame}
 
 %###############################Introduction#####################################
-\section{Introduction}
+\section{Graph Colouring}
 
 %-------------------------------frame 1------------------------------------------
 
@@ -69,7 +69,7 @@
 
 %-------------------------------frame 2------------------------------------------
 
-\begin{frame}{\secname}{What is a Graph Colouring?}
+\begin{frame}{\secname}
     %definations 2.
     
     Let $C=\{1,\dots,k\}$ be a set of colours. A \textit{$k$--vertex colouring} of a graph $G=(V,E)$ is a mapping $c\colon V \to C$. 
@@ -80,8 +80,9 @@
     
     \bigskip
     %chromatic number 3. 
-    
+    \begin{definition}[Chromatic Number]
     The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper $k$--vertex colouring.
+     \end{definition}
 \end{frame}
 
 
@@ -233,7 +234,7 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     \begin{definition}[Rank]
     For $u\in V$, the rank $r(u,L,G)$ and $r(L,G)$ are defined as:
     \begin{align*}
-    r(u,L,G) & = d^+_{G_L}(u) + m(u,L,G) \\
+    r(u,L,G) & = |N^+(u)| + m(u,L,G) \\
     r(L,G)   & = \max_{u \in V}r(u,L,G)  
     \end{align*}
 \end{definition}
@@ -263,8 +264,7 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
 
     \begin{definition}[Treewidth]
-        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$.    
-        A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
+        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$. 
     \end{definition}
     
 \end{frame}
@@ -307,12 +307,15 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     \begin{itemize}
         \item Dominating game: \\
         Alice and Bob take turns building a dominating set.
+        \pause
         \item Independent dominating game: \\
         Alice and Bob take turns building a maximal independent set    
+        \pause
 %        \item Colouring Game: \\
 %        Alice and Bob take turns colouring a graph.
         \item Marking Game: \\
         Alice and Bob take turns ordering the vertices of a graph.
+        \pause
         \item $(a,b)$ versions of the colouring, marking, and dominating games \\
         Alice plays $a$ vertices and Bob $b$ vertices each turn.
     \end{itemize}
