@@ -38,12 +38,12 @@ public class ColouringGame extends JPanel {
     private int selectedColour = -1;
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
-    private JTextArea textOutputArea = new JTextArea();;
+    private JTextArea textOutputArea = new JTextArea();
     private boolean isPlayersTurn = false;
     protected String styleSheet =
             "node {" +
                     "fill-color: black;" +
-                    "size: 15px; " +
+                    "size: 30px; " +
                     "text-background-mode: rounded-box; " +
                     "text-background-color: red;" +
                     "}" +
@@ -99,7 +99,7 @@ public class ColouringGame extends JPanel {
     public void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("game.ColouringGame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
         GridBagConstraints c = new GridBagConstraints();
         
@@ -157,6 +157,7 @@ public class ColouringGame extends JPanel {
         textOutputArea.setLineWrap(true);
         textOutputArea.setWrapStyleWord(true);
         textOutputArea.setEnabled(false);
+        textOutputArea.setDisabledTextColor(Color.BLACK);
         textOutputArea.setFont(new Font("Dialog", Font.BOLD + Font.ITALIC, 14));
         JScrollPane scrollPane = new JScrollPane(textOutputArea);
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));

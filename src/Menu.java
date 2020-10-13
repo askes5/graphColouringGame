@@ -70,7 +70,7 @@ public class Menu {
             int numColours = getIntegerFromTextBox(colourInput);
             
             if (size >0 && width>0 && numColours > 0){
-                frame.dispose();
+//                frame.dispose();
                 if (GraphTypes.KTREE.equals(graphTypesBox.getSelectedItem())) {
                     ColouringGame.newRandomKtreeGame(size, width, numColours);
                 } else if (GraphTypes.KPATH.equals(graphTypesBox.getSelectedItem())){
