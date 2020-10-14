@@ -282,32 +282,11 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
 
 %-------------------------------frame 9------------------------------------------
 
-\begin{frame}{\secname}{$k$--tree}
-    %Treewidth and pathwidth and their linear orders 13., 14.
-    
-    
-%    A tree decomposition $(X,T)$ of a graph $G=(V,E)$ is a tree, $T$, along a collection of subsets of $V$, $\mathcal{X}=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V=\bigcup X$ and obeys the following properties.
-%    \begin{enumerate}[(i)]
-%        \item For all edges $(u,v)$ in $E$ there exists an $i$ such that $u,v\in X_i$
-%        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$, $v\in P_l$.
-%    \end{enumerate} 
-%    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
-%
-%    \begin{definition}[Treewidth]
-%        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$. 
-%    \end{definition}
 
-    A $k$--tree is a graph constructed as follows,
-    \begin{enumerate}[(i)]
-        \item Begin with the complete graph with $k+1$ vertices.
-        \item Repeatedly add a vertex $v$ such that $v$ has exactly $k$ neighbours, who together with $v$ form a $k+1$ clique.
-    \end{enumerate}
-    
-\end{frame}
 
 %-------------------------------frame 10------------------------------------------
 
-\begin{frame}{\secname}{Bounds on Some Classes of Graphs}
+\begin{frame}<1>[label=bounds]{\secname}{Bounds on Some Classes of Graphs}
     %bounds for treewidth, pathwidth, trees, ?planar graphs?, 15.
     Some bounds using the activation strategy are as follows,
     \begin{itemize}
@@ -329,6 +308,31 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     
 \end{frame}
 
+\begin{frame}{\secname}{$k$--tree}
+    %Treewidth and pathwidth and their linear orders 13., 14.
+    
+    
+    %    A tree decomposition $(X,T)$ of a graph $G=(V,E)$ is a tree, $T$, along a collection of subsets of $V$, $\mathcal{X}=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V=\bigcup X$ and obeys the following properties.
+    %    \begin{enumerate}[(i)]
+    %        \item For all edges $(u,v)$ in $E$ there exists an $i$ such that $u,v\in X_i$
+    %        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$, $v\in P_l$.
+    %    \end{enumerate} 
+    %    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
+    %
+    %    \begin{definition}[Treewidth]
+    %        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$. 
+    %    \end{definition}
+    
+    A $k$--tree is a graph constructed as follows,
+    \begin{enumerate}[(i)]
+        \item Begin with the complete graph with $k+1$ vertices.
+        \item Repeatedly add a vertex $v$ such that $v$ has exactly $k$ neighbours, who together with $v$ form a $k+1$ clique.
+    \end{enumerate}
+    
+\end{frame}
+
+\againframe<2->{bounds}
+
 
 %##############################Other Graph Games##################################
 \section{Other Graph Games}
@@ -349,12 +353,12 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
         \pause
 %        \item Independent dominating game: \\
 %        Alice and Bob take turns building a maximal independent set    
-        \pause
+%        \pause
 %        \item Colouring Game: \\
 %        Alice and Bob take turns colouring a graph.
         \item Marking Game: \\
         Alice and Bob take turns ordering the vertices of a graph.
-        \pause
+%        \pause
 %        \item $(a,b)$ versions of the colouring, marking, and dominating games \\
 %        Alice plays $a$ vertices and Bob $b$ vertices each turn.
     \end{itemize}
