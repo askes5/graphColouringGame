@@ -136,7 +136,7 @@
     
     \bigskip
     
-    In short, there were too few colours.
+    In short, there were too many colours.
     
     %colouring number 8.
     
@@ -185,7 +185,7 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     \begin{enumerate}
         \item Alice starts by colouring and activating the least vertex in the ordering $L$.
         \pause
-        \item On her next turn, let $u$ be the last vertex marked by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured $w\in N^+(v)$.
+        \item On her next turn, let $u$ be the last vertex coloured by Bob.  Alice starts at $u$ activates it and moves to the least uncoloured $w\in N^+(v)$.
         \pause \label{enum:actvstrat}
         \item If $w$ is activated then Alice stops and colours $w$. If not, then Alice repeats from step (\ref{enum:actvstrat}) on $w$ instead of $u$. 
         This continues until Alice lands on a vertex $x$ that is activated or has no uncoloured out--neighbours. Alice colours $x$.
@@ -347,16 +347,16 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
         \item Dominating game: \\
         Alice and Bob take turns building a dominating set.
         \pause
-        \item Independent dominating game: \\
-        Alice and Bob take turns building a maximal independent set    
+%        \item Independent dominating game: \\
+%        Alice and Bob take turns building a maximal independent set    
         \pause
 %        \item Colouring Game: \\
 %        Alice and Bob take turns colouring a graph.
         \item Marking Game: \\
         Alice and Bob take turns ordering the vertices of a graph.
         \pause
-        \item $(a,b)$ versions of the colouring, marking, and dominating games \\
-        Alice plays $a$ vertices and Bob $b$ vertices each turn.
+%        \item $(a,b)$ versions of the colouring, marking, and dominating games \\
+%        Alice plays $a$ vertices and Bob $b$ vertices each turn.
     \end{itemize}
     
 \end{frame}
