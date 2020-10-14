@@ -121,6 +121,9 @@
     You will play as Bob. Your goal is to prevent the graph from being coloured.
     
     %todo link to game
+    
+    \bigskip
+    Link to game: bit.ly/GraphColouringGame
 \end{frame}
 
 %-------------------------------frame 5------------------------------------------
@@ -147,7 +150,7 @@
 \end{frame}
 
 \begin{frame}{\secname}{How many colours is enough?}
-    Simple bounds for the colouring number,$\chi_g(G)$, on $G=(V,E)$:
+    Simple bounds for the colouring number, $\chi_g(G)$, on $G=(V,E)$:
     \[\chi(G) \leq \chi_g(G) \leq |V|\]
     
     \bigskip
@@ -178,7 +181,7 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
 
 \begin{frame}{\secname}
     %explain stategy 9.
-    Fix a graph $G$ and a linear order $L$ on $V$. We keep track of a set of activated vertices $A$. Alice plays the activation strategy is as follows,
+    Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. We keep track of a set of activated vertices $A$. Alice plays the activation strategy is as follows,
     \begin{enumerate}
         \item Alice starts by colouring and activating the least vertex in the ordering $L$.
         \pause
@@ -204,6 +207,32 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
          We say $M:X \to Y$ is a matching from $X$ to $Y$, if $X,Y\subseteq V$ and all the edges in $M$ connect a vertex in $X$ to a vertex in $Y$. That is if $(u,v)\in M$ then $u\in X$ and $v\in Y$. 
         
     \end{definition}
+
+%    \begin{figure}[h]
+%        \centering
+%        \begin{tikzpicture}[scale=.5]
+%        \node [style=normal] (0) at (0, 0) {};
+%        \node [style=normal, label=left:$x_1$] (1) at (-3, 2.25) {};
+%        \node [style=normal, label=left:$x_2$] (2) at (-3, 0.75) {};
+%        \node [style=normal, label=left:$x_3$] (3) at (-3, -0.5) {};
+%        \node [style=normal, label=left:$x_4$] (4) at (-3, -2) {};
+%        \node [style=normal, label=right:$y_1$] (5) at (3, 2.25) {};
+%        \node [style=normal, label=right:$y_2$] (6) at (3, 0.75) {};
+%        \node [style=normal, label=right:$y_3$] (7) at (3, -0.5) {};
+%        \node [style=normal, label=right:$y_4$] (8) at (3, -2) {};
+%        \node [] (9) at (3, 3.5) {Out--neighbours};
+%        \node [] (10) at (-3, 3.5) {In--neighbours};
+%        \draw (1) to (0);
+%        \draw (2) to (0);
+%        \draw (0) to (3);
+%        \draw (4) to (0);
+%        \draw (0) to (5);
+%        \draw (6) to (0);
+%        \draw (0) to (7);
+%        \draw (8) to (0);
+%        \draw [dashed, red] (-1,0) ellipse (3cm and 5cm);
+%        \end{tikzpicture}
+%    \end{figure}
 
 \end{frame}
 
@@ -238,6 +267,7 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     r(L,G)   & = \max_{u \in V}r(u,L,G)  
     \end{align*}
 \end{definition}
+
 \end{frame}
 
 %-------------------------------frame 8------------------------------------------
@@ -252,20 +282,26 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
 
 %-------------------------------frame 9------------------------------------------
 
-\begin{frame}{\secname}{Treewidth}
+\begin{frame}{\secname}{$k$--tree}
     %Treewidth and pathwidth and their linear orders 13., 14.
     
     
-    A tree decomposition $(X,T)$ of a graph $G=(V,E)$ is a tree, $T$, along a collection of subsets of $V$, $\mathcal{X}=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V=\bigcup X$ and obeys the following properties.
-    \begin{enumerate}[(i)]
-        \item For all edges $(u,v)$ in $E$ there exists an $i$ such that $u,v\in X_i$
-        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$, $v\in P_l$.
-    \end{enumerate} 
-    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
+%    A tree decomposition $(X,T)$ of a graph $G=(V,E)$ is a tree, $T$, along a collection of subsets of $V$, $\mathcal{X}=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V=\bigcup X$ and obeys the following properties.
+%    \begin{enumerate}[(i)]
+%        \item For all edges $(u,v)$ in $E$ there exists an $i$ such that $u,v\in X_i$
+%        \item  If there exists an $x,y\in V(T)$ and vertices $u,v$ such that $v\in X_x$ and $v\in X_y$ then for all $l$ on the path from $x$ to $y$, $v\in P_l$.
+%    \end{enumerate} 
+%    The width of a tree decomposition is the maximum value of $|X_i| -1$ for all $i\in V(T)$.
+%
+%    \begin{definition}[Treewidth]
+%        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$. 
+%    \end{definition}
 
-    \begin{definition}[Treewidth]
-        The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$. 
-    \end{definition}
+    A $k$--tree is a graph constructed as follows,
+    \begin{enumerate}[(i)]
+        \item Begin with the complete graph with $k+1$ vertices.
+        \item Repeatedly add a vertex $v$ such that $v$ has exactly $k$ neighbours, who together with $v$ form a $k+1$ clique.
+    \end{enumerate}
     
 \end{frame}
 
@@ -275,15 +311,18 @@ Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. For a vertex $v\in V$ we sa
     %bounds for treewidth, pathwidth, trees, ?planar graphs?, 15.
     Some bounds using the activation strategy are as follows,
     \begin{itemize}
-        \item For a tree $T$ \begin{flalign*}
+        \item For a tree $T$ 
+        \begin{flalign*}
             &&\chi_g(T) = 4 && \text{[Kierstead 2000]}
         \end{flalign*}
         \pause
-        \item For $G$ a graph of treewidth $k$\begin{flalign*}
+        \item For $G$ a graph of $k$--tree 
+        \begin{flalign*}
         & &\chi_g(G) \leq 3k + 2\ && \text{[Wu, Zhu 2008]}
         \end{flalign*}
         \pause
-        \item For $G$ a graph of pathwidth $k$\begin{flalign*}
+        \item For $G$ a graph of $k$--path
+        \begin{flalign*}
        & &\chi_g(G) \leq 3k + 1\ && \text{[Bodlaender 1998]}
         \end{flalign*}
     \end{itemize}
