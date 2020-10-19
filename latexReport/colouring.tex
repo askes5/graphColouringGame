@@ -1,8 +1,11 @@
 \chapter{Colouring}\label{chpt:colouring}
 
-\section{The Colouring Game} \label{sec:colouring_game}
+\section{Introduction}
 
-Long ago all world maps were hand drawn. Alice has a business that specializes in drawing world maps. Each map is beautifully hand coloured. Each country getting its own colour. To ensure the maps are visually appealing no two bordering countries can be the same colour. In those days ink was expensive. So Alice uses the least number of colours possible. What is the smallest number of colours Alice needs to colour a map in such a fashion? For a map that is drawn on the plane she only needs four colours. This is known as the \textit{four colour theorem}. The four colour theorem states that any plane that is divided into regions can be coloured using only four colours. 
+Long ago all world maps were hand drawn. Alice has a business that specializes in drawing world maps. Each map is beautifully hand coloured. Each country getting its own colour. To ensure the maps are visually appealing and to help distinguish countries no two bordering countries can be the same colour. In those days ink was expensive. So Alice wishes to use the least number of colours possible. What is the smallest number of colours Alice needs to colour a map in such a fashion? 
+
+We can translate the problem of map colouring to on about graph colouring.
+For a map that is drawn on the plane she only needs four colours. This is known as the \textit{four colour theorem} \cite{thomas19984ColourUpdate}. The four colour theorem states that any planargraph can be coloured using only four colours. 
 
 We formally define a colouring as follows.
 \begin{definition}[Proper $k$--Vertex Colouring]
@@ -13,6 +16,7 @@ When referring to graph colourings we will henceforth be referring to proper $k$
 The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ such that $G$ has a proper $k$--vertex colouring.
 \end{definition} 
 
+\section{The Colouring Game} \label{sec:colouring_game}
 Alice's map colouring businesses is a huge success. She decides to hire Bob to help her colour maps. Unbeknownst to Alice Bob is part of a secret ink cabal. The cabal's sole goal is to drive up ink sales. Bob will try to use as many colours as possible when colouring maps. To colour a map Alice and Bob take turns assigning a colour to each country. They continue until all the countries are coloured. A problem arises almost immediately. By strategical choosing colours Bob can make it so the map cannot be coloured with four colours. So, What is the total number of colours Alice needs to ensure that any map can always be coloured? This is an open question. The current best bound is 17 \cite{Zhu2008}. In section \ref{sec:refActStrat} we will show how this bound is found. We can also ask the same question about different classes of graphs. 
 
 But first we define the \textit{colouring game}. Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are meet. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
@@ -25,7 +29,7 @@ But first we define the \textit{colouring game}. Let $G$ be a graph, and $C$ a s
 
 Consider a graph $G$. If there is a winning strategy for Bob with $n$ colours then $n+1$ is a lower bound for the game chromatic number of $G$. That is $n\leq\chi_g(G)$. Conversely, if there is a strategy for Alice that guarantees a colouring with $m$ colours then $m$ is an upper bound for the game chromatic number, that is $\chi_g(G)\leq m$.
 
-\section{Lower bounds for the $(a,b)$--colouring game}
+\subsection{Lower bounds for the $(a,b)$--colouring game}
 
 We consider an extension of the colouring game, the $(a,b)$--colouring game. In the $(a,b)$--colouring game the win conditions and rules are the same as the standard game. But on each turn Alice colours $a$ vertices and Bob colours $b$ turns.
 \begin{definition}[$(a,b)$--Game Chromatic Number]
@@ -320,7 +324,7 @@ There is simple strategy for Alice that takes a strategy for the marking game an
 
 %It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
 
-\section{Activation Strategy}
+\subsection{Activation Strategy}
 
 Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy for Alice on the class of forests with four colours. We present the strategy here to give some inspiration for the activation strategy. This example misses some nuance of the full activation strategy. However, the strategy here is the activation strategy when played on trees.  
 
@@ -443,7 +447,7 @@ Some final example plays are as follows. Bob colours $q$ blue. Alice adds $q,l,h
 When using this strategy Alice will always win if there are four or more available colours. This strategy is for the colouring game. But, if instead of colouring vertices we mark them it becomes a strategy for the marking game. Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is an extension of this strategy to arbitrary graphs in the marking game. 
 %In section \ref{sec:actvStratProofs} we will provide a short proof of this result using the activation strategy.
  
-\subsection{Summary of activation strategy}
+\subsubsection{Summary of activation strategy}
 %
 Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the directed graph formed by $L$ on the graph $G$ as follows. For any edge $(u,v)\in E(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. We call $G_L$ the orientation induced by $L$ on $G$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
@@ -565,7 +569,7 @@ The graph rank is technical detail used to prove results using the activation st
 
 %A proof of $\chi_g(G) \leq 18$ is now a matter of finding an ordering $L$ such that by theorem \ref{thm_KIERSTEAD1} $r(G) \leq 17$. See \cite{KIERSTEAD2000}.
 
-\subsection{Proofs Using the Activation Strategy} \label{sec:actvStratProofs}
+\subsubsection{Proofs Using the Activation Strategy} \label{sec:actvStratProofs}
 Recall that theorem \ref{thm:colTreeleq4} states that for any tree $T$ \[\chi_g(T)\leq 4\]
 To demonstrate the basic idea behind the proofs in this section we prove theorem \ref{thm:colTreeleq4} using the activation strategy. This proof is based on the proof in \cite{KIERSTEAD2000}. But here we expand out the details. We also provide an explicit linear ordering on the vertices. By doing so the proof fits the mould used in the proofs of theorems \ref{thm:pathwidth} and \ref{thm:ktreeUpper}. 
 

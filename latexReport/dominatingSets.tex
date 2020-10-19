@@ -21,6 +21,67 @@ One way of visualising dominating sets is to consider cell tower placement. Supp
 
 The size of a minimal dominating set is in some sense a measure of how closely connected a graph is. A graph with a low domination number is densely connectivity, and a graph with a high domination number is loosely connectivity. For example, a city that is densely packed requires fewer towers. Every new 5g tower reaches many buildings. Whereas, a sparsely populated city will require more towers. Each tower only services a few buildings.   
 
+As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in figures  \ref{fig:wheelW9} and \ref{fig:cycleC8}.
+\begin{figure} [h]
+    \centering
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6]
+        \node [normal] (v8) at (1,2) {};
+        \node [normal] (v6) at (4,-1) {};
+        \node [normal] (v4) at (1,-4) {};
+        \node [normal] (v2) at (-2,-1) {};
+        \node [normal] (v1) at (-1.1,1.1) {};
+        \node [normal] (v7) at (3.1,1.1) {};
+        \node [normal] (v5) at (3.1,-3.1) {};
+        \node [normal] (v3) at (-1.1,-3.1) {};
+        \draw  (v1) edge (v2);
+        \draw  (v2) edge (v3);
+        \draw  (v3) edge (v4);
+        \draw  (v4) edge (v5);
+        \draw  (v5) edge (v6);
+        \draw  (v6) edge (v7);
+        \draw  (v8) edge (v1);
+        \draw  (v8) edge (v7);
+        \node [normalBlack] (v9) at (1,-1) {};
+        \draw  (v8) edge (v9);
+        \draw  (v9) edge (v1);
+        \draw  (v2) edge (v9);
+        \draw  (v9) edge (v3);
+        \draw  (v4) edge (v9);
+        \draw  (v9) edge (v5);
+        \draw  (v9) edge (v7);
+        \draw  (v6) edge (v9);
+        \end{tikzpicture}
+        \caption{The wheel graph $W_9$}
+        \label{fig:wheelW9}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=.6]
+        \node [normalBlack] (v8) at (1,2) {};
+        \node [normalBlack] (v6) at (4,-1) {};
+        \node [normal] (v4) at (1,-4) {};
+        \node [normal] (v2) at (-2,-1) {};
+        \node [normal] (v1) at (-1.1,1.1) {};
+        \node [normal] (v7) at (3.1,1.1) {};
+        \node [normal] (v5) at (3.1,-3.1) {};
+        \node [normalBlack] (v3) at (-1.1,-3.1) {};
+        \draw  (v1) edge (v2);
+        \draw  (v2) edge (v3);
+        \draw  (v3) edge (v4);
+        \draw  (v4) edge (v5);
+        \draw  (v5) edge (v6);
+        \draw  (v6) edge (v7);
+        \draw  (v8) edge (v1);
+        \draw  (v8) edge (v7);
+        \end{tikzpicture}
+        \caption{The cycle graph $C_7$}
+        \label{fig:cycleC8}
+    \end{minipage}
+\end{figure}
+The wheel has a dominating set of size 1, just the centre vertex. Whereas the cycle graph has a dominating set of size 3. In figures  \ref{fig:wheelW9} and \ref{fig:cycleC8} the dominating sets are denoted as black vertices. This can be interpreted as the wheel graph as being more closely connected than the cycle graph. And when you observe the graphs this distinction makes sense.
+
 %\subsection{Games Involving Dominating sets}
 %Before we look at what we call the dominating game, we will consider the earliest game involving dominating sets.
 %
@@ -30,7 +91,7 @@ The size of a minimal dominating set is in some sense a measure of how closely c
 %not the eairlest game, there are others see [1,3-5] in \cite{AlBABoSz2002}
 
 
-The \textit{dominating game} was introduced by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas F. Rall 2010 \cite{BrKlRa2010}. In this game Alice and Bob take turns adding vertices to a set until it forms a dominating set. This game is called the \textit{dominating game}.
+The \textit{dominating game} was introduced by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas F. Rall 2010 \cite{BrKlRa2010}. In this game Alice and Bob take turns adding vertices to a set until it forms a dominating set.
 
 In this chapter we show how the dominating game can be bounded in terms of both the number of vertices and the domination number. We also demonstrate a strategy for Alice that ensures she will win if the number of turns passes half the number of vertices.
 
@@ -419,11 +480,13 @@ For any tree $T$ with greater than or equal to 2 vertices and with maximum degre
 \[I_A(T)\leq 4n/7\]
 \end{theorem}
 
-We demonstrate the strategy for Alice introduced in theorem \ref{thm:indDomtree}. Fix some tree $T$. Suppose it is Alice's turn. Let $I$ be the current independent set. Define $J_I$ to be the set of isolated vertices in $T\ba N[I]$. The \textit{energy} of $I$ is defined as \[\varphi(I) = |I| + |J_I| + 4/7|V(T) - N[I] - J_I|\]. Alice's strategy is to play the vertex  that minimises this energy. That is the $v\in V(T)$ that minimises $\varphi(I\cup\{v\})$
+We demonstrate the strategy for Alice introduced in \cite{GoddardHenning2018}'s proof of theorem \ref{thm:indDomtree}. Fix some tree $T$. Suppose it is Alice's turn. Let $I$ be the current independent set. Define $J_I$ to be the set of isolated vertices in $T\ba N[I]$. The \textit{energy} of $I$ is defined as 
+    \[\varphi(I) = |I| + |J_I| + 4/7|(V(T) - N[I] - J_I)|\]
+ Alice's strategy is to play the vertex  that minimises this energy. That is the $v\in V(T)$ that minimises $\varphi(I\cup\{v\})$
 
 Compared to the domination and total domination game there has been comparatively little work on the competition-independence game. 
 %In total there is probably less than a dozen papers on the topic. 
-Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the form: For a positive integer $n$, there is some graph $G$ such that
+Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the type: For a positive integer $n$, there is some graph $G$ such that
 \[\gamma_g(G) - I_A(G) = n\]
 
 %todo prove this result
