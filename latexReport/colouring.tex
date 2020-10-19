@@ -1,6 +1,6 @@
 \chapter{Colouring}\label{chpt:colouring}
 
-\section{The Colouring Game}
+\section{The Colouring Game} \label{sec:colouring_game}
 
 Long ago all world maps were hand drawn. Alice has a business that specializes in drawing world maps. Each map is beautifully hand coloured. Each country getting its own colour. To ensure the maps are visually appealing no two bordering countries can be the same colour. In those days ink was expensive. So Alice uses the least number of colours possible. What is the smallest number of colours Alice needs to colour a map in such a fashion? For a map that is drawn on the plane she only needs four colours. This is known as the \textit{four colour theorem}. The four colour theorem states that any plane that is divided into regions can be coloured using only four colours. 
 
@@ -301,7 +301,7 @@ Second, suppose Bob has run out of colours. Then every uncoloured vertex in $K_k
 %---------------------------------------
 
 %#####################################################################################################################
-\section{Activation Strategy}
+\section{Marking Game}\label{sec:marking_game}
 %----------------------------------------------------------------------------------------
 
 First introduced by  Zhu 1999 \cite{Zhu1999} the marking game is simplified version of the colouring game. In the marking game the players simply pick vertices. They don't colour the vertices. 
@@ -319,6 +319,8 @@ To help hand out the plates Alice enlists the help of her friend Bob. Alice and 
 There is simple strategy for Alice that takes a strategy for the marking game and converts it to a strategy. This strategy is called \textit{first fit}. Fix $C=\{c_1,c_2,\dots,c_k\}$ a set of colours. Suppose Alice has chosen a vertex $v$ in the marking game. In the colouring game she colours $v$ with the least $i$ such that $c_i$ is a valid colour in the colouring game. Let the score of marking game be $s$. At no point will Alice try to colour a vertex with more than $s$ coloured neighbours. Hence by using first fit Alice has a winning strategy for the colouring game if $|C|\leq s+1$. Note that Alice wins if the target score is equal to the number of colours. Hence the game colouring number bounds the game chromatic number. That is \[\chi_g(G)\leq\col(G)\]
 
 %It is commonly used for finding upper bounds for the game chromatic number. For example the current upper bound for the class of planar graphs was found using a strategy on the marking game \cite{Zhu2008}.
+
+\section{Activation Strategy}
 
 Faigle, Kern, Kierstead, and Trotter 1993 \cite{faKeKiTr1993} introduced a winning strategy for Alice on the class of forests with four colours. We present the strategy here to give some inspiration for the activation strategy. This example misses some nuance of the full activation strategy. However, the strategy here is the activation strategy when played on trees.  
 
@@ -441,9 +443,9 @@ Some final example plays are as follows. Bob colours $q$ blue. Alice adds $q,l,h
 When using this strategy Alice will always win if there are four or more available colours. This strategy is for the colouring game. But, if instead of colouring vertices we mark them it becomes a strategy for the marking game. Introduced by Kirstead 2000 \cite{KIERSTEAD2000} the activation strategy is an extension of this strategy to arbitrary graphs in the marking game. 
 %In section \ref{sec:actvStratProofs} we will provide a short proof of this result using the activation strategy.
  
-\subsection{Summery of activation strategy}
+\subsection{Summary of activation strategy}
 %
-Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the orientation induced by $L$ on the graph $G$. That is for any edge, $(u,v)\in E(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
+Before we formally define the activation strategy we need the concept of an induced orientation in a graph. For a graph $G$ and a linear order $L$ on $V(G)$. $G_L$ is the directed graph formed by $L$ on the graph $G$ as follows. For any edge $(u,v)\in E(G)$ we have the directed edge $(u,v)\in G_L$ if and only if $u>_Lv$ and $(u,v)\in E(G)$. We call $G_L$ the orientation induced by $L$ on $G$. This ordering may be the reverse of what you might expect. The reason for this is when using the activation strategy Alice wants to traverse the vertices from biggest to smallest in $L$ and so we want the edges directed from biggest to smallest. The less than symbol $>$ can be thought of as an arrow pointing to the next element on the linear order.
 
 The last thing before we formally define the activation strategy is we need some notation. Let $v$ be a vertex in $V(G)$ and $N(v)$ be the set of neighbours of $v$. Then with respect to $v$ we have the following
 \begin{itemize}        
@@ -465,7 +467,7 @@ Finally,
     \item $V^+[v]=V^+(v)\cup\{v\}$
     \item $V^-[v]=V^-(v)\cup\{v\}$
 \end{itemize}
-When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is $+$ is before in the linear order and $-$ is after. For example $N^+(v)$ is the set the neighbours before $v$.
+When it is clear from context the orientation we are referring to we will drop the $G_L$ subscript.  A simple way to think about this notation is to consider $+$ as before in the linear order and $-$ as after. For example $N^+(v)$ is the set of neighbours before $v$.
 
 The activation strategy can be summarised as follows. 
 \begin{enumerate}
@@ -786,7 +788,7 @@ A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$-
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Extending the activation strategy}
 
-The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new strategies for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of G, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
+The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new strategies for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of $G$, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
 
 \begin{theorem}[Theorem 1 in \cite{kierYang2005}]\label{thm:kiYa2005}
     Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
@@ -825,7 +827,7 @@ The bounds found with the limited Harmonious Strategy, while good, are not as ti
     
     \item If $v$ has no out--neighbours then she marks $v$. Otherwise she lets $z=v$ and repeats \ref{step2} until she marks a vertex.     
 \end{enumerate}
-In summery, the primary difference between the original activation strategy and the $(a,1)$--activation strategy each vertex is activated $a$ times before it is marked.
+In summary, the primary difference between the original activation strategy and the $(a,1)$--activation strategy each vertex is activated $a$ times before it is marked.
 
 %Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
 

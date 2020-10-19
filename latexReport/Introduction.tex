@@ -1,6 +1,29 @@
 \chapter{Introduction}\label{chpt:into}
 
 \section{Graphs}
+In the city of K\"{o}nigsberg, Prussia there lies on either side of the Pregel river. In 1736 the only way to cross the river was by a series of seven bridges. The bridges connect two large islands and are arranged as in figure \ref{fig:bridges1}. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=40mm]{example-image-a}  %todo add image
+    \caption{The bridges of K\'{o}nigsberg}
+    \label{fig:bridges1}
+\end{figure}
+The \textit{Bridges of K\"{o}nigsberg Problem} in involves finding a way to travel around the city in a way that crosses each bridge exactly once. This problem attracted the attention of Leonhard Euler. Euler noticed that the path through the land masses didn't matter. So to simplify the problem we can replace each land mass with a single point (called vertices) and draw a line (called edges) between two landmasses if they are connected by a bridge. We now have the representation in figure \ref{fig:bridges2}, we call this a graph.
+\begin{figure} [h]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[height=40mm]{example-image-a}  %todo add image
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}
+        \centering
+        \includegraphics[height=40mm]{example-image-a}  %todo add image
+    \end{subfigure}
+    \caption{The Bridges of K\"{o}nigsberg simplified}
+    \label{fig:bridges2}
+\end{figure} 
+The problem now is to find a way to travel along each edge exactly once. Euler noticed that apart from the first and last vertex every time we enter a vertex we must also leave it. Thus the number of times we enter a vertex is the same the number of times we leave. So all bar two vertices must only have an even number of bridges. But in each landmass has an odd number of bridges. This means that any path will always get stuck somewhere. Euler concludes that the bridges of K\"{o}nigsberg problem has no solution.
+
 A graph, $G=(V,E)$, is a pair of vertices, $V(G)$, and edges, $E(G)$. The set of edges forms a relation on the vertices. The individual edges are represented as pairs of vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs we consider, directed graphs where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected graphs where the direction doesn't matter ($(a,b)=(b,a)$). 
 
 \begin{figure}[h]
@@ -18,7 +41,7 @@ A graph, $G=(V,E)$, is a pair of vertices, $V(G)$, and edges, $E(G)$. The set of
 \end{figure}
    
 %ubiqity of graphs 
-Graphs are abstract representations of relationship between objects. They do this in a way that is easier to visualise and analyse. An example from recent events is COVID--19, and more generally infectious diseases.  Suppose we are in charge of monitoring an outbreak small country. We have a list of all the people who have contracted COVID-19. We consider a graph by representing people as vertices in the graph. We join two people with an edge if the disease could spread between them.
+Graphs can be used to represent relationships between objects. They do this in a way that is easier to visualise and analyse. An example from recent events is COVID--19, and more generally infectious diseases.  Suppose we are in charge of monitoring an outbreak small country. We have a list of all the people who have contracted COVID-19. We consider a graph by representing people as vertices in the graph. We join two people with an edge if the disease could spread between them.
 Then by colouring infected vertices we can easily visualise things like, who is the most infectious (who has the most infected neighbours), and where is community transmission occurring (a group of infections that are disconnected from the rest of the infections).
   
 \section{Graph Algorithms}
@@ -47,13 +70,13 @@ It is easy to see how this concept could be applied to other situations. For exa
 In this report %todo report?
 we will explore four different graph games with hostile partners. These are,
 \begin{itemize}
-    \item Dominating game: \\
+    \item Dominating Game (Section \ref{sec:dominating_game}): \\
         Alice and Bob take turns building a dominating set.
-    \item Independent dominating game: \\
+    \item Independent Dominating Game (Section \ref{sec:ind_dom_game}): \\
         Alice and Bob take turns building a maximal independent set    
-    \item Colouring Game: \\
+    \item Colouring Game (Section \ref{sec:colouring_game}): \\
         Alice and Bob take turns colouring a graph.
-    \item Marking Game: \\
+    \item Marking Game (Section \ref{sec:marking_game}): \\
         Alice and Bob take turns ordering the vertices of a graph.
 \end{itemize}
 
@@ -67,16 +90,28 @@ In chapter \ref{chpt:colouring} we will explore the colouring and marking games.
 
 %todo where has this come from
 
-%This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest%note this is plagrisum
+%This work has many applications in computer science and operations research, including flight scheduling, bandwidth allocation and register allocation, as well as deep theoretical interest
+%note this quote is plagrisum
     
-A directed graph is a graph in which each edge is assigned a direction. In such a graph the edges are no longer symmetric. That is, the edge $(a,b)$ is not the same as the edge $(b,a)$.
+All the graph we have discussed so far are undirected. A directed graph is a graph in which each edge is assigned a direction. In such a graph the edges are no longer symmetric. That is, the edge $(a,b)$ is not the same as the edge $(b,a)$. An undirected graph can be turned into a directing graph by assigning each edge a direction. For example, in figure \ref{fig:directed_graph} we directed the graph from figure \ref{fig:k3}. %A graph that is formed this way is called an oriented graph.
 %todo picture
-        
-A note on notation. If $\CC$ is a class of graphs, and $\varphi_g(G)$ some property of a graph $G \in \CC$. Then $\varphi_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$ $\varphi_g(H)\leq k$. A class $\CC$ is bounded above by $k$ if for every graph $H\in\CC$ $\varphi_g(H)\leq k$. $\CC$ is bounded below by $k$ if there is a graph $H$ in $\CC$ such that $\varphi_g(H)= k$. This can be thought of as Bob being allowed to pick the graph. If the game has a target score $t$ then Bob will win if $t < \varphi_g(G)$. So, if he is allowed to pick the graph he will pick a graph $G$ with $\varphi_g(G) > t$. Then if $t\geq \varphi_g(G)$ then it would not matter what graph Bob picks. Alice will always win. When considering a graph game we always consider it to be played by two player Alice and Bob.  
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \node[normal, label=below:$a$] (v1) at (-1.5,-1) {};
+    \node[normal, label=below:$b$] (v3) at (-0.5,-1) {};
+    \node[normal, label=below:$c$] (v2) at (-1,0) {};  
+    \draw[->] (v1) edge (v2);
+    \draw[->]  (v2) edge (v3);
+    \draw[<-]  (v3) edge (v1);
+    \end{tikzpicture}
+    \caption{Directed graph}
+    \label{fig:directed_graph}
+\end{figure}
+   
+Finally, we introduce some game terms. In a game whenever Alice or Bob has their turn by choosing a vertex we say they \textit{play} a vertex. For example, in the colouring game a play is when Alice chooses a vertex and assigns it a colour. A \textit{round} is a play of both Alice and Bob.  %todo terms and definations
 
-Finally, we introduce some game terms. In a game whenever Alice or Bob has there turn by choosing a vertex we call this a \textit{play}. For example in the colouring game a play when Alice chooses a vertex and assigns it a colour. A \textit{round} is a play of both Alice and Bob.  %todo terms and definations
-   %todo class of graphs?
-
+%todo class of graphs?
 
 %todo add summery of results
     
