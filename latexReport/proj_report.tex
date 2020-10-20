@@ -16,13 +16,18 @@
 \usepackage[mathscr]{euscript} %extra math fonts
 
 \usepackage{tikz} %tikz libray for graphs
-\usepackage{tikz,fullpage}
+\usepackage{tikz,fullpage, xcolor}
+\usetikzlibrary{decorations.markings, hobby}
 \usetikzlibrary{calc} %for positing nodes halfway between others
 \usetikzlibrary{decorations.pathreplacing}% for drawing braces
 \tikzstyle{normal}=[circle,fill=white, draw=black, thick]   
 \tikzstyle{normalBlack}=[circle,fill=black, draw=black, thick]
 \tikzstyle{nodelabel}=[fill=white, circle, midway]
-
+\definecolor{light-gray}{gray}{0.9}
+\tikzset{->-/.style={decoration={
+            markings,
+            mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+        
 \usepackage{amsthm} % for definging theorems and proofs
 \usepackage{amsmath, mathtools}
 \usepackage{amssymb}
