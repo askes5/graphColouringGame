@@ -2,7 +2,7 @@
 
 \section{Introduction}
 
-In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party  Problem in the language of graphs we introduce the concept of dominating sets. 
+In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem in the language of graphs we introduce the concept of dominating sets. In the Dinner Party Problem Alice and Bob build a dominating set in the graph of guests. A guest is added to the dominating set if a platter is placed next to them. This continuous until every guest is fed, also known as dominated. 
 
 \begin{definition}[Dominating Set]
     Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)\setminus D$ is adjacent to at least one vertex in $D$.
@@ -15,7 +15,7 @@ In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize 
 \end{definition}
 
 The class of NP problems can be thought of as the problems who have no efficient algorithm for finding a solution. 
-Finding a dominating set of size at most $k$ is a classic NP--complete problem \cite[p.~190]{garey1979computers}. This means that there is no polynomial time algorithm and it is at least as hard as any problem in NP.  
+Finding a dominating set of size at most $k$ is a classic NP--complete problem \cite[p.~190]{garey1979computers}. This means that there it is assumed to have no polynomial time (read efficient) algorithm and is at least as hard as any problem in NP. Basically, this means that in general finding dominating sets can only be done by checking every possible dominating set.
 
 One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5G network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $u$ and $v$ are connected if a 5G tower placed on building $u$ one will provide service to building $v$. A set of buildings that would provide coverage to the whole city is a dominating set. The minimum number of towers needed is the domination number of this graph.
 

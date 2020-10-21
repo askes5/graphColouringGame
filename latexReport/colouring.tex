@@ -180,7 +180,7 @@ Bodlaender 1990 \cite{bodlander1990} showed that for the class of trees $\TT$,  
 
 \subsubsection{Graphs of bounded Pathwidth}
 
-We will now temporally set aside trees and look at graphs of bounded pathwidth. The pathwidth of a graph can be considered a measure of how close to path the graph is. 
+We will now temporally set aside trees and look at graphs of bounded pathwidth. The pathwidth of a graph can be considered a measure of how "path like" a graph is. 
 \begin{figure} [h]
     \centering
     \begin{minipage}{.45\textwidth}
@@ -243,7 +243,7 @@ We will now temporally set aside trees and look at graphs of bounded pathwidth. 
         \label{fig:pathwidth2}
     \end{minipage}
 \end{figure} 
-For example, the graphs of path width 1 are caterpillars and unions of caterpillars, such graphs are almost paths (see figure \ref{fig:pathwidth1}). Figure \ref{fig:pathwidth2} is a graph of pathwidth 3 and is noticeably less treelike. 
+For example, the graphs of path width 1 are caterpillars and unions of caterpillars, such graphs are almost paths (see figure \ref{fig:pathwidth1}). Figure \ref{fig:pathwidth2} is a graph of pathwidth 3 and is noticeably less path like. 
 
 \begin{definition}[Path Decomposition]
     Let $G$ be a graph. A \textit{path decomposition} is set of subsets of $V(G)$, $P=(P_1,P_2,\dots,P_n)$ such that $\bigcup_{i} P_i=V(G)$ and has the following properties.    
@@ -264,9 +264,9 @@ As an example consider the graphs is figures \ref{fig:pathwidth1} and \ref{fig:p
 And the graph in figure \ref{fig:pathwidth2} has pathwidth 3 and the path decomposition 
 \[(\{a,b,c,d\},\{c,d,e\},\{e,c,f,g\},\{e,d,g,h\},\{d,g,h,i\})\] 
 
-A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. These graphs are known as \textit{$k$paths}.
-\begin{definition}[$k$path]
-    A \textit{$k$path} is a maximal graph of pathwidth $k$.
+A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more edges to $G$ without increasing its pathwidth. In such a graph every element in its path decomposition is a $(k+1)$--clique. These graphs are known as \textit{$k$--paths}.
+\begin{definition}[$k$--path]
+    A \textit{$k$--path} is a maximal graph of pathwidth $k$.
 \end{definition}
 
 \begin{figure}[h]
@@ -300,12 +300,12 @@ A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more ed
     \draw  (v6) edge (v8);
     \draw  (v8) edge (v7);
     \end{tikzpicture}
-    \caption{A $k$path with width 3}
+    \caption{A $k$--path with width 3}
 \end{figure}
 
- A $k$path $G$ contains a $k+1$ clique and so there is no proper colouring with less than $k+1$ colours. Hence, when playing the colouring game on a $k$path Bob will always win if there are $k$ or less colours. 
+ A $k$--path $G$ contains a $k+1$ clique and so there is no proper colouring with less than $k+1$ colours. Hence, when playing the colouring game on a $k$--path Bob will always win if there are $k$ or less colours. 
  \begin{theorem}
- For $G$ a $k$path,
+ For $G$ a $k$--path,
     \[k < \chi_g(G) \] 
  \end{theorem}
 
@@ -313,7 +313,7 @@ A maximal graph, $G$, of pathwidth $k$ is a graph that we cannot add any more ed
     Let $\PP_k$ be class of graphs with bounded pathwidth $k$. If we have $b\geq1$  then \[(b+1)k+\left\lceil \frac{b}{2}\right\rceil\leq\chi_g(\PP_k;1,b)\]
 \end{theorem}
 
-This result first apearied in Fragile, Kern, Kierstead, Trotter 1993 \cite{faKeKiTr1993} as a lower bound for the $(1,1)$--colouring game. In \cite{faKeKiTr1993} the authors do not give a formal proof, they inspire a proof. This is something we aim to remedy in this report. We do tis by proving a new proof. In doing so we also extend the ideas to the $(1,b)$--colouring game.
+This result first apearied in Fragile, Kern, Kierstead, Trotter 1993 \cite{faKeKiTr1993} as a lower bound for the $(1,1)$--colouring game. In \cite{faKeKiTr1993} the authors do not give a formal proof, they inspire a proof. This is something we aim to remedy in this report. We do this by proving a new proof. At the same time we  extend the ideas to the $(1,b)$--colouring game.
 \begin{proof}
     It suffices to show that there exists a graph in $\PP_k$ for which Bob has a winning strategy with $m=(b+1)k+\left\lceil\frac{b}{2}\right\rceil-1$ colours. Let the set of available colours be $C=\{c_1,c_2,\dots,c_m\}$.
     
@@ -600,7 +600,6 @@ The activation strategy can be summarised as follows.
     \item If $w$ is activated or has no unmarked neighbours then Alice marks $w$. If not Alice repeats step (\ref{enum:actvstrat}) on $w$ until she either finds an active vertex.
 \end{enumerate}
 
-
  We can now give a formal description of the activation strategy.
 
 \begin{algorithm}[h]
@@ -688,8 +687,6 @@ Consider figure \ref{fig:matchingNum}. In this figure, all the in--neighours ($N
     \label{fig:matchingNum}
 \end{figure}
 
-In the activation strategy we activate a vertex if it is the least unactivated out--neighbour of an already activated vertex. All the vertices in $V^+(u)$ are less than the vertices in $N^-(u)$. So any edges will be directed from $N^-(u)$ to $V^+(u)$. Thus we well activate $u$ after more than the number of such edges turn. That is, the maximal size of a matching from $N^-(u)$ to $V^+(u)$. Vertices are marked once they have been activated twice. Thus, we have two matchings, once for acitvation and once for marking. In summary the matching number is asking, at most how many times will the vertex $u$ be skipped when activating vertices as part of the activation strategy? So, when $u$ is marked it will at least the matching number many marked neighbours. It is also possible that all the out--neighbours have also been marked. So we get at most the matching number plus the number of already marked out--neighbours many already marked neighbours. This value is called the rank.
-  
 \begin{definition}[Graph Rank \cite{KIERSTEAD2000}] \label{defnRank}
     Let $G=(V,E)$ be a graph and $L$ a linear order on $V$, and $\Pi(G)$ the set of all linear orders on $V(G)$. The rank $r(L,G)$ and rank $r(G)$ are defined as:
     \begin{align*}
@@ -699,7 +696,14 @@ In the activation strategy we activate a vertex if it is the least unactivated o
     \end{align*}
 \end{definition}
 
-The graph rank is technical detail used to prove results using the activation strategy. Most bounds found when using the activation strategy involve finding, or bounding, the rank of the graph. Once the rank is known we have a linear order $L$ on which to play the activation strategy. When using the activating strategy on such a $L$ we get the following upper bound for the game colouring number. 
+Fix some graph $G=(V,E)$, and a linear $L$ on $V$. We denote the set of activated vertices $A$. Every vertex that is marked is immediately activated by Alice. So at the end of her turn any unmarked vertex, $u$, has at most $|A\cap N(u)|$ many marked neighbours. So the score of the game is at most $|A\cap N(u)|$ for any unmarked vertex $u$ at the end of all Alice's turns. We can partition $|A\cap N(u)|$ into two pieces, the outneighbours and inneighbours of $u$. Let $X= A\cap N^+(u)$ and $Y=A\cap N^-(u)$.  $|A\cap N^+(u)|\leq d^+(u)$, this is where the $d^+$ term comes from in the rank. For any vertex $x$, let $s(x)$ denote such the least unmarked out--neighbour of $x$. $s(x)$ is either activated before or after $x$. So we can partition $A\cap N^-(u)$ into two pieces,
+\begin{align*}
+&\{x\in N^-(u)\cap A : \text{x is activated before $s(x)$}\} \\        
+&\{x\in N^-(u)\cap A : \text{x is activated after $s(x)$}\}
+\end{align*}
+The matching number is the largest possible size of these sets. And so, the matching number bounds the size of $A\cap N^-(u)$.
+
+Most bounds found when using the activation strategy involve finding the rank of a graph. Once the rank is known we have a linear order $L$ on which to play the activation strategy. When using the activating strategy on such a $L$ we get the following upper bound for the game colouring number. 
 
 \begin{theorem}[Kierstead 2000 \cite{KIERSTEAD2000}] \label{thm:KIERSTEAD1}
     For any graph $G$ and linear ordering $L$ on $V(G)$, if Alice uses the activation strategy $S(L, G)$ to play the ordering game on $G$, then the score will be at most $1+r(L, G)$. In particular, $\col(G) \leq 1+r(G)$.
@@ -882,7 +886,8 @@ The proof that we present here is new and based directly on the definition of pa
 
 \subsubsection{Bounded Treewidth}
 
-
+Just as the pathwidth of a graph is a measure of it's path--ness, the treewidth of a graph is a measure of how "tree like" it is. The concept of treewidth was introduced by Robertson and Seymour during their seminal work on graph minors \cite{robertson1986graph}. They initially used it to obtain a polynomial algorithm to test if a graph has a subgraph with a particular fixed planar graph as a minor. Treewidth can also be used to solve many other hard problems in polynomial time, e.g. \cite{bodlaender1988dynamic}.
+Further, graphs of bounded treewidth appear in regularly in natural phenomena. All this makes the class of bounded treewidth of keen interest.
 
 \begin{definition}[Tree decomposition]
     A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
@@ -897,6 +902,8 @@ The proof that we present here is new and based directly on the definition of pa
     The \textit{treewidth} of a graph $G$ is the minimum width of a tree decomposition of $G$.    
     A graph of bounded treewidth, $k$, is a graph with treewidth less than or equal to $k$. 
 \end{definition}
+
+There is a relationship between our definitions of treewidth and pathwidth. The graphs of bounded pathwidth are exactly the graphs of bounded treewidth whose underlying tree structure forms a path. Thus, every graph of bounded pathwidth $k$ is a graph of bounded treewidth $k$. 
 
 To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg:LinOrderTW} to generate a linear order on the vertices of a graph, $G$. Such an ordering is based on a minimal tree decomposition, $(X,T)$. Algorithm \ref{alg:LinOrderTW} traverses $T$ using breadth first traversal and adds any vertex from $X_i$ to the linear order if it is the first time we  had encountered the vertex. In a graph of treewidth 2 (i.e. a tree) then algorithm \ref{alg:LinOrderTW} is just breath first search.
 
@@ -942,30 +949,30 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
 
 %todo col_g(T) < 3k+1 is sharp
 
-A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$--trees means that a graph with pathwidth $k$ is a subgraph of some $k$--tree. Therefore to find a bound the class of trees with bounded treewidth we only need to find a bound for the class of $k$--trees. Theorem \ref{thm:ktreeUpper} was first introduced in Wu, Zhu 2008 \cite{WuZhu2008}, but the proof proved here is based on the activation strategy rather than pseudo-partial $k$--trees.
+A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$--trees means that a graph with pathwidth $k$ is a subgraph of some $k$--tree. Therefore to find a bound the class of trees with bounded treewidth we only need to find a bound for the class of $k$--trees. Theorem \ref{thm:ktreeUpper} was first introduced in Wu, Zhu 2008 \cite{WuZhu2008}. We give a new proof based on the activation strategy rather than pseudo-partial $k$--trees.
 \begin{theorem} \label{thm:ktreeUpper}
-        Let $G$ be a k-tree. Then, 
+         For $G$ be a $k$-tree. Then,  
         \[\chi_g(G) \leq 3k + 2\]
 \end{theorem}
 
 \begin{proof}
-    Suppose $G$ is a graph of treewidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$ and root $r$.
+    Suppose $G$ is a graph of treewidth $k$ and let $(\{X_1,X_2,\dots,X_n\},T)$ be a tree decomposition of $G$ with width $k$.
     
-    As $G$ is a k-tree $G$ is maximal with treewidth k. That is, each $X_i$ is a clique.
+    As $G$ is a $k$--tree $G$ is maximal with treewidth $k$. That is, each $X_i$ is a clique.
     
     Let $v$ be a vertex in $G$. It suffices to show $r(v,L,G) \leq 3k + 1$.
     
     %todo is N^+(v) a clique?
     
-    Note that by lemma \ref{Lemma_TWLinOrdBound} for all $v \in V(G)$ $d^+(v) \leq k$.
+    Note that by lemma \ref{Lemma_TWLinOrdBound} for all $v \in V(G)$, $d^+(v) \leq k$.
     
-    Let $Z \subset N^-[v]$ and the partition $\{X,Y\}$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$.
+    Let $Z \subset N^-[v]$ and $\{X,Y\}$ a partition of $Z$ such that $X\subset N^-[v]$ and $Y\subset N^-(v)$.
            
-    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$.
-    $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Therefore $X =\rng(A)\subset N^+(v)$. Therefore $|X| \leq |N^+(v)| \leq k$. 
+    Consider a matching $M\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $M$.
+    $N^+(a)$ is a clique and $v\in N^+(a)$. Thus $b$ is adjacent to $v$. Therefore $X =\rng(M)\subset N^+(v)$. Therefore $|X| \leq |N^+(v)| \leq k$. 
     
-    Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$.
-    Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Therefore $Y =\rng(B)\subset N^+[v]$. Therefore $|Y| \leq |N^+[v]| \leq k+1$. 
+    Consider a matching $N\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $N$.
+    Note that $N^+(a)$ is a clique and $v\in N^+(a)$, thus $b$ is adjacent to $v$. Therefore $Y =\rng(N)\subset N^+[v]$. Therefore $|Y| \leq |N^+[v]| \leq k+1$. 
         
     $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by definition of rank \[r(v,L,G) = d^+(v) + m(v,L,G) \leq 3k +1 \qedhere\]        
 \end{proof}
@@ -981,40 +988,43 @@ A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$-
 \end{proof}
 
 %-------------------------------------------------------------------------------------------------------------------
-\subsection{Extending the activation strategy}
+\subsection{Extending the Activation Strategy}
 
-The activation strategy works well for the $(1,1)$--marking game but fails in the general $(a,b)$--marking game. A desire to have a simple strategy $(a,b)$--marking game prompted Kierstead and Yang to refine the $(a,b)$--marking game by introducing two new strategies for Alice, the Harmonious Strategy and the limited Harmonious Strategy.  For a graph $G$ let $O(G)$ be the set of all orientations of $G$, and let $\Delta^*(G)=\min_{\vec{G}\in O(G)}\Delta^+(\vec{G})$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
+The activation strategy works well for the $(1,1)$--marking game but need modifying to be used in the more general $(a,b)$--marking game. We will look at two different extitons. The first was introduced by Kierstead and Yang 2005 \cite{kierYang2005}. Their strategy is call the \textit{Harmonious Strategy}. The second extension we will consider was introduced by Yang and Zhu 2008 \cite{yangZhu2008}. This strategy is called the \textit{Asymmetric Activation Strategy} and is an built on the work done on the Harmonious Strategy. 
 
-\begin{theorem}[Theorem 1 in \cite{kierYang2005}]\label{thm:kiYa2005}
+For a graph $G$ let $\Pi(G)$ be the set of all induced orientations of $G$, and let $\Delta^*(G)=\min_{L\in \Pi(G)}\Delta^+(G_L)$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
+
+\begin{theorem}[Kierstead and Yang 2005 \cite{kierYang2005}]\label{thm:kiYa2005}
     Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
     $\col(G;a,1) \leq 2k + 2$.
 \end{theorem}
 
-The Harmonious Strategy is used in the case the game is very asymmetric, that is $\Delta^*(G)\leq \frac{a}{b}$. We summerise the main ideas of the Harmonious Strategy is as follows. Note that this strategy is most useful if $a$ is larger than the maximum out--degree in a linear ordering on the vertices.
+The Harmonious Strategy is used in the case the game is very asymmetric, that is $\Delta^*(G)\leq a/b$. In the case that $a/b < \Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out--neighbours of a vertex. We say a vertex $u$ contributes to one of its neighbours $v$ if as part of the strategy we move from $u$ onto $v$. We summarise the main ideas of the Harmonious Strategy is as follows. 
 
-Suppose there is a linear ordering on the vertices in G and Bob has just marked a vertex x. Alice plays by performing the following steps $a$ times.    
+Fix a linear ordering on the vertices on a graph $G=(V,E)$ and suppose that Bob has just marked a vertex $u$. Alice plays the Harmonious Strategy by performing the following steps $a$ times.    
 \begin{enumerate}
-    \item  Alice selects, $y$, the with the least unmarked out--neighbor of $x$ to whom $x$ has not yet contributed and then contributes to y. If there is no such vertex she selects the least unmarked vertex.
+    \item  Alice selects, $y$, the least unmarked outneighbor of $u$ to whom $u$ has not yet contributed and then contributes to $y$. If there is no such vertex she selects the least unmarked vertex.
     \item  The contribution from $y$
-    is passed along until finally it arrives at a vertex $z$ that has already contributed to all its out--neighbors.
+    is passed along as in step (1) until finally it arrives at a vertex $z$ that has already contributed to all its outneighbors.
     \item  Alice marks $z$
 \end{enumerate}
 
-The Harmonious Strategy is used to find upper bounds for the classes of general graphs, interval and chordal graphs, planar graphs, and outerplaner graphs. For a class of graphs $\mathcal{X}$, let $\mathcal{X}_k= \{G\in\mathcal{X}: \Delta^*(G)\leq k\}$. Some bounds are as follows.    
+The Harmonious Strategy is used to find upper bounds for the classes of general graphs ($ \GG $), planar graphs ($\PP$), and outerplaner graphs ($ \QQ $). For a class of graphs $\CC$, let $\CC_k= \{G\in\CC: \Delta^*(G)\leq k\}$. Some bounds are as follows.    
 \begin{itemize}
     \item If $a < k$ then $\col(\GG_k;a,b)=\infty$
-    \item $\col(\II)=3k+1\leq\col(\CC_k)=3k+2$
     \item If $3<a $ then $7\leq \col(\PP;a,b)\leq 8$
     \item If $2< a$ then $5\leq \col(\QQ;a,b)\leq 6$
 \end{itemize}
-More generally we have the following theorem for when Alice uses the Harmonious Strategy.
-\begin{theorem}[Theroem 13 in \cite{kierYang2005}]
-    let $a$ and $b$ be positive integers and $G$ a graph with $\Delta^*(G)=k\leq\frac{a}{b}$. Then $\col(G;a,b)\leq 2k+b+1$.
+More generally, we have the following bound for when Alice uses the Harmonious Strategy.
+\begin{theorem}[Kierstead and Yang 2005 \cite{kierYang2005}]
+    Let $a,b$ be positive integers and $G$ a graph with $\Delta^*(G)=k\leq\frac{a}{b}$. Then $\col(G;a,b)\leq 2k+b+1$.
 \end{theorem}
 
-In the case that $a$ is less than $\Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out--neighbours of a vertex. The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out--neighbours.    
+ %The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out--neighbours.    
 
-The bounds found with the limited Harmonious Strategy, while good, are not as tight as the Harmonious Strategy. This provides the motivation to introduce a new strategy. In Yang and Zhu 2008 \cite{yangZhu2008} the authors introduce the $(a,1)$--Activation strategy for the $(a,1)$--marking game based on the popular activation strategy. Informally we summarise the strategy as follows. Suppose that Bob has just marked a vertex $u$, Alice repeats the following steps $a$ times to mark $a$ vertices.
+
+
+Informally we summarise the strategy as follows. Suppose that Bob has just marked a vertex $u$, Alice repeats the following steps $a$ times to mark $a$ vertices.
 \begin{enumerate}
     \item Alice activates $u$. If $u$ has no out--neighbours then Alice marks the least vertex. Otherwise let $z=u$
     
@@ -1026,13 +1036,13 @@ In summary, the primary difference between the original activation strategy and 
 
 %Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
 
-\begin{definition}[$(a,1)$--Activation strategy, \cite{yangZhu2008}] 
+\begin{definition}[Asymmetric Activation Strategy, \cite{yangZhu2008}] 
     Let $G$ be a graph, $U$ denote the set of unmarked vertices, and for all $v\in V(G)$ let $t_v=a$, track the number of activations of $v$. If $v$ has been activated $a$ times then $v$ will have $t_v=0$. Let $L$ be a linear order of on $V(G)$, and let $G_L$ be the corresponding orientation of $G$. %Let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
     %todo why are L_x and L seperate orerings? L_x is a ordering on the neighbours of x. Instead we simplify to a single ordering on V(G).       
     For simplicity we consider the equivalent $(a,1)$--marking game where Bob goes first and marks a vertex with no neighbours. Suppose that Bob has just activated a vertex $u$, Alice uses algorithm \ref{alg:asymActivStrat} to update the graph and mark vertices.
     %
     \begin{algorithm}[h]
-        \caption{$(a,1)$--Activation strategy}
+        \caption{Asymmetric Activation Strategy}
         \label{alg:asymActivStrat}
         \begin{algorithmic}[1]
             \Statex
@@ -1056,11 +1066,12 @@ In summary, the primary difference between the original activation strategy and 
     %todo example of algorithm's usage
 \end{definition}
 
-    Consider a graph $G$ and a linear order $L$ on $V(G)$. We define a loose out--neighbour of a vertex $v$ as a vertex $u$ such that either $u\in N^+(v)$ or there exists a vertex $z$ such that $u,v\in N^-(z)$ and $u<_L v$. 
-    
-    By using the Asymmetric Activation Strategy on the $(a,1)$--marking game we get the following upper bound for $\col(G;a,1)$.
 
-\begin{theorem}[Theorem 2.2 in \cite{yangZhu2008}]  %todo differntent rank notation
+Consider a graph $G$ and a linear order $L$ on $V(G)$. We define a \textit{loose out--neighbour} of a vertex $v$ as a vertex $u$ such that either $u\in N^+(v)$ or there exists a vertex $z$ such that $u,v\in N^-(z)$ and $u<_L v$.
+
+By using the Asymmetric Activation Strategy on the $(a,1)$--marking game we get the following upper bound for $\col(G;a,1)$.
+
+\begin{theorem}[Yang and Zhu 2008 \cite{yangZhu2008}]  %todo differntent rank notation
     Let $G_L$ be an orientated graph with $\Delta^+(G_L)=k>a$ and let $r$ be the maximum number of loose out--neighbours of any vertex in $V(G_L)$. If Alice uses the Asymmetric Activation Strategy then \[\col(G;a,1)\leq k+\left\lfloor \left(1+\frac{1}{a}\right)r \right\rfloor +2\]
 \end{theorem}
 
@@ -1069,16 +1080,21 @@ In summary, the primary difference between the original activation strategy and 
 %
 Fix a graph $G$ and $L$ a linear ordering of the vertices of $G$ such that $\Delta^+(G_L)=k>a$. let $r$ be the maximum number of loose out--neighbours of any vertex in $V(G_L)$. Suppose that Bob has just marked a vertex $x$. Let $M$ denote the current set of marked vertices and $U$ the unmarked vertices. Let $u\in U$ be an arbitrary unmarked vertex. We need to show that $u$ has no more than  $k+\left\lfloor \left(1+\frac{1}{a}\right)r \right\rfloor +2$ marked neighbours other than $x$. 
 
-Let $S=(N(u)\cap M) \setminus {x}$. $S$ is the set unmarked neighbours of $u$ excluding $x$. We partition $S$ into two sets $Q$ and $C$. $Q=N^+(u)\cap S$ is the set of marked out--neighbours of $u$ excluding $x$. $C=N^-(u)\cap S$ is  the set marked in--neighbours of $u$ excluding $x$.
+Let $S=(N(u)\cap M) \setminus {x}$. $S$ is the set of marked neighbours of $u$ excluding $x$. We partition $S$ into two sets $Q$ and $C$. $Q=N^+(u)\cap S$ is the set of marked out--neighbours of $u$ excluding $x$. $C=N^-(u)\cap S$ is  the set marked in--neighbours of $u$ excluding $x$.
 
 Notice that $Q\leq k = \Delta^+(G_L)$. 
 
-Fix $y\in C$. Either we marked $y$ or Bob did. We only marked vertices with $t_y=0$. So suppose that Bob marked $y$
-There are two times when we activate vertices, line 3 and line 9 in algorithm \ref{alg:asymActivStrat}. At line 3, we activate a vertex that Bob has marked. We so this for as each unmarked out--neighbours as $y$ has or until $y$ has been activated $a$ times. And as every vertex has $k>a$ outneighbours, $x$ must have $t_y=0$.
-%
-So, in either case $t_y=0$.
+Fix $y\in C$. Either Alice marked $y$ or Bob did. Alice only marks vertices with $t_y=0$. 
 
-let $z = \min_{L}(N^+(y)\cap U$. 
+Suppose that Bob marked $y$.
+There are two times when we activate vertices, line 3 and line 9 in algorithm \ref{alg:asymActivStrat}. At line 3, we activate the vertex that Bob has marked. We do this for as each unmarked out--neighbours or $y$ or until $y$ has been activated $a$ times. And as every vertex has $k>a$ outneighbours, $x$ must have $t_y=0$.
+
+So, weather Alice or Bob marked $y$, $t_y=0$.
+
+Let $z = \min_{L}(N^+(y)\cap U)$, is the next vertex activated after $y$. Note that $u\in N^+(y)\cap U$ and so $z$ is either a loose outneighbour of $u$ or $u=z$. Note that if $u$ is activated immediately after $y$ the next activated vertex is in $N^+(u)$, which is a set of loose out--neighbours of $u$. Hence the next activated vertex is a loose out--neighbour of $u$. Let $n_u$ be the number of loose out--neigbours of $u$. Any vertex can be activated at most $a+1$ many times. So we have 
+\[a|C|\leq (a+1)n_u\leq (a+1)r\]
+Therefore,
+\[|S|=|Q|+|C|\leq k +|C| \leq k + (1+1/a)r\] 
 \end{proof}
     
     %todo prove
