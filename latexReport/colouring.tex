@@ -4,7 +4,19 @@
 
 Long ago all world maps were hand drawn. Alice has a business that specializes in drawing world maps. Each map is beautifully hand coloured. Each country getting its own colour. To ensure the maps are visually appealing and to help distinguish countries no two bordering countries can be the same colour. In those days ink was expensive. So Alice wishes to use the least number of colours possible. What is the smallest number of colours Alice needs to colour a map in such a fashion? 
 
-We can translate the problem of map colouring to a problem about graphs. We do this by placing a vertex in each country and join two vertices with an edge if and only if the corresponding countries share a border. By constructing a graph in this way be have a one to one correspondence between colourings of the graph and the map. So, if Alice assign colours to the vertices such that no two neighbouring vertices have the same colour She has a way to colour the map. Any graph that can be drawn on the plane can be coloured in this manor using only four colours. This is known as the \textit{four colour theorem} \cite{thomas19984ColourUpdate}. The four colour theorem states that any planar graph can be coloured using only four colours. Thus Alice needs only 4 colours to colour her maps.
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=40mm]{images/161-fig37}
+    \caption{A coloured map}
+\end{figure}
+
+We can translate the problem of map colouring to a problem about graphs. We do this by placing a vertex in each country and join two vertices with an edge if and only if the corresponding countries share a border. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/161-fig38}
+    \caption{Translating maps to graphs}
+\end{figure}
+By constructing a graph in this way be have a one to one correspondence between colourings of the graph and the map. So, if Alice assign colours to the vertices such that no two neighbouring vertices have the same colour She has a way to colour the map. Any graph that can be drawn on the plane can be coloured in this manor using only four colours. This is known as the \textit{four colour theorem} \cite{thomas19984ColourUpdate}. The four colour theorem states that any planar graph can be coloured using only four colours. Thus Alice needs only 4 colours to colour her maps.
 
 We formally define a colouring as follows.
 \begin{definition}[Proper $k$--Vertex Colouring]
@@ -769,22 +781,28 @@ To demonstrate the basic idea behind the proofs in this section we prove theorem
         \caption{Breath first traversal}
         \label{fig:BFT}
     \end{figure}
-    Fix some $v\in V(T)$. We show $r(v,L,T)\leq 3$. In $L$ every vertex $u$ apart from $r$ has $d^+(u) = 1$. For $r$, $d^+(r) = 0$. In other words every vertex has a single parent. Hence $d^+(v)\leq 1$.
+    Fix some $v\in V(T)$. We show $r(v,L,T)\leq 3$. In $L$ every vertex $u$ apart from $r$ has $d^+(u) = 1$. For $r$, $d^+(r) = 0$. In other words every vertex has most a single parent. Hence $d^+(v)\leq 1$.
     
-    Let $Z\subseteq N^-[v]$ and $\{X,Y\}$ such that $X\subseteq N^-[v]$ and $Y\subseteq N^-(v)$. 
+    Let $Z\subseteq N^-[v]$ and $\{X,Y\}$ a partition of $Z$ such that $X\subseteq N^-[v]$ and $Y\subseteq N^-(v)$. 
     
-    It remains to show that if there exists matchings $M:X\to V^+(v)$ and $N:Y\to V^+[v]$ then $|Z| = |X|+|Y| \leq 2$. This in the crux of the entire proof. In short, we bound $X$ and $Y$ by assuming they are part of the matchings $M$ and $N$.
+    It remains to show that if there exists matchings $M:X\to V^+(v)$ and $N:Y\to V^+[v]$ then $|Z| = |X|+|Y| \leq 2$. This in the crux of the entire proof. In short, we bound $X$ and $Y$ by assuming they are a part of matchings $M$ and $N$.
     
-    Assume there exists such matchings $M$ and $N$. In a tree every the deletion of any non--leaf disconnects the graph. So in $T\ba v$, $N^-(v)$ and $V^+(v)$ are disjoint. Thus there exists no edges from $N^-(v)$ to $V^+(v)$. Therefore $M$ can contain at most the single edge $(v,u)$ for some $u\in N^+(v)$. Thus the only vertex $X$ can contain is $v$.    
+    Assume there exists such matchings $M$ and $N$. 
+    
+    Assume for a contradiction that there is an edge $(x,y)$ between $N^-(v)$ and $V^+(v)$. Thus, $x\in N^-(v)$ and $y\in V^+(v)$. As $x >_L v >_L y$, $x \in N^-(y)$. Thus $y\in N^+(x)$. We also know that $v\in N^+(x)$. And thus as $|N^+(x)|=1$, $y=v$. This contradicts the fact that $u\notin V^+(v)$. Therefore there are no edges between $N^-(v)$ and $V^+(v)$.
+    
+    Therefore $M$ can contain at most the single edge $(v,u)$ for some $u\in N^+(v)$. Thus the only vertex $X$ can contain is $v$.    
     The same is true for $N$. $N$ can contain at most the single edge $(u,v)$ for some $u\in N^+(v)$. Thus the only vertex $Y$ can contain is $u$. Therefore $|Z| = |X|+|Y|\leq 2$.    
     Then we have \[r(v,L,T) = d^+(v)+m(v,L,T) \leq 1 + 2 =3\] as desired.
 \end{proof}
 
-Recall theorem \ref{thm:treeColLow} sates that for $T$ a tree $chi_g(\TT;1,b) \geq b+3 $. When $b=1$ we get the lower bound for the game domination number on the class of trees. Further, when combined with theorem \ref{thm:colTreeleq4} we get corollary \ref{cor:colTreeExact} as an immediate consequence.  
+Recall theorem \ref{thm:treeColLow} sates that for the class of trees $\TT$, $\chi_g(\TT;1,b) \geq b+3 $. When $b=1$ we get the lower bound for the game domination number on the class of trees. Further, when combined with theorem \ref{thm:colTreeleq4} we get that $4 \leq \chi_g(\TT) \leq 4$. Hence as we get corollary \ref{cor:colTreeExact} as an immediate consequence.  
 
 \begin{corollary} \label{cor:colTreeExact}
-    For a tree $T$ \[\chi_g(T) = 4\]
+    For the class of trees $\TT$ \[\chi_g(\TT) = 4\]
 \end{corollary}
+
+\subsubsection{Bounded Pathwidth}
 
 Interval graphs are graphs defined from a series of intervals. The vertices represent the intervals and two vertices are connected with an edge if the associated intervals overlap. For an example see figure \ref{fig:intvGraph}.
 %
@@ -829,27 +847,42 @@ The \textit{clique width} of an interval graph is the size of its maximal clique
 The proof that we present here is new and based directly on the definition of pathwidth. Rather than the previous results (\cite{faKeKiTr1993,KIERSTEAD2000}) whose proofs are based on properties of interval graphs. 
 
 \begin{proof}
-    Let $G$ be a graph of pathwidth $k$, with path decomposition $P=\{P_1,\dots,P_n\}$. 
+    Let $G=(V,E)$ be a graph with pathwidth $k$, and path decomposition $P=\{P_1,\dots,P_n\}$. 
 
-    Consider the linear order $L$ on $V(G)$ such that for any $i<j$ all elements in $P_i$ are less than all elements in $P_j - P_i$.  
+    Consider the linear order $L$ on $V(G)$ such that for all $i<j$, all elements in $P_i$ are less than all elements in $P_j \setminus P_i$.  
         
 %    $ L = P_1 \cup (P_2 \setminus P_1) \cup  (P_3 \setminus P_1\cup P_2) \cup \dotsm$ 
     
-    We can see that $d^+(v) \leq k$ for any vertex $v$. %todo clarify
+    \begin{claim}
+        For all $v\in V$, $d^+(v) \leq k$. 
+    \end{claim}
+    \begin{claimproof}
+        Fix some $v\in V$. Let $i$ be the least such that $v\in P_i$. Note that $|P_i\setminus v|\leq k$. 
+        
+        Let $x\in N^+(v)$. As there is an edge $(x,v)\in E$ there must be some $j$ such that $x,v\in P_j$. 
+        
+        If $j>i$ then by construction of $l$, $v<x$. But this contradicts the fact that $x\in N^+(v)$. Therefore $j\leq i$. Then by the minimality of $i$, $i=j$. Therefore $x\in P_i$. 
+        
+        Thus $N^+(v)\subseteq P_i\setminus v$. Hence $d^+(v)=  |N^+(v)|\leq |P_i\setminus v| \leq k$.  
+    \end{claimproof}
     
-    As $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. By theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V(G)$ $r(v,L,G) \leq 3k$. 
+    $\chi_g(P) \leq{\col}(P)$ and $\col(G)\leq 1+r(G)$. So, by theorem \ref{thm:KIERSTEAD1} it suffices to show that for any vertex $v \in V$ $r(v,L,G) \leq 3k$. 
     
     Without loss of generality assume $G$ is maximal, that is all $P_i$ are cliques. 
     
-    Let $v$ be any vertex in $V(G)$. Let $Z \subset N^-[v]$ and the partition $\{X,Y\}$ of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
+    Let $v$ be any vertex in $V$. Let $Z \subset N^-[v]$ and $\{X,Y\}$ a partition of $Z$ such that $X\subset N^-[v]$ and  $Y\subset N^-(v)$. 
     
-    Consider a matching $A\colon X \to V^+(v)$. Let $e=(a,b)$ be an edge in $A$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Therefore $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)|\leq k$. 
+    Consider a matching $M\colon X \to V^+(v)$. Let $(a,b)$ be an edge in $M$. $v\in N^+(a)$ and $N^+(a)$ is a clique as $N^+(a) \subseteq P_i$ for some $i$. Therefore $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|X|\leq|N^+(v)|\leq k$. 
     
-    Consider a matching $B\colon Y \to V^+[v]$. Let $e=(a,b)$ be an edge in $B$. %The idea is $b\in N+(v)$
-    There exists some $i,j$ such that $a\in X_i$ and $b\in X_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in X_i \lor a\in X_j$. If $a \in X_j$ then $a \in V^+[v]$, this contradicts the fact that $a\in N^-(v)$. Therefore $b\in X_i$. As $v\in X_i$ and $X_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)\leq k$.  
+    Consider a matching $N\colon Y \to V^+[v]$. Let $(a,b)$ be an edge in $N$. %The idea is $b\in N+(v)$
+    Let $i,j$ be the least such that $a\in P_i$ and $b\in P_j$. As $(a,b)$ is an edge by the definition of path decomposition $b\in P_i$ or $a\in P_j$. If $a \in P_j$ then $a \in V^+[v]$, this contradicts the fact that $a\in N^-(v)$. Therefore $b\in P_i$. As $v\in P_i$ and $P_i$ is a clique $b$ is adjacent to $v$ that is $b\in N^+(v)$. Hence $|Y|\leq|N^+(v)|\leq k$.  
     
     $m(v,L,G) \leq |Z| = |X|+|Y|$. Therefore by the definition of rank, \[r(v,L,G) = d^+_{G_L}(v) + m(v,L,G) \leq k + |X|+|Y| \leq 3k\qedhere\]
 \end{proof}
+
+\subsubsection{Bounded Treewidth}
+
+
 
 \begin{definition}[Tree decomposition]
     A tree decomposition $(X,T)$ of a graph $G$ is a tree, $T$, along a collection of subsets of $V(G)$ $X=\{X_1,\dots,X_n\}$, indexed by vertices in $T$, such that $V(G)=\bigcup X$ and obeys the following properties.
@@ -902,9 +935,9 @@ To find an upper bound for graphs of bounded treewidth we use algorithm \ref{alg
 \end{lemma}
 
 \begin{proof}    
-    Let $L$ is a linear ordering on $V(G)$ generated by algorithm \ref{alg:LinOrderTW}. Let $v$ be any vertex in $V(G)$. By definition $d^+(v) = |N^+(v)|$.%, that is the out--degree of $v$ is the number of neighbours of $v$ that appear before $v$ in $L$. 
+    Let $L$ is a linear ordering on $V(G)$ generated by algorithm \ref{alg:LinOrderTW}. Let $v$ be any vertex in $V(G)$. %By definition $d^+(v) = |N^+(v)|$.%, that is the out--degree of $v$ is the number of neighbours of $v$ that appear before $v$ in $L$. 
     
-    Suppose that algorithm \ref{alg:LinOrderTW} has just traversed $X_i\in X$ and $v\in X_i$. Without loss of generality assume that $v$ is the last element $L$. By the definition of tree decomposition all the vertices in $X_i$ are neighbours of $v$. Note that $|X_i\setminus v|\leq k$. Therefore all the neighbours of $v$ in $L$ are in $X_i$. Therefore there are at most $k$ neighbours of $v$ in $L$.   
+    Suppose that algorithm \ref{alg:LinOrderTW} has just traversed $X_i\in X$ and $v\in X_i$. Without loss of generality assume that $v$ is the $L$--least element in $X_i$. By the definition of tree decomposition all the vertices in $X_i$ are neighbours of $v$. Note that $|X_i\setminus v|\leq k$. Therefore all the neighbours of $v$ in $L$ are in $X_i$. Therefore there are at most $k$ neighbours of $v$ in $L$.   
 \end{proof}
 
 %todo col_g(T) < 3k+1 is sharp

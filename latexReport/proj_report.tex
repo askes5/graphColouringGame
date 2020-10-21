@@ -17,6 +17,7 @@
 
 \usepackage{tikz} %tikz libray for graphs
 \usepackage{tikz,fullpage, xcolor}
+\usepackage{graphicx}
 \usetikzlibrary{decorations.markings, hobby}
 \usetikzlibrary{calc} %for positing nodes halfway between others
 \usetikzlibrary{decorations.pathreplacing}% for drawing braces
@@ -41,6 +42,9 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+
+\newcommand*{\claimproofname}{Proof}
+\newenvironment{claimproof}[1][\claimproofname]{\begin{proof}[#1]\renewcommand*{\qedsymbol}{\(\blacksquare\)}}{\end{proof}}
 
 \usepackage{caption} %removes ':' from empty captions 
 \usepackage{subcaption} %for subfigures

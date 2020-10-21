@@ -4,27 +4,20 @@
 In the city of K\"{o}nigsberg, Prussia there lies on either side of the Pregel river. In 1736 the only way to cross the river was by a series of seven bridges. The bridges connect two large islands and are arranged as in figure \ref{fig:bridges1}. 
 \begin{figure}[h]
     \centering
-    \includegraphics[height=40mm]{example-image-a}  %todo add image
+    \includegraphics[height=40mm]{images/161-fig26}  %todo add image
     \caption{The bridges of K\'{o}nigsberg}
     \label{fig:bridges1}
 \end{figure}
 The \textit{Bridges of K\"{o}nigsberg Problem} in involves finding a way to travel around the city in a way that crosses each bridge exactly once. This problem attracted the attention of Leonhard Euler. Euler noticed that the path through the land masses didn't matter. So to simplify the problem we can replace each land mass with a single point (called vertices) and draw a line (called edges) between two landmasses if they are connected by a bridge. We now have the representation in figure \ref{fig:bridges2}, we call this a graph.
 \begin{figure} [h]
     \centering
-    \begin{subfigure}{.45\textwidth}
-        \centering
-        \includegraphics[height=40mm]{example-image-a}  %todo add image
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}
-        \centering
-        \includegraphics[height=40mm]{example-image-a}  %todo add image
-    \end{subfigure}
-    \caption{The Bridges of K\"{o}nigsberg simplified}
+        \includegraphics[height=40mm]{images/161-fig27}
+    \caption{The bridges of K\"{o}nigsberg simplified}
     \label{fig:bridges2}
 \end{figure} 
 The problem now is to find a way to travel along each edge exactly once. Euler noticed that apart from the first and last vertex every time we enter a vertex we must also leave it. Thus the number of times we enter a vertex is the same the number of times we leave. So all bar two vertices must only have an even number of bridges. But in each landmass has an odd number of bridges. This means that any path will always get stuck somewhere. Euler concludes that the bridges of K\"{o}nigsberg problem has no solution.
 
-A graph, $G=(V,E)$, is a pair of vertices, $V(G)$, and edges, $E(G)$. The set of edges forms a relation on the vertices. The individual edges are represented as pairs of vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs we consider, directed graphs where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected graphs where the direction doesn't matter ($(a,b)=(b,a)$). 
+Formally, a graph $G=(V,E)$ is a pair of vertices, $V(G)$, and edges, $E(G)$. The set of edges forms a relation on the vertices. The individual edges are represented as pairs of vertices. For example in figure \ref{fig:k3} we have three edges $(a,b)$, $(a,c)$, and $(b,c)$. There are two main types of graphs we consider, directed graphs where the direction of the edge matters ($(a,b)\neq (b,a)$) and undirected graphs where the direction doesn't matter ($(a,b)=(b,a)$). 
 
 \begin{figure}[h]
     \centering
