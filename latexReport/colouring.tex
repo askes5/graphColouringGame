@@ -1116,7 +1116,7 @@ The refined activation strategy is a refinement on the activation strategy intro
 
 The refined activation strategy applies the same basic strategy as the standard activation strategy but with two main differences. First, instead of a linear ordering on $V(G)$ we use directed graph, $L_0$, on $V(G)$ as our ordering. This is only a partial ordering, so we partition $V(G)$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i < j$ then the edge $(x,y)$ is in $L_0$. The ordering may not be an linear ordering in each block. However, if we ignore what happens in each block we get a linear ordering.
 
-Second, there is a preference function $\rho$ that maps each $y \in V(G)$ to a non--empty subset of the $L_0$--outneigbours of $y$ that are not in the same block as $y$. Suppose we have just activated a vertex $v$. Let $w$ be the least outneighbour of $v$. If there is a $u\in V(G)$ such that there is a directed edge $(u,w)\in L_0$ where $(u,w)$ in in $\rho(u)\cap B_i$ for some $i$ we reverse the direction of the edge $(u,v)$ in $L_0$. So, within the blocks the ordering changes as the marking game is played.
+Second, there is a preference function $\rho$ that maps each $y \in V(G)$ to a non--empty subset of the $L_0$--outneigbours of $y$ that are not in the same block as $y$. Suppose we have just activated a vertex $v$. Let $w$ be the least outneighbour of $v$. If there is a $u\in V(G)$ such that there is a directed edge $(u,w)\in L_0$ where $(u,w)$ is in $\rho(u)\cap B_i$ for some $i$ then we reverse the direction of the edge $(u,v)$ in $L_0$. So, within the blocks the ordering changes as the marking game is played.
 
 
 
