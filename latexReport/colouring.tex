@@ -990,16 +990,16 @@ A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$-
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Extending the Activation Strategy}
 
-The activation strategy works well for the $(1,1)$--marking game but need modifying to be used in the more general $(a,b)$--marking game. We will look at two different extitons. The first was introduced by Kierstead and Yang 2005 \cite{kierYang2005}. Their strategy is call the \textit{Harmonious Strategy}. The second extension we will consider was introduced by Yang and Zhu 2008 \cite{yangZhu2008}. This strategy is called the \textit{Asymmetric Activation Strategy} and is an built on the work done on the Harmonious Strategy. 
+The activation strategy works well for the $(1,1)$--marking game but needs modifying to be used in the more general $(a,b)$--marking game. We will look at two different extensions. The first was introduced by Kierstead and Yang 2005 \cite{kierYang2005}. Their strategy is call the \textit{Harmonious Strategy}. The second extension we will consider was introduced by Yang and Zhu 2008 \cite{yangZhu2008}. This strategy is called the \textit{Asymmetric Activation Strategy} and is an built on the work done on the Harmonious Strategy. 
 
-For a graph $G$ let $\Pi(G)$ be the set of all induced orientations of $G$, and let $\Delta^*(G)=\min_{L\in \Pi(G)}\Delta^+(G_L)$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
+For a graph $G=(V,E)$ let $\Pi(G)$ be the set of all linear orders of $V$, and let $\Delta^*(G)=\min_{L\in \Pi(G)}\Delta^+(G_L)$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
 
-\begin{theorem}[Kierstead and Yang 2005 \cite{kierYang2005}]\label{thm:kiYa2005}
-    Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
-    $\col(G;a,1) \leq 2k + 2$.
-\end{theorem}
+%\begin{theorem}[Kierstead and Yang 2005 \cite{kierYang2005}]\label{thm:kiYa2005}
+%    Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
+%    $\col(G;a,1) \leq 2k + 2$.
+%\end{theorem}
 
-The Harmonious Strategy is used in the case the game is very asymmetric, that is $\Delta^*(G)\leq a/b$. In the case that $a/b < \Delta^*(G)$ the Harmonious Strategy is limited as Alice may not be able to mark all the out--neighbours of a vertex. We say a vertex $u$ contributes to one of its neighbours $v$ if as part of the strategy we move from $u$ onto $v$. We summarise the main ideas of the Harmonious Strategy is as follows. 
+As part of the Harmonious Strategy Alice keeps of contributions between vertices. A vertex $u$ contributes to its neighbours $v$ if as part of the strategy we move from $u$ onto $v$. The contributions take the place of activations. They can be thought of as activations of the edges rather than the vertices. We summarise the main ideas of the Harmonious Strategy is as follows. 
 
 Fix a linear ordering on the vertices on a graph $G=(V,E)$ and suppose that Bob has just marked a vertex $u$. Alice plays the Harmonious Strategy by performing the following steps $a$ times.    
 \begin{enumerate}
@@ -1009,7 +1009,9 @@ Fix a linear ordering on the vertices on a graph $G=(V,E)$ and suppose that Bob 
     \item  Alice marks $z$
 \end{enumerate}
 
-The Harmonious Strategy is used to find upper bounds for the classes of general graphs ($ \GG $), planar graphs ($\PP$), and outerplaner graphs ($ \QQ $). For a class of graphs $\CC$, let $\CC_k= \{G\in\CC: \Delta^*(G)\leq k\}$. Some bounds are as follows.    
+The Harmonious Strategy is used in the case the game is very asymmetric, that is $\Delta^*(G)\leq a/b$. In the case that $a/b < \Delta^*(G)$ the Harmonious Strategy is limited, as Alice may not be able to mark all the out--neighbours of a vertex. This means that there are graphs and linear orders that the strategy does not work on.
+
+The Harmonious Strategy is used to find upper bounds for the classes of general graphs ($ \GG $), planar graphs ($\PP$), and outerplaner graphs ($ \QQ $). Let $\GG_k= \{G\in\CC: \Delta^*(G)\leq k\}$. Some bounds found using the Harmonious Strategy are as follows.    
 \begin{itemize}
     \item If $a < k$ then $\col(\GG_k;a,b)=\infty$
     \item If $3<a $ then $7\leq \col(\PP;a,b)\leq 8$
@@ -1022,17 +1024,17 @@ More generally, we have the following bound for when Alice uses the Harmonious S
 
  %The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out--neighbours.    
 
+The Harmonious Strategy only works on some graphs and linear orders. This problem can be fixed by the \textit{Limited Harmonious Strategy} from \cite{kierYang2005}. As an alternative we consider the Asymmetric Activation Strategy, which does not have this problem.
 
-
-Informally we summarise the strategy as follows. Suppose that Bob has just marked a vertex $u$, Alice repeats the following steps $a$ times to mark $a$ vertices.
+Informally we summarise the Asymmetric Activation Strategy as follows. Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. Suppose that Bob has just marked a vertex $u$, Alice repeats the following steps $a$ times to mark $a$ vertices.
 \begin{enumerate}
-    \item Alice activates $u$. If $u$ has no out--neighbours then Alice marks the least vertex. Otherwise let $z=u$
+    \item Alice activates $u$. If $u$ has no out--neighbours then Alice marks the $L$--least vertex in. Otherwise let $z=u$
     
-    \item Let $v$ be the least out--neighbour of $z$. Alice activates $v$ if $v$ has been activated less than $a$ times, otherwise she marks $v$. \label{step2}
+    \item Let $v$ be the $L$--least out--neighbour of $z$. Alice activates $v$ if $v$ has been activated less than $a$ times, otherwise she marks $v$. \label{step2}
     
     \item If $v$ has no out--neighbours then she marks $v$. Otherwise she lets $z=v$ and repeats \ref{step2} until she marks a vertex.     
 \end{enumerate}
-In summary, the primary difference between the original activation strategy and the $(a,1)$--activation strategy each vertex is activated $a$ times before it is marked.
+In summary, the primary difference between the original activation strategy and the Asymmetric Activation Strategy is that each vertex is activated $a$ times before it is marked.
 
 %Before we formally define the asymmetric activation strategy we need some notation. Let $L$ be a linear order on $V(G)$, and $G_L$ the corresponding orientation of $G$. For each vertex, $v$, of $G$ let $L_v$ be a linear order on $N^+_{G_L}(v)$. 
 
@@ -1094,12 +1096,11 @@ So, weather Alice or Bob marked $y$, $t_y=0$.
 Let $z = \min_{L}(N^+(y)\cap U)$, is the next vertex activated after $y$. Note that $u\in N^+(y)\cap U$ and so $z$ is either a loose outneighbour of $u$ or $u=z$. Note that if $u$ is activated immediately after $y$ the next activated vertex is in $N^+(u)$, which is a set of loose out--neighbours of $u$. Hence the next activated vertex is a loose out--neighbour of $u$. Let $n_u$ be the number of loose out--neigbours of $u$. Any vertex can be activated at most $a+1$ many times. So we have 
 \[a|C|\leq (a+1)n_u\leq (a+1)r\]
 Therefore,
-\[|S|=|Q|+|C|\leq k +|C| \leq k + (1+1/a)r\] 
+\[|S|=|Q|+|C|\leq k +|C| \leq k + (1+1/a)r \qedhere\] 
 \end{proof}
+
     
-    %todo prove
-    
-    %todo add some results
+%todo add some results
     
 
 
@@ -1110,33 +1111,12 @@ Therefore,
 The refined activation strategy is a refinement on the activation strategy introduced by Xuding Zhu in \cite{Zhu2008}. The refined activation strategy is used to find the current best upper bound for the $(1,1)$--marking game for the class of planar graphs. 
 
 \begin{theorem}[Theorem 1, Zhu 2008 \cite{Zhu2008}]
-    If $G$ is a planar graph, then \[\chi_g(G)\leq\col(G)\leq17\]
+    If $G$ is a planar graph, then \[\col(G)\leq17\]
 \end{theorem}
 
-The refined activation strategy applies the same basic strategy as the standard activation strategy but with two main differences. First, instead of a linear ordering on $V(G)$ we use orientation of the graph $G$ as our ordering. This is only a partial ordering, so we partition $V(G)$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i <$ then the edge $xy$ is in $L$. The ordering may not be an ordering in each block. However if we ignore what happens in each block we get a linear ordering.
+The refined activation strategy applies the same basic strategy as the standard activation strategy but with two main differences. First, instead of a linear ordering on $V(G)$ we use directed graph, $L_0$, on $V(G)$ as our ordering. This is only a partial ordering, so we partition $V(G)$ into blocks $B_1,B_2,\dots,B_i$, where if $x \in B_i$, $y \in B_j$ and $i < j$ then the edge $(x,y)$ is in $L_0$. The ordering may not be an linear ordering in each block. However, if we ignore what happens in each block we get a linear ordering.
 
-Second when we activate a vertex $v$ if the edge $(u,v)$ fulfils some conditions then reverse the direction of the edge $(u,v)$ in $L$. That is within the blocks the ordering changes as the marking game is played.
-
-%\section{Online colouring}
-%
-%\begin{theorem}[Kierstand and Trotter \cite{KierstandTrotter}]
-%    An Interval graph can be online coloured with $3\omega-2$ colours, where $\omega$ is the size of the maximum clique.
-%\end{theorem}
-%
-%Can cover a graph with $ 3\omega-2 $ chains. In inductive proof each new $ A $ has pathwidth 2 thus can be game coloured in 7 colours. Conjecture that double trouble is $ 7*(\omega-1)+1 = 7\omega-6 $. however this relies on being able to see the whole of $ A $.
-%
-%\begin{theorem}[Kierstand \cite{KIERSTEAD2000}] \label{thm_intervalKierstand}
-%    An Interval graph has game chromatic number $3\omega-2$ where where $\omega$ is the size of the maximum clique.
-%\end{theorem}
-%
-%The proof of theorem \ref{thm_intervalKierstand} is similar to the proof of theorem \ref{thm_pathwidth}. 
-%However he defines his linear order as left to right on left most element in each interval.  
-%As a graph is of pathwidth $k$ if and only if it is a subgraph of an interval graph with maximal clique size $k+1$, these theorems are equivalent. These are the same because they both use the ordering of the left most element in each interval and first fit.        
-
-
-%Link between decadency of graph and double trouble?
-
-%vertex separation number > degeneracy, thus find double trouble for pathwidth, find for all graphs. 
+Second, there is a preference function $\rho$ that maps each $y \in V(G)$ to a non--empty subset of the $L_0$--outneigbours of $y$ that are not in the same block as $y$. Suppose we have just activated a vertex $v$. Let $w$ be the least outneighbour of $v$. If there is a $u\in V(G)$ such that there is a directed edge $(u,w)\in L_0$ where $(u,w)$ in in $\rho(u)\cap B_i$ for some $i$ we reverse the direction of the edge $(u,v)$ in $L_0$. So, within the blocks the ordering changes as the marking game is played.
 
 
 
