@@ -998,11 +998,12 @@ For a graph $G=(V,E)$ let $\Pi(G)$ be the set of all linear orders of $V$, and l
 In a directed graph $G=(V,E)$ for any vertex $v$ we have, 
 \begin{itemize}
     \item The set of \textit{out--edges}, $E^+(v) =\{(v,u)\in E\}$
-\end{itemize} denote  and the set of in--edges $E^-(v) =\{(u,v)\in E\}$ 
+    \item The set of \textit{in--edges} $E^-(v) =\{(u,v)\in E\}$ 
+\end{itemize}  
 
 We summarise the main ideas of the Harmonious Strategy as follows. 
 
-As part of the Harmonious Strategy Alice keeps of track of the set of activated edges $A$. 
+As part of the Harmonious Strategy Alice keeps of track of a set of activated edges $A$. A vertex is activated by adding it to $A$.
 Fix a linear ordering $L$ on the vertices on a graph $G=(V,E)$ and denote the inducted orentation $G_L$. suppose that Bob has just marked a vertex $u$. Alice plays the Harmonious Strategy by performing the following steps $a$ times.    
 \begin{enumerate}
     \item  Alice selects, $y$, the least unmarked outneighbor of $u$ to such that the edge $(u,y)\in V(G_L)$ has not yet been activated. She then activates the edge $(u,y)$. If there is no such vertex she marks the $L$--least unmarked vertex. \label{harmstep1}
