@@ -990,23 +990,23 @@ A $k$--tree is a maximal graph with treewidth $k$. This characterization of $k$-
 %-------------------------------------------------------------------------------------------------------------------
 \subsection{Extending the Activation Strategy}
 
+
+
 The activation strategy works well for the $(1,1)$--marking game but needs modifying to be used in the more general $(a,b)$--marking game. We will look at two different extensions. The first was introduced by Kierstead and Yang 2005 \cite{kierYang2005}. Their strategy is call the \textit{Harmonious Strategy}. The second extension we will consider was introduced by Yang and Zhu 2008 \cite{yangZhu2008}. This strategy is called the \textit{Asymmetric Activation Strategy} and is an built on the work done on the Harmonious Strategy. 
 
-For a graph $G=(V,E)$ let $\Pi(G)$ be the set of all linear orders of $V$, and let $\Delta^*(G)=\min_{L\in \Pi(G)}\Delta^+(G_L)$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the orientations of $G$. 
-%They use their the Harmonious Strategy to prove theorem \ref{thm:kiYa2005}.
+For a graph $G=(V,E)$ let $\Pi(G)$ be the set of all linear orders of $V$, and let $\Delta^*(G)=\min_{L\in \Pi(G)}\Delta^+(G_L)$. That is $\Delta^*(G)$ is the smallest maximum out--degree in all the induced orientations of $G$. 
+In a directed graph $G=(V,E)$ for any vertex $v$ we have, 
+\begin{itemize}
+    \item The set of \textit{out--edges}, $E^+(v) =\{(v,u)\in E\}$
+\end{itemize} denote  and the set of in--edges $E^-(v) =\{(u,v)\in E\}$ 
 
-%\begin{theorem}[Kierstead and Yang 2005 \cite{kierYang2005}]\label{thm:kiYa2005}
-%    Let a be an integer and $G$ be a graph with $\Delta^*(G) = k\leq a$. Then
-%    $\col(G;a,1) \leq 2k + 2$.
-%\end{theorem}
+We summarise the main ideas of the Harmonious Strategy as follows. 
 
-As part of the Harmonious Strategy Alice keeps of contributions between vertices. A vertex $u$ contributes to its neighbours $v$ if as part of the strategy we move from $u$ onto $v$. The contributions take the place of activations. They can be thought of as activations of the edges rather than the vertices. We summarise the main ideas of the Harmonious Strategy is as follows. 
-
-Fix a linear ordering on the vertices on a graph $G=(V,E)$ and suppose that Bob has just marked a vertex $u$. Alice plays the Harmonious Strategy by performing the following steps $a$ times.    
+As part of the Harmonious Strategy Alice keeps of track of the set of activated edges $A$. 
+Fix a linear ordering $L$ on the vertices on a graph $G=(V,E)$ and denote the inducted orentation $G_L$. suppose that Bob has just marked a vertex $u$. Alice plays the Harmonious Strategy by performing the following steps $a$ times.    
 \begin{enumerate}
-    \item  Alice selects, $y$, the least unmarked outneighbor of $u$ to whom $u$ has not yet contributed and then contributes to $y$. If there is no such vertex she selects the least unmarked vertex.
-    \item  The contribution from $y$
-    is passed along as in step (1) until finally it arrives at a vertex $z$ that has already contributed to all its outneighbors.
+    \item  Alice selects, $y$, the least unmarked outneighbor of $u$ to such that the edge $(u,y)\in V(G_L)$ has not yet been activated. She then activates the edge $(u,y)$. If there is no such vertex she marks the $L$--least unmarked vertex. \label{harmstep1}
+    \item  Alice repeats step (\ref{harmstep1}) on $y$ until she reaches at a vertex $z$ that either has no unmarked outneighbours or no unactivated out--edges. 
     \item  Alice marks $z$
 \end{enumerate}
 
@@ -1023,9 +1023,21 @@ More generally, we have the following bound for when Alice uses the Harmonious S
     Let $a,b$ be positive integers and $G$ a graph with $\Delta^*(G)=k\leq\frac{a}{b}$. Then $\col(G;a,b)\leq 2k+b+1$.
 \end{theorem}
 
+\begin{proof}Suppose that Alice has just marked a vertex $v$ and on Bob's previous turn he marked $x_0,\dots,x_b$.
+    We note without proof the following facts, 
+    \begin{enumerate}[(1)]
+        \item Any unmarked vertex $u$ has the same number of activated in--edges and activated out--edges. \label{harmprf1} 
+        \item $v$ has no unactivated out--edges. \label{harmprf2}
+        \item At the end of Alice's turn, every vertex $x$ satisfies the following; All the vertices adjacent to an activated out--edge of $x$ are marked. \label{harmprf3}
+    \end{enumerate}
+If it still Alice's turn, then $x_0,\dots,x_b$ may be adjacent to $u$ and might not satisfy the facts (1), (2), and (3). If it is Bobs turn then he may by about to mark $b$ vertices neigbouring $u$. Thus it suffices to show that for each unmarked vertex $u$, $u$ has at most $2k$ many marked neighbours other than $x_0,\dots,x_b$.
+
+By a combination of (\ref{harmprf2}) and (\ref{harmprf3}) for each every marked inneighbour $y$  of $u$ other than $x_0,\dots,x_b$ the edge $(y,u)$ is activated. By (\ref{harmprf1}) the number of activated out--edges of $u$ is the same as the number of marked in--neigbours. Thus, as $u$ has at most $k$ outneighbours $u$ has at most $2k$ many activated neighbours other than $x_0,\dots,x_b$.
+\end{proof}
+
  %The limited Harmonious Strategy is the evolution of both the standard activation strategy and the Harmonious Strategy. The primary difference with the Harmonious Strategy is the in the limited strategy Alice only marks a vertex if it has contributed to at least $a$ out--neighbours.    
 
-The Harmonious Strategy only works on some graphs and linear orders. This problem can be fixed by the \textit{Limited Harmonious Strategy} from \cite{kierYang2005}. As an alternative we consider the Asymmetric Activation Strategy, which does not have this problem.
+The bound we get when using Harmonious Strategy only works on some graphs and linear orders. This is problem, but can be fixed. We could modify he strategy for a more general bound, one such example is the \textit{Limited Harmonious Strategy} in \cite{kierYang2005}. Instead, we consider the Asymmetric Activation Strategy, which does not have this problem. The Asymmetric Activation Strategy was introduced by Yang and Zhu 2008 \cite{yangZhu2008}. This strategy is a combination of the Harmonious Strategy and the Activation Strategy.
 
 Informally we summarise the Asymmetric Activation Strategy as follows. Fix a graph $G=(V,E)$ and a linear order $L$ on $V$. Suppose that Bob has just marked a vertex $u$, Alice repeats the following steps $a$ times to mark $a$ vertices.
 \begin{enumerate}
