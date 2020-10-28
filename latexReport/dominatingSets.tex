@@ -2,10 +2,10 @@
 
 \section{Introduction}
 
-In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem in the language of graphs we introduce the concept of dominating sets. In the Dinner Party Problem Alice and Bob build a dominating set in the graph of guests. A guest is added to the dominating set if a platter is placed next to them. This continuous until every guest is fed, also known as dominated. 
+In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem in the language of graphs we introduce the concept of a dominating set. The Dinner Party Problem  can be thought of as  a graph problem where Alice and Bob build a dominating set in the graph of guests. A guest is added to the dominating set if a platter is placed next to them. This continues until every guest is fed, also known as dominated. 
 
 \begin{definition}[Dominating Set]
-    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex in $V(G)\setminus D$ is adjacent to at least one vertex in $D$.
+    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex is either in $D$ or is adjacent to at least one vertex in $D$.
 \end{definition} 
 %\begin{definition}
 %    Let $G$ be an directed graph.  A Dominating set $D$ of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)\setminus D$ there exists a vertex $u\in D$ such that there is a edge $(u,v)\in E(G)$. 
@@ -14,12 +14,13 @@ In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize 
     Let $G$ be a graph. The Domination number $\gamma(G)$ of $G$ is the minimum size of a dominating set in $G$.
 \end{definition}
 
-The class of NP problems can be thought of as the problems who have no efficient algorithm for finding a solution. 
-Finding a dominating set of size at most $k$ is a classic NP--complete problem \cite[p.~190]{garey1979computers}. This means that there it is assumed to have no polynomial time (read efficient) algorithm and is at least as hard as any problem in NP. Basically, this means that in general finding dominating sets can only be done by checking every possible dominating set.
+%todo rewrite
+The class of NP problems can be thought of as the problems which have no efficient algorithm for finding a solution. 
+Finding a dominating set of size at most $k$ is a classic NP--complete problem \cite[p.~190]{garey1979computers}. This means that we believe it to have no polynomial time (read efficient) algorithm and is at least as hard as any problem in NP. Basically, this means that in general finding dominating sets can only be done by checking every possible dominating set.
 
 One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5G network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $u$ and $v$ are connected if a 5G tower placed on building $u$ one will provide service to building $v$. A set of buildings that would provide coverage to the whole city is a dominating set. The minimum number of towers needed is the domination number of this graph.
 
-The size of a minimal dominating set is in some sense a measure of how closely connected a graph is. A graph with a low domination number is densely connectivity, and a graph with a high domination number is loosely connectivity. For example, a city that is densely packed requires fewer towers. Every new 5g tower reaches many buildings. Whereas, a sparsely populated city will require more towers. Each tower only services a few buildings.   
+The size of a minimal dominating set is in some sense a measure of how closely connected a graph is. A graph with a low domination number is densely connected, and a graph with a high domination number is loosely connected. For example, a city that is densely packed requires fewer towers. Every new 5G tower reaches many buildings. Whereas, a sparsely populated city will require more towers. Each tower only services a few buildings.   
 
 As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in figures  \ref{fig:wheelW9} and \ref{fig:cycleC8}.
 \begin{figure} [h]
@@ -80,7 +81,7 @@ As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in
         \label{fig:cycleC8}
     \end{minipage}
 \end{figure}
-The wheel has a dominating set of size 1, just the centre vertex. Whereas the cycle graph has a dominating set of size 3. In figures  \ref{fig:wheelW9} and \ref{fig:cycleC8} the dominating sets are denoted as black vertices. This can be interpreted as the wheel graph as being more closely connected than the cycle graph. And when you observe the graphs this distinction makes sense.
+The wheel has a dominating set of size 1, just the centre vertex. Whereas, the cycle graph has a dominating set of size 3. In figures  \ref{fig:wheelW9} and \ref{fig:cycleC8} the dominating sets are denoted as black vertices. This can be interpreted as the wheel graph being more closely connected than the cycle graph. And when you observe the graphs this distinction makes sense.
 
 %\subsection{Games Involving Dominating sets}
 %Before we look at what we call the dominating game, we will consider the earliest game involving dominating sets.
@@ -102,35 +103,16 @@ In this chapter we show how the dominating game can be bounded in terms of both 
 
 For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
 
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score and initialise a dominating set $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is, the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size if the dominating set at the end of the game. That is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
-
-At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice's if even and Bob's if odd). This snapshot is called a \textit{game state}. 
-
-\begin{definition}[Game State]
-    Let $G$ be a graph. A sequence $\seq{v_n}$ of vertices in $V(G)$ is a \textit{game state} for $G$.
-\end{definition}
-
-A strategy in the dominating game is a prescribed next move for every possible game state. In other words a strategy tells a player how to play the game. We can define a strategy as a function from game states to game states. 
-
-\begin{definition}[Domination Game Strategy]
-    For $G$ a graph and $D=(v_n)_n$ a game state for $G$ let
-    \begin{align*}        
-        \varphi_G &\colon {V(G)}^{<\Nn} \to {V(G)}^{<\Nn} 
-    \end{align*}
-    where ${V(G)}^{<\Nn}$ denotes the set of all sequences of vertices in $V(G)$. $\varphi_G$ is a strategy if it is defined on any game state and $\varphi_G(D)=D'$ gives a legal move in the dominating game. That is $D'=D\cup \{v\}$ for some $v\in V(G)$ such that $D'$ dominates strictly more vertices than $D$. 
-\end{definition}
-
-A strategy for Alice is a strategy that is only defined on game states when it is Alice's turn. That is pairs of the form $(G,D)$ where $G$ is a graph and $D$ has even size. Equivalently a strategy for Bob is a strategy that is only defined on odd sized sets. 
-
-For some fixed target score $t$ a winning strategy for Alice is a strategy for Alice that guarantees $D$ will form a dominating set of size less that $t$. Similarly, a winning strategy for Bob is a strategy for Bob that guarantees $D$ will form a dominating set of size greater than $t$.
-
-The formalisation of strategies provides good background to the domination game. However to simplify proofs and intuition we will not explicitly define strategies as functions. Rather we will do it implicitly.    
+We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score, and $D$ a dominating set that we initialise to $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is, the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size of the dominating set at the end of the game. That is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
 
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
 \end{definition} 
 
-A note on notation. If $\CC$ is a class of graphs, and $\varphi_g(G)$ some property of a graph $G \in \CC$. Foe example the game domination number. Then $\varphi_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$, $\varphi_g(H)\leq k$. A class $\CC$ is bounded above by $k$ if for every graph $H\in\CC$ $\varphi_g(H)\leq k$. $\CC$ is bounded below by $k$ if there is a graph $H$ in $\CC$ such that $\varphi_g(H)= k$. This can be thought of as Bob being allowed to pick the graph. If $\phi_g$ represents a game with a target score $t$ such that Bob will win if $t < \varphi_g(G)$. If he is allowed to pick the graph then he will pick a graph $G$ with $\varphi_g(G) > t$. Then if $t\geq \varphi_g(G)$ then it would not matter what graph Bob picks. Alice will always win. When considering a graph game we always consider it to be played by two player Alice and Bob.  
+Suppose $\CC$ is a class of graphs. $\gamma_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$, $\gamma_g(H)\leq k$. We say a class $\CC$ is bounded above by $k$ if $\varphi_g(\CC)\leq k$. $\CC$ is bounded below by $k$ if there is a graph $H$ in $\CC$ such that $\gamma_g(H)= k$ and we write $\gamma_g(\CC)\geq k$. Hence if $k\leq\gamma_g(\CC)\leq k$ then $\gamma_g(\CC) = k$. 
+
+%This can be thought of as Bob being allowed to pick the graph the game is played on. Suppose we have a target score $t$. If Bob is allowed to pick the graph then he will pick a graph $G$ with $\gamma_g(G) > t$. Then if $t\geq \gamma_g(G)$ then it would not matter what graph Bob picks. Alice will always win. 
+
 
 %\begin{lemma}
 %    Let $G$ be a graph. 
@@ -160,7 +142,7 @@ A note on notation. If $\CC$ is a class of graphs, and $\varphi_g(G)$ some prope
 
 \subsection{Lower Bounds for Game Dominating Number}
     
-For a graph $G=(E,V)$, there are no dominating sets smaller than $\gamma(G)$. This means that if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is \[\gamma(G)\leq\gamma_g(G)\]
+A graph $G=(E,V)$ has no dominating sets smaller than $\gamma(G)$. This means that if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is \[\gamma(G)\leq\gamma_g(G)\]
 %Conversely, if we have a target score of $|V|$ is doesn't matter what strategy Alice employs, she will always win. Thus, we get theorem \ref{thm:triv_dom}.
 
 %\begin{theorem}\label{thm:triv_dom}
@@ -173,10 +155,10 @@ Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory.
     \[\gamma(G) \leq \frac{n}{2}\]
 \end{theorem}
 
-In this report we will show that theorem \ref{thm:oreDomUpper} provides us with a lower bound for the game domination number.  
+In this report we will show that theorem \ref{thm:oreDomUpper} also provides us with a lower bound for the game domination number.  
 Before we can show $n/2$ is a lower bound we introduce the following lemmas. 
 \begin{lemma}\label{lem:ore_is_tight}
-    For any connected graph $G$ with no isolated vertices and $n$ vertices the bound     
+    For every $n$ there exists a connected graph $G$ with $n$ vertices and no isolated vertices such that $\gamma(G) = n/2$. Hence the bound    
     $\gamma(G) \leq \frac{n}{2}$ is tight
 \end{lemma}
 \begin{proof}
@@ -209,7 +191,10 @@ Before we can show $n/2$ is a lower bound we introduce the following lemmas.
     \end{figure}
     A dominating set in $G$ is the set of vertices in the original path graph. Hence $\gamma(G)= n/2$. Therefore $n/2$ is a tight upper bound for $\gamma(\CC)$. 
 \end{proof}
-\begin{lemma}[Askes]\label{thm:domlow}
+
+Lemma \ref{thm:domlow} and theorem \ref{thm:gamedomLow} are implicit in the literature. But we state them here with proofs.
+
+\begin{lemma}\label{thm:domlow}
     Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is for all $G\in\CC$ $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
     \[\gamma(\CC) \leq  \gamma_g(\CC)\]
 \end{lemma}
@@ -220,7 +205,7 @@ Before we can show $n/2$ is a lower bound we introduce the following lemmas.
     Therefore $\gamma(\CC) \leq \gamma_g(\CC)$
 \end{proof}
 
-\begin{theorem}[Askes] \label{thm:gamedomLow}
+\begin{theorem}\label{thm:gamedomLow}
     Let $G$ be a connected graph with $n$ vertices, such that $n \geq 4$. Then, there is a winning strategy for Alice with    
     \[  \frac{n}{2} \leq \gamma_g(G)  \]    
 \end{theorem}
@@ -263,7 +248,7 @@ Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex th
 Suppose Alice has a winning strategy on the class of graphs $\CC$ with target score $t$. $t$ is then an upper bound for the game domination number for $\CC$. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
 
 %For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
-For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself. Bobs strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
+For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself. Bob's strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
 
 \begin{theorem}[Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}]\label{thm:gamedomup}
     For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
@@ -279,9 +264,9 @@ In \cite{BrKlRa2010} the authors do not give a formal proof, they give a brief s
 \end{proof}
 %hence bounds for game relie on bounds for dom num
 
-If the domination number of a class of graphs is known, then we know an upper bound for the game domination number. However, the domination number of most classes of graphs is not known. This is because finding a dominating set is a NP--complete problem. And so finding dominating numbers is difficult.
+If the domination number of a class of graphs is known, then we know an upper bound for the game domination number. However, the domination number of most classes of graphs is not known. This is because finding a dominating set is an NP--complete problem. And so finding dominating numbers is difficult.
 
-Suppose the domination number is not known, but we know an upper bound for it. Then if Alice pretends that the domination number is this bound, we get an upper bound for the game domination. Alice's strategy would be exactly the same as in theorem \ref{thm:gamedomup}. This means that we can get an improvement on the upper bound of the domination number by finding  better upper bounds for the game domination number. However, finding bounds for the dominating number is beyond the scope of this report. But, we provide some examples,
+Suppose the domination number is not known, but we know an upper bound for it. Then if Alice pretends that the domination number is this bound, we get an upper bound for the game domination number. Alice's strategy would be exactly the same as in theorem \ref{thm:gamedomup}. This means that we can get an improvement on the upper bound of the domination number by finding  better upper bounds for the game domination number. However, finding bounds for the dominating number is beyond the scope of this report. But, we provide some examples,
 
 %todo add more bounds based on classes of graphs
 
@@ -293,7 +278,7 @@ Finding better bounds for the class of all graphs is a difficult problem. But fo
 \begin{definition}[Tree]
     A graph is s \textit{tree} if it is connected and contains no cycles.
 \end{definition}
-For the class of tress
+For the class of trees
 Kinnersley, West, and Zamani 2013 \cite{KiWeZa2013} conjectured the following. 
 \begin{conjecture}[Kinnersley, West, and Zamani 2013 \cite{KiWeZa2013}] \label{conj:treedomup}
     For a forest $G$ with $n$ vertices and no isolated vertices,    
@@ -375,7 +360,7 @@ Kinnersley, West, and Zamani 2013 \cite{KiWeZa2013} showed conjecture \ref{conj:
 \end{theorem}
 %\begin{proof}
     
-Rather than provide a full proof we give the main ideas; Namely we describe Alice's strategy for $F$ a forest of caterpillars with no isolated vertices. 
+Rather than provide a full proof we give the main ideas; namely we describe Alice's strategy for $F$ a forest of caterpillars with no isolated vertices. 
     %To extend the strategy to a full proof we would proceed by induction on the number of turns. Then verify that the theorem holds on induced subgraphs.
     %We show this bound by induction on $n$ the number of vertices in the forest $F$. For $n\leq 5$ the hypothesis  follows from an analysis of the few possible graphs.
     %
@@ -390,7 +375,7 @@ Rather than provide a full proof we give the main ideas; Namely we describe Alic
     
     \item $F'$ has no vertices incident to 2 leaves and no component isomorphic to one of the path graphs $P_2,P_4,P_5$. If this is the case then no component of $F'$ has less than 6 vertices. Fix a component $C$ of $F$ and let $u_1,\dots,u_k$ the longest path in $C$. If there is some $i$ such that $d(u_i)=3$ then Alice plays $u_i$. If not, then Alice plays $u_6$.    
     \end{enumerate}
-Alice keep playing according to these rules until there are no more vertices to play. This concludes the strategy.
+Alice keeps playing according to these rules until there are no more vertices to play. This concludes the strategy.
 %The remainder of the proof done using induction on the number vertices in the graph. We would use the fact that if $F$ is the union of two forests, that is $F=F_1\oplus F_2$, then $\gamma_g(F)\leq\gamma_g(F_1) +\gamma_g'(F_2)$. 
 %By using this strategy, Alice will always win on $F$ if the target score is less than or equal to $3n/5$.
 %    \begin{enumerate}
@@ -409,7 +394,7 @@ Further work has been done to improve the class of trees that the conjecture hol
     For $F$ a forest with no isolated vertices such that no two leaves have distance 4,
     $\gamma_g(F)\leq \frac{3n}{5}$.
 \end{theorem}
-Again, rather than provide a full proof we give the main ideas; Namely we describe Alice's strategy. As part of this strategy Alice assigns a value to each vertex $v\in V(F)$ as follows, 
+Again, rather than provide a full proof we give the main ideas; namely we describe Alice's strategy. As part of this strategy Alice assigns a value to each vertex $v\in V(F)$ as follows, 
 \begin{itemize}
     \item $v$ has value 3 if it is not dominated.
     \item $v$ has value 2 if it is dominated but has an undominated neighbour.
@@ -445,12 +430,12 @@ As far as we are aware there has been no published work on the $(a,b)$--dominati
 \begin{proof}    
    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set of $G$ such that $|X| = \gamma(G)$. On Alice's first move she plays any $a$ vertices in $X$. Now, suppose Bob has just played $b$ vertices and $D$ is the current partial dominating set. Alice's strategy is to play any $a$ unchosen vertices, $v_1,\dots,v_a \in X\setminus D$. After no more than $\gamma(G)/a$ rounds the game must have ended as $X$ is a dominating set and at least $a$ elements of $X$ are chosen each round. In each round Alice adds $a$ vertices to $D$ and Bob adds $b$ vertices to $D$, hence the size of $D$ is at most $(a+b)/a$ times the number of rounds. 
    
-   If the number of rounds is exactly $\gamma(G)/a$ then the game ends on Alice's turn. This is becasue Alice starts each round and the game is over on her $\gamma(G)/a$--th turn. In such a case Bob has had one less turn than Alice. Hence $|D|=(a+b)\frac{\gamma(G)}{a} -b$. If the number of rounds is strictly less than $\gamma(G)/a$ then the size of $D$ is strictly less than $(a+b)\frac{\gamma(G)}{a}$. In either case the game ends with $|D| \leq \frac{a+b}{a}\gamma(G) - 1$.
+   If the number of rounds is exactly $\gamma(G)/a$ then the game ends on Alice's turn. This is because Alice starts each round and the game is over on her $\gamma(G)/a$--th turn. In such a case Bob has had one less turn than Alice. Hence $|D|=(a+b)\frac{\gamma(G)}{a} -b$. If the number of rounds is strictly less than $\gamma(G)/a$ then the size of $D$ is strictly less than $(a+b)\frac{\gamma(G)}{a}$. In either case the game ends with $|D| \leq \frac{a+b}{a}\gamma(G) - 1$.
 \end{proof}
 
 \section{The Independent Dominating Game} \label{sec:ind_dom_game}
 
-To motivate the independent dominating game we introduce the cover band \textit{David and the Derivatives}. David and the Derivatives are the headline act at a large concert. On a normal night there would be no problems filling the seats in the concert hall. The problem is, they are under COVID restrictions. This means that all the guests must be seated 2 meters apart. Alice works for the Ministry of health. Her job is to seat as few people as possible while still filling the hall. Bob is David and the Derivatives' manager. His job to maximise the number of people seated in the hall. There are only door sales for this concert. So the more people Bob can seat the more profit he and David and the Derivatives make. The guests arrive one by one. Alternating, Alice and Bob direct people to seats. This continuous until no more people can be seated without breaking social distancing. Denoting the number of people seated as $n$. How small can Alice guarantee $n$ will be? And, how large can Bob guarantee $n$ will be? These questions have non-trivial solutions. And are a specific instance of the Independent Dominating Game.
+To motivate the independent dominating game we introduce the cover band \textit{David and the Derivatives}. David and the Derivatives are the headline act at a large concert. On a normal night there would be no problems filling the seats in the concert hall. The problem is, they are under COVID restrictions. This means that all the guests must be seated 2 meters apart. Alice works for the Ministry of health. Her job is to seat as few people as possible while still filling the hall. Bob is David and the Derivatives' manager. His job to maximise the number of people seated in the hall. There are only door sales for this concert. So the more people Bob can seat the more profit he and David and the Derivatives make. The guests arrive one by one. Alternating, Alice and Bob direct people to seats. This continues until no more people can be seated without breaking social distancing. Denoting the number of people seated as $n$. How small can Alice guarantee $n$ will be? And, how large can Bob guarantee $n$ will be? These questions have non-trivial solutions. And are a specific instance of the Independent Dominating Game.
 
 \begin{definition}[Independent Set]
     For a graph $G$, an \textit{independent Set} is a subset $I\subseteq V(G)$ such that no two vertices in $I$ are adjacent. That is, for all $u,v\in I$ there exists no edge $(u,v)\in E(G)$.
@@ -460,7 +445,7 @@ To motivate the independent dominating game we introduce the cover band \textit{
    For a graph $G$, an \textit{independent dominating set} is a set of vertices in $G$ that is both independent and dominating.
 \end{definition}
 
-The independent domination game is played on a graph $G$ as follows. Starting with Alice. The players take turns playing a vertex $v$ such that $v$ is not incident with any vertex that is already dominated. That is $v\in V(G)\backslash N[D]$, where $D$ is the current dominating set. Alice and Bob continue playing vertices until $D$ forms a dominating set. The score of the game is the size of the dominating set. Alice's goal is to minimise the score, and Bob's goal is to maximise it.
+The independent domination game is played on a graph $G$ as follows. Starting with Alice, the players take turns playing a vertex $v$ such that $v$ is not incident with any vertex that is already dominated. That is $v\in V(G)\backslash N[D]$, where $D$ is the current dominating set. Alice and Bob continue playing vertices until $D$ forms a dominating set. The score of the game is the size of the dominating set. Alice's goal is to minimise the score, and Bob's goal is to maximise it.
 
 
 Since an independent dominating set is a maximal independent set and vice versa the independent dominating game is equivalent to the Independent set game. This game is called the \textit{competition-independence game}. In this game Alice and Bob take turns constructing a maximal independent set. As before Alice tries to minimise the size of the independent set. Bob tries to maximise the independent set. The \text{competition-independence number} $I_A(G)$ (respectively $I_B(G)$) is the optimal size of a maximal independent set when Alice starts (or Bob respectively). 
@@ -473,7 +458,7 @@ The competition-independence game was first introduced in Phillips and Slater 20
     I_B(P_n) &=\lfloor(3n+6)/4\rfloor       
     \end{align*} 
 \end{theorem}
-Further work on bounds competition-independence game was done by Goddard and Henning 2008 \cite{GoddardHenning2018}. In \cite{GoddardHenning2018} the authors proving a winning strategy for Alice on trees of with maximum degree less than 3.
+Further work on the bounds of competition-independence game was done by Goddard and Henning 2008 \cite{GoddardHenning2018}. In \cite{GoddardHenning2018} the authors proving a winning strategy for Alice on trees of with maximum degree less than 3.
 
 \begin{theorem}[Goddard and Henning 2008 \cite{GoddardHenning2018}]    \label{thm:indDomtree}
 For any tree $T$ with greater than or equal to 2 vertices and with maximum degree 3 
@@ -486,12 +471,12 @@ We demonstrate the strategy for Alice introduced in \cite{GoddardHenning2018}'s 
 
 Compared to the domination and total domination game there has been comparatively little work on the competition-independence game. 
 %In total there is probably less than a dozen papers on the topic. 
-Recent work has been done in Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} comparing the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the type: For a positive integer $n$, there is some graph $G$ such that
+Recent work by Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} compares the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the type: For a positive integer $n$, there is some graph $G$ such that
 \[\gamma_g(G) - I_A(G) = n\]
 
 %todo prove this result
 %todo provide example
-There is an interesting fact about the domination game. If Bob has the first move the Bob start domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends he has the first move the subgraph $G'=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(G')+1\leq \gamma_g(G)+1$.   
+There is an interesting fact about the domination game. If Bob has the first move the domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends she has the first move in the subgraph $H=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(H)+1\leq \gamma_g(G)+1$.   
 This is not true for the competition-independence game. For an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
 
 \begin{figure}[h]
@@ -523,13 +508,12 @@ If Alice starts she will play $v$ and the game ends with $|I| = 1$. If Bob start
     The \textit{independence number} of a graph $G$, denoted $\alpha(G)$, is the size of the independent set in $G$.
 \end{definition}
 
-A graph has no independent sets larger than it's independence number. Consequently, when playing the competition-independence game the size of the independent set formed is no larger than the  independence number. This means the competition-independence number is bounded above by the independence number. Hence, we get theorem \ref{thm:indgameup}.
+A graph has no independent sets larger than its independence number. Consequently, when playing the competition-independence game the size of the independent set formed is no larger than the  independence number. This means the competition-independence number is bounded above by the independence number. Hence, we get theorem \ref{thm:indgameup}.
 
 \begin{theorem}\label{thm:indgameup}
     For a graph $G$, $I_A(G)\leq \alpha(G)$.    
 \end{theorem}
 
-%todo add bound
 
 %If 
 %
