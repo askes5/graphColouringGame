@@ -107,7 +107,7 @@ All the graph we have discussed so far are undirected. A directed graph is a gra
 Finally, we introduce some game terminology. In a game whenever Alice or Bob has their turn by choosing a vertex we say they \textit{play} a vertex. For example, in the colouring game a play is when Alice chooses a vertex and assigns it a colour. A \textit{round} is a play of both Alice and Bob.  At any stage in the game we can consider the current dominating set along with the graph we are playing on. This pair forms a snapshot of the game detailing all the pertinent information. The size of $D$ tells you whose turn it is (Alice's if even and Bob's if odd). This snapshot is called a \textit{game state}. 
 
 \begin{definition}[Game State]
-    Let $G$ be a graph. A \textit{game state} for $G$ a sequence $\seq{v_n}$ of vertices in $V(G)$ .
+    Let $G$ be a graph. A \textit{game state} for $G$ a sequence $\seq{v_n}$ of vertices in $V(G)$ such that each vertex appears at most once.
 \end{definition}
 
 A strategy for some game is a prescribed next move for every possible game state. In other words a strategy tells a player how to play the game. We define a strategy as a function from game states to game states. Note that the following definition only makes sense for games in which the players only pick vertices. For example in the colouring game the players assign colours to vertices. Hence the strategy would need to take this extra information into account. 
