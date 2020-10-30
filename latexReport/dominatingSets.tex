@@ -329,13 +329,13 @@ Let $D$ be the current partial dominating set on Alice's turn. A vertex is \text
 \end{enumerate}
 Alice keeps playing according to these rules until there are no more vertices to play. This concludes the strategy. 
 
-Further work has been done to improve the class of trees that the conjecture holds for. Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} showed that conjecture \ref{conj:treedomup} holds for forests that have no isolated vertices and in which no two leaves have distance 4.
+Further work has been done to improve the class of trees that the conjecture \ref{conj:treedomup} holds for. Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} showed that conjecture \ref{conj:treedomup} holds for forests that have no isolated vertices and in which no two leaves have distance 4.
 %
 \begin{theorem}[Bujt\'{a}s, Csilla 2015 \cite{Bujt2015}]\label{thm:domtreedist4}
     For $F$ a forest with no isolated vertices such that no two leaves have distance 4,
     $\gamma_g(F)\leq \frac{3n}{5}$.
 \end{theorem}
-Again, rather than provide a full proof we give the main ideas; namely we describe Alice's strategy. As part of this strategy Alice assigns a value to each vertex $v\in V(F)$ as follows, 
+Again, rather than provide a full proof we describe Alice's strategy. As part of this strategy Alice assigns a value to each vertex $v\in V(F)$ as follows, 
 \begin{itemize}
     \item $v$ has value 3 if it is not dominated.
     \item $v$ has value 2 if it is dominated but has an undominated neighbour.
@@ -415,11 +415,9 @@ Compared to the domination and total domination game there has been comparativel
 Recent work by Worawannotai, Ruksasakchai 2020 \cite{WorRuk2020} compares the competition-independence game to the dominating game. Most of the results in \cite{WorRuk2020} are a variation of the type: For a positive integer $n$, there is some graph $G$ such that
 \[\gamma_g(G) - I_A(G) = n\]
 
-%todo prove this result
-%todo provide example
 There is an interesting fact about the domination game. If Bob has the first move the domination number is less than or equal to $\gamma_g(G) +1$. To see this consider a graph $G$. Bob plays $v$ as his first move. Alice pretends she has the first move in the subgraph $H=G\ba N[v]$. Alice will then win on $G$ with score $\gamma_g(H)+1\leq \gamma_g(G)+1$.   
-This is not true for the competition-independence game. For an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
-
+This fact is not true for the competition-independence game. As an example consider the star graph $S_7$ in figure \ref{fig:starS7}. 
+%
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}  
@@ -442,35 +440,18 @@ This is not true for the competition-independence game. For an example consider 
     \caption{The star graph $S_7$}
     \label{fig:starS7}
 \end{figure}
-
+%
 If Alice starts she will play $v$ and the game ends with $|I| = 1$. If Bob starts he will play a vertex $u_i$. Alice cannot play $v$ so must play a vertex $u_j$ such that $i\neq j$. The game will end with $|I| = 7$. Thus $I_A(S_7)=1$ and $I_B(S_7)=7$.
 
 \begin{definition}[Independence number]
-    The \textit{independence number} of a graph $G$, denoted $\alpha(G)$, is the size of the independent set in $G$.
+    The \textit{independence number} of a graph $G$, denoted $\alpha(G)$, is the size of a maximum independent set in $G$.
 \end{definition}
 
 A graph has no independent sets larger than its independence number. Consequently, when playing the competition-independence game the size of the independent set formed is no larger than the  independence number. This means the competition-independence number is bounded above by the independence number. Hence, we get theorem \ref{thm:indgameup}.
 
 \begin{theorem}\label{thm:indgameup}
-    For a graph $G$, $I_A(G)\leq \alpha(G)$.    
+    For a graph $G$, \[I_A(G)\leq \alpha(G)\].    
 \end{theorem}
-
-
-%If 
-%
-%It was shown in Borg 2010 \cite{borg2010sharp} that for a graph $G$ with maximal degree $k$ and $n$ vertices 
-%%
-%\begin{equation}
-%\label{equ3}
-%\alpha(G) \leq n - \left\lceil\frac{n-1}{k}\right\rceil
-%\end{equation}
-%
-%Further the authors show that this bound is sharp. 
-%
-%$I_A$ is bounded above by the independence number. As the bound in equation \ref{equ3} is sharp the independence number of the class of graphs with maximal degree $k$ is bounded below by $n - \left\lceil(n-1)/k\right\rceil$. Hence for the class of graphs $\mathcal{C}$ with maximal degree $k$ and $n$ vertices 
-%
-%\[\gamma_g(\mathcal{C}) = n -\left\lceil\frac{n-1}{k}\right\rceil\] 
-
 
 
 

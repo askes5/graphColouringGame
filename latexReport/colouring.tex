@@ -10,13 +10,13 @@ Long ago all world maps were hand drawn. Alice has a business that specializes i
     \caption{A coloured map}
 \end{figure}
 
-We can translate the problem of map colouring to a problem about graphs. We do this by placing a vertex in each country and join two vertices with an edge if and only if the corresponding countries share a border. 
+We can translate the problem of map colouring to a problem about graphs. We do this by placing a vertex in each country and join two vertices with an edge if the corresponding countries share a border. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/161-fig38}
     \caption{Translating maps to graphs}
 \end{figure}
-By constructing a graph in this way we have a one to one correspondence between colourings of the graph and the map. So, if Alice assigns colours to the vertices such that no two neighbouring vertices have the same colour she has a way to colour the map. Any graph that can be drawn on the plane (called a planar graph) can be coloured in this manner using only four colours. This is known as the \textit{four colour theorem} \cite{thomas19984ColourUpdate}. The four colour theorem states that any planar graph can be coloured using only four colours. Thus, Alice needs only 4 colours to colour her maps.
+By constructing a graph in this way we have a one to one correspondence between colourings of the graph and the map. So, if Alice assigns colours to the vertices such that no two neighbouring vertices have the same colour, she has a way to colour the map. Any graph that can be drawn on the plane (called a planar graph) can be coloured in this manner using only four colours. This is known as the \textit{four colour theorem} \cite{thomas19984ColourUpdate}. The four colour theorem states that any planar graph can be coloured using only four colours. Thus, Alice only needs 4 colours to colour her maps.
 
 We formally define a colouring as follows.
 \begin{definition}[Proper $k$-Vertex Colouring]
@@ -28,11 +28,9 @@ The \textit{chromatic number}, $\chi(G)$, of a graph $G$ is the smallest $k$ suc
 \end{definition} 
 
 \section{The Colouring Game} \label{sec:colouring_game}
-Alice's map colouring business is a huge success. She decides to hire Bob to help her colour her maps. Unbeknownst to Alice, Bob is part of a secret ink cabal. The cabal's sole goal is to drive up ink sales. Bob will try to use as many colours as possible when colouring maps. To colour a map Alice and Bob take turns assigning a colour to each country. They continue until all the countries are coloured. A problem arises almost immediately. By strategically choosing colours Bob can make it so that some maps \textit{cannot} be coloured with four colours. In fact for some maps Bob can force 8 colours \cite{kierstead1994planar}. So, what is the total number of colours Alice needs to ensure that any map can always be coloured? This is an open question. The current best bound is 17 \cite{Zhu2008}. In section \ref{sec:refActStrat} we will show how this bound is found. We can also ask the same question about classes of graphs that are not planar. 
+Alice's map colouring business is a huge success. She decides to hire Bob to help her colour her maps. Unbeknownst to Alice, Bob is part of a secret ink cabal. The cabal's sole goal is to drive up ink sales. Bob will try to use as many colours as possible when colouring maps. To colour a map Alice and Bob take turns assigning a colour to each country. They continue until all the countries are coloured. A problem arises almost immediately. By strategically choosing colours Bob can make it so that some maps \textit{cannot} be coloured with four colours. In fact for some maps Bob can force 8 colours \cite{kierstead1994planar}. So, what is the total number of colours Alice needs to ensure that any map can always be coloured? This is an open question. The current best bound is 17 \cite{Zhu2008}. In section \ref{sec:refActStrat}, we will show how this bound is found. We can also ask the same question about classes of graphs that are not planar. 
 
 But first we define the \textit{colouring game}. Let $G$ be a graph, and $C$ a set of colours. Beginning with Alice, Alice and Bob take alternating turns. On their turn they choose an uncoloured vertex, $v$, and assign $v$ a colour from $C$ such that no two adjacent vertices in $G$ have the same colour. This continues until one of two win conditions are met. First, Alice wins if all the vertices are coloured. Second, Bob wins if there is a vertex that cannot be coloured with the available colours.
-
-%todo prove subgraphs are bounded by the parent
 
 \begin{definition}[Game Chromatic Number]
     For a graph $G$ the \textit{game chromatic number}, $\chi_g(G)$, is the smallest number of colours needed to guarantee that Alice has a winning strategy on $G$, when playing the colouring game on $G$.     
