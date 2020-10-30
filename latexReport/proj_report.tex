@@ -16,7 +16,7 @@
 \usepackage[mathscr]{euscript} %extra math fonts
 
 \usepackage{tikz} %tikz libray for graphs
-\usepackage{tikz,fullpage, xcolor}
+\usepackage{tikz, fullpage, xcolor}
 \usepackage{graphicx}
 \usetikzlibrary{decorations.markings, hobby}
 \usetikzlibrary{calc} %for positing nodes halfway between others
@@ -55,6 +55,8 @@
 
 \usepackage{enumerate}
  
+%\usepackage[en-NZ]{datetime2}
+%\DTMlangsetup{showdayofmonth=false}
  
 %declare new commands
 \DeclareMathOperator{\col}{col_g}
@@ -75,7 +77,7 @@
                            
 \title{Graph Algorithms with Hostile Partners}
 \author{Matthew Askes}
-\date{\today}
+\date{October 2020}
 
 %% This file can be used for creating a wide range of reports
 %%  across various Schools
@@ -106,8 +108,9 @@
 
 
 \begin{document}
+%========================================================================================
+    
 \frontmatter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
 
@@ -123,8 +126,8 @@ A graph algorithm with a hostile partner is a game played between two players, A
 %a list of the figures we defined
 \listoffigures
 
+%========================================================================================
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 
 % individual chapters included here
@@ -133,11 +136,7 @@ A graph algorithm with a hostile partner is a game played between two players, A
 \include{colouring}
 \include{conclusion}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\appendix
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%========================================================================================
 
 \backmatter
 \bibliographystyle{amsplain}
