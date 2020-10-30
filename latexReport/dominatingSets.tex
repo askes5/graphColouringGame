@@ -2,14 +2,12 @@
 
 \section{Introduction}
 
-In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem in the language of graphs we introduce the concept of a dominating set. The Dinner Party Problem  can be thought of as  a graph problem where Alice and Bob build a dominating set in the graph of guests. A guest is added to the dominating set if a platter is placed next to them. This continues until every guest is dominated, aka feed. 
+In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize the Dinner Party Problem in the language of graphs we introduce the concept of a dominating set. The Dinner Party Problem  can be thought of as  a graph game where Alice and Bob are building a dominating set in the graph of guests. A guest is in the dominating set if a platter is placed next to them. A guest is dominated if they are within arms reach of a platter. The game continues until every guest is dominated, aka feed. 
 
 \begin{definition}[Dominating Set]
-    Let $G$ be a graph. A Dominating set $D$ of $G$ is a subset of $V(G)$ such that every vertex is either in $D$ or is adjacent to at least one vertex in $D$.
+    Let $G$ be a graph. A \textit{dominating set} $D$ of $G$ is a subset of $V(G)$ such that every vertex is either in $D$ or is adjacent to at least one vertex in $D$.
 \end{definition} 
-%\begin{definition}
-%    Let $G$ be an directed graph.  A Dominating set $D$ of $G$ is a subset of $V(G)$ such for every vertex $v\in V(G)\setminus D$ there exists a vertex $u\in D$ such that there is a edge $(u,v)\in E(G)$. 
-%\end{definition}
+
 \begin{definition}[Domination Number]
     Let $G$ be a graph. The Domination number $\gamma(G)$ of $G$ is the minimum size of a dominating set in $G$.
 \end{definition}
@@ -18,11 +16,11 @@ In chapter \ref{chpt:into} we introduced the Dinner Party Problem. To formalize 
 The class of NP problems can be thought of as the problems which have no efficient algorithm for finding a solution. 
 Finding a dominating set of size at most $k$ is a classic NP-complete problem \cite[p.~190]{garey1979computers}. This means that we believe it to have no polynomial time (read efficient) algorithm and is at least as hard as any problem in NP. Basically, this means that in general finding dominating sets can only be done by checking every possible dominating set.
 
-One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5G network in a city. We consider a graph of buildings in a city. Where the vertices are buildings and two vertices $u$ and $v$ are connected if a 5G tower placed on building $u$ one will provide service to building $v$. A set of buildings that would provide coverage to the whole city is a dominating set. The minimum number of towers needed is the domination number of this graph.
+One way of visualising dominating sets is to consider cell tower placement. Suppose we wish to build a 5G network in a city. We consider a graph of buildings in a city. The vertices are buildings and two vertices $u$ and $v$ are connected if a 5G tower placed on building $u$ one will provide coverage to building $v$. A set of buildings that would provide coverage to the whole city is a dominating set. The minimum number of towers needed is the domination number of this graph.
 
 The size of a minimal dominating set is in some sense a measure of how closely connected a graph is. A graph with a low domination number is densely connected, and a graph with a high domination number is loosely connected. For example, a city that is densely packed requires fewer towers. Every new 5G tower reaches many buildings. Whereas, a sparsely populated city will require more towers. Each tower only services a few buildings.   
 
-As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in figures  \ref{fig:wheelW9} and \ref{fig:cycleC8}.
+As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in figures \ref{fig:wheelW9} and \ref{fig:cycleC8}.
 \begin{figure} [h]
     \centering
     \begin{minipage}{.45\textwidth}
@@ -83,71 +81,29 @@ As a further example consider the wheel graph $W_9$ and the cycle graph $C_8$ in
 \end{figure}
 The wheel has a dominating set of size 1, just the centre vertex. Whereas, the cycle graph has a dominating set of size 3. In figures  \ref{fig:wheelW9} and \ref{fig:cycleC8} the dominating sets are denoted as black vertices. This can be interpreted as the wheel graph being more closely connected than the cycle graph. And when you observe the graphs this distinction makes sense.
 
-%\subsection{Games Involving Dominating sets}
-%Before we look at what we call the dominating game, we will consider the earliest game involving dominating sets.
-%
-%There are various games involving dominating sets. One such game was introduced by Alon, Balogh, Bollob\'{a}s, and Szab\'{o} 2002 \cite{AlBABoSz2002}. In which the authors describe strategies for minimising the domination number in induced directed graphs. 
-%
-%The game that they describe is played as follows: Alice and Bob take turns assigning an direction to edges in a graph $G$ until all the edges are directed. Let $G'$ be the induced directed graph and the score $t=\gamma(G')$. Alice tries to minimise the score and Bob tries to maximise the score.     
-%not the eairlest game, there are others see [1,3-5] in \cite{AlBABoSz2002}
-
-
 The \textit{dominating game} was introduced by Bo\v{s}tjan Bre\v{s}ar, Sandi Klav\v{z}ar, and Douglas F. Rall 2010 \cite{BrKlRa2010}. In this game Alice and Bob take turns adding vertices to a set until it forms a dominating set.
 
-In this chapter we show how the dominating game can be bounded in terms of both the number of vertices and the domination number. We also demonstrate a strategy for Alice that ensures she will win if the number of turns passes half the number of vertices.
+In this chapter we will show how the dominating game can be bounded in terms of both the number of vertices and the domination number. We also demonstrate a strategy for Alice that ensures she will win if the number of turns passes half the number of vertices.
+
+%################################################################################
 
 \section{The Dominating game}\label{sec:dominating_game}
-%\begin{definition}
-%    Independent set, maximum independent set, independence number $\alpha(G)$
-%\end{definition}
+For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$.  
 
-For a graph $G$ and a set $X\subseteq V(G)$ we denote $N[X]$ the set of neighbours of $X$ including $X$. That is $N[X] = \{v\in V(G) : \exists_{u\in X} (u,v)\in E(G)\}\cup X$. 
-
-We define the dominating game as follows. Let $G$ be a graph, $t$ be a target score, and $D$ a dominating set that we initialise to $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is, the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size of the dominating set at the end of the game. That is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
+We define the dominating game as follows. Let $G$ be a graph, $t$ a target score, and $D$ a dominating set that we initialise to $D=\emptyset$. On alternating turns, beginning with Alice, Alice and Bob add an unchosen vertex to $D$ such that the number of dominated vertices increases. That is, the set $N[D]$ increases in size. The game stops when $D$ forms a dominating set in $G$. The score of the game, $s$, is the size of the dominating set at the end of the game. That is $s=|D|$. Alice wins if $s\leq t$ and Bob wins otherwise.
 
 \begin{definition}[Game Domination Number]
     Let $G$ be a graph. The game dominating number $\gamma_g(G)$ is the minimum target score such that Alice always has a winning strategy.
 \end{definition} 
 
-Suppose $\CC$ is a class of graphs. $\gamma_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$, $\gamma_g(H)\leq k$. We say a class $\CC$ is bounded above by $k$ if $\varphi_g(\CC)\leq k$. $\CC$ is bounded below by $k$ if there is a graph $H$ in $\CC$ such that $\gamma_g(H)= k$ and we write $\gamma_g(\CC)\geq k$. Hence if $k\leq\gamma_g(\CC)\leq k$ then $\gamma_g(\CC) = k$. 
+Suppose $\CC$ is a class of graphs. $\gamma_g(\CC)$ is the smallest $k$ such that for every graph $H\in\CC$, $\gamma_g(H)\leq k$. We say a class $\CC$ is bounded above by $k$ if $\varphi_g(\CC)\leq k$. $\CC$ is bounded below by $k$ if there is a graph $H$ in $\CC$ such that $\gamma_g(H)= k$ and we write $k
+leq\gamma_g(\CC)$. Hence if $k\leq\gamma_g(\CC)\leq k$ then $\gamma_g(\CC) = k$. 
 
-%This can be thought of as Bob being allowed to pick the graph the game is played on. Suppose we have a target score $t$. If Bob is allowed to pick the graph then he will pick a graph $G$ with $\gamma_g(G) > t$. Then if $t\geq \gamma_g(G)$ then it would not matter what graph Bob picks. Alice will always win. 
-
-
-%\begin{lemma}
-%    Let $G$ be a graph. 
-%        
-%    \[\gamma(G) \geq \alpha(G)\]
-%\end{lemma}
-%
-%\begin{proof}
-%    Let $X$ be a minimum dominating set in some graph $G=(V,E)$. By definition of dominating set vertex in $V$ is adjacent to at least one vertex in      
-%\end{proof}
-%    
-%Recall that $\chi(G)$ is the chromatic number of the graph $G$.
-%
-%\begin{theorem} [Willis 3.1 \cite{Willis2011BoundsFT}] \label{willis3.1}
-%    For any graph $G = (V,E)$ 
-%
-%    \[\alpha(G) \leq \frac{ \left | {V} \right |}{\chi(G)}\]
-%\end{theorem}
-%
-%Recall that $\Delta(G)$ is the maximum degree of any vertex in $G$.
-%
-%\begin{theorem} [Balakrishnan 10.3.2 \cite{balakrishnan2012}] \label{balakrishnan10.3.2}
-%    For any graph $G$ with $n$ vertices, 
-%    
-%    \[ \left\lceil {\frac{n}{1+\Delta(G)}} \right\rceil \leq \gamma(G) \leq n - \Delta(G)\]    
-%\end{theorem}
+%-----------------------------------------------------------------------------
 
 \subsection{Lower Bounds for Game Dominating Number}
     
 A graph $G=(E,V)$ has no dominating sets smaller than $\gamma(G)$. This means that if the target score of the dominating game is less than $\gamma(G)$ then there is no strategy that will allow Alice to win. Therefore $\gamma(G)$ is a lower bound for the game domination number. That is \[\gamma(G)\leq\gamma_g(G)\]
-%Conversely, if we have a target score of $|V|$ is doesn't matter what strategy Alice employs, she will always win. Thus, we get theorem \ref{thm:triv_dom}.
-
-%\begin{theorem}\label{thm:triv_dom}
-%    For any graph $G=(E,V)$, \[\gamma(G)\leq \gamma_g\leq|V|\]
-%\end{theorem}
 
 Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory.   
 \begin{theorem}[Ore 1962 \cite{oysteinore1962}] \label{thm:oreDomUpper} 
@@ -158,11 +114,11 @@ Theorem \ref{thm:oreDomUpper}, is a well known result in graph theory.
 In this report we will show that theorem \ref{thm:oreDomUpper} also provides us with a lower bound for the game domination number.  
 Before we can show $n/2$ is a lower bound we introduce the following lemmas. 
 \begin{lemma}\label{lem:ore_is_tight}
-    For every $n$ there exists a connected graph $G$ with $n$ vertices and no isolated vertices such that $\gamma(G) = n/2$. Hence the bound    
+    For every $n$ there exists a connected graph $G$ with $n$ vertices and no isolated vertices such that $\gamma(G) = \left\lfloor n/2 \right\rfloor$. Hence the bound    
     $\gamma(G) \leq \frac{n}{2}$ is tight
 \end{lemma}
 \begin{proof}
-    Fix $n$. If $n$ is odd then $\gamma(G) < n/2$. Thus it suffices to show $\gamma(G) \leq (n-1)/2$. So, WLOG let $n$ be even. Consider the path graph with $n/2$ vertices with a single additional vertex attached to each vertex, denote this graph $G$. See figure \ref{fig:ext_path}.
+    Fix $n$. If $n$ is odd then it suffices to show $\gamma(G) \leq (n-1)/2$. So, without loss of generality suppose $n$ is even. Consider the path graph with $n/2$ vertices with a single additional vertex attached to each vertex, denote this graph $G$. See figure \ref{fig:ext_path}.
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
@@ -192,10 +148,10 @@ Before we can show $n/2$ is a lower bound we introduce the following lemmas.
     A dominating set in $G$ is the set of vertices in the original path graph. Hence $\gamma(G)= n/2$. Therefore $n/2$ is a tight upper bound for $\gamma(\CC)$. 
 \end{proof}
 
-Lemma \ref{thm:domlow} and theorem \ref{thm:gamedomLow} are implicit in the literature. But we state them here with proofs.
+Lemma \ref{thm:domlow} and theorem \ref{thm:gamedomLow} are implicit in the literature. But, we state them here with proofs.
 
 \begin{lemma}\label{thm:domlow}
-    Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is for all $G\in\CC$ $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
+    Let $\CC$ be a class of graphs and $\gamma(\CC)$ tight upper bound for the domination number of $\CC$. That is, for all $G\in\CC$, $\gamma(G)\leq\gamma(\CC)$ and there exists some $G\in\CC$ such that $\gamma(G)=\gamma(\CC)$. Then,
     \[\gamma(\CC) \leq  \gamma_g(\CC)\]
 \end{lemma}
 \begin{proof}
@@ -242,12 +198,11 @@ Theorem \ref{thm:gamedomLow} does not say that for all connected graphs with dom
 %\todo N[v] notation
 Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex that Alice plays will increase the number of dominated vertices ($N[D]$) by at most 3. Bob can play a vertex in $N(D)$. Doing this will increase the size of $N[D]$ by at most 1. Hence, after each round $N(D)$ has increased by at most 4 and $D$ has increased by 2. Therefore the game will end after $n/4$ turns with $|D| = 2(n/4) = n/2$. Hence a target score of $n/2$ is needed to ensure that Alice will win.
 
-%thm \ref{thm:gamedomLow} is also proved in Alona, Baloghc, Bollobas, and Szabo 2002 \cite{AlBABoSz2002}. not true, is a diffferent game
+%--------------------------------------------------------------------
 
 \subsection{Upper bounds for Game Domination Number}
-Suppose Alice has a winning strategy on the class of graphs $\CC$ with target score $t$. $t$ is then an upper bound for the game domination number for $\CC$. Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$. 
+Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$.
 
-%For a better upper bound we introduce the Imagination strategy. The imagination strategy was first introduced by Bartnicki, T. and Bre\v{s}ar, B. and Grytczuk, J. and Kov\v{s}e, M. and Miechowicz, Z. and Peterin, I. 2008 \cite{BaBrGrKoMiPe2008} in the context of the colouring game. 
 For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself. Bob's strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
 
 \begin{theorem}[Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}]\label{thm:gamedomup}
