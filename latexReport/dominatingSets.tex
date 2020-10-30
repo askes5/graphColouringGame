@@ -201,7 +201,7 @@ Let $D$ be the current dominating in the dominating game. In $P_n$ any vertex th
 %--------------------------------------------------------------------
 
 \subsection{Upper bounds for Game Domination Number}
-Consider some graph $G$, the vertex set $V(G)$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is $\gamma_g(G) \leq |V(G)|$.
+Consider some graph $G=(V,E)$, the vertex set $V$ is a dominating set. Therefore when $D$ forms a dominating set $|D|\leq |V(G)|$. Thus a game with target score $|V(G)|$ guarantees Alice will win. Hence $|V(G)|$ is an upper bound for the game domination number. That is, $\gamma_g(G) \leq |V(G)|$.
 
 For a better upper bound we introduce a new strategy for Alice. This strategy involves Alice imagining a perfect play and using this play as a strategy. Alice imagines a minimum dominating set. This simple strategy and the following bound were first observed in Bre\v{s}ar and Klav\v{z}ar and Rall 2010 \cite{BrKlRa2010}. If Alice was playing herself this minimum set would provide a perfect score ($\gamma_g(G)=\gamma(G))$). However, Alice is not playing herself. Bob's strategy forces a less than perfect score. But, by playing her imagined strategy she will always win on a score strictly less than twice her perfect score.
 
@@ -209,9 +209,9 @@ For a better upper bound we introduce a new strategy for Alice. This strategy in
     For $G$ a graph and $\gamma(G)$ the dominating number of $G$,  
     \[\gamma_g(G)<2\gamma(G)\]
 \end{theorem}
-In \cite{BrKlRa2010} the authors do not give a formal proof, they give a brief sketch. This is something we aim to remedy in this report. 
+In \cite{BrKlRa2010} the authors do not give a formal proof, they give a brief sketch. This is something we aim to remedy.. 
 \begin{proof}
-    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she plays any vertex in $X$. Now, suppose Bob has just played a vertex and $D$ is the current partial dominating set. Alice's strategy is to play any unchosen vertex, $v\in X\setminus D$. After no more than $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice plays a vertex from $X$ in each round. 
+    Let $G$ be a graph and $X\subseteq V(G)$ a dominating set such that $|X| = \gamma(G)$. On Alice's first turn she plays any vertex in $X$. Now suppose Bob has just played a vertex and $D$ is the current partial dominating set. Alice's strategy is to play any unchosen vertex, $v\in X\setminus D$. After no more than $\gamma(G)$ rounds the game must have ended as $X$ is a dominating set and Alice plays a vertex from $X$ in each round. 
     
     If the game ends in the $\gamma(G)$-th round then it ended on Alice's turn. This is because after Alice's $\gamma(G)$-th turn the game is over. Thus Bob has had one less turn that Alice. In each round Alice and Bob each add one vertex to $D$. Hence the game ends with size of $D$ exactly $2\gamma(G) -1$. 
     
@@ -221,7 +221,8 @@ In \cite{BrKlRa2010} the authors do not give a formal proof, they give a brief s
 
 If the domination number of a class of graphs is known, then we know an upper bound for the game domination number. However, the domination number of most classes of graphs is not known. This is because finding a dominating set is an NP-complete problem. And so finding dominating numbers is difficult.
 
-Suppose the domination number is not known, but we know an upper bound for it. Then if Alice pretends that the domination number is this bound, we get an upper bound for the game domination number. Alice's strategy would be exactly the same as in theorem \ref{thm:gamedomup}. This means that we can get an improvement on the upper bound of the domination number by finding  better upper bounds for the game domination number. However, finding bounds for the dominating number is beyond the scope of this report. But, we provide some examples,
+Suppose the domination number is not known, but we know an upper bound for it. Then if Alice pretends that the domination number is this bound, we get an upper bound for the game domination number. Alice's strategy would be exactly the same as in theorem \ref{thm:gamedomup}. This means that we can get an improvement on the upper bound of the domination number by finding  better upper bounds for the game domination number. However, finding bounds for the dominating number is beyond the scope of this report. 
+%But, we provide some examples,
 
 %todo add more bounds based on classes of graphs
 
@@ -240,7 +241,7 @@ For the class of trees Kinnersley, West, and Zamani 2013 \cite{KiWeZa2013} conje
 \end{conjecture}
 While conjecture \ref{conj:treedomup} is still undecided it has been shown for certain types of trees. 
 
-A \textit{caterpillar graph} is a tree in which all the vertices lie on a path or have distance at most one from a central path. See figure \ref{fig:catgraphs} for some examples.
+A \textit{caterpillar graph} is a tree in which all the vertices lie on a path or have distance at most one from a central path. Figure \ref{fig:catgraphs} provides some examples.
 %
 \begin{figure} [h]
     \centering
@@ -315,33 +316,19 @@ Kinnersley, West, and Zamani 2013 \cite{KiWeZa2013} showed conjecture \ref{conj:
 %\begin{proof}
     
 Rather than provide a full proof we give the main ideas; namely we describe Alice's strategy for $F$ a forest of caterpillars with no isolated vertices. 
-    %To extend the strategy to a full proof we would proceed by induction on the number of turns. Then verify that the theorem holds on induced subgraphs.
-    %We show this bound by induction on $n$ the number of vertices in the forest $F$. For $n\leq 5$ the hypothesis  follows from an analysis of the few possible graphs.
-    %
-    %For the inductive step assume that $n\geq 6$. 
-    Let $D$ be the current partial dominating set on Alice's turn. A vertex is \textit{totally dominated} if all it's neighbours are in the dominating set. The \textit{residual graph} $F'$ of $F$ is $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq N[D]\}$. The residual graph $F'$ is the subgraph that contains only valid moves. Alice only considers the graph $F'$ when deciding on her next play. Alice considers three cases, in order of preference.
-    %
-    \begin{enumerate}        
+ 
+Let $D$ be the current partial dominating set on Alice's turn. A vertex is \textit{totally dominated} if all it's neighbours are in the dominating set. The \textit{residual graph} $F'$ of $F$ is $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq N[D]\}$. The residual graph $F'$ is the subgraph that contains only valid moves. Alice only considers the graph $F'$ when deciding on her next play. Alice considers three cases, in order of preference.
+%
+\begin{enumerate}        
     \item $F'$ has a vertex $v$ incident to two leaves. Alice plays $v$. 
     %Let $F'$ be $F$ less any vertices that are totally dominated. That is $F'=F\ba\{v\in V(F): N(v)\subseteq D\}$. Then by the inductive hypothesis $\gamma_g(F) \leq 1 + \gamma_g'(F') < 3n/5$.
     
     \item $F'$ has a component $C$ isomorphic to one of the path graphs $P_2,P_4,P_5$. Alice plays a winning strategy on $C$. 
     
     \item $F'$ has no vertices incident to 2 leaves and no component isomorphic to one of the path graphs $P_2,P_4,P_5$. If this is the case then no component of $F'$ has less than 6 vertices. Fix a component $C$ of $F$ and let $u_1,\dots,u_k$ the longest path in $C$. If there is some $i$ such that $d(u_i)=3$ then Alice plays $u_i$. If not, then Alice plays $u_6$.    
-    \end{enumerate}
-Alice keeps playing according to these rules until there are no more vertices to play. This concludes the strategy.
-%The remainder of the proof done using induction on the number vertices in the graph. We would use the fact that if $F$ is the union of two forests, that is $F=F_1\oplus F_2$, then $\gamma_g(F)\leq\gamma_g(F_1) +\gamma_g'(F_2)$. 
-%By using this strategy, Alice will always win on $F$ if the target score is less than or equal to $3n/5$.
-%    \begin{enumerate}
-%        \item $\gamma_g'(F)\leq 1 +\gamma_g(F-v) = 1 + 3(n-1)/5 = (3n+2)/5$
-%        \item $\gamma_g(F_1\oplus F_2) \leq \gamma_g(F_1) + \gamma_g'(F_2)$
-%        \item $\gamma_g(F) \leq 1 + \gamma'(F')$.
-%    \end{enumerate}
-%    
-%    First, $F$ has a vertex $v$ incident to two leaves. Then after Alice plays $v$, $F'$ has $n-3$ vertices. So, 
-%    \[\gamma_g(F)\leq 1 + \gamma_g(F') \leq 1 + \frac{3(n-3)+2}{5} = \frac{3n -2}{5} < \frac{3n}{5}\]
-%    
-%\end{proof}
+\end{enumerate}
+Alice keeps playing according to these rules until there are no more vertices to play. This concludes the strategy. 
+
 Further work has been done to improve the class of trees that the conjecture holds for. Bujt\'{a}s, Csilla 2015 \cite{Bujt2015} showed that conjecture \ref{conj:treedomup} holds for forests that have no isolated vertices and in which no two leaves have distance 4.
 %
 \begin{theorem}[Bujt\'{a}s, Csilla 2015 \cite{Bujt2015}]\label{thm:domtreedist4}
