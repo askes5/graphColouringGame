@@ -2,6 +2,8 @@ package game;
 
 import BoundedGraph.Ktree;
 import BoundedGraph.PWGraph;
+import BoundedGraph.PathDecomposition;
+import linearOrders.LOinPWGenerator;
 import linearOrders.LOinTWGenerator;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Element;
@@ -14,6 +16,7 @@ import strategies.ActivationStrategy;
 import strategies.Stragety;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -28,19 +31,19 @@ public class ColouringGame extends JPanel {
     
     private Graph graph;
     private Map<String,Integer> nodeColours = new HashMap<>();
+    private final Set<String> nodeSet = new HashSet<>();
     private List<String> nodesPickedOrder = new ArrayList<>();
     private Viewer viewer;
     private Node selectedNode = null;
     private int selectedColour = -1;
     private Stragety stragety;
     private Map<Integer, Color> colorMap = new HashMap<>();
-    private final Set<String> nodeSet = new HashSet<>();
-    private JTextArea textOutputArea;
+    private JTextArea textOutputArea = new JTextArea();
     private boolean isPlayersTurn = false;
     protected String styleSheet =
             "node {" +
                     "fill-color: black;" +
-                    "size: 15px; " +
+                    "size: 30px; " +
                     "text-background-mode: rounded-box; " +
                     "text-background-color: red;" +
                     "}" +
@@ -49,19 +52,12 @@ public class ColouringGame extends JPanel {
                     "}";
     private int numOfColours;
     
-    /**
-     * make a new game based on a given edgeset and stragety
-     * @return the game
-     */
-    static ColouringGame newGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours){
-        return new ColouringGame(edgeSet,stragety,numOfColours);
-    }
     
     /**
      * Makes a random ktree of a given size and width, and uses the activation strategy
      * @return The game
      */
-    static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
+    public static ColouringGame newRandomKtreeGame(int size, int treeWidth, int numOfColours){
         Ktree ktree = new Ktree(size, treeWidth);
         return new ColouringGame(ktree.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(ktree.getDecomposition())), numOfColours);
     }
@@ -70,12 +66,16 @@ public class ColouringGame extends JPanel {
      * Makes a random pathwidth graph of a given size and width, and uses the activation strategy
      * @return The game
      */
-    static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
+    public static ColouringGame newRandomPWGraphGame(int size, int pathWidth, int numOfColours){
         PWGraph pwGraph = new PWGraph(size, pathWidth);
-        return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinTWGenerator.calculateComparator(pwGraph.getDecomposition())), numOfColours);
+        //todo fix path width LO generator
+        return new ColouringGame(pwGraph.getGraph().getEdgeSet(), new ActivationStrategy(LOinPWGenerator.calculateComparator((PathDecomposition) pwGraph.getDecomposition())), numOfColours);
     }
     
-    private ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
+    /**
+     * make a new game based on a given edgeset and stragety
+     */
+    public ColouringGame(Collection<Edge> edgeSet, Stragety stragety, int numOfColours) {
         super(new GridBagLayout());
         this.numOfColours = numOfColours;
         newGameGraph(edgeSet, stragety);//reset the game graph
@@ -86,27 +86,51 @@ public class ColouringGame extends JPanel {
         }
         
         SwingUtilities.invokeLater(this::createAndShowGUI); //display gui
-        playAsBob(); //start game
+        playAsComputer(); //start game
     }
+    
+    
     
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private void createAndShowGUI() {
+    public void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("game.ColouringGame");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
         GridBagConstraints c = new GridBagConstraints();
         
-        //add colour picker
+        //add left menu
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
+        //add colourpick label
+        JLabel label = new JLabel("Select colour");
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setBorder(new EmptyBorder(0,20,0,20));
+        menuPanel.add(label);
+        //add colour picker to menu
+        ColourPicker colourPicker = new ColourPicker(this);
+        menuPanel.add(colourPicker);
+        menuPanel.add(Box.createVerticalGlue());
+        //add new game button
+        JButton restartButton = new JButton("Restart Game");
+        restartButton.addActionListener((e) -> {
+            frame.dispose(); //dispose of current game
+            new ColouringGame(graph.getEdgeSet(),new ActivationStrategy((ActivationStrategy) stragety),numOfColours); //create a new game
+        });
+        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        menuPanel.add(Box.createRigidArea(new Dimension(0,20)));//add space above restart button
+        menuPanel.add(restartButton);
+        
+        //add menu to content pane
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        this.add(new ColourPicker(this), c);
-    
+        this.add(menuPanel);
+        
         //add graph view
         JPanel panel = new JPanel(new GridLayout()){
             @Override
@@ -114,32 +138,38 @@ public class ColouringGame extends JPanel {
                 return new Dimension(1240, 720);
             }
         };
-    
+
         this.viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         viewer.enableAutoLayout();
         ViewPanel viewPanel = viewer.addDefaultView(false);
-//        viewPanel.setPreferredSize(new Dimension(1000, 900));
+//        viewPanel.setPreferredSize(new Dimension(10, 10));
         panel.add(viewPanel);
         viewPanel.addMouseListener((ClickedListener) this::mouseClicked);
     
         c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weightx=1.0;
+//        c.weighty=1.0;
         c.gridx = 1;
         c.gridy = 0;
         this.add(panel,c);
     
         //add textoutput
-        textOutputArea = new JTextArea();
-//        textOutputArea.setFont(new Font("Serif", Font.ITALIC, 16));
-        textOutputArea.setText(((ActivationStrategy)stragety).getOrderedNodes().toString());
         textOutputArea.setLineWrap(true);
         textOutputArea.setWrapStyleWord(true);
-        textOutputArea.setPreferredSize(new Dimension(1240,100));
-        textOutputArea.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        textOutputArea.setEnabled(false);
+        textOutputArea.setDisabledTextColor(Color.BLACK);
+        textOutputArea.setFont(new Font("Dialog", Font.BOLD + Font.ITALIC, 14));
+        JScrollPane scrollPane = new JScrollPane(textOutputArea);
+        scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
+        scrollPane.setPreferredSize(new Dimension(viewPanel.getPreferredSize().width,100));
+        scrollPane.getViewport().getView().setForeground(Color.RED);
+        
         c.fill = GridBagConstraints.HORIZONTAL;
+//        c.weighty=0;
         c.gridx = 1;
         c.gridy = 1;
-        this.add(textOutputArea,c);
-    
+        this.add(scrollPane,c);
+
         //Create and set up the content pane.
         JComponent newContentPane = this;
         newContentPane.setOpaque(true); //content panes must be opaque
@@ -147,6 +177,7 @@ public class ColouringGame extends JPanel {
         //Display the window.
         frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
     
@@ -159,6 +190,9 @@ public class ColouringGame extends JPanel {
         graph.setAutoCreate(true);
         graph.addAttribute("ui.stylesheet", styleSheet);
     
+        updateTextOutput("Instructions: The goal is to colour nodes in such a way that the graph cannot be coloured using" +
+                                 " the available colours. The computer will attempt to thwart your attempts.");
+        
         edgeSet.forEach(edge -> graph.addEdge(edge.getId(), edge.getNode0().getId(), edge.getNode1().getId())); //add all edges to graph
         
         //label each node
@@ -168,33 +202,30 @@ public class ColouringGame extends JPanel {
         }
     }
     
+    private void playAsComputer(){
+        //Alice moves
+        stragety.nextMove(this);
+        if (gameOver()) return;
+        //Bob moves
+        isPlayersTurn = true;
+        updateTextOutput("Your turn");
+    }
+    
     private synchronized void playAsBob() {
         //todo add ability to play as Alice
-        while (true) {
-            
-            //Alice moves
-            stragety.nextMove(this);
-            if (gameOver()) break;
-            //Bob moves
-            isPlayersTurn = true;
-            
             //wait until a valid node is selected
-            selectedNode = null;
-            while (selectedNode == null || !isAllowedColouring(selectedNode.getId(), selectedColour)) {
-                try {
-                    wait(); //wait until a node is selected
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            
+        if (selectedNode != null && isAllowedColouring(selectedNode.getId(), selectedColour)) {
             //colour the node
             setNodeColour(selectedNode.getId(),selectedColour);
-    
+
             isPlayersTurn = false;
             
-            if (gameOver()) break;
+            if(gameOver()) return;
+    
+            playAsComputer();
         }
+        selectedNode = null;
+        
     }
     
     /**
@@ -213,7 +244,8 @@ public class ColouringGame extends JPanel {
         if (aliceHasWon) {
             System.out.println("Alice has won");
                     JOptionPane.showMessageDialog(this, "You have lost!");
-                
+    
+            updateTextOutput("You have lost");
             return  true;
         }
         
@@ -234,6 +266,7 @@ public class ColouringGame extends JPanel {
                 if (colours.isEmpty()){
                     System.out.println("Bob has won");
                     JOptionPane.showMessageDialog(this, "You have won!");
+                    updateTextOutput("You have won");
                     return true;
                 }
                 
@@ -244,6 +277,14 @@ public class ColouringGame extends JPanel {
     
     private boolean isValidColour(int colour) {
         return colour >= 0 && colour < numOfColours;
+    }
+    
+    public void updateTextOutput(String message){
+        message = "> " + message;
+        if (!textOutputArea.getText().equals("")){
+            message = "\n"+message;
+        }
+        textOutputArea.setText(textOutputArea.getText() +message);
     }
     
     /**
@@ -316,6 +357,10 @@ public class ColouringGame extends JPanel {
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isAllowedColouring(String id, int i){
+        //cannot colour a node that is already coloured.
+        if (nodeColours.containsKey(id)) {
+            return false;
+        }
         AtomicBoolean toReturn = new AtomicBoolean(true);
         graph.getNode(id).getNeighborNodeIterator().forEachRemaining(node -> {
             if (nodeColours.containsKey(node.getId())
@@ -335,14 +380,17 @@ public class ColouringGame extends JPanel {
         Element element = viewer.getDefaultView().findNodeOrSpriteAt(e.getX(), e.getY());
         if (element instanceof Node) {
             ColouringGame.this.setSelectedNode(element.getId());
-            notifyAll(); //wake up
+//            notifyAll(); //wake up
+            playAsBob();
         }
     }
     
     public static void main(String[] args) {
-//        ColouringGame.newRandomKtreeGame(20,4,8);
+	    System.setProperty("sun.java2d.uiScale", "1.0"); //stop dpi scaling as it breaks mouse events in graph stream
+        ColouringGame.newRandomKtreeGame(20,3,8);
     
-        ColouringGame.newRandomPWGraphGame(20,2,8);
+//        int pw = 2;
+//        ColouringGame.newRandomPWGraphGame(15,pw,2*pw +2);
     }
    
 }

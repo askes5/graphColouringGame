@@ -1,7 +1,5 @@
 package game;
 
-import game.ColouringGame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -67,10 +65,9 @@ public class ColourPicker extends JPanel
         this.setBackground(game.getColorMap().get(colourList.getSelectedItem()));
         colourList.addActionListener(this);
         
-        JLabel label = new JLabel("Select colour");
+        
         
         //Lay out the demo.
-        add(label, BorderLayout.PAGE_START);
         add(colourList, BorderLayout.CENTER);
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
     }

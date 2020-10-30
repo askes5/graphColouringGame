@@ -1,5 +1,6 @@
 package linearOrders;
 
+import BoundedGraph.PathDecomposition;
 import org.graphstream.graph.Node;
 
 import java.util.*;
@@ -17,32 +18,18 @@ public class LOinPWGenerator {
      * @param pathDecomposition a path decomposition of the graph with width k
      * @return a linear order on the vertex set of the graph
      */
-    public static List<Node> calculateListOrder(List<Set<Node>> pathDecomposition) {
-        ArrayDeque<Node> queue = new ArrayDeque<>();
+    public static List<Node> calculateListOrder(PathDecomposition pathDecomposition) {
         List<Node> linearOrder = new ArrayList<>();
     
+        List<Set<Node>> decomList = pathDecomposition.getList();
+        
         //for each partition
-        for (int i = 0; i < pathDecomposition.size(); i++) {
-            Set<Node> partition = pathDecomposition.get(i);
-            
+        for (Set<Node> partition : decomList) {
             // tempQueue <- Queue union (partition - queue)
-            ArrayDeque<Node> tempQueue = new ArrayDeque<>(queue);
-            tempQueue.addAll(partition.stream()
-                                     .filter(x -> !queue.contains(x))
-                                     .collect(Collectors.toSet()) //everything in the partition not in the queue
+            linearOrder.addAll(partition.stream()
+                                       .filter(x -> !linearOrder.contains(x))
+                                       .collect(Collectors.toSet()) //everything in the partition not in the linear order
             );
-            queue.clear();
-            
-            for (Node node : tempQueue) {
-                
-                // add if the node does not appear in a latter partition in the decomposition
-                if (nodeInDecomposition(node, pathDecomposition.subList(i + 1, pathDecomposition.size()))) {
-                    queue.addLast(node);
-                } else {
-                    linearOrder.add(node);
-                }
-                
-            }
         }
         
         return linearOrder;
@@ -61,7 +48,7 @@ public class LOinPWGenerator {
         return false;
     }
     
-    public static Comparator<String> calculateComparator(List<Set<Node>> pathDecomposition) {
+    public static Comparator<String> calculateComparator(PathDecomposition pathDecomposition) {
     
         List<String> listOrder = new ArrayList<>();
         for (Node node : calculateListOrder(pathDecomposition)) {

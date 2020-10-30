@@ -3,6 +3,7 @@ package BoundedGraph;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
 
 import java.util.*;
 
@@ -64,9 +65,19 @@ public class Ktree extends BoundedGraph{
             newPartiton.addAll(neighbours);
             makeClique(newPartiton);
             //create new node in decomposition
-            DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(), DcomTree.addNode(newPartiton.toString()).getId());
+            DcomTree.addEdge(newPartiton.toString()+node.getId(),node.getId(),
+                             DcomTree.addNode(newPartiton.toString()).getId());
             decomposition.getSetMap().put(newPartiton.toString(),newPartiton);
+            
         }
+        
+        
+        //Show underlying tree structure
+        for (Node node : decomposition.getTree()) {//label each node
+            node.addAttribute("ui.label", node.getId());
+        }
+        Viewer viewer = decomposition.getTree().display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }
     
     @Override
